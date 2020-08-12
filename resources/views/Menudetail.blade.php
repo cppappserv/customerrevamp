@@ -909,8 +909,11 @@ if ($pos=0 or $pos=1){
 
 						<div class="card card-default">
 							<div class="card-header">
-								<h3 class="card-title font36">Alamat Rumah</h3>
-
+								<div>
+									<h3 class="card-title font36">Alamat Rumah</h3>
+									<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
+									Duplicat
+								</div>
 								<div class="card-tools">
 									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
@@ -933,7 +936,7 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkelurahan" placeholder="Kelurahan">
+												<input type="text" class="form-control" id="inputkelurahan" placeholder="Kelurahan" onchange="mykelurahan(2,this)">
 											</div>
 										</div>
 										<div class="form-group row">
@@ -1006,27 +1009,6 @@ if ($pos=0 or $pos=1){
 											</div>
 										</div>
 
-										<div class="form-group row">
-											<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>
-											<div class="col-sm-9">
-												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
-												<select class="form-control" id="inputgoldarah"> 
-													<option>option 1</option>
-													<option>option 2</option>
-													<option>option 3</option>
-													<option>option 4</option>
-													<option>option 5</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
-
-
-										
-
 									</div>
 									<!-- /.col -->
 									<div class="col-md-6">
@@ -1045,24 +1027,60 @@ if ($pos=0 or $pos=1){
 												<input type="email" class="form-control" id="inputemail" placeholder="Email">
 											</div>
 										</div>
-
-										<div class="form-group row collaps">
-											<div class="col-sm-12">
-												<input type="text" class="form-control" id="inputnamaakun" placeholder="Nama Akun Media Sosial">
-											</div>
-										</div>
-										
-										
 									</div>
 									<!-- /.col -->
 								</div>
 								<!-- /.row -->
+							</div>
+
+
+							<div class="card-body">
+								<?php 
+								$medsos = ""; 
+								$namamedsos = "";
+								foreach ($data_additional as $key => $data) {
+									if ($data->type == 'MEDSOS'){
+										$medsos = $data->seq;
+										$namamedsos = $data->desc;
+									}
+								}
+								?>
 
 								
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>
+											<div class="col-sm-9">
+												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
+												<select class="form-control" id="inputmediasosail[]"> 
+												<?php 
+												foreach ($tblmedsos as $key => $value) {
+													?>
+													<option value="{{$value->id}}" <?php echo ($value->id == $medsos?'selected':'');?>>{{$value->medsos}}</option>
+													<?php
+												}
+												?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row <?php if($medsos==''?'collapse':'')?>" >
+											<div class="col-sm-12">
+												<input type="text" class="form-control" id="inputakun[]" placeholder="Nama Akun Media Sosial" value="{{$namamedsos}}">
+											</div>
+										</div>
+									</div>
+									
+									<!-- /.col -->
+								</div>
 								
-								
+
+								<!-- /.row -->
 							</div>
-							<!-- /.card-body -->
+							
+
 							<div class="card-footer">
 								
 							</div>
@@ -1080,111 +1098,109 @@ if ($pos=0 or $pos=1){
 							<!-- /.card-header -->
 							<div class="card-body">
 								<div class="row">
-									<div class="col-md-1">
+									<!-- <div class="col-md-1">
 										<div class="form-group row kotakexcel">
 											<div for="inputbentukusaha" class="col-sm-12 col-form-label font_21" id="">No</div>
 											
 										</div>
-									</div>
+									</div> -->
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputtipebadanhukum" class="col-sm-12 col-form-label font_21">Nama</label>
-											
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputnamausaha" class="col-sm-12 col-form-label font_21">Tempat Lahir</label>
-											
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Tanggal<br>lahir</label>
-											
 										</div>
 									</div>
 
-									<div class="col-md-1">
+									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Jenis<br>Kelamin</label>
-											
 										</div>
 									</div>
-
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Status</label>
-											
 										</div>
 									</div>
-
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel">
 											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Pendidikan</label>
-											
 										</div>
 									</div>
-
-
-
 								</div>
+							</div>
+							<div class="card-body"  id="inpkelga">
 								<?php 
-								foreach ($keluarga as $key => $value) {
+								$i=-1;
+								foreach ($data_additional as $key => $data) {
+									if ($data->type == 'DATA_KELUARGA'){
+									$i++;
 									?>
-									<div class="row">
-									<div class="col-md-1">
+									<div class="row" id="rowkelga{{$i}}">
+									<!-- <div class="col-md-1">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$value->urut}}</label>
+											<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$i}}</label>
+										</div>
+									</div> -->
+									<div class="col-md-2">
+										<div class="form-group row kotakexcel_kosong">
+											<input type="text" class="form-control" id="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluarganama" class="col-sm-12 col-form-label">{{$value->nama}}</label>
-											
+											<input type="text" class="form-control" id="inputkeluargatempat[]" placeholder="Tempat" value="{{$data->value2}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargatempatlahir" class="col-sm-12 col-form-label">{{$value->tmplahir}}</label>
-											
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargatanggallahir" class="col-sm-12 col-form-label">{{$value->tgllahir}}</label>
-											
+											<input type="text" class="form-control" id="inputkeluargatanggallahir[]" placeholder="Tempat" value="{{$data->value3}}">
 										</div>
 									</div>
 
-									<div class="col-md-1">
+									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargasex" class="col-sm-12 col-form-label">{{$value->sex}}</label>
-											
+											<input type="text" class="form-control" id="inputkeluargasex[]" placeholder="Tempat" value="{{$data->value4}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargastatus" class="col-sm-12 col-form-label">{{$value->stakel}}</label>
-											
+											<input type="text" class="form-control" id="inputkeluargastatus[]" placeholder="Tempat" value="{{$data->seq}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargapendidikan" class="col-sm-12 col-form-label">{{$value->stapendidikan}}</label>
-											
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">
+											</div>
+											<div class="col-sm-2">
+												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove3">X</button>
+											</div>
 										</div>
 									</div>
 								</div>
-									<?php
+								<?php
+									}
 								}
 								?>
-
-									<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>									
 								<!-- /.row -->
 							</div>
+							<div class="col-md-1">
+								<div class="form-group row ">
+									<div class="col-sm-12">
+										<button type="button" style="height:50px;width:50px" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
+									</div>
+								</div>
+							</div>
+							
 							<!-- /.card-body -->
 							<div class="card-footer">
 								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -1384,72 +1400,104 @@ if ($pos=0 or $pos=1){
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group row">
-												<label for="inputtelponusaha" class="col-sm-3 col-form-label">No Telp.</label>
+												<label for="inputusahatelpon" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" id="inputtelponusaha" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" id="inputusahatelpon" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
 
 											<div class="form-group row">
-												<label for="inputfaxusaha" class="col-sm-3 col-form-label">Fax.</label>
+												<label for="inputusahafax" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputfaxusaha" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" class="form-control" id="inputusahafax" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
-
-											<div class="form-group row">
-												<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>
-												<div class="col-sm-9">
-													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
-													<select class="form-control" id="inputgoldarah"> 
-														<option>option 1</option>
-														<option>option 2</option>
-														<option>option 3</option>
-														<option>option 4</option>
-														<option>option 5</option>
-													</select>
-												</div>
-											</div>
-
 										</div>
 										<!-- /.col -->
 										<div class="col-md-6">
 											<div class="form-group row">
-												<label for="inputhpusaha" class="col-sm-3 col-form-label">No HP</label>
+												<label for="inputusahahp" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhpusaha" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" class="form-control" id="inputusahahp" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
-												<label for="inputemailusaha" class="col-sm-3 col-form-label">Email</label>
+												<label for="inputusahaemail" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
-													<input type="email" class="form-control" id="inputemailusaha" placeholder="Email">
+													<input type="email" class="form-control" id="inputusahaemail" placeholder="Email">
 												</div>
 											</div>
-
-											<div class="form-group row collaps">
-												<div class="col-sm-12">
-													<input type="text" class="form-control" id="inputnamaakun" placeholder="Nama Akun Media Sosial">
-												</div>
-											</div>
-											
-											
 										</div>
 										<!-- /.col -->
 									</div>
 									<!-- /.row -->
-									<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
+								</div>
+
+
+								<div class="card-body" id="inpmedsos">
+									<?php 
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+									if ($data->type == 'MEDSOS'){
+									$i++;
+									?>
+									<div class="row" id="rowmedsos{{$i}}">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
+												<div class="col-sm-9">
+													<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
+													<select class="form-control" id="inputusahamediasosail[]"> 
+													<?php 
+													foreach ($tblmedsos as $key => $value) {
+														?>
+														<option value="{{$value->id}}" <?php echo ($value->id == $data->seq?'selected':'');?>>{{$value->medsos}}</option>
+														<?php
+													}
+													?>
+													</select>
+												</div>
+											</div>
 										</div>
+										<div class="col-md-5">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<input type="text" class="form-control" id="inputusahaakun[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button>
+												</div>
+											</div>
+										</div>
+										<!-- /.col -->
+									</div>
+									<?php 
+									}
+									}
+									?>
+
+									<!-- /.row -->
+								</div>
+
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addmedsos" id="addmedsos" class="btn btn-success">Add</button>
+										</div>
+									</div>
 								</div>
 								<!-- /.card-body -->
 								<div class="card-footer">
@@ -1495,39 +1543,59 @@ if ($pos=0 or $pos=1){
 											</div>
 										</div>
 									</div>
+								</div>
 
-									<div class="row">
-										<div class="col-md-1">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputbentukusaha" class="col-sm-12 col-form-label">1</label>
-												
+
+
+								<div class="card-body" id="inpagenhub">
+									<?php 
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+										if ($data->type == 'AGEN_HUB'){
+											$i++;
+											?>
+											<div class="row" id="rowsagenhub{{$i}}">
+												<div class="col-md-1">
+													<div class="form-group row kotakexcel_kosong">
+														<label for="inputbentukusaha" class="col-sm-12 co<input type="text" class="form-control">{{$i+1}}</label>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group row kotakexcel_kosong">
+														<input type="text" class="form-control" id="inputAgenHubNama[]" placeholder="Nama" value="{{$data->value1}}">
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group row kotakexcel_kosong">
+														<input type="text" class="form-control" id="inputAgenHubKode[]" placeholder="No Sap" value="{{$data->value2}}">
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group row kotakexcel_kosong">
+														<div class="col-sm-10">
+															<input type="text" class="form-control" id="inputAgenHubStatus[]" placeholder="Hubungan" value="{{$data->value4}}">
+														</div>
+														<div class="col-sm-2">
+															<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove4">X</button>
+														</div>
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Supram</label>
-												
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputnamausaha" class="col-sm-12 col-form-label">20801117</label>
-												
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputlamausaha" class="col-sm-12 col-form-label">Saudara</label>
-												
-											</div>
+											<?php 
+										}
+									}
+									?>
+									<!-- /.row -->
+								</div>
+
+								<!-- /.card-body -->
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
 										</div>
 									</div>
-									<!-- /.row -->
-									<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
 								</div>
-								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
 									the plugin. -->
@@ -1546,13 +1614,19 @@ if ($pos=0 or $pos=1){
 								<!-- /.card-header -->
 								<div class="card-body">
 									<div class="row">
-										<div class="col-md-3">
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputbentukusaha" class="col-sm-12 col-form-label">Area</label>
+												
+											</div>
+										</div>
+										<div class="col-md-2">
 											<div class="form-group row kotakexcel">
 												<label for="inputbentukusaha" class="col-sm-12 col-form-label">Jenis</label>
 												
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-2">
 											<div class="form-group row kotakexcel">
 												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Volume (Ton)</label>
 												
@@ -1571,37 +1645,68 @@ if ($pos=0 or $pos=1){
 											</div>
 										</div>
 									</div>
+								</div>
 
-									<div class="row">
-										<div class="col-md-3">
+								<div class="card-body" id="inpareasubagen">
+									<?php
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+										if   (($data->type == 'AREA_SUBAGEN')
+											or ($data->type == 'AREA_PETAMBAK')
+											or ($data->type == 'AREA_LAIN')
+										){
+											$i++;
+											?>
+									<div class="row" id="rowsareasubagen{{$i}}">
+										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputbentukusaha" class="col-sm-12 col-form-label">1</label>
+												<select class="form-control" id="inputNamaarea[]"> 
+													<option value="{{$data->desc1}}">{{$data->desc1}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
 												
+												<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="Nama" value="{{$data->desc}}">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Supram</label>
-												
+												<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="Nama" value="{{$data->value2}}">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputnamausaha" class="col-sm-12 col-form-label">20801117</label>
-												
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputlamausaha" class="col-sm-12 col-form-label">Saudara</label>
-												
+
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="Hubungan" value="{{$data->value3}}">
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove5">X</button>
+												</div>
 											</div>
 										</div>
 									</div>
 									<!-- /.row -->
-									<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
+
+									<?php
+											}
+										}
+									?>
+									
+								</div>
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
 										</div>
+									</div>
 								</div>
 								<!-- /.card-body -->
 								<div class="card-footer">
@@ -2147,30 +2252,218 @@ if ($pos=0 or $pos=1){
 	}
 </script>
 
-<!-- <script type="text/javascript">
-	$('#pil1').on('click',function(){
-		if( $(this).val()==="0"){
-			$("#pil1").css('background-color', 'blue');
-			$("#pil1").css('background', 'blue');
-		} else {
-			$("#pil2").css('background-color', 'white');
-			$("#pil3").css('background-color', 'white');
-			$("#pil4").css('background-color', 'white');
-			$("#pil5").css('background-color', 'white');
-		}
-	});
-	$('#pil2').on('click',function(){
-		if( $(this).val()==="0"){
-			$("#pil2").css('background-color', 'blue');
-		} else {
-			$("#pil1").css('background-color', 'white');
-			$("#pil3").css('background-color', 'white');
-			$("#pil4").css('background-color', 'white');
-			$("#pil5").css('background-color', 'white');
+<script type="text/javascript">
 
-		}
-	});
-</script> -->
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+      var j=1;  
+
+		$('#addmedsos').click(function(){  
+         i++;  
+			var txt = '<div class="row" id="rowmedsos'+i+'">'+
+								'<div class="col-md-6">'+
+									'<div class="form-group row">'+
+										'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
+										'<div class="col-sm-9">'+
+											'<select class="form-control" id="inputusahamediasosail[]">'+ 
+											'</select>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+								'<div class="col-md-5">'+
+									'<div class="form-group row ">'+
+										'<div class="col-sm-12">'+
+											'<input type="text" class="form-control" id="inputusahaakun[]" placeholder="Nama Akun Media Sosial">'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+								'<div class="col-md-1">'+
+									'<div class="form-group row">'+
+										'<div class="col-sm-12">'+
+											'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2">X</button>'+
+										'</div>'+
+									'</div>'+
+								'</div>';
+							console.log(txt);
+			$('#inpmedsos').append(txt);
+		}); 
+
+		$(document).on('click', '.btn_remove2', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowmedsos'+button_id+'').remove();  
+      });  
+
+	});  
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addkelga').click(function(){ 
+						var txt ='<div class="row" id="rowkelga'+i+'">'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+											'<input type="text" class="form-control" id="inputkeluarganama[]" placeholder="Nama">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+											'<input type="text" class="form-control" id="inputkeluargatempat[]" placeholder="Tempat">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+											'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+										'<input type="text" class="form-control" id="inputkeluargasex[]" placeholder="Sex">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+										'<input type="text" class="form-control" id="inputkeluargastatus[]" placeholder="Status">'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-2">'+
+										'<div class="form-group row kotakexcel_kosong">'+
+											'<div class="col-sm-10">'+
+												'<input type="text" class="form-control" id="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">'+
+											'</div>'+
+											'<div class="col-sm-2">'+
+												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>';
+
+			$('#inpkelga').append(txt);
+		});
+
+		$(document).on('click', '.btn_remove3', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowkelga'+button_id+'').remove();  
+      });  
+
+	});  
+</script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addagenhub').click(function(){ 
+
+			var txt ='<div class="row" id="rowsagenhub'+i+'">'+
+												'<div class="col-md-1">'+
+													'<div class="form-group row kotakexcel_kosong">'+
+													'<label for="inputbentukusaha" class="col-sm-3 col-form-label">'+i+'</label>'+
+													'</div>'+
+												'</div>'+
+												'<div class="col-md-4">'+
+													'<div class="form-group row kotakexcel_kosong">'+
+														'<input type="text" class="form-control" id="inputAgenHubNama[]" placeholder="Nama">'+
+													'</div>'+
+												'</div>'+
+												'<div class="col-md-4">'+
+													'<div class="form-group row kotakexcel_kosong">'+
+														'<input type="text" class="form-control" id="inputAgenHubKode[]" placeholder="No Sap">'+
+													'</div>'+
+												'</div>'+
+												'<div class="col-md-3">'+
+													'<div class="form-group row kotakexcel_kosong">'+
+														'<div class="col-sm-10">'+
+															'<input type="text" class="form-control" id="inputAgenHubStatus[]" placeholder="Hubungan">'+
+														'</div>'+
+														'<div class="col-sm-2">'+
+															'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
+														'</div>'+
+													'</div>'+
+												'</div>'+
+											'</div>';
+																				
+
+						
+
+			$('#inpagenhub').append(txt);
+		});
+
+		$(document).on('click', '.btn_remove4', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsagenhub'+button_id+'').remove();  
+      });  
+
+	});  
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addareasubagen').click(function(){ 
+						var txt = '<div class="row" id="rowsareasubagen'+i+'">'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<select class="form-control" id="inputNamaarea[]">'+
+													'<option value="">-</option>'+
+												'</select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="Nama">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-3">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="Nama">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-3">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<div class="col-sm-10">'+
+													'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="Hubungan">'+
+												'</div>'+
+												'<div class="col-sm-2">'+
+													'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+			$('#inpareasubagen').append(txt);
+		});
+		$(document).on('click', '.btn_remove5', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsareasubagen'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+									
+
+
+
+						
+
 
 <script type="text/javascript">
 	function readURL(input) {
@@ -2188,7 +2481,19 @@ if ($pos=0 or $pos=1){
 	});
 </script>	
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
+	function myduplikatalamat() 
+	{
+		document.getElementById("inputalamat").value    = document.getElementById("inputalamatktp").value;
+		document.getElementById("inputkelurahan").value = document.getElementById("inputkelurahanktp").value;
+		document.getElementById("inputkecamatan").value = document.getElementById("inputkecamatanktp").value;
+		document.getElementById("inputkota").value      = document.getElementById("inputkotaktp").value;
+		document.getElementById("inputpropinsi").value  = document.getElementById("inputpropinsiktp").value;
+		document.getElementById("inputkodepos").value   = document.getElementById("inputkodeposktp").value;
+	}
+</script>
+
+<script type="text/javascript">
 	function mykelurahan(kode, isi) 
 	{
 		var  txt = isi.value;
@@ -2223,7 +2528,10 @@ if ($pos=0 or $pos=1){
 			}
 		}
 	}
-</script> -->
+</script>
+
+
+
 
 <script type="text/javascript">
 

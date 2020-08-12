@@ -209,21 +209,46 @@ class NewController extends Controller
         return $grp;
     }
 
-    public function tblkelurahan()
+    public function dataadditional($para)
     {
-        
-        $sql = "select id, concat(kelurahan, '/', kecamatan, '/', kabupaten) `desc` from `tbl_kodepos` ";
+        $sql = "
+            SELECT a.*, b.desc desc1, b.info, b.info2, b.info3, b.info4 FROM usr_additional a
+            INNER JOIN dt_additional b ON b.type = a.type AND b.seq = a.seq
+            WHERE a.user_id = '$para'
+        ";
+        // AND a.type = 'MEDSOS'
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
 
+
+    public function tabelarea_subagen()
+    {
+        $sql = "
+            SELECT * FROM dt_additional a WHERE TYPE IN ('AREA_SUBAGEN','AREA_PETAMBAK','AREA_LAIN');
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    
+
+   
+
     public function detail($kode, $kode2)
     {
+        $user_id = 'agent1'; 
         $inputuserid = "";
         $user = $this->getuser();
         $keluarga = $this->angotakeluarga();
         $pilcompany = $kode;
         $id = $kode2;
+        $data_add = $this->dataadditional($user_id);
+        $tabelarea_subagen = $this->tabelarea_subagen();
+        // dd($tabelarea_subagen);
+
+        // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
+
 
         return view('menudetail',[
             'inputuserid' => $inputuserid,
@@ -237,7 +262,8 @@ class NewController extends Controller
             'tblsex' => $this->tblsex(),
             'tblstatus' => $this->tblstatus(),
             'tblsekolah' => $this->tblsekolah(),
-            'tblkelurahan' => $this->tblkelurahan()
+            'tabelarea_subagen' => $tabelarea_subagen,
+            'data_additional' => $data_add
             
         ]);
     }
@@ -949,7 +975,7 @@ class NewController extends Controller
         $dataModified = array();
         foreach ($result as $data)
         {
-            $dataModified[] = $data->kelurahan."|".$data->kecamatan."|".$data->kabupaten."|-".$data->provinsi."|".$data->kodepos."|".$data->id;
+            $dataModified[] = $data->kelurahan."-/-".$data->kecamatan."-/-".$data->kabupaten."-/-".$data->provinsi."-/-".$data->kodepos."-/-".$data->id;
         }
         return response()->json($dataModified);
     } 

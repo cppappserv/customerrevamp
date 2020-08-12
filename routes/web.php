@@ -64,5 +64,6 @@ Route::get('autocomplete', 'NewController@search');
 // Route::get('search', 'AutoCompleteController@index');
 //  Route::get('autocomplete', 'AutoCompleteController@search');
 
- 
+Route::get("/addmore","ArrayController@addMore");
+Route::post("/addmore","ArrayController@addMorePost"); 
  
