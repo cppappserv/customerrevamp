@@ -1,0 +1,34 @@
+#Dashboard_bt {
+   left: 60px;
+   top: 35.286px;
+   position: fixed;
+   overflow: visible;
+   width: 117px;
+   white-space: nowrap;
+   text-align: left;
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 24px;
+   color: rgba(255,255,255,1);
+}
+#Setting_bu {
+   left: 250px;
+   top: 35.286px;
+   position: fixed;
+   overflow: visible;
+   width: 77px;
+   white-space: nowrap;
+   --web-animation: fadein undefineds undefined;
+   --web-action-type: page;
+   --web-action-target: setting;
+   cursor: pointer;
+   text-align: left;
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 24px;
+   color: rgba(255,255,255,1);
+}
+
+

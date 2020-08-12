@@ -1,0 +1,643 @@
+/* <style id="applicationStylesheet" type="text/css"> */
+	.mediaViewInfo {
+		--web-view-name: 0201 Detail Fish Feed (1. Main);
+		--web-view-id: ID0201_Detail_Fish_Feed_1_Main;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: ID0201_Detail_Fish_Feed_1_Main;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#ID0201_Detail_Fish_Feed_1_Main {
+		position: absolute;
+		width: 1366px;
+		height: 838px;
+		background-color: rgba(239,239,239,1);
+		overflow: hidden;
+		--web-view-name: 0201 Detail Fish Feed (1. Main);
+		--web-view-id: ID0201_Detail_Fish_Feed_1_Main;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	/* @keyframes  {
+	
+	
+	}
+	@keyframes  {
+	
+	
+	} */
+	#Rectangle_242_b {
+		fill: rgba(255,255,255,1);
+	}
+	.Rectangle_242_b {
+		position: absolute;
+		overflow: visible;
+		width: 1366px;
+		height: 257px;
+		left: 0px;
+		top: 99px;
+	}
+	#Group_780 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 59.999px;
+		top: 246.842px;
+		overflow: visible;
+		/* --web-animation: fadein undefineds undefined;
+		--web-action-type: page;
+		--web-action-target: subcompany; */
+		cursor: pointer;
+	}
+	#Path_130_b {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_b {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29 {
+		fill: rgba(51,122,183,1);
+	}
+	.Intersection_29 {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_ba {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_b {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPB__PT_Central_Pertiwi_Bahari {
+		left: 263.001px;
+		top: 45.444px;
+		position: absolute;
+		overflow: visible;
+		width: 270px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Group_781 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 711.999px;
+		top: 246.842px;
+		overflow: visible;
+	}
+	#Path_130_ba {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_ba {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29_bb {
+		fill: rgba(214,63,63,1);
+	}
+	.Intersection_29_bb {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_bc {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_bd {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPGP_SMG_PT_Central_Pangan_Per {
+		left: 263.001px;
+		top: 30.444px;
+		position: absolute;
+		overflow: visible;
+		width: 199px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Group_782 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 59.999px;
+		top: 428.842px;
+		overflow: visible;
+	}
+	#Path_130_bg {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_bg {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29_bh {
+		fill: rgba(55,183,51,1);
+	}
+	.Intersection_29_bh {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_bj {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_bj {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPGP_PT_Central_Pangan_Pertiwi {
+		left: 263.001px;
+		top: 30.444px;
+		position: absolute;
+		overflow: visible;
+		width: 199px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Group_783 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 711.999px;
+		top: 428.842px;
+		overflow: visible;
+	}
+	#Path_130_bm {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_bm {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29_bn {
+		fill: rgba(245,180,67,1);
+	}
+	.Intersection_29_bn {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_bo {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_bp {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPP_Medan_PT_Central_Proteina_ {
+		left: 263.001px;
+		top: 30.444px;
+		position: absolute;
+		overflow: visible;
+		width: 211px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Group_784 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 59.999px;
+		top: 610.842px;
+		overflow: visible;
+	}
+	#Path_130_bs {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_bs {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29_bt {
+		fill: rgba(158,51,183,1);
+	}
+	.Intersection_29_bt {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_bv {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_bv {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPgP_CKP__PT_Central_Pangan_Pe {
+		left: 263.001px;
+		top: 30.444px;
+		position: absolute;
+		overflow: visible;
+		width: 199px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Group_785 {
+		position: absolute;
+		width: 614.001px;
+		height: 148.699px;
+		left: 711.999px;
+		top: 610.842px;
+		overflow: visible;
+	}
+	#Path_130_by {
+		fill: rgba(255,255,255,1);
+	}
+	.Path_130_by {
+		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 632px;
+		height: 166.697px;
+		left: 0.001px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Intersection_29_bz {
+		fill: rgba(202,214,32,1);
+	}
+	.Intersection_29_bz {
+		overflow: visible;
+		position: absolute;
+		width: 224.002px;
+		height: 148.699px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Customer_bb {
+		left: 73.001px;
+		top: 87.444px;
+		position: absolute;
+		overflow: visible;
+		width: 105px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#ID1201_ba {
+		left: 28.001px;
+		top: 20.158px;
+		position: absolute;
+		overflow: visible;
+		width: 161px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 64px;
+		color: rgba(255,255,255,1);
+		letter-spacing: -0.25px;
+	}
+	#CPP_SDA_PT_Central_Proteina_Pr {
+		left: 263.001px;
+		top: 30.444px;
+		position: absolute;
+		overflow: visible;
+		width: 211px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(84,84,84,1);
+	}
+	#Select_Company {
+		left: 60px;
+		top: 139.286px;
+		position: absolute;
+		overflow: visible;
+		width: 292px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(84,84,84,1);
+	}
+	#Rectangle_248_b {
+		fill: rgba(51,122,183,1);
+	}
+	.Rectangle_248_b {
+		position: absolute;
+		overflow: visible;
+		width: 106px;
+		height: 13px;
+		left: 60px;
+		top: 203px;
+	}
+	#Rectangle_43_bb {
+		fill: url(#Rectangle_43_bb);
+	}
+	.Rectangle_43_bb {
+		position: fixed;
+		overflow: visible;
+		width: 1366px;
+		height: 99px;
+		left: 0px;
+		top: 0px;
+	}
+	#Aditya_Yudha_b {
+		left: 1066px;
+		top: 33.286px;
+		position: fixed;
+		overflow: visible;
+		width: 142px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+	}
+	#Group_661_b {
+		position: fixed;
+		width: 65.971px;
+		height: 65.971px;
+		left: 1237px;
+		top: 16.561px;
+		overflow: visible;
+		cursor: pointer;
+		--web-animation: ;
+		--web-action-type: page;
+		--web-action-target: 0502_Log_Out.html;
+	}
+	#Ellipse_16_b {
+		fill: rgba(255,255,255,1);
+	}
+	.Ellipse_16_b {
+		position: absolute;
+		overflow: visible;
+		width: 65.971px;
+		height: 65.972px;
+		left: 0px;
+		top: 0px;
+	}
+	#Intersection_1_ba {
+		fill: rgba(88,88,88,1);
+		stroke: rgba(0,0,0,0);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Intersection_1_ba {
+		overflow: visible;
+		position: absolute;
+		width: 55.956px;
+		height: 56.61px;
+		left: 5.896px;
+		top: 10.268px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Dashboard__bb {
+		left: 59px;
+		top: 29px;
+		position: fixed;
+		overflow: visible;
+		width: 147px;
+		white-space: nowrap;
+		--web-animation: fadein undefineds undefined;
+		--web-action-type: page;
+		--web-action-target: dashboard;
+		cursor: pointer;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.61px;
+	}
+	#Rectangle_375_bc {
+		fill: rgba(255,255,255,1);
+	}
+	.Rectangle_375_bc {
+		position: fixed;
+		overflow: visible;
+		width: 128px;
+		height: 6px;
+		left: 198px;
+		top: 64px;
+	}
+	#Fish_Feed_bd {
+		left: 215px;
+		top: 29px;
+		position: fixed;
+		overflow: visible;
+		width: 115px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 24px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.61px;
+	}
+/* </style> */
