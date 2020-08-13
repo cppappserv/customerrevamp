@@ -199,15 +199,25 @@ class NewController extends Controller
         
         $sql = "select info id, `desc` sekolah from `dt_additional` where `type` = 'pendidikan'";
         
-        $sql = "
-            select 'sd'  id, 'sd'        sekolah union 
-            select 'smp' id, 'smp'       sekolah union 
-            select 'sma' id, 'sma'       sekolah union 
-            select 's1'  id, 'strata-1'  sekolah
-        ";
+        // $sql = "
+        //     select 'sd'  id, 'sd'        sekolah union 
+        //     select 'smp' id, 'smp'       sekolah union 
+        //     select 'sma' id, 'sma'       sekolah union 
+        //     select 's1'  id, 'strata-1'  sekolah
+        // ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
+
+    public function tblpakan()
+    {
+        $sql = "SELECT * FROM dt_additional WHERE  TYPE = 'PAKAN_JUAL'
+        ORDER BY seq ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    
 
     public function dataadditional($para)
     {
@@ -231,6 +241,15 @@ class NewController extends Controller
         return $grp;
     }
 
+    public function tabelstatus_usaha()
+    {
+        $sql = "
+            SELECT * FROM dt_additional a WHERE TYPE = 'STATUS_USAHA';
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
     
 
    
@@ -248,8 +267,6 @@ class NewController extends Controller
         // dd($tabelarea_subagen);
 
         // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
-
-
         return view('menudetail',[
             'inputuserid' => $inputuserid,
             'user' => $user,
@@ -263,25 +280,29 @@ class NewController extends Controller
             'tblstatus' => $this->tblstatus(),
             'tblsekolah' => $this->tblsekolah(),
             'tabelarea_subagen' => $tabelarea_subagen,
-            'data_additional' => $data_add
+            'data_additional' => $data_add,
+            'tblpakan' => $this->tblpakan(),
+            'tabelstatus_usaha' => $this->tabelstatus_usaha()
             
         ]);
     }
-// inputuserid, inputusertype, $inputuserarea
-    public function detail_save(){
-        $sql = "insert into tbluser(`user_id`,`password`,`fullname`,`birthdate`,`birthplace`,`email`,`usergroup`,`branch`,`createddate`,`creatorid`)
-        values (
-            '" . $inputuserid . "',
-            md5('".$inputpassword."'),
-            '" . $inputnamalengkap . "',
-            '" . $inputtanggallahir . "',
-            '" . $inputtempatlahir . "',
-            '" . $inputemail . "',
-            '" . $inputusertype . "',
-            '" . $inputuserarea ."',
-            '" . date( "y-m-d h:i:s", strtotime( "now" ) ) . "',
-            '" . $checksess -> username . "' )";
-//$inputStatus
+
+    public function detailsave(Request $request){
+
+//         $sql = "insert into tbluser(`user_id`,`password`,`fullname`,`birthdate`,`birthplace`,`email`,`usergroup`,`branch`,`createddate`,`creatorid`)
+//         values (
+//             '" . $request->inputuserid . "',
+//             md5('".$request->inputpassword."'),
+//             '" . $inputnamalengkap . "',
+//             '" . $inputtanggallahir . "',
+//             '" . $inputtempatlahir . "',
+//             '" . $inputemail . "',
+//             '" . $inputusertype . "',
+//             '" . $inputuserarea ."',
+//             '" . date( "y-m-d h:i:s", strtotime( "now" ) ) . "',
+//             '" . $checksess -> username . "' )";
+// //$inputStatus
+
         $sql = " 
             replace into usr_profile (`user_id`,`kodesap`,`noktp`,
                 `almtktp`,`kelktp`,`kecktp`,`kotaktp`,`propktp`,`kdposktp`,
@@ -292,69 +313,71 @@ class NewController extends Controller
                 `tlpush`,`faxush`,`hpush`,`emailush`,`lmusaha`,`karakteristik`,`namausaha`, 
                 `tipeush` ,`namaalias`,`agama`,`goldarah`,`headgrp`           
             ) values ( 
-                '" . $inputuserid . "',
-                '" . $inputkodesap . "',
-                '" . $inputnoktp . "',
-                '" . $inputalamatktp . "',
-                '" . $inputkelurahanktp . "',
-                '" . $inputkecamatanktp. "',
-                '" . $inputkotaktp . "',
-                '" . $inputpropinsiktp . "',
-                '" . $inputkodeposktp . "',          
-                '" . $inputalamat . "',
-                '" . $inputkelurahan . "',
-                '" . $inputkecamatan. "',
-                '" . $inputkota . "',
-                '" . $inputpropinsi . "',
-                '" . $inputkodepos . "',
-                '" . $inputtelpon . "',
-                '" . $inputfax . "',
-                '" . $inputhp . "', 
-                '" . $inputhobby . "', 
-                '" . $inputnmpsgn . "', 
-                '" . $inputtmptlhrpsgn . "', 
-                '" . $inputtgllhrpsgn . "', 
-                '" . $inputbentukusaha . "', 
-                '" . $inputnpwp . "', 
-                '" . $inputstatus . "', 
-                '" . $inputalamatusaha . "',
-                '" . $inputkelurahanusaha . "',
-                '" . $inputkecamatanusaha. "',
-                '" . $inputkotausaha . "',
-                '" . $inputpropinsiusaha . "',
-                '" . $inputkodeposusaha . "',              
-                '" . $inputtelponusaha . "',
-                '" . $inputfaxusaha . "',
-                '" . $inputhpusaha . "',
-                '" . $inputemailusaha . "', 
-                '" . $inputlamausaha . "',
-                '" . $inputkarakteristik . "',
-                '" . $inputnamausaha . "',
-                '" . $inputbadanhukum . "',
-                '" . $inputnamaalias . "',
-                '" . $inputagama . "',
-                '" . $inputgolongandarah . "',
-                '" . $inputheadgroup . "'              
+                '" . $request->inputuserid . "',
+                '" . $request->inputkodesap . "',
+                '" . $request->inputnoktp . "',
+                '" . $request->inputalamatktp . "',
+                '" . $request->inputkelurahanktp . "',
+                '" . $request->inputkecamatanktp. "',
+                '" . $request->inputkotaktp . "',
+                '" . $request->inputpropinsiktp . "',
+                '" . $request->inputkodeposktp . "',          
+                '" . $request->inputalamat . "',
+                '" . $request->inputkelurahan . "',
+                '" . $request->inputkecamatan. "',
+                '" . $request->inputkota . "',
+                '" . $request->inputpropinsi . "',
+                '" . $request->inputkodepos . "',
+                '" . $request->inputtelpon . "',
+                '" . $request->inputfax . "',
+                '" . $request->inputhp . "', 
+                '" . $request->inputhobbys . "', 
+                '" . $request->inputkeluarganama[0] . "', 
+                '" . $request->inputkeluargatempat[0] . "', 
+                '" . $request->inputkeluargatanggallahir[0] . "', 
+                '" . $request->inputbentukusaha . "', 
+                '" . $request->inputnpwp . "', 
+                '" . $request->inputstatus . "',   
+                '" . $request->inputalamatusaha . "',
+                '" . $request->inputkelurahanusaha . "',
+                '" . $request->inputkecamatanusaha. "',
+                '" . $request->inputkotausaha . "',
+                '" . $request->inputpropinsiusaha . "',
+                '" . $request->inputkodeposusaha . "',              
+                '" . $request->inputtelponusaha . "',
+                '" . $request->inputfaxusaha . "',
+                '" . $request->inputhpusaha . "',
+                '" . $request->inputemailusaha . "', 
+                '" . $request->inputlamausaha . "',
+                '" . $request->inputkarakteristik . "',
+                '" . $request->inputnamausaha . "',
+                '" . $request->inputbadanhukum . "',
+                '" . $request->inputnamaalias . "',
+                '" . $request->inputagama . "',
+                '" . $request->inputgolongandarah . "',
+                '" . $request->inputheadgroup . "'              
             )
         ";
+        echo $sql;
+        exit;
         // X
         if ($imgphoto!=""){
             $sql = "
                 select *
                 from tbl_userphoto
-                where user_id = '".$inputuserid."'
-                and link = '".$imglink."'
+                where user_id = '".$request->inputuserid."'
+                and link = '".$request->imglink."'
             "; 
 
             $sql = " 
                 delete from  
                 tbl_userphoto
-                where user_id = '".$inputuserid."'  
-                    and link = '".$imglink."'
+                where user_id = '".$request->inputuserid."'  
+                    and link = '".$request->imglink."'
             ";
 
             $imgname  = uniqid().date( "ymdhis", strtotime( "now" ) );
-            $img = $imgphoto;
+            $img = $request->imgphoto;
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
             $file = upload_dir . $imgname . '.png';
@@ -364,7 +387,7 @@ class NewController extends Controller
                 $sql = "
                     replace into  
                     tbl_userphoto values (
-                    '".$inputuserid."','".$file."' )
+                    '".$request->inputuserid."','".$file."' )
                 "; 
                 //         $newdb = new condb( "fpdappscpb", $sql );
                 // echo $file.'|';    
@@ -375,15 +398,15 @@ class NewController extends Controller
 
         $sql = " 
             delete from usr_additional
-            where user_id = '".$inputuserid ."'
+            where user_id = '".$request->inputuserid ."'
         ";
 
         $j= 0; 
         // X
-        foreach($inputareapenjualan as $key => $values) {
+        foreach($request->inputareapenjualan as $key => $values) {
             $j++;
             $sql = " insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
-                        values ('".$inputuserid ."',
+                        values ('".$request->inputuserid ."',
                                 'area_penjualan',
                                 '".$j."',
                                 '".$values."')";
@@ -392,11 +415,11 @@ class NewController extends Controller
         }
 
         $j= 0; 
-        foreach($inputtelpons as $key => $values) {
+        foreach($request->inputtelpons as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
-                        values ('".$inputuserid ."',
+                        values ('".$request->inputuserid ."',
                                 'telpon',
                                 '".$j."',
                                 '".$values."')";
@@ -404,13 +427,13 @@ class NewController extends Controller
            }             
         }  
         $j= 0; 
-        foreach($inputhobbys as $key => $values) {
+        foreach($request->inputhobbys as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'hobby',
                         '".$j."',
                         '".$values."')
@@ -421,13 +444,13 @@ class NewController extends Controller
         }
 
         $j= 0; 
-        foreach($inputemails as $key => $values) {
+        foreach($request->inputemails as $key => $values) {
             if ($values != ""){               
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'email',
                         '".$j."',
                         '".$values."'
@@ -439,21 +462,21 @@ class NewController extends Controller
         }  
 
         $j= 0; 
-        foreach($inputpakanjual as $keys => $values) {
+        foreach($request->inputpakanjual as $keys => $values) {
             $j++;
             $k =0;
             $i=0;
-            foreach($inputpakanjualv as $key => $value) {
+            foreach($request->inputpakanjualv as $key => $value) {
                 $k++;
                 $l=0;
-                foreach($inputpakanjualc as $keyc => $valuec) {
+                foreach($request->inputpakanjualc as $keyc => $valuec) {
                     $l++;                 
                     if ($k == $j && $j==$l && ($valuec != "" or $values != "" or $value!="") ){
                         $i++;
                         $sql = " 
                             insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`)
                             values (
-                                '".$inputuserid ."',
+                                '".$request->inputuserid ."',
                                 'pakan_jual',
                                 '".$j."',
                                 '".$values."',
@@ -468,17 +491,17 @@ class NewController extends Controller
         }  
 
         $j= 0; 
-        foreach($inputbisnislain as $key => $values) {
+        foreach($request->inputbisnislain as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'bisnis_lain',
                         '".$j."',
                         '".$values."',
-                        '".$inputbisnislainomset[$j-1]."'
+                        '".$request->inputbisnislainomset[$j-1]."'
                     )
                 ";
                 // $newdb = new condb( "fpdappscpb", $sql );   
@@ -486,17 +509,17 @@ class NewController extends Controller
         } 
 
         $j= 0; 
-        foreach($inputmodalbank as $key => $values) {
+        foreach($request->inputmodalbank as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'modal_bank',
                         '".$j."',
                         '".$values."',
-                        '".$inputbankname[$j-1]."'
+                        '".$request->inputbankname[$j-1]."'
                     )
                 ";
                         
@@ -505,18 +528,18 @@ class NewController extends Controller
         }  
         
         $j= 0; 
-        foreach($inputagenhubnama as $key => $values) {
+        foreach($request->inputagenhubnama as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`,`value4`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'agen_hub',
                         '".$j."',
                         '".$values."',
-                        '".$inputagenhubkode[$j-1]."',
-                        '".$inputagenhubstatus[$j-1]."'
+                        '".$request->inputagenhubkode[$j-1]."',
+                        '".$request->inputagenhubstatus[$j-1]."'
                     )
                 ";
                         
@@ -526,13 +549,13 @@ class NewController extends Controller
             
                        
         $j= 0; 
-        foreach($inputkodesaps as $key => $values) {
+        foreach($request->inputkodesaps as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'kode_sap',
                         '".$j."',
                         '".$values."'
@@ -545,22 +568,22 @@ class NewController extends Controller
 
         $j= 0; 
         $i = 0;
-        foreach($inputkeluarganama as $key => $values) {
+        foreach($request->inputkeluarganama as $key => $values) {
             $j++;
             if ($values != ""){
                 $i++; 
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`,`value3`,`value4`,`value5`,`value6`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'data_keluarga',
                         '".$j."',
                         '".$values."',
-                        '".$inputkeluargatempat[$i-1]."',
-                        '".$inputkeluargatanggal[$i-1]."',
-                        '".$inputkeluargakelamin[$i-1]."',
-                        '".$inputkeluargastatus[$i-1]."',
-                        '".$inputkeluargapendidikan[$i-1]."'
+                        '".$request->inputkeluargatempat[$i-1]."',
+                        '".$request->inputkeluargatanggal[$i-1]."',
+                        '".$request->inputkeluargakelamin[$i-1]."',
+                        '".$request->inputkeluargastatus[$i-1]."',
+                        '".$request->inputkeluargapendidikan[$i-1]."'
                     )
                 ";
                         
@@ -569,13 +592,13 @@ class NewController extends Controller
         } 
 
         $j= 0; 
-        foreach($inputmedsos as $key => $values) {
+        foreach($request->inputmedsos as $key => $values) {
             if ($values != ""){
                 $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'medsos',
                         '".$j."',
                         '".$values."'
@@ -588,16 +611,16 @@ class NewController extends Controller
             
         $j= 0; 
         $i= 0;
-        foreach($inputjaminanpribadi as $keys => $values) {
+        foreach($request->inputjaminanpribadi as $keys => $values) {
             $j++;
             $k =0;
             //echo $values;
-            foreach($inputjaminanvalue as $key => $value) {
+            foreach($request->inputjaminanvalue as $key => $value) {
             $k++;
             //echo $value;                  
                 if ($k == $j and $value != "" and $values != ""){               
                     $h=0;
-                    foreach($inputjaminansseq as $keya => $valuea) {                
+                    foreach($request->inputjaminansseq as $keya => $valuea) {                
                         $h++;
                         //echo $valuea;
                         if ($k == $h){
@@ -606,14 +629,14 @@ class NewController extends Controller
                         $sql = " 
                             insert into usr_additional (`user_id`,`type`,`seq`,`sseq`,`desc`,`value1`,`value2`,`value3`)
                             values (
-                                '".$inputuserid ."',
+                                '".$request->inputuserid ."',
                                 'jaminan_pribadi',
                                 '".$i."',
                                 '".$valuea."',
                                 '".$values."',
                                 '".$value."',
-                                '".$inputjaminanalamat[$h-1]."',
-                                '".$inputjaminanlain[$h-1]."'
+                                '".$request->inputjaminanalamat[$h-1]."',
+                                '".$request->inputjaminanlain[$h-1]."'
                             )
                         ";
                         //echo $sql;         
@@ -625,13 +648,13 @@ class NewController extends Controller
         } 
         
         $j= 0; 
-        foreach($inputstatususahas as $key => $values) {
+        foreach($request->inputstatususahas as $key => $values) {
             if ($values != ""){
                             $j++;
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'statususaha',
                         '".$j."',
                         '".$values."'
@@ -644,16 +667,16 @@ class NewController extends Controller
         
         $j= 0; 
         $i= 0;
-        foreach($inputassetpribadi as $keys => $values) {
+        foreach($request->inputassetpribadi as $keys => $values) {
             $j++;
             $k =0;
             //echo $values;
-            foreach($inputassetvalue as $key => $value) {
+            foreach($request->inputassetvalue as $key => $value) {
                 $k++;
                 //echo $value;                  
                 if ($k == $j and $value != "" and $values != ""){               
                     $h=0;
-                    foreach($inputassetsseq as $keya => $valuea) {                
+                    foreach($request->inputassetsseq as $keya => $valuea) {                
                         $h++;
                         //echo $valuea;
                         if ($k == $h){
@@ -662,14 +685,14 @@ class NewController extends Controller
                             $sql = " 
                                 insert into usr_additional (`user_id`,`type`,`seq`,`sseq`,`desc`,`value1`,`value2`,`value3`)
                                 values (
-                                    '".$inputuserid ."',
+                                    '".$request->inputuserid ."',
                                     'asset_pribadi',
                                     '".$i."',
                                     '".$valuea."',
                                     '".$values."',
                                     '".$value."',
-                                    '".$inputassetalamat[$h-1]."',
-                                    '".$inputassetlain[$h-1]."'
+                                    '".$request->inputassetalamat[$h-1]."',
+                                    '".$request->inputassetlain[$h-1]."'
                                 )
                             ";
                             //echo $sql;         
@@ -681,12 +704,12 @@ class NewController extends Controller
         }
 
         $j= 0; 
-        foreach($inputmodal as $key => $values) {
+        foreach($request->inputmodal as $key => $values) {
             $j++;
             $sql = " 
                 insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                 values (
-                    '".$inputuserid ."',
+                    '".$request->inputuserid ."',
                     'modal',
                     '".$j."',
                     '".$values."'
@@ -697,7 +720,7 @@ class NewController extends Controller
         } 
 
         $j= 0; 
-        foreach($inputnamasubagen as $key => $values) {
+        foreach($request->inputnamasubagen as $key => $values) {
             $j++;
             $i=0;
             if ($values != ""){
@@ -705,13 +728,13 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'area_subagen',
                         '".$i."',
-                        '".$inputqtysubagen[$j-1]."',
+                        '".$request->inputqtysubagen[$j-1]."',
                         '".$values."',
-                        '".$inputlokasisubagen[$j-1]."',
-                        '".$inputinfosubagen[$j-1]."'
+                        '".$request->inputlokasisubagen[$j-1]."',
+                        '".$request->inputinfosubagen[$j-1]."'
                     )
                 ";
                 //echo $sql;          
@@ -721,7 +744,7 @@ class NewController extends Controller
 
 
         $j= 0; 
-        foreach($inputnamapetambak as $key => $values) {
+        foreach($request->inputnamapetambak as $key => $values) {
             $j++;
             $i=0;
             if ($values != ""){
@@ -729,13 +752,13 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'area_petambak',
                         '".$i."',
-                        '".$inputqtypetambak[$j-1]."',
+                        '".$request->inputqtypetambak[$j-1]."',
                         '".$values."',
-                        '".$inputlokasipetambak[$j-1]."',
-                        '".$inputinfopetambak[$j-1]."'
+                        '".$request->inputlokasipetambak[$j-1]."',
+                        '".$request->inputinfopetambak[$j-1]."'
                     )
                 ";
                 //echo $sql;          
@@ -744,7 +767,7 @@ class NewController extends Controller
         }
 
         $j= 0; 
-        foreach($inputnamalain as $key => $values) {
+        foreach($request->inputnamalain as $key => $values) {
             $j++;
             $i=0;
             if ($values != ""){
@@ -752,13 +775,13 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$inputuserid ."',
+                        '".$request->inputuserid ."',
                         'area_lain',
                         '".$i."',
-                        '".$inputqtylain[$j-1]."',
+                        '".$request->inputqtylain[$j-1]."',
                         '".$values."',
-                        '".$inputlokasilain[$j-1]."',
-                        '".$inputinfolain[$j-1]."'
+                        '".$request->inputlokasilain[$j-1]."',
+                        '".$request->inputinfolain[$j-1]."'
                     )
                 ";
                 //echo $sql;          
@@ -767,12 +790,12 @@ class NewController extends Controller
         }
 
         $j= 0; 
-        foreach($inputterminpenjualan as $key => $values) {
+        foreach($request->inputterminpenjualan as $key => $values) {
             $j++;
             $sql = " 
                 insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                 values (
-                    '".$inputuserid ."',
+                    '".$request->inputuserid ."',
                     'term_penjualan',
                     '".$j."',
                     '".$values."'
@@ -976,6 +999,18 @@ class NewController extends Controller
         foreach ($result as $data)
         {
             $dataModified[] = $data->kelurahan."-/-".$data->kecamatan."-/-".$data->kabupaten."-/-".$data->provinsi."-/-".$data->kodepos."-/-".$data->id;
+        }
+        return response()->json($dataModified);
+    } 
+
+    public function searchhubkelga(Request $request)
+    {
+        $search = $request->get('term');
+        $result = kodepost::where('type', '=', 'HUB_KELUARGA')->where('desc', 'LIKE', '%' . $search. '%')->get();
+        $dataModified = array();
+        foreach ($result as $data)
+        {
+            $dataModified[] = $data->descr;
         }
         return response()->json($dataModified);
     } 

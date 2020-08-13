@@ -27,6 +27,11 @@ Route::get('/company/{id}', 'HomeController@company')->name('company');
 Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcompany');
 Route::get('/subcompany/{id}/{id2}', 'HomeController@subcompany')->name('subcompany');
 Route::get('/detail1/{id}/{id2}', 'NewController@detail')->name('detail');
+
+Route::post('/detail1/save', 'NewController@detailsave')->name('detailsave');
+
+Route::get('/detail1/update/{id}', 'NewController@update')->name('update');
+
 Route::get('/detail/{id}/{id2}', 'HomeController@detail')->name('detail');
 Route::get('/detaildelete/{id}', 'HomeController@detaildelete')->name('detaildelete');
 Route::get('/datapribadi', 'HomeController@detail')->name('pribadi');
@@ -60,6 +65,7 @@ Route::get('/infoedit', 'HomeController@infoedit')->name('infoedit');
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
 Route::get('autocomplete', 'NewController@search');
+Route::get('autohubkelga', 'NewController@searchhubkelga');
 
 // Route::get('search', 'AutoCompleteController@index');
 //  Route::get('autocomplete', 'AutoCompleteController@search');

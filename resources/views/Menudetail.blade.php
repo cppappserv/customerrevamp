@@ -711,10 +711,11 @@ if ($pos=0 or $pos=1){
 <!-- Main Sidebar Container -->
 <div class="wrapper awal" style="
 	top: 150px;">
-		<form class="form-horizontal">	
+		<form method="post" action="/detail1/save" enctype="multipart/form-data">
+			{{ csrf_field() }}
 			
 
-			<input type="hidden" id="inputuserid" value="{{$inputuserid}}">
+			<input type="hidden" id="inputuserid" name="inputuserid" value="{{$id}}">
 
 			<div class="card-body">
             
@@ -751,11 +752,10 @@ if ($pos=0 or $pos=1){
 							<div class="card-body">
 								<div class="row">
 									<div class="col-md-4">
-										<img src="" id="files-tag" width="80%" style="
+										<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
 											border-radius: 200px;
     										border-color: black;"
 										>  
-										
 										<input type="file" name="files" id="files">
 										<span id='val'></span>
 										<span id='button'>Rubah Foto Profil</span>
@@ -765,39 +765,39 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputnamalengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputnamalengkap" placeholder="Nama Lengkap">
+												<input type="text" class="form-control" id="inputnamalengkap" name="inputnamalengkap" placeholder="Nama Lengkap">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputnamaalias" class="col-sm-2 col-form-label">Alias</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputnamaalias" placeholder="Alias">
+												<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label for="inputtanggallahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputtinputtanggallahirgllahir" placeholder="Nama Lengkap">
+												<input type="text" class="form-control" id="inputtanggallahir" nameid="inputtanggallahir" placeholder="Nama Lengkap">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputtempatlahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputtempatlahir" placeholder="Tempat Lahir">
+												<input type="text" class="form-control" id="inputtempatlahir" name="inputtempatlahir" placeholder="Tempat Lahir">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label for="inputnoktp" class="col-sm-2 col-form-label">No KTP</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputnoktp" placeholder="No KTP">
+												<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputagama" class="col-sm-2 col-form-label">Agama</label>
 											<div class="col-sm-4">
-												<select class="form-control" id="inputagama"> 
+												<select class="form-control" id="inputagama" name="inputagama"> 
 												<?php 
 												foreach ($tblagama as $key => $value) {
 													?>
@@ -814,7 +814,7 @@ if ($pos=0 or $pos=1){
 											<label for="inputgolongandarah" class="col-sm-2 col-form-label">Golongan Darah</label>
 											<div class="col-sm-4">
 
-												<select class="form-control" id="inputgolongandarah"> 
+												<select class="form-control" id="inputgolongandarah" name="inputgolongandarah"> 
 												<?php 
 												foreach ($tbldarah  as $key => $value) {
 													?>
@@ -854,7 +854,7 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputalamatktp" class="col-sm-3 col-form-label">Alamat</label>
 											<div class="col-sm-9">
-												<textarea class="form-control" rows="10" id="inputalamatktp" placeholder="Enter ..."></textarea>
+												<textarea class="form-control" rows="10" id="inputalamatktp" name="inputalamatktp" placeholder="Enter ..."></textarea>
 											</div>
 										</div>
 									</div>
@@ -873,25 +873,25 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkecamatanktp" class="col-sm-3 col-form-label">Kecamatan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecamatanktp" placeholder="Kecamatan">
+												<input type="text" class="form-control" id="inputkecamatanktp" name="inputkecamatanktp" placeholder="Kecamatan">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkotaktp" class="col-sm-3 col-form-label">Kabupaten</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotaktp" placeholder="Kabupaten">
+												<input type="text" class="form-control" id="inputkotaktp" name="inputkotaktp" placeholder="Kabupaten">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputpropinsiktp" class="col-sm-3 col-form-label">Provinsi</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropinsiktp" placeholder="Provinsi">
+												<input type="text" class="form-control" id="inputpropinsiktp" name="inputpropinsiktp" placeholder="Provinsi">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkodeposktp" class="col-sm-3 col-form-label">Kode Pos</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkodeposktp" placeholder="Kode Pos">
+												<input type="text" class="form-control" id="inputkodeposktp" name="inputkodeposktp" placeholder="Kode Pos">
 											</div>
 										</div>
 										
@@ -927,7 +927,7 @@ if ($pos=0 or $pos=1){
 											<label for="inputalamat" class="col-sm-3 col-form-label">Alamat</label>
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputnamalengkap" placeholder="Nama Lengkap"> -->
-												<textarea class="form-control" rows="10" id="inputalamat" placeholder="Enter ..."></textarea>
+												<textarea class="form-control" rows="10" id="inputalamat" name="inputalamat" placeholder="Enter ..."></textarea>
 											</div>
 										</div>
 									</div>
@@ -936,31 +936,31 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkelurahan" placeholder="Kelurahan" onchange="mykelurahan(2,this)">
+												<input type="text" class="form-control" id="inputkelurahan" name="inputkelurahan" placeholder="Kelurahan" onchange="mykelurahan(2,this)">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecamatan" placeholder="Kecamatan">
+												<input type="text" class="form-control" id="inputkecamatan" name="inputkecamatan" placeholder="Kecamatan">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkota" class="col-sm-3 col-form-label">Kabupaten</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkota" placeholder="Kabupaten">
+												<input type="text" class="form-control" id="inputkota" name="inputkota" placeholder="Kabupaten">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputpropinsi" class="col-sm-3 col-form-label">Provinsi</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropinsi" placeholder="Provinsi">
+												<input type="text" class="form-control" id="inputpropinsi" name="inputpropinsi" placeholder="Provinsi">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkodepos" class="col-sm-3 col-form-label">Kode Pos</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkodepos" placeholder="Kode Pos">
+												<input type="text" class="form-control" id="inputkodepos" name="inputkodepos" placeholder="Kode Pos">
 											</div>
 										</div>
 										
@@ -994,7 +994,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
 												<div class="input-group">
-													<input type="text" class="form-control" id="inputtelpon" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+													<input type="text" class="form-control" id="inputtelpon" name="inputtelpon" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 												</div>
 											</div>
 										</div>
@@ -1004,7 +1004,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
 												<div class="input-group">
-													<input type="text" class="form-control" id="inputfax" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+													<input type="text" class="form-control" id="inputfax" name="inputfax" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 												</div>
 											</div>
 										</div>
@@ -1017,14 +1017,14 @@ if ($pos=0 or $pos=1){
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
 												<div class="input-group">
-													<input type="text" class="form-control" id="inputhp" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+													<input type="text" class="form-control" id="inputhp" name="inputhp" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 												</div>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputemail" class="col-sm-3 col-form-label">Email</label>
 											<div class="col-sm-9">
-												<input type="email" class="form-control" id="inputemail" placeholder="Email">
+												<input type="email" class="form-control" id="inputemail" name="inputemail" placeholder="Email">
 											</div>
 										</div>
 									</div>
@@ -1053,7 +1053,7 @@ if ($pos=0 or $pos=1){
 											<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
-												<select class="form-control" id="inputmediasosail[]"> 
+												<select class="form-control" id="inputmediasosail[]" name="inputmediasosail[]"> 
 												<?php 
 												foreach ($tblmedsos as $key => $value) {
 													?>
@@ -1068,7 +1068,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-6">
 										<div class="form-group row <?php if($medsos==''?'collapse':'')?>" >
 											<div class="col-sm-12">
-												<input type="text" class="form-control" id="inputakun[]" placeholder="Nama Akun Media Sosial" value="{{$namamedsos}}">
+												<input type="text" class="form-control" id="inputakun[]" name="inputakun[]" placeholder="Nama Akun Media Sosial" value="{{$namamedsos}}">
 											</div>
 										</div>
 									</div>
@@ -1152,34 +1152,34 @@ if ($pos=0 or $pos=1){
 									</div> -->
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
+											<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargatempat[]" placeholder="Tempat" value="{{$data->value2}}">
+											<input type="text" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat" value="{{$data->value2}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargatanggallahir[]" placeholder="Tempat" value="{{$data->value3}}">
+											<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tempat" value="{{$data->value3}}">
 										</div>
 									</div>
 
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargasex[]" placeholder="Tempat" value="{{$data->value4}}">
+											<input type="text" class="form-control" id="inputkeluargasex[]" name="inputkeluargasex[]" placeholder="Tempat" value="{{$data->value4}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargastatus[]" placeholder="Tempat" value="{{$data->seq}}">
+											<input type="text" class="form-control" id="inputkeluargastatus[]" name="inputkeluargastatus[]" placeholder="Tempat" value="{{$data->seq}}">
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group row kotakexcel_kosong">
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">
+												<input type="text" class="form-control" id="inputkeluargapendidikan[]"  name="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">
 											</div>
 											<div class="col-sm-2">
 												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove3">X</button>
@@ -1226,7 +1226,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
 												<div class="input-group">
-												<textarea class="form-control" rows="10" id="inputhobbys" placeholder="Enter ..."></textarea>
+												<textarea class="form-control" rows="10" id="inputhobbys" name="inputhobbys" placeholder="Enter ..."></textarea>
 												</div>
 											</div>
 										</div>
@@ -1266,26 +1266,26 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbentukusaha" class="col-sm-3 col-form-label">Bentuk Usaha</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbentukusaha" placeholder="Tipe Badan Hukum">	
+													<input type="text" class="form-control" id="inputbentukusaha" name="inputbentukusaha" placeholder="Tipe Badan Hukum">	
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputbadanhukum" class="col-sm-3 col-form-label">Tipe Badan Hukum</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbadanhukum" placeholder="Tipe Badan Hukum">
+													<input type="text" class="form-control" id="inputbadanhukum" name="inputbadanhukum" placeholder="Tipe Badan Hukum">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamausaha" class="col-sm-3 col-form-label">Nama Usaha</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamausaha" placeholder="Nama Usaha">
+													<input type="text" class="form-control" id="inputnamausaha" name="inputnamausaha" placeholder="Nama Usaha">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputlamausaha" class="col-sm-3 col-form-label">Lama Usaha</label>
 												<div class="col-sm-6">
-													<input type="number" class="form-control" id="inputlamausaha" placeholder="Lama Usaha">
+													<input type="number" class="form-control" id="inputlamausaha" name="inputlamausaha" placeholder="Lama Usaha">
 												</div>
 												<label for="inputlamausaha" class="col-sm-3 col-form-label">Tahun</label>
 											</div>
@@ -1296,19 +1296,19 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputnpwp" class="col-sm-3 col-form-label">NPWP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnpwp" placeholder="NPWP">
+													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputheadgroup" class="col-sm-3 col-form-label">Head Group</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputheadgroup" placeholder="Head Group">
+													<input type="text" class="form-control" id="inputheadgroup" name="inputheadgroup" placeholder="Head Group">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkodesap" placeholder="Kabupaten">
+													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="Kabupaten">
 												</div>
 											</div>
 											
@@ -1337,26 +1337,146 @@ if ($pos=0 or $pos=1){
 									</div>
 								</div>
 								<!-- /.card-header -->
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-2">
+
+								<div class="card-body" id="inpstatususaha">
+								<?php 
+								$txt="";
+								foreach ($tabelstatus_usaha as $key => $value) {
+									$txt.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
+								}
+								?>
+
+									<input type="text" id="optstatususaha" value="{{$txt}}";
+
+								
+									<?php 
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+									if ($data->type == 'STATUSUSAHA'){
+									$i++;
+									?>
+									<div class="row" id="rowsstatususaha{{$i}}">
+										<div class="col-md-5">
 											<div class="form-group row">
-												
-											<button type="button" id="inputstatus" class="btn btn-block btn-primary btn-lg" style="background:rgba(51,122,183,1);color:white;">Petambak</button>
+												<div class="col-sm-12">
+													<select class="form-control btn btn-block btn-primary btn-lg" id="inputstatus[]" name="inputstatus[]" style="height: 60px;background: rgba(51,122,183,1);"> 
+													<?php 
+													foreach ($tabelstatus_usaha as $key => $value) {
+													?>
+														<option value="{{$value->seq}}" <?php echo ($value->seq == $data->seq?'selected':'');?>>{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>
+												</div>
 											</div>
 										</div>
-										<!-- /.col -->
-
-										<!-- /.col -->
+										<div class="col-md-1">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removeb">X</button>
+												</div>
+											</div>
+										</div>
 									</div>
-									<!-- /.row -->
+									<?php 
+									}
+									}
+									?>
+								</div>
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
+										</div>
+									</div>
 								</div>
 								<!-- /.card-body -->
 								<div class="card-footer">
-									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									<!-- Visit <a href="Alamat Rumahhttps://select2.github.io/">Select2 documentation</a> for more examples and information about
 									the plugin. -->
 								</div>
 							</div>
+
+
+
+
+							
+
+
+
+							<div class="card card-default">
+							<div class="card-header">
+								<div>
+									<h3 class="card-title font36">Alamat usaha</h3>
+									<button type="button" style="height:50px;width:50px" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
+									Duplicat
+								</div>
+								<div class="card-tools">
+									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="inputalamat" class="col-sm-3 col-form-label">Alamat</label>
+											<div class="col-sm-9">
+												<!-- <input type="text" class="form-control" id="inputnamalengkap" placeholder="Nama Lengkap"> -->
+												<textarea class="form-control" rows="10" id="inputalamatusaha" name="inputalamatusaha" placeholder="Enter ..."></textarea>
+											</div>
+										</div>
+									</div>
+									<!-- /.col -->
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="inputkelurahan" class="col-sm-3 col-form-label">Kelurahan</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputkelurahanusaha" name="inputkelurahanusaha" placeholder="Kelurahan" onchange="mykelurahan(2,this)">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="inputkecamatan" class="col-sm-3 col-form-label">Kecamatan</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputkecamatanusaha" name="inputkecamatanusaha" placeholder="Kecamatan">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="inputkota" class="col-sm-3 col-form-label">Kabupaten</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputkotausaha" name="inputkotausaha" placeholder="Kabupaten">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="inputpropinsi" class="col-sm-3 col-form-label">Provinsi</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputpropinsiusaha" name="inputpropinsiusaha" placeholder="Provinsi">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="inputkodepos" class="col-sm-3 col-form-label">Kode Pos</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputkodeposusaha" name="inputkodeposusaha" placeholder="Kode Pos">
+											</div>
+										</div>
+										
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.row -->
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer">
+								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+								the plugin. -->
+							</div>
+						</div>
+
+
+
+
 
 
 
@@ -1367,7 +1487,7 @@ if ($pos=0 or $pos=1){
 
 									
 									
-									<div id="Group_699_sf">
+									<!-- <div id="Group_699_sf">
 										<div id="Sama_dengan_KTP_sg">
 											<span>Sama dengan KTP</span>
 										</div>
@@ -1387,7 +1507,7 @@ if ($pos=0 or $pos=1){
 												</svg>
 											</div>
 										</div>
-									</div>
+									</div> -->
 
 
 									<div class="card-tools">
@@ -1404,7 +1524,7 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" id="inputusahatelpon" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" id="inputusahatelpon" name="inputusahatelpon" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
@@ -1414,7 +1534,7 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputusahafax" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" class="form-control" id="inputusahafax" name="inputusahafax" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
@@ -1426,14 +1546,14 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputusahahp" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
+														<input type="text" class="form-control" id="inputusahahp" name="inputusahahp" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true">
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputusahaemail" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
-													<input type="email" class="form-control" id="inputusahaemail" placeholder="Email">
+													<input type="email" class="form-control" id="inputusahaemail" name="inputusahaemail" placeholder="Email">
 												</div>
 											</div>
 										</div>
@@ -1456,7 +1576,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelurahanktp" placeholder="Kelurahan"> -->
-													<select class="form-control" id="inputusahamediasosail[]"> 
+													<select class="form-control" id="inputusahamediasosail[]" name="inputusahamediasosail[]"> 
 													<?php 
 													foreach ($tblmedsos as $key => $value) {
 														?>
@@ -1471,7 +1591,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-5">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<input type="text" class="form-control" id="inputusahaakun[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
+													<input type="text" class="form-control" id="inputusahaakun[]" name="inputusahaakun[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
 												</div>
 											</div>
 										</div>
@@ -1562,18 +1682,18 @@ if ($pos=0 or $pos=1){
 												</div>
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
-														<input type="text" class="form-control" id="inputAgenHubNama[]" placeholder="Nama" value="{{$data->value1}}">
+														<input type="text" class="form-control" id="inputAgenHubNama[]" name="inputAgenHubNama[]" placeholder="Nama" value="{{$data->value1}}">
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
-														<input type="text" class="form-control" id="inputAgenHubKode[]" placeholder="No Sap" value="{{$data->value2}}">
+														<input type="text" class="form-control" id="inputAgenHubKode[]" name="inputAgenHubKode[]" placeholder="No Sap" value="{{$data->value2}}">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group row kotakexcel_kosong">
 														<div class="col-sm-10">
-															<input type="text" class="form-control" id="inputAgenHubStatus[]" placeholder="Hubungan" value="{{$data->value4}}">
+															<input type="text" class="form-control" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]" placeholder="Hubungan" value="{{$data->value4}}">
 														</div>
 														<div class="col-sm-2">
 															<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove4">X</button>
@@ -1660,32 +1780,32 @@ if ($pos=0 or $pos=1){
 									<div class="row" id="rowsareasubagen{{$i}}">
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<select class="form-control" id="inputNamaarea[]"> 
+												<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]"> 
 													<option value="{{$data->desc1}}">{{$data->desc1}}</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}">
+												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}">
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
 												
-												<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="Nama" value="{{$data->desc}}">
+												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="Nama" value="{{$data->desc}}">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="Nama" value="{{$data->value2}}">
+												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="Nama" value="{{$data->value2}}">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="Hubungan" value="{{$data->value3}}">
+													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="Hubungan" value="{{$data->value3}}">
 												</div>
 												<div class="col-sm-2">
 													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove5">X</button>
@@ -1727,12 +1847,12 @@ if ($pos=0 or $pos=1){
 								<!-- /.card-header -->
 								<div class="card-body">
 									<div class="row">
-										<div class="col-md-1">
+										<!-- <div class="col-md-1">
 											<div class="form-group row kotakexcel">
 												<label for="inputbentukusaha" class="col-sm-12 col-form-label">No</label>
 												
 											</div>
-										</div>
+										</div> -->
 										<div class="col-md-4">
 											<div class="form-group row kotakexcel">
 												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Brand Kompetitor</label>
@@ -1745,45 +1865,59 @@ if ($pos=0 or $pos=1){
 												
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group row kotakexcel">
 												<label for="inputlamausaha" class="col-sm-12 col-form-label">Kuantitas (Kg)</label>
 												
 											</div>
 										</div>
 									</div>
-
-									<div class="row">
-										<div class="col-md-1">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputbentukusaha" class="col-sm-12 col-form-label">1</label>
-												
+								</div>
+								<div class="card-body" id="inpkompetitor">
+									<?php
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+										if   ($data->type == 'PAKAN_JUAL')
+										{
+											$i++;
+											?>
+									<div class="row" id="rowskompetitor{{$i}}">
+										<div class="col-md-4">
+											<div class="col-sm-12">	
+												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]" value="{{$data->value2}}">	
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Supram</label>
-												
+												<div class="col-sm-12">	
+													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]" value="{{$data->desc}}">	
+												</div>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputnamausaha" class="col-sm-12 col-form-label">20801117</label>
-												
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group row kotakexcel_kosong">
-												<label for="inputlamausaha" class="col-sm-12 col-form-label">Saudara</label>
-												
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}">	
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove6">X</button>
+												</div>
 											</div>
 										</div>
 									</div>
-									<!-- /.row -->
-									<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
+									<?php
+											}
+										}
+									?>
 								</div>
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
+										</div>
+									</div>
+								</div>
+									
 								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -1805,50 +1939,57 @@ if ($pos=0 or $pos=1){
 							</div>
 							<!-- /.card-header -->
 							
-							<div class="card-body">
-								<div class="row">
+							<div class="card-body" id="inpbisnislain">
+
+								<?php
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+										if   ($data->type == 'BISNIS_LAIN')
+										{
+											$i++;
+											?>
+								<div class="row" id="rowsbisnislain{{$i}}">
 									<div class="col-md-6">
 										<div class="form-group row">
 											<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputbisnislain[]" placeholder="Nama Bisnis">	
+												<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="{{$data->desc}}">	
 											</div>
 										</div>
-
-										
-
 									</div>
+
 									<!-- /.col -->
 									<div class="col-md-5">
 										<div class="form-group row">
 											<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="inputbisnislainrp[]" placeholder="Nilai Omset">
+												<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset" value="{{$data->value1}}">	
 											</div>
 										</div>
 									</div>
 
 									<div class="col-md-1">
 										<div class="form-group row">
-											<a href="#">
-												<button type="button" class="btn btn-default btn-sm" style="
-													border-radius: 50%;
-													height: 50px;
-													width: 50px;
-													font-size: xx-large;
-													background: red;
-												"><i class="far fa-trash-alt"></i></button>
-													
-											</a>
+											<div class="col-sm-12">
+												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
+											</div>
 										</div>
 									</div>
 								</div>
-								<!-- /.row -->
-								<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
+								<?php
+										}
+									}
+								?>
+								
 							</div>
-
+							<!-- /.row -->
+							<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
+										</div>
+									</div>
+								</div>
 
 							<!-- /.card-body -->
 							<div class="card-footer">
@@ -1858,6 +1999,7 @@ if ($pos=0 or $pos=1){
 						</div>
 
 
+						
 						<div class="card card-default">
 							<div class="card-header">
 								<h3 class="card-title font36">Asset Pribadi</h3>
@@ -1869,49 +2011,66 @@ if ($pos=0 or $pos=1){
 							</div>
 							<!-- /.card-header -->
 							
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
+							<div class="card-body" id="inpassetpribadi">
+							<?php
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+										if   ($data->type == 'ASSET_PRIBADI')
+										{
+											$i++;
+											?>
+								<div class="row" id="rowsassetpribadi{{$i}}">
+									<div class="col-md-2">
 										<div class="form-group row">
-											<label for="inputasetpribadi" class="col-sm-3 col-form-label">Asset Pribadi</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputasetpribadi[]" placeholder="Nama Asset">	
+											<div class="col-sm-12">
+												<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}">	
 											</div>
 										</div>
-
-										
-
 									</div>
-									<!-- /.col -->
 									<div class="col-md-5">
 										<div class="form-group row">
-											<label for="inputasetpribadirp" class="col-sm-3 col-form-label">Nilai Aset (Rp)</label>
+											<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="inputasetpribadirp[]" placeholder="Nilai">
+												<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}">	
+											</div>
+											<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group row">
+											<label for="inputasetpribadirp" class="col-sm-4 col-form-label">{{$data->info3}}</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="inputasetpribadirp[]" name="inputasetpribadirp[]" value="{{$data->value2}}">	
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group row">
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="inputasetpribadirp[]" name="inputasetpribadirp[]" value="{{$data->value3}}">	
+											</div>
+											<div class="col-sm-2">
+												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove8">X</button>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-md-1">
-										<div class="form-group row">
-											<a href="#">
-												<button type="button" class="btn btn-default btn-sm" style="
-													border-radius: 50%;
-													height: 50px;
-													width: 50px;
-													font-size: xx-large;
-													background: red;
-												"><i class="far fa-trash-alt"></i></button>
-													
-											</a>
+									
+								</div>
+								<?php
+										}
+									}
+											?>
+								<!-- /.row -->
+								
+							</div>
+							<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addassetpribadi" id="addassetpribadi" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
-								<!-- /.row -->
-								<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
-							</div>
 
 
 							<!-- /.card-body -->
@@ -1939,7 +2098,7 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">Sendiri</label>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" id="inputmodalsendiripersent" placeholder="%">	
+												<input type="text" class="form-control" id="inputmodalsendiripersent" name="inputmodalsendiripersent" placeholder="%">	
 											</div>
 											<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">%</label>
 										</div>
@@ -1949,33 +2108,31 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputmodallainlainpersent" class="col-sm-2 col-form-label">Lain-lain</label>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" id="inputmodallainlainpersent" placeholder="%">	
+												<input type="text" class="form-control" id="inputmodallainlainpersent" name="inputmodallainlainpersent" placeholder="%">	
 											</div>
 											<label for="inputmodallainlainpersent" class="col-sm-1 col-form-label">%</label>
 										</div>
 									</div>
 									
 								</div>
-
-
-								<div class="row">
+							</div>
+							<div class="card-body" id="inpmodalbank">
+							
+								<div class="row" id="rowsmodalbank">
 									<div class="col-md-6">
 										<div class="form-group row">
 											<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">Bank</label>
 											<div class="col-sm-6">
-												<input type="text" class="form-control" id="inputmodalbankpersent[]" placeholder="%">	
+												<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%">	
 											</div>
 											<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>
 										</div>
-
-										
-
 									</div>
 									<!-- /.col -->
 									<div class="col-md-5">
 										<div class="form-group row">
-											<div class="col-sm-11">
-												<select class="form-control" id="inputmodalbanknama[]"> 
+											<div class="col-sm-10">
+												<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]"> 
 													<option>option 1</option>
 													<option>option 2</option>
 													<option>option 3</option>
@@ -1983,10 +2140,13 @@ if ($pos=0 or $pos=1){
 													<option>option 5</option>
 												</select>
 											</div>
+											<div class="col-sm-2">
+												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove9">X</button>
+											</div>
 										</div>
 									</div>
 
-									<div class="col-md-1">
+									<!-- <div class="col-md-1">
 										<div class="form-group row">
 											<a href="#">
 												<button type="button" class="btn btn-default btn-sm" style="
@@ -1999,13 +2159,21 @@ if ($pos=0 or $pos=1){
 													
 											</a>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<!-- /.row -->
-								<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
+								<!-- <div class="form-group row" >
+									<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
+									</div> -->
 							</div>
+							<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
+										</div>
+									</div>
+								</div>
+							
 
 
 							<!-- /.card-body -->
@@ -2016,7 +2184,8 @@ if ($pos=0 or $pos=1){
 						</div>
 
               </div>
-              <div class="tab-pane fade active show" id="tab4" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
+
+              <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
 
 					<div class="card card-default">
 						<div class="card-header">
@@ -2029,48 +2198,68 @@ if ($pos=0 or $pos=1){
 						</div>
 						<!-- /.card-header -->
 						
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-6">
+						<div class="card-body" id="inpjaminan">
+							<?php
+							$i=-1;
+							foreach ($data_additional as $key => $data) {
+								if   ($data->type == 'JAMINAN_PRIBADI')
+								{
+									$i++;
+							?>
+							<div class="row" id="rowsjaminan{{$i}}">
+								<div class="col-md-2">
 									<div class="form-group row">
-										<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputbisnislain[]" placeholder="Nama Bisnis">	
+										<div class="col-sm-12">
+											<input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="{{$data->desc}}">	
 										</div>
 									</div>
-
-									
-
 								</div>
-								<!-- /.col -->
+
 								<div class="col-md-5">
 									<div class="form-group row">
-										<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control" id="inputbisnislainrp[]" placeholder="Nilai Omset">
+										<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info}}</label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="iinputJaminanValue[]" value="{{$data->value1}}">	
+											<input type="hidden" id="inputJaminanSseq[]" name="inputJaminanSseq[]" value="{{$data->seq}}">
 										</div>
+										<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info2}}</label>
 									</div>
 								</div>
 
-								<div class="col-md-1">
+								<!-- /.col -->
+								<div class="col-md-3">
 									<div class="form-group row">
-										<a href="#">
-											<button type="button" class="btn btn-default btn-sm" style="
-												border-radius: 50%;
-												height: 50px;
-												width: 50px;
-												font-size: xx-large;
-												background: red;
-											"><i class="far fa-trash-alt"></i></button>
-												
-										</a>
+										<label for="inputbisnislainrp" class="col-sm-3 col-form-label">{{$data->info3}}</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="{{$data->value2}}">	
+										</div>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group row">
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
+										</div>
+										<div class="col-sm-2">
+											<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
+										</div>
 									</div>
 								</div>
 							</div>
+							<?php
+									}
+								}
+							?>
+
 							<!-- /.row -->
-							<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
+							
+						</div>
+						<div class="col-md-1">
+							<div class="form-group row ">
+								<div class="col-sm-12">
+									<button type="button" style="height:50px;width:50px" name="addjaminan" id="addjaminan" class="btn btn-success">Add</button>
+								</div>
+							</div>
 						</div>
 
 
@@ -2103,7 +2292,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-12">
 										<div class="form-group row">
 											<div class="col-sm-12">
-												<textarea class="form-control" rows="10" id="inputkarakteristik" placeholder="Enter ..."></textarea>
+												<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ..."></textarea>
 											</div>
 										</div>
 									</div>
@@ -2132,37 +2321,41 @@ if ($pos=0 or $pos=1){
 							</div>
 							<!-- /.card-header -->
 							
-							<div class="card-body">
+							<div class="card-body" id="inpkarakteristikphoto">
 								<div class="row">
-									<!-- <div class="col-md-6"> -->
-										
-									<div class="col-12 col-sm-2">
+
+									<div class="col-md-4">
+										<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
+											border-radius: 200px;
+    										border-color: black;"
+										>  
+										<input type="file" name="files" id="files">
+										<span id='val'></span>
+										<span id='button'>Rubah Foto Profil</span>
+									</div>
+
+									<!-- <div class="col-12 col-sm-2">
 										<div class="form-group row">
-											<div class="product-image-thumb col-sm-10">
+											<div class="product-image-thumb col-sm-9">
 												<img src="../../dist/img/prod-2.jpg" alt="Product Image">
-											</div>	
-											<div class="col-sm-2" >
-												<a href="#">
-													<button type="button" class="btn btn-default btn-sm" style="
-														border-radius: 50%;
-														height: 50px;
-														width: 50px;
-														font-size: xx-large;
-														background: red;
-													"><i class="far fa-trash-alt"></i></button>
-														
-												</a>
+
+												
+												<div class="col-sm-3">
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
+												</div>	
 											</div>
 											
 										</div>
 									
-									</div>
-
+									</div> -->
 								</div>
 								<!-- /.row -->
-								<div class="form-group row" >
-										<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-										</div>
+								
+							</div>
+							<div class="form-group row ">
+								<div class="col-sm-12">
+									<button type="button" style="height:50px;width:50px" name="addphotolain" id="addphotolain" class="btn btn-success">Add</button>
+								</div>
 							</div>
 
 
@@ -2182,17 +2375,20 @@ if ($pos=0 or $pos=1){
 			 <div class="row" >
 				<div class="col-md-4">
 				</div>
+				
 				<div class="col-md-2">
 					<div class="form-group row">
 						<div class="col-sm-12">
-							<button type="button" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);">Save</button>
+						<!-- <input type="submit"  class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);">Save</> -->
+						<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" value="Save">
 						</div>
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="form-group row">
 						<div class="col-sm-12">
-							<button type="button" class="btn btn-block btn-danger btn-lg">Cancel</button>
+							<!-- <button type="button" class="btn btn-block btn-danger btn-lg">Cancel</button> -->
+							<a href="/images" class="btn btn-block btn-danger btn-lg">Cancel</a>
 						</div>
 					</div>
 				</div>
@@ -2239,8 +2435,8 @@ if ($pos=0 or $pos=1){
             });
         }
 	 });
-
 </script>
+
 <script type="text/javascript">
 	function myduplicat() {
 		document.getElementById("inputalamat").value    = document.getElementById("inputalamatktp").value;
@@ -2266,7 +2462,7 @@ if ($pos=0 or $pos=1){
 									'<div class="form-group row">'+
 										'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
 										'<div class="col-sm-9">'+
-											'<select class="form-control" id="inputusahamediasosail[]">'+ 
+											'<select class="form-control" id="inputusahamediasosail[]" name="inputusahamediasosail[]">'+ 
 											'</select>'+
 										'</div>'+
 									'</div>'+
@@ -2274,7 +2470,7 @@ if ($pos=0 or $pos=1){
 								'<div class="col-md-5">'+
 									'<div class="form-group row ">'+
 										'<div class="col-sm-12">'+
-											'<input type="text" class="form-control" id="inputusahaakun[]" placeholder="Nama Akun Media Sosial">'+
+											'<input type="text" class="form-control" id="inputusahaakun[]" name="inputusahaakun[]" placeholder="Nama Akun Media Sosial">'+
 										'</div>'+
 									'</div>'+
 								'</div>'+
@@ -2308,33 +2504,33 @@ if ($pos=0 or $pos=1){
 						var txt ='<div class="row" id="rowkelga'+i+'">'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluarganama[]" placeholder="Nama">'+
+											'<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama">'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluargatempat[]" placeholder="Tempat">'+
+											'<input type="text" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat">'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
+											'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
-										'<input type="text" class="form-control" id="inputkeluargasex[]" placeholder="Sex">'+
+										'<input type="text" class="form-control" id="inputkeluargasex[]" name="inputkeluargasex[]" placeholder="Sex">'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
-										'<input type="text" class="form-control" id="inputkeluargastatus[]" placeholder="Status">'+
+										'<input type="text" class="form-control" id="inputkeluargastatus[]" name="inputkeluargastatus[]" placeholder="Status">'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-2">'+
 										'<div class="form-group row kotakexcel_kosong">'+
 											'<div class="col-sm-10">'+
-												'<input type="text" class="form-control" id="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">'+
+												'<input type="text" class="form-control" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" placeholder="Tempat" value="{{$data->value6}}">'+
 											'</div>'+
 											'<div class="col-sm-2">'+
 												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
@@ -2372,18 +2568,18 @@ if ($pos=0 or $pos=1){
 												'</div>'+
 												'<div class="col-md-4">'+
 													'<div class="form-group row kotakexcel_kosong">'+
-														'<input type="text" class="form-control" id="inputAgenHubNama[]" placeholder="Nama">'+
+														'<input type="text" class="form-control" id="inputAgenHubNama[]" name="inputAgenHubNama[]" placeholder="Nama">'+
 													'</div>'+
 												'</div>'+
 												'<div class="col-md-4">'+
 													'<div class="form-group row kotakexcel_kosong">'+
-														'<input type="text" class="form-control" id="inputAgenHubKode[]" placeholder="No Sap">'+
+														'<input type="text" class="form-control" id="inputAgenHubKode[]" name="inputAgenHubKode[]" placeholder="No Sap">'+
 													'</div>'+
 												'</div>'+
 												'<div class="col-md-3">'+
 													'<div class="form-group row kotakexcel_kosong">'+
 														'<div class="col-sm-10">'+
-															'<input type="text" class="form-control" id="inputAgenHubStatus[]" placeholder="Hubungan">'+
+															'<input type="text" class="form-control" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]" placeholder="Hubungan">'+
 														'</div>'+
 														'<div class="col-sm-2">'+
 															'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
@@ -2417,30 +2613,30 @@ if ($pos=0 or $pos=1){
 						var txt = '<div class="row" id="rowsareasubagen'+i+'">'+
 										'<div class="col-md-2">'+
 											'<div class="form-group row kotakexcel_kosong">'+
-												'<select class="form-control" id="inputNamaarea[]">'+
+												'<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]">'+
 													'<option value="">-</option>'+
 												'</select>'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2">'+
 											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama">'+
+												'<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2">'+
 											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="Nama">'+
+												'<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="Nama">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-3">'+
 											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="Nama">'+
+												'<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="Nama">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-3">'+
 											'<div class="form-group row kotakexcel_kosong">'+
 												'<div class="col-sm-10">'+
-													'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="Hubungan">'+
+													'<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="Hubungan">'+
 												'</div>'+
 												'<div class="col-sm-2">'+
 													'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
@@ -2450,6 +2646,7 @@ if ($pos=0 or $pos=1){
 									'</div>';
 			$('#inpareasubagen').append(txt);
 		});
+
 		$(document).on('click', '.btn_remove5', function(){  
 			var button_id = $(this).attr("id");   
 			$('#rowsareasubagen'+button_id+'').remove();  
@@ -2457,8 +2654,337 @@ if ($pos=0 or $pos=1){
 	});  
 </script>
 
+<script type="text/javascript">
 
-									
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addkompetitor').click(function(){ 
+			var txt = '<div class="row" id="rowskompetitor'+i+'">'+
+										'<div class="col-md-4">'+
+											'<div class="col-sm-12">'+
+												'<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-4">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<div class="col-sm-12">'+
+													'<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">'+	
+												'</div>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-4">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<div class="col-sm-10">'+
+													'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
+												'</div>'+
+												'<div class="col-sm-2">'+
+													'<button type="button" name="remove" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+			$('#inpkompetitor').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_remove6', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowskompetitor'+button_id+'').remove();  
+      });  
+	});  
+</script>	
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addbisnislain').click(function(){ 
+			var txt = '<div class="row" id="rowsbisnislain'+i+'">'+
+						'	<div class="col-md-6">'+
+						'		<div class="form-group row">'+
+						'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>'+
+						'			<div class="col-sm-9">'+
+						'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
+						'			</div>'+
+						'		</div>'+
+						'	</div>'+
+						'	<!-- /.col -->'+
+						'	<div class="col-md-5">'+
+						'		<div class="form-group row">'+
+						'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>'+
+						'			<div class="col-sm-8">'+
+						'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
+						'			</div>'+
+						'		</div>'+
+						'	</div>'+
+						'	<div class="col-md-1">'+
+						'		<div class="form-group row">'+
+						'			<div class="col-sm-12">'+
+						'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove7">X</button>'+
+						'			</div>'+
+						'		</div>'+
+						'	</div>'+
+						'</div>';
+			$('#inpbisnislain').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_remove7', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsbisnislain'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addassetpribadi').click(function(){ 
+			var txt = 	'<div class="row" id="rowsassetpribadi'+i+'">'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-9">'+
+							'				<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]">'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-5">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>'+
+							'			<div class="col-sm-8">'+
+							'				<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]">	'+
+							'			</div>'+
+							'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-3">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputasetpribadirp" class="col-sm-4 col-form-label">{{$data->info3}}</label>'+
+							'			<div class="col-sm-8">'+
+							'				<input type="text" class="form-control" id="inputasetpribadirp[]" name="inputasetpribadirp[]" >	'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-10">'+
+							'				<input type="text" class="form-control" id="inputasetpribadirp[]" name="inputasetpribadirp[]">	'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove8">X</button>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'</div>';
+			$('#inpassetpribadi').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_remove8', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsassetpribadi'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addmodalbank').click(function(){ 
+			var txt = 	'<div class="row" id="rowsmodalbank'+i+'">'+
+							'	<div class="col-md-6">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">Bank</label>'+
+							'			<div class="col-sm-6">'+
+							'				<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%">	'+
+							'			</div>'+
+							'			<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-5">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-10">'+
+							'				<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]"> '+
+							'				</select>'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove9">X</button>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'</div>';
+			$('#inpmodalbank').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_remove9', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsmodalbank'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addjaminan').click(function(){ 
+			var txt = 	'<div class="row" id="rowsjaminan'+i+'">'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-12">'+
+							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-5">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis</label>'+
+							'			<div class="col-sm-6">'+
+							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
+							'			</div>'+
+							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis</label>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-3">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">123</label>'+
+							'			<div class="col-sm-9">'+
+							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-10">'+
+							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removea">X</button>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'</div>';
+			$('#inpjaminan').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_removea', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsjaminan'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addstatususaha').click(function(){ 
+			var txt = 	'<div class="row" id="rowsstatususaha'+i+'">'+
+							'	<div class="col-md-5">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-12">'+
+							'				<select class="form-control btn btn-block btn-primary btn-lg" id="inputstatus[]" name="inputstatus[]" style="height: 60px;background: rgba(51,122,183,1);"> '+
+							'				</select>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-1">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-12">'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeb">X</button>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'</div>'
+			$('#inpstatususaha').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_removeb', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsstatususaha'+button_id+'').remove();  
+      });  
+	});  
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+		var postURL = "<?php echo url('addmore'); ?>";
+      var i=1;  
+
+		$('#addjaminan').click(function(){ 
+			var txt = 	'<div class="row" id="rowsjaminan'+i+'">'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-12">'+
+							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-5">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis</label>'+
+							'			<div class="col-sm-6">'+
+							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
+							'			</div>'+
+							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis</label>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-3">'+
+							'		<div class="form-group row">'+
+							'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">123</label>'+
+							'			<div class="col-sm-9">'+
+							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'	<div class="col-md-2">'+
+							'		<div class="form-group row">'+
+							'			<div class="col-sm-10">'+
+							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removea">X</button>'+
+							'			</div>'+
+							'		</div>'+
+							'	</div>'+
+							'</div>';
+			$('#inpjaminan').append(txt);
+		});
+
+
+		$(document).on('click', '.btn_removea', function(){  
+			var button_id = $(this).attr("id");   
+			$('#rowsjaminan'+button_id+'').remove();  
+      });  
+	});  
+</script>
 
 
 
@@ -2491,6 +3017,18 @@ if ($pos=0 or $pos=1){
 		document.getElementById("inputpropinsi").value  = document.getElementById("inputpropinsiktp").value;
 		document.getElementById("inputkodepos").value   = document.getElementById("inputkodeposktp").value;
 	}
+
+	function myduplikatalamatusaha() 
+	{
+		document.getElementById("inputalamatusaha").value    = document.getElementById("inputalamatktp").value;
+		document.getElementById("inputkelurahanusaha").value = document.getElementById("inputkelurahanktp").value;
+		document.getElementById("inputkecamatanusaha").value = document.getElementById("inputkecamatanktp").value;
+		document.getElementById("inputkotausaha").value      = document.getElementById("inputkotaktp").value;
+		document.getElementById("inputpropinsiusaha").value  = document.getElementById("inputpropinsiktp").value;
+		document.getElementById("inputkodeposusaha").value   = document.getElementById("inputkodeposktp").value;
+	}
+
+	
 </script>
 
 <script type="text/javascript">
