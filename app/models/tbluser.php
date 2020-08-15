@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Tbluser extends Model
 {
     //
-	protected $table = "tbluser";
+  protected $table = "tbluser";
+  protected $primaryKey = null;
+  public $timestamps = false;
+  public $incrementing = false;
     protected $fillable = [
+      'uid', 
       'user_id', 
       'password', 
       'fullname', 

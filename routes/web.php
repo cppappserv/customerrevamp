@@ -69,7 +69,8 @@ Route::get('autohubkelga', 'NewController@searchhubkelga');
 
 // Route::get('search', 'AutoCompleteController@index');
 //  Route::get('autocomplete', 'AutoCompleteController@search');
-
+Route::get("/getmsg/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@jaminan");
+Route::get("/getmsg2/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@assetpribadi");
 Route::get("/addmore","ArrayController@addMore");
 Route::post("/addmore","ArrayController@addMorePost"); 
  

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use App\Models\kodepost;
+use App\Models\Usrprofile;
+use App\Models\Usradditional;
 use DB;
 
 class NewController extends Controller
@@ -123,7 +125,7 @@ class NewController extends Controller
 
     public function tblmedsos()
     {
-        $sql = "select info id, `desc` medsos from `dt_additional` where `type` = 'medsos'";
+        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'MEDSOS';";
         // $sql = "
         //     select '1' id, 'wa'  medsos union 
         //     select '2' id, 'gmail'  medsos
@@ -131,6 +133,19 @@ class NewController extends Controller
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
+
+    public function tblagenhubunganstatus()
+    {
+        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'AGEN_HUB_STATUS'";
+        // $sql = "
+        //     select '1' id, 'wa'  medsos union 
+        //     select '2' id, 'gmail'  medsos
+        // ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    
 
   
 
@@ -171,11 +186,12 @@ class NewController extends Controller
     public function tblsex()
     {
         
-        $sql = "select info id, `desc` sex from `dt_additional` where `type` = 'jenis_kelamin'";
-        $sql = "
-            select 'l' id, 'laki-laki'  sex union 
-            select 'w' id, 'wanita'  sex
-        ";
+        // $sql = "select info id, `desc` sex from `dt_additional` where `type` = 'jenis_kelamin'";
+        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'JENIS_KELAMIN'";
+        // $sql = "
+        //     select 'l' id, 'laki-laki'  sex union 
+        //     select 'w' id, 'wanita'  sex
+        // ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
@@ -197,7 +213,8 @@ class NewController extends Controller
     public function tblsekolah()
     {
         
-        $sql = "select info id, `desc` sekolah from `dt_additional` where `type` = 'pendidikan'";
+        // $sql = "select info id, `desc` sekolah from `dt_additional` where `type` = 'pendidikan'";
+        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'PENDIDIKAN'";
         
         // $sql = "
         //     select 'sd'  id, 'sd'        sekolah union 
@@ -217,19 +234,41 @@ class NewController extends Controller
         return $grp;
     }
 
+    public function tblhubkelga()
+    {
+        $sql = "SELECT * FROM dt_additional WHERE  TYPE = 'HUB_KELUARGA'
+        ORDER BY seq ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    } 
+
     
 
     public function dataadditional($para)
     {
         $sql = "
-            SELECT a.*, b.desc desc1, b.info, b.info2, b.info3, b.info4 FROM usr_additional a
-            INNER JOIN dt_additional b ON b.type = a.type AND b.seq = a.seq
+            SELECT a.*, b.desc desc1, b.info, b.info2, b.info3, b.info4 
+            FROM usr_additional a
+            left outer JOIN dt_additional b ON b.type = a.type AND b.seq = a.seq
             WHERE a.user_id = '$para'
         ";
         // AND a.type = 'MEDSOS'
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
+
+    public function datausr_profile($para)
+    {
+        $sql = "
+            SELECT *
+            FROM usr_profile
+            WHERE a.user_id = '$para'
+        ";
+        // AND a.type = 'MEDSOS'
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+    
 
 
     public function tabelarea_subagen()
@@ -241,35 +280,180 @@ class NewController extends Controller
         return $grp;
     }
 
-    public function tabelstatus_usaha()
+
+    public function tabelbentukusaha()
     {
         $sql = "
-            SELECT * FROM dt_additional a WHERE TYPE = 'STATUS_USAHA';
+            SELECT * FROM dt_additional a WHERE TYPE = 'BENTUK_USAHA';
         ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
 
+    public function tabelbadanhukum()
+    {
+        $sql = "
+            SELECT * FROM dt_additional a WHERE TYPE = 'BADAN_HUKUM';
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function tabelstatus_usaha()
+    {
+        $sql = "
+            SELECT * FROM dt_additional a WHERE TYPE = 'STATUS_USAHA'
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function tabelarea_usaha()
+    {
+        $sql = "
+        SELECT * 
+        FROM dt_additional WHERE
+          TYPE IN  ('AREA_PETAMBAK','AREA_SUBAGEN','AREA_LAIN')
+                  ORDER BY seq 
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+
+    public function tblassetpribadi()
+    {
+        $sql = "
+        SELECT * 
+        FROM dt_additional WHERE
+          TYPE = 'ASSET_PRIBADI'
+                  ORDER BY seq 
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function tblbank()
+    {
+        $sql = "
+        SELECT * 
+        FROM dt_additional WHERE
+          TYPE = 'NAMABANK'
+                  ORDER BY seq 
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function tbljudulbank()
+    {
+        $sql = "
+        SELECT * 
+        FROM dt_additional WHERE
+          TYPE = 'MODAL_BANK'
+                  ORDER BY seq 
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function tbljaminanpribadi($para)
+    {
+        $sql = "
+            SELECT CONCAT(seq,'/',COALESCE(`desc`,'/'),'/',COALESCE(info,'-'),'/',COALESCE(info2,'-'),'/',COALESCE(info3,'-'),'/',COALESCE(info4,'-')) seq,`desc` 
+            FROM dt_additional 
+            WHERE  TYPE = '".$para."' and coalesce(`desc`,'') <> ''
+            ORDER BY seq
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function addasset($para, $para2)
+    {
+        $sql = "
+            SELECT b.*, 
+                a.desc, 
+                a.info, 
+                a.info2, 
+                a.info3, 
+                a.info4, 
+                a.parent, 
+                a.display, 
+                a.info5
+            FROM dt_additional A
+                    INNER JOIN usr_additional B
+                    ON A.type = B.type
+                    AND B.user_id='".$para."'
+                    WHERE  A.type IN ('".$para2."')
+                    AND a.seq = b.sseq
+                    ORDER BY A.seq
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+    public function addasset2($para, $para2)
+    {
+        $sql = "
+            SELECT b.*, 
+                    a.desc, 
+                    a.info, 
+                    a.info2, 
+                    a.info3, 
+                    a.info4, 
+                    a.parent, 
+                    a.display, 
+                    a.info5
+            FROM dt_additional a 
+            LEFT OUTER JOIN usr_additional b 
+                ON A.type = B.type
+                    AND B.user_id='".$para."'
+                    AND a.seq = b.seq
+            WHERE a.type IN ('".$para2."')
+                AND b.user_id IS NOT NULL
+            ORDER BY A.seq
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+
+
     
 
+    
    
 
     public function detail($kode, $kode2)
     {
-        $user_id = 'agent1'; 
-        $inputuserid = "";
-        $user = $this->getuser();
+        $user = $this->getuser();  // login pertama
+
+        $kode2 = 157;  // data yang di pilih
+        $id = $kode2;
+        $tbluser = Tbluser::where('uid', '=', $id)->first();
+        $iduser = $tbluser->user_id; 
+        $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
+        $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
+        $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
+        $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
+
+// DD($data_add_modalsendiri);
+        // $data_add = $this->dataadditional($iduser);
+        
         $keluarga = $this->angotakeluarga();
         $pilcompany = $kode;
-        $id = $kode2;
-        $data_add = $this->dataadditional($user_id);
+        
+        
+        
         $tabelarea_subagen = $this->tabelarea_subagen();
         // dd($tabelarea_subagen);
 
         // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
         return view('menudetail',[
-            'inputuserid' => $inputuserid,
+            'idedit' => $iduser,
             'user' => $user,
+            'tbluser' => $tbluser,
             'pilcompany' => $pilcompany,
             'id' => $id,
             'keluarga' => $keluarga,
@@ -281,9 +465,23 @@ class NewController extends Controller
             'tblsekolah' => $this->tblsekolah(),
             'tabelarea_subagen' => $tabelarea_subagen,
             'data_additional' => $data_add,
+            'data_profile' => $usr_profile,
             'tblpakan' => $this->tblpakan(),
-            'tabelstatus_usaha' => $this->tabelstatus_usaha()
-            
+            'tabelstatus_usaha' => $this->tabelstatus_usaha(),
+            'tblhubkelga' => $this->tblhubkelga(),
+            'tblagenhubunganstatus' => $this->tblagenhubunganstatus(),
+            'tabelarea_usaha' => $this->tabelarea_usaha(),
+            // 'tblassetpribadi' => $this->tblassetpribadi(),
+            'tblbank' => $this->tblbank(),
+            'tbljudulbank' => $this->tbljudulbank(),
+            'tbljaminanpribadi' => $this->tbljaminanpribadi('JAMINAN_PRIBADI'),
+            'tblassetpribadi' => $this->tbljaminanpribadi('ASSET_PRIBADI'),
+            'tabelbentukusaha' => $this->tabelbentukusaha(),
+            'tabelbadanhukum' => $this->tabelbadanhukum(),
+            'data_add_asset' => $data_add_asset,
+            'data_add_modalsendiri' => $data_add_modalsendiri,
+            'data_add_modalbank' => $this->addasset2($tbluser->user_id,'MODAL_BANK'),
+            'data_add_jaminanpribadi' => $this->addasset2($tbluser->user_id,'JAMINAN_PRIBADI')
         ]);
     }
 
@@ -291,7 +489,7 @@ class NewController extends Controller
 
 //         $sql = "insert into tbluser(`user_id`,`password`,`fullname`,`birthdate`,`birthplace`,`email`,`usergroup`,`branch`,`createddate`,`creatorid`)
 //         values (
-//             '" . $request->inputuserid . "',
+//             '" . $request->inputuser_id . "',
 //             md5('".$request->inputpassword."'),
 //             '" . $inputnamalengkap . "',
 //             '" . $inputtanggallahir . "',
@@ -303,76 +501,430 @@ class NewController extends Controller
 //             '" . $checksess -> username . "' )";
 // //$inputStatus
 
-        $sql = " 
-            replace into usr_profile (`user_id`,`kodesap`,`noktp`,
-                `almtktp`,`kelktp`,`kecktp`,`kotaktp`,`propktp`,`kdposktp`,
-                `almtrmh`,`kelrmh`,`kecrmh`,`kotarmh`,`proprmh`,`kdposrmh`,
-                `tlppri`,`faxpri`,`hppri`,
-                `hobby`,`namapsgn`,`tmptlhrpsgn`,`tgllhrpsgn`,`btkush`,`npwp`,`status`,
-                `almtush`,`kelush`,`kecush`,`kotaush`,`propush`,`kdposush`,
-                `tlpush`,`faxush`,`hpush`,`emailush`,`lmusaha`,`karakteristik`,`namausaha`, 
-                `tipeush` ,`namaalias`,`agama`,`goldarah`,`headgrp`           
-            ) values ( 
-                '" . $request->inputuserid . "',
-                '" . $request->inputkodesap . "',
-                '" . $request->inputnoktp . "',
-                '" . $request->inputalamatktp . "',
-                '" . $request->inputkelurahanktp . "',
-                '" . $request->inputkecamatanktp. "',
-                '" . $request->inputkotaktp . "',
-                '" . $request->inputpropinsiktp . "',
-                '" . $request->inputkodeposktp . "',          
-                '" . $request->inputalamat . "',
-                '" . $request->inputkelurahan . "',
-                '" . $request->inputkecamatan. "',
-                '" . $request->inputkota . "',
-                '" . $request->inputpropinsi . "',
-                '" . $request->inputkodepos . "',
-                '" . $request->inputtelpon . "',
-                '" . $request->inputfax . "',
-                '" . $request->inputhp . "', 
-                '" . $request->inputhobbys . "', 
-                '" . $request->inputkeluarganama[0] . "', 
-                '" . $request->inputkeluargatempat[0] . "', 
-                '" . $request->inputkeluargatanggallahir[0] . "', 
-                '" . $request->inputbentukusaha . "', 
-                '" . $request->inputnpwp . "', 
-                '" . $request->inputstatus . "',   
-                '" . $request->inputalamatusaha . "',
-                '" . $request->inputkelurahanusaha . "',
-                '" . $request->inputkecamatanusaha. "',
-                '" . $request->inputkotausaha . "',
-                '" . $request->inputpropinsiusaha . "',
-                '" . $request->inputkodeposusaha . "',              
-                '" . $request->inputtelponusaha . "',
-                '" . $request->inputfaxusaha . "',
-                '" . $request->inputhpusaha . "',
-                '" . $request->inputemailusaha . "', 
-                '" . $request->inputlamausaha . "',
-                '" . $request->inputkarakteristik . "',
-                '" . $request->inputnamausaha . "',
-                '" . $request->inputbadanhukum . "',
-                '" . $request->inputnamaalias . "',
-                '" . $request->inputagama . "',
-                '" . $request->inputgolongandarah . "',
-                '" . $request->inputheadgroup . "'              
-            )
-        ";
-        echo $sql;
-        exit;
-        // X
+
+
+DB::beginTransaction();
+
+    try {
+
+        $usrprofile = Usrprofile::where('user_id', '=', $request->user_id)->first();
+        if (!$usrprofile){
+            $usrprofile = new Usrprofile;
+        }
+        $usrprofile->user_id       = $request->inputuser_id; 
+        $usrprofile->kodesap       = $request->inputkodesap; 
+        $usrprofile->noktp         = $request->inputnoktp; 
+        $usrprofile->almtktp       = $request->inputalmtktp; 
+        $usrprofile->kelktp        = $request->inputkelktp; 
+        $usrprofile->kecktp        = $request->inputkecktp; 
+        $usrprofile->kotaktp       = $request->inputkotaktp; 
+        $usrprofile->propktp       = $request->inputpropktp; 
+        $usrprofile->kdposktp      = $request->inputkdposktp; 
+        $usrprofile->almtrmh       = $request->inputalmtrmh; 
+        $usrprofile->kelrmh        = $request->inputkelrmh; 
+        $usrprofile->kecrmh        = $request->inputkecrmh; 
+        $usrprofile->kotarmh       = $request->inputkotarmh; 
+        $usrprofile->proprmh       = $request->inputproprmh; 
+        $usrprofile->kdposrmh      = $request->inputkdposrmh; 
+        $usrprofile->tlppri        = $request->inputtlppri; 
+        $usrprofile->faxpri        = $request->inputfaxpri; 
+        $usrprofile->hppri         = $request->inputhppri; 
+        $usrprofile->emailpri      = $request->inputemailpri; 
+        $usrprofile->hobby         = $request->inputhobby; 
+        $usrprofile->namapsgn      = $request->inputnamapsgn; 
+        $usrprofile->tmptlhrpsgn   = $request->inputtmptlhrpsgn; 
+        $usrprofile->tgllhrpsgn    = $request->inputtgllhrpsgn; 
+        $usrprofile->btkush        = $request->inputbtkush; 
+        $usrprofile->tipeush       = $request->inputtipeush; 
+        $usrprofile->npwp          = $request->inputnpwp; 
+        $usrprofile->status        = $request->inputstatus; 
+        $usrprofile->almtush       = $request->inputalmtush; 
+        $usrprofile->kelush        = $request->inputkelush; 
+        $usrprofile->kecush        = $request->inputkecush; 
+        $usrprofile->kotaush       = $request->inputkotaush; 
+        $usrprofile->propush       = $request->inputpropush; 
+        $usrprofile->kdposush      = $request->inputkdposush; 
+        $usrprofile->tlpush        = $request->inputtlpush; 
+        $usrprofile->faxush        = $request->inputfaxush; 
+        $usrprofile->hpush         = $request->inputhpush; 
+        $usrprofile->emailush      = $request->inputemailush; 
+        $usrprofile->lmusaha       = $request->inputlmusaha; 
+        $usrprofile->karakteristik = $request->inputkarakteristik; 
+        $usrprofile->namausaha     = $request->inputnamausaha; 
+        $usrprofile->namaalias     = $request->inputnamaalias; 
+        $usrprofile->agama         = $request->inputagama; 
+        $usrprofile->goldarah      = $request->inputgoldarah; 
+        $usrprofile->headgrp       = $request->inputheadgrp;
+        $usrprofile->save();
+
+
+        Usradditional::where('user_id', '=', $request->inputuser_id)
+        ->update(['value7' => '']);
+
+        $j=0;
+        $type="MEDSOS";
+        foreach($request->inputmedsospri as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                $data->sseq = $values;
+                $data->desc = $request->inputmedsosakunpri[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+        $j=0;
+        $type="MEDSOSUSH";
+        foreach($request->inputmedsosush as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                $data->sseq = $values;
+                $data->desc = $request->inputmedsosakunush[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="DATA_KELUARGA";
+        foreach($request->inputkeluargastatus as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                $data->sseq = $values;
+                // $data->desc = $request->inputmedsosakunush[$j];
+                $data->value1 = $request->inputkeluarganama[$j];
+                $data->value2 = $request->inputkeluargatempat[$j];
+                $data->value3 = $request->inputkeluargatanggallahir[$j];
+                $data->value4 = $request->inputkeluargasex[$j];
+                $data->value5 = 'P';
+                $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="STATUSUSAHA";
+        foreach($request->inputstatusush as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $values;
+                // $data->value1 = $request->inputkeluarganama[$j];
+                // $data->value2 = $request->inputkeluargatempat[$j];
+                // $data->value3 = $request->inputkeluargatanggallahir[$j];
+                // $data->value4 = $request->inputkeluargasex[$j];
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="AGEN_HUB";
+        foreach($request->inputstatusush as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                // $data->desc = $values;
+                $data->value1 = $request->inputagenhubnama[$j];
+                $data->value2 = $request->inputagenaubkode[$j];
+                // $data->value3 = $request->inputkeluargatanggallahir[$j];
+                $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+
+        $j=0;
+        // $type="AGEN_HUB";
+        foreach($request->inputNamaarea as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $values)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $values;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $request->inputQtySubAgen;
+                $data->value1 = $request->inputNamaSubAgen[$j];
+                $data->value2 = $request->inputLokasiSubAgen[$j];
+                $data->value3 = $request->inputInfoSubAgen[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="PAKAN_JUAL";
+        foreach($request->inputPakanJualC as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $values;
+                $data->value1 = $request->inputPakanJualV[$j];
+                $data->value2 = $request->inputPakanJual[$j];
+                // $data->value3 = $request->inputInfoSubAgen[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="BISNIS_LAIN";
+        foreach($request->inputbisnislain as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $values;
+                $data->value1 = $request->inputbisnislainrp[$j];
+                // $data->value2 = $request->inputPakanJual[$j];
+                // $data->value3 = $request->inputInfoSubAgen[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="BISNIS_LAIN";
+        foreach($request->inputbisnislain as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $values;
+                $data->value1 = $request->inputbisnislainrp[$j];
+                // $data->value2 = $request->inputPakanJual[$j];
+                // $data->value3 = $request->inputInfoSubAgen[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="ASSET_PRIBADI";
+        foreach($request->inputasetpribadi as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                $data->desc = $values;
+                $data->value1 = $request->inputAssetValue[$j];
+                $data->value2 = $request->inputAssetSseq[$j];
+                $data->value3 = $request->inputAssetLain[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+
+
+        $j=0;
+        $type="MODAL";
+        foreach($request->inputmodalid as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $values;
+                // $data->sseq = $values;
+                $data->desc = $inputmodal[$j];
+                // $data->value1 = $request->inputmodal[$j];
+                // $data->value2 = $request->inputAssetSseq[$j];
+                // $data->value3 = $request->inputAssetLain[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+
+        $j=0;
+        $type="MODAL_BANK";
+        foreach($request->inputmodalbankpersent as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                // $data->sseq = $values;
+                // $data->desc = $values;
+                $data->value1 = $values;
+                $data->value2 = $request->inputmodalbanknamaid[$j];
+                // $data->value3 = $request->inputAssetLain[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        $j=0;
+        $type="JAMINAN_PRIBADI";
+        foreach($request->inputJaminanid as $key => $values) {
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $request->inputuser_id;
+                $data->type = $type;
+                $data->seq = $j;
+                $data->sseq = $values;
+                $data->desc = $request->inputJaminanPribadi[$j];
+                $data->value1 = $request->inputJaminanValue[$j];
+                $data->value2 = $request->inputJaminanAlamat[$j];
+                $data->value3 = $request->inputJaminanLain[$j];
+                // $data->value4 = $values;
+                // $data->value5 = 'P';
+                // $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+            }
+        }
+
+        DB::table('usr_additional')->where('user_id', '=', $request->inputuser_id)
+        ->where('value7', '=', 'X')->delete();
+
+        DB::commit();
+    } catch (\Exception $e) {
+        DB::rollback();
+        // something went wrong
+    }
+
+    /*
         if ($imgphoto!=""){
             $sql = "
                 select *
                 from tbl_userphoto
-                where user_id = '".$request->inputuserid."'
+                where user_id = '".$request->inputuser_id."'
                 and link = '".$request->imglink."'
             "; 
 
             $sql = " 
                 delete from  
                 tbl_userphoto
-                where user_id = '".$request->inputuserid."'  
+                where user_id = '".$request->inputuser_id."'  
                     and link = '".$request->imglink."'
             ";
 
@@ -387,7 +939,7 @@ class NewController extends Controller
                 $sql = "
                     replace into  
                     tbl_userphoto values (
-                    '".$request->inputuserid."','".$file."' )
+                    '".$request->inputuser_id."','".$file."' )
                 "; 
                 //         $newdb = new condb( "fpdappscpb", $sql );
                 // echo $file.'|';    
@@ -398,7 +950,7 @@ class NewController extends Controller
 
         $sql = " 
             delete from usr_additional
-            where user_id = '".$request->inputuserid ."'
+            where user_id = '".$request->inputuser_id ."'
         ";
 
         $j= 0; 
@@ -406,7 +958,7 @@ class NewController extends Controller
         foreach($request->inputareapenjualan as $key => $values) {
             $j++;
             $sql = " insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
-                        values ('".$request->inputuserid ."',
+                        values ('".$request->inputuser_id ."',
                                 'area_penjualan',
                                 '".$j."',
                                 '".$values."')";
@@ -419,7 +971,7 @@ class NewController extends Controller
             if ($values != ""){
                 $j++;
                 $sql = " insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
-                        values ('".$request->inputuserid ."',
+                        values ('".$request->inputuser_id ."',
                                 'telpon',
                                 '".$j."',
                                 '".$values."')";
@@ -433,7 +985,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'hobby',
                         '".$j."',
                         '".$values."')
@@ -450,7 +1002,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'email',
                         '".$j."',
                         '".$values."'
@@ -476,7 +1028,7 @@ class NewController extends Controller
                         $sql = " 
                             insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`)
                             values (
-                                '".$request->inputuserid ."',
+                                '".$request->inputuser_id ."',
                                 'pakan_jual',
                                 '".$j."',
                                 '".$values."',
@@ -497,7 +1049,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'bisnis_lain',
                         '".$j."',
                         '".$values."',
@@ -515,7 +1067,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'modal_bank',
                         '".$j."',
                         '".$values."',
@@ -534,7 +1086,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`,`value4`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'agen_hub',
                         '".$j."',
                         '".$values."',
@@ -555,7 +1107,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'kode_sap',
                         '".$j."',
                         '".$values."'
@@ -575,7 +1127,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`value1`,`value2`,`value3`,`value4`,`value5`,`value6`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'data_keluarga',
                         '".$j."',
                         '".$values."',
@@ -598,7 +1150,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'medsos',
                         '".$j."',
                         '".$values."'
@@ -629,7 +1181,7 @@ class NewController extends Controller
                         $sql = " 
                             insert into usr_additional (`user_id`,`type`,`seq`,`sseq`,`desc`,`value1`,`value2`,`value3`)
                             values (
-                                '".$request->inputuserid ."',
+                                '".$request->inputuser_id ."',
                                 'jaminan_pribadi',
                                 '".$i."',
                                 '".$valuea."',
@@ -654,7 +1206,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'statususaha',
                         '".$j."',
                         '".$values."'
@@ -685,7 +1237,7 @@ class NewController extends Controller
                             $sql = " 
                                 insert into usr_additional (`user_id`,`type`,`seq`,`sseq`,`desc`,`value1`,`value2`,`value3`)
                                 values (
-                                    '".$request->inputuserid ."',
+                                    '".$request->inputuser_id ."',
                                     'asset_pribadi',
                                     '".$i."',
                                     '".$valuea."',
@@ -709,7 +1261,7 @@ class NewController extends Controller
             $sql = " 
                 insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                 values (
-                    '".$request->inputuserid ."',
+                    '".$request->inputuser_id ."',
                     'modal',
                     '".$j."',
                     '".$values."'
@@ -728,7 +1280,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'area_subagen',
                         '".$i."',
                         '".$request->inputqtysubagen[$j-1]."',
@@ -752,7 +1304,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'area_petambak',
                         '".$i."',
                         '".$request->inputqtypetambak[$j-1]."',
@@ -775,7 +1327,7 @@ class NewController extends Controller
                 $sql = " 
                     insert into usr_additional (`user_id`,`type`,`seq`,`desc`,`value1`,`value2`,`value3`)
                     values (
-                        '".$request->inputuserid ."',
+                        '".$request->inputuser_id ."',
                         'area_lain',
                         '".$i."',
                         '".$request->inputqtylain[$j-1]."',
@@ -795,7 +1347,7 @@ class NewController extends Controller
             $sql = " 
                 insert into usr_additional (`user_id`,`type`,`seq`,`desc`)
                 values (
-                    '".$request->inputuserid ."',
+                    '".$request->inputuser_id ."',
                     'term_penjualan',
                     '".$j."',
                     '".$values."'
@@ -804,6 +1356,7 @@ class NewController extends Controller
             //echo $sql;          
             // $newdb = new condb( "fpdappscpb", $sql );              
         }
+        */
     }
 
     
