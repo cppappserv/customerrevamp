@@ -46,7 +46,7 @@ $hitam = "rgba(84,84,84,1)";
    .atas{
       position: fixed;
       width: 100%;
-      height: 70px;
+      height: 100px;
       background: rgba(43,185,201,1);
    }
    .atas1{
@@ -61,8 +61,13 @@ $hitam = "rgba(84,84,84,1)";
       color: white;
       font-size:24px;
    }
+   #fon_28_wh{
+      color: white;
+      font-size:28px;
+   }
    .awal{
-      top:200px;
+      top:100px;
+      position: relative;
    }
 
    .button_proses{
@@ -374,15 +379,15 @@ $hitam = "rgba(84,84,84,1)";
    <!-- <div class="atas"> -->
    <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="/setting1" class="nav-link" id="fon_24_wh">Seting/</a>
+         <a href="/setting1" class="nav-link" id="fon_28_wh">Seting/</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-         <a href="#" class="nav-link atas" id="fon_24_wh">User Profile</a>
+         <a href="#" class="nav-link atas" id="fon_28_wh">User Profile</a>
       </li>
       </ul>
       <ul class="navbar-nav ml-auto">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-         <span id="fon_24_wh">{{$user->fullname}}</span>
+         <span id="fon_28_wh">{{$user->fullname}}</span>
          <div class="image" style="
             margin-right: 59px;
             margin-left: 10px;
@@ -397,12 +402,8 @@ $hitam = "rgba(84,84,84,1)";
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-	<div class="wrapper awal" style="
-    top: 75px;
-    left: 3%;
-    width: 94%;
-    
-    ">
+	<div class="wrapper awal" 
+      style="position: relative;">
 
 		<div class="container-fluid">
 

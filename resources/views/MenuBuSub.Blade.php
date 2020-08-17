@@ -21,12 +21,16 @@
    .atas{
       position: fixed;
       width: 100%;
-      height: 70px;
+      height: 100px;
       background: rgba(43,185,201,1);
    }
    #fon_24_wh{
       color: white;
       font-size:24px;
+   }
+   #fon_28_wh{
+      color: white;
+      font-size:28px;
    }
    .awal{
       top:75px;
@@ -198,15 +202,15 @@ $total = 134;
    <ul class="navbar-nav">
    
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis" >
-         <a href="/dashboard1" class="nav-link" id="fon_24_wh">Dashboard/</a>
+         <a href="/dashboard1" class="nav-link" id="fon_28_wh">Dashboard/</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
+         <a href="#" class="nav-link atas" id="fon_28_wh">{{$pilcompany}}</a>
       </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-          <span id="fon_24_wh">{{$user->fullname}}</span>
+          <span id="fon_28_wh">{{$user->fullname}}</span>
           <div class="image" style="
             margin-right: 59px;
             margin-left: 10px;
@@ -220,7 +224,7 @@ $total = 134;
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <div class="wrapper awal" >
+  <div class="wrapper awal" style="position: relative;">
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -239,7 +243,7 @@ $total = 134;
     </section> -->
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="position: relative;top: 25px;"> 
       
 
       <div class="modal fade" id="modal-primary">

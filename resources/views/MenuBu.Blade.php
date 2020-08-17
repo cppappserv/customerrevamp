@@ -428,6 +428,7 @@
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper"style="
+	position: relative;
     margin-left: 0px;
     margin-top: 99px;">
     <!-- Content Header (Page header) -->

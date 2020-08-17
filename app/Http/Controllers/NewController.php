@@ -473,7 +473,14 @@ class NewController extends Controller
         $id = $kode2;
         $idx = $kode;
         $tbluser = Tbluser::where('uid', '=', $id)->first();
+        if (!$tbluser){
+            $tbluser = new Tbluser;
+            $tbluser->user_id='';
+        }
+        
         $iduser = $tbluser->user_id; 
+        
+        
         $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
         $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
@@ -543,6 +550,8 @@ class NewController extends Controller
 //             '" . date( "y-m-d h:i:s", strtotime( "now" ) ) . "',
 //             '" . $checksess -> username . "' )";
 // //$inputStatus
+print_r($request->inputkeluargastatus);
+exit;
 
 DB::beginTransaction();
 
@@ -606,8 +615,49 @@ DB::beginTransaction();
         // $inputlastchangeby  = $tbluser->lastchangeby; 
         // $inputldap          = $tbluser->ldap; 
         // $inputinactive      = $tbluser->inactive;
-                
+         
+        Usradditional::where('user_id', '=', $tbluser->user_id)
+        ->update(['value7' => 'X']);
+
+        $namapsgn      = ""; 
+        $tmptlhrpsgn   = ""; 
+        $tgllhrpsgn    = ""; 
+
         
+        $j=0;
+        $type="DATA_KELUARGA";
+        foreach($request->inputkeluargastatus as $key => $values) {
+            $tbl = Dtadditional::where('type', '=', 'HUB_KELUARGA')
+                ->where('seq', '=', $values)
+                ->first();
+            if ($values != ""){
+                $j++;
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $j)->first();
+                if (!$data){
+                    $data = new Usradditional;
+                }
+                $data->user_id = $tbluser->user_id;
+                $data->type = $type;
+                $data->seq = $j;
+                $data->sseq = $values;
+                // $data->desc = $request->inputmedsosakunush[$j];
+                $data->value1 = $request->inputkeluarganama[$j];
+                $data->value2 = $request->inputkeluargatempat[$j];
+                $data->value3 = $request->inputkeluargatanggallahir[$j];
+                $data->value4 = $request->inputkeluargasex[$j];
+                $data->value5 = $tbl->info;
+                $data->value6 = $request->inputkeluargapendidikan[$j];
+                $data->value7 = '';
+                $data->save();
+                if ($tbl->info == 'P'){
+                    $namapsgn      = $data->value1; 
+                    $tmptlhrpsgn   = $data->value2; 
+                    $tgllhrpsgn    = $data->value3; 
+                }
+            }
+        }
         
         $usrprofile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         if (!$usrprofile){
@@ -633,9 +683,9 @@ DB::beginTransaction();
         $usrprofile->hppri         = $request->inputhppri; 
         $usrprofile->emailpri      = $request->inputemailpri; 
         $usrprofile->hobby         = $request->inputhobby; 
-        $usrprofile->namapsgn      = $request->inputnamapsgn; 
-        $usrprofile->tmptlhrpsgn   = $request->inputtmptlhrpsgn; 
-        $usrprofile->tgllhrpsgn    = $request->inputtgllhrpsgn; 
+        $usrprofile->namapsgn      = $namapsgn; 
+        $usrprofile->tmptlhrpsgn   = $tmptlhrpsgn; 
+        $usrprofile->tgllhrpsgn    = $tgllhrpsgn; 
         $usrprofile->btkush        = $request->inputbtkush; 
         $usrprofile->tipeush       = $request->inputtipeush; 
         $usrprofile->npwp          = $request->inputnpwp; 
@@ -658,12 +708,10 @@ DB::beginTransaction();
         $usrprofile->goldarah      = $request->inputgoldarah; 
         $usrprofile->headgrp       = $request->inputheadgrp;
         $usrprofile->save();
-        // dd($usrprofile);
-        // exit;
 
+        
 
-        Usradditional::where('user_id', '=', $tbluser->user_id)
-        ->update(['value7' => '']);
+       
 
         $j=0;
         $type="MEDSOS";
@@ -707,32 +755,32 @@ DB::beginTransaction();
             }
         }
 
-        $j=0;
-        $type="DATA_KELUARGA";
-        foreach($request->inputkeluargastatus as $key => $values) {
-            if ($values != ""){
-                $j++;
-                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
-                ->where('type', '=', $type)
-                ->where('seq', '=', $j)->first();
-                if (!$data){
-                    $data = new Usradditional;
-                }
-                $data->user_id = $tbluser->user_id;
-                $data->type = $type;
-                $data->seq = $j;
-                $data->sseq = $values;
-                // $data->desc = $request->inputmedsosakunush[$j];
-                $data->value1 = $request->inputkeluarganama[$j];
-                $data->value2 = $request->inputkeluargatempat[$j];
-                $data->value3 = $request->inputkeluargatanggallahir[$j];
-                $data->value4 = $request->inputkeluargasex[$j];
-                $data->value5 = 'P';
-                $data->value6 = $request->inputkeluargapendidikan[$j];
-                $data->value7 = '';
-                $data->save();
-            }
-        }
+        // $j=0;
+        // $type="DATA_KELUARGA";
+        // foreach($request->inputkeluargastatus as $key => $values) {
+        //     if ($values != ""){
+        //         $j++;
+        //         $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+        //         ->where('type', '=', $type)
+        //         ->where('seq', '=', $j)->first();
+        //         if (!$data){
+        //             $data = new Usradditional;
+        //         }
+        //         $data->user_id = $tbluser->user_id;
+        //         $data->type = $type;
+        //         $data->seq = $j;
+        //         $data->sseq = $values;
+        //         // $data->desc = $request->inputmedsosakunush[$j];
+        //         $data->value1 = $request->inputkeluarganama[$j];
+        //         $data->value2 = $request->inputkeluargatempat[$j];
+        //         $data->value3 = $request->inputkeluargatanggallahir[$j];
+        //         $data->value4 = $request->inputkeluargasex[$j];
+        //         $data->value5 = 'P';
+        //         $data->value6 = $request->inputkeluargapendidikan[$j];
+        //         $data->value7 = '';
+        //         $data->save();
+        //     }
+        // }
 
         $j=0;
         $type="STATUSUSAHA";

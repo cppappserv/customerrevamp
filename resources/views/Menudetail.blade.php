@@ -144,10 +144,10 @@ if ($pos=0 or $pos=1){
    }
    .atas1{
       position: fixed;
-      top: 69px;
+      top: 100px;
       left:0px;
       width: 100%;
-      height: 70px;
+      height: 100px;
       background:white;
    }
 	#Rectangle_322_sh {
@@ -202,7 +202,7 @@ if ($pos=0 or $pos=1){
   }   */
 	
    .awal{
-      top:200px;
+      top:180px;
    }
    #Rectangle_241_bv {
       fill: rgba(255,255,255,1);
@@ -711,7 +711,7 @@ if ($pos=0 or $pos=1){
 
 	<!-- Main Sidebar Container -->
 	<div class="formwrapper awal" style="
-		top: 150px;">
+		position: relative;">
 			<?php 
 				$inputuid           = $tbluser->uid;
 				$inputuser_id       = $tbluser->user_id; 
@@ -798,7 +798,6 @@ if ($pos=0 or $pos=1){
 				$inputagama                = $data_profile->agama; 
 				$inputgoldarah             = $data_profile->goldarah; 
 				$inputheadgrp              = $data_profile->headgrp;
-				echo $id;
 			// }
 			?>
 			
@@ -893,6 +892,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputagama" class="col-sm-2 col-form-label">Agama</label>
 												<div class="col-sm-4">
 													<select class="form-control" id="inputagama" name="inputagama"> 
+													<option>--- Select Agama ---</option>
 													<?php 
 													foreach ($tblagama as $key => $value) {
 														?>
@@ -910,6 +910,7 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-4">
 
 													<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
+													<option>--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
 														?>
@@ -2770,7 +2771,7 @@ if ($pos=0 or $pos=1){
 		});
 	</script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		function myduplicat() {
 			document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
 			document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
@@ -2785,7 +2786,7 @@ if ($pos=0 or $pos=1){
 			document.getElementById("inputproprmh1").value  = document.getElementById("inputpropktp").value;
 			document.getElementById("inputkdposrmh1").value   = document.getElementById("inputkdposktp").value;
 		}
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 
@@ -3340,11 +3341,29 @@ if ($pos=0 or $pos=1){
 			document.getElementById("inputpropush").value  = document.getElementById("inputpropktp").value;
 			document.getElementById("inputkdposush").value   = document.getElementById("inputkdposktp").value;
 
-			document.getElementById("inputkecush1").value = document.getElementById("inputkecktp").value;
-			document.getElementById("inputkotaush1").value      = document.getElementById("inputkotaktp").value;
-			document.getElementById("inputpropush1").value  = document.getElementById("inputpropktp").value;
-			document.getElementById("inputkdposush1").value   = document.getElementById("inputkdposktp").value;
+			document.getElementById("inputkecush1").value = document.getElementById("inputkecktp1").value;
+			document.getElementById("inputkotaush1").value      = document.getElementById("inputkotaktp1").value;
+			document.getElementById("inputpropush1").value  = document.getElementById("inputpropktp1").value;
+			document.getElementById("inputkdposush1").value   = document.getElementById("inputkdposktp1").value;
 		}
+
+		function myduplikatalamat() 
+		{
+			document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
+			document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
+			document.getElementById("inputkecrmh").value = document.getElementById("inputkecktp").value;
+			document.getElementById("inputkotarmh").value      = document.getElementById("inputkotaktp").value;
+			document.getElementById("inputproprmh").value  = document.getElementById("inputpropktp").value;
+			document.getElementById("inputkdposrmh").value   = document.getElementById("inputkdposktp").value;
+
+			document.getElementById("inputkecrmh1").value = document.getElementById("inputkecktp1").value;
+			document.getElementById("inputkotarmh1").value      = document.getElementById("inputkotaktp1").value;
+			document.getElementById("inputproprmh1").value  = document.getElementById("inputpropktp1").value;
+			document.getElementById("inputkdposrmh1").value   = document.getElementById("inputkdposktp1").value;
+		}
+
+
+		
 
 		
 	</script>
