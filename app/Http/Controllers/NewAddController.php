@@ -42,9 +42,9 @@ class NewAddController extends Controller
 							'	<div class="col-md-2">'.
 							'		<div class="form-group row">'.
 							'			<div class="col-sm-12">'.
-                     '				<input type="text" class="form-control" id="inputbisnislain1[]" name="inputbisnislain1[]" placeholder="Nama Bisnis" value="'.$id2.'" disabled>'.
-                     '				<input type="hidden" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="'.$id2.'"'.
-                     '           <input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="'.$id1.'">'.	
+                     '				<input type="text" class="form-control" id="inputbisnislain1[]" placeholder="Nama Bisnis" value="'.$id2.'" disabled>'.
+                     '				<input type="hidden" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="'.$id2.'">'.
+                     '           <input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="'.$id.'">'.	
 							'			</div>'.
 							'		</div>'.
 							'	</div>'.

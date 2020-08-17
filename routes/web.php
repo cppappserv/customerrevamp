@@ -28,7 +28,7 @@ Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcomp
 Route::get('/subcompany/{id}/{id2}', 'HomeController@subcompany')->name('subcompany');
 Route::get('/detail1/{id}/{id2}', 'NewController@detail')->name('detail');
 
-Route::post('/detail1/save', 'NewController@detailsave')->name('detailsave');
+Route::post('/detailsave/{id}', 'NewController@detailsave')->name('detailsave');
 
 Route::get('/detail1/update/{id}', 'NewController@update')->name('update');
 

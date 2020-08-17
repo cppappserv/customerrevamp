@@ -466,9 +466,12 @@ class NewController extends Controller
     public function detail($kode, $kode2)
     {
         $user = $this->getuser();  // login pertama
-
-        $kode2 = 157;  // data yang di pilih
+        // echo $kode."<br>";
+        // echo $kode2;
+        // exit;
+        // $kode2 = 157;  // data yang di pilih
         $id = $kode2;
+        $idx = $kode;
         $tbluser = Tbluser::where('uid', '=', $id)->first();
         $iduser = $tbluser->user_id; 
         $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
@@ -494,6 +497,7 @@ class NewController extends Controller
             'tbluser' => $tbluser,
             'pilcompany' => $pilcompany,
             'id' => $id,
+            'idx' => $idx,
             'keluarga' => $keluarga,
             'tblagama' => $this->tblagama(),
             'tbldarah' => $this->tbldarah(),
@@ -523,7 +527,8 @@ class NewController extends Controller
         ]);
     }
 
-    public function detailsave(Request $request){
+    public function detailsave($id, Request $request){
+       
 
 //         $sql = "insert into tbluser(`user_id`,`password`,`fullname`,`birthdate`,`birthplace`,`email`,`usergroup`,`branch`,`createddate`,`creatorid`)
 //         values (
@@ -542,19 +547,22 @@ class NewController extends Controller
 DB::beginTransaction();
 
     try {
-        if(!$request->inputuserid){
+        if($id==0){
             $tbluser = new Tbluser;
-            $tbluser->userid = $request->inputfullname;
+            $tbluser->user_id = $request->inputfullname;
 
         } else {
             $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+            
         }
         $tbluser->fullname = $request->inputfullname;
         $tbluser->birthdate = $request->inputbirthdate;
-        $tbluser->birthdate = $request->inputbirthplace;
-        // $tbluser->save();
+        $tbluser->birthplace = $request->inputbirthplace;
+        $tbluser->save();
 
-        dd($tbluser);
+       
+
+        
         
         
 
@@ -601,9 +609,7 @@ DB::beginTransaction();
                 
         
         
-        
-
-        $usrprofile = Usrprofile::where('user_id', '=', $tbluser->userid)->first();
+        $usrprofile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         if (!$usrprofile){
             $usrprofile = new Usrprofile;
         }
@@ -651,12 +657,12 @@ DB::beginTransaction();
         $usrprofile->agama         = $request->inputagama; 
         $usrprofile->goldarah      = $request->inputgoldarah; 
         $usrprofile->headgrp       = $request->inputheadgrp;
-        // $usrprofile->save();
-        dd($usrprofile);
-        exit;
+        $usrprofile->save();
+        // dd($usrprofile);
+        // exit;
 
 
-        Usradditional::where('user_id', '=', $request->inputuser_id)
+        Usradditional::where('user_id', '=', $tbluser->user_id)
         ->update(['value7' => '']);
 
         $j=0;
@@ -664,19 +670,20 @@ DB::beginTransaction();
         foreach($request->inputmedsospri as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 $data->sseq = $values;
                 $data->desc = $request->inputmedsosakunpri[$j];
                 $data->value7 = '';
                 $data->save();
+                // dd($data);
             }
         }
         $j=0;
@@ -684,13 +691,13 @@ DB::beginTransaction();
         foreach($request->inputmedsosush as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 $data->sseq = $values;
@@ -705,13 +712,13 @@ DB::beginTransaction();
         foreach($request->inputkeluargastatus as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 $data->sseq = $values;
@@ -732,13 +739,13 @@ DB::beginTransaction();
         foreach($request->inputstatusush as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -759,13 +766,13 @@ DB::beginTransaction();
         foreach($request->inputstatusush as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -787,13 +794,13 @@ DB::beginTransaction();
         foreach($request->inputNamaarea as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $values)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $values;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -814,13 +821,13 @@ DB::beginTransaction();
         foreach($request->inputPakanJualC as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -841,13 +848,13 @@ DB::beginTransaction();
         foreach($request->inputbisnislain as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -868,13 +875,13 @@ DB::beginTransaction();
         foreach($request->inputbisnislain as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -895,13 +902,13 @@ DB::beginTransaction();
         foreach($request->inputasetpribadi as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -924,13 +931,13 @@ DB::beginTransaction();
         foreach($request->inputmodalid as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $values;
                 // $data->sseq = $values;
@@ -952,13 +959,13 @@ DB::beginTransaction();
         foreach($request->inputmodalbankpersent as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 // $data->sseq = $values;
@@ -979,13 +986,13 @@ DB::beginTransaction();
         foreach($request->inputJaminanid as $key => $values) {
             if ($values != ""){
                 $j++;
-                $data = Usradditional::where('user_id', '=', $request->inputuser_id)
+                $data = Usradditional::where('user_id', '=', $tbluser->user_id)
                 ->where('type', '=', $type)
                 ->where('seq', '=', $j)->first();
                 if (!$data){
                     $data = new Usradditional;
                 }
-                $data->user_id = $request->inputuser_id;
+                $data->user_id = $tbluser->user_id;
                 $data->type = $type;
                 $data->seq = $j;
                 $data->sseq = $values;
@@ -1001,14 +1008,16 @@ DB::beginTransaction();
             }
         }
 
-        DB::table('usr_additional')->where('user_id', '=', $request->inputuser_id)
+        DB::table('usr_additional')->where('user_id', '=', $tbluser->user_id)
         ->where('value7', '=', 'X')->delete();
-
-        DB::commit();
+        DB::rollback();
+        // DB::commit();
     } catch (\Exception $e) {
         DB::rollback();
+        dd($e);
         // something went wrong
     }
+    return redirect('/info1');
 
     /*
         if ($imgphoto!=""){

@@ -314,7 +314,7 @@ $total = 134;
                      $changed_time  = $listdata[$i]->changed_time;
                      ?>
                   <tr>
-                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$customer_id}}">{{$customer_id}}<a></td>
+                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$uid}}">{{$customer_id}}<a></td>
                      <td id="tdpos">{{$customer_name}}</td>
                      <td id="tdpos">{{$bu}}</td>
                      <td id="tdpos">{{$created_by}}</td>
@@ -324,11 +324,6 @@ $total = 134;
                      <td id="tdpos">
 
                         <div>
-
-
-
-
-
                         <!-- <a href="/detaildelete/{{$customer_id}}"> -->
                         <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}" style="
                             border-radius: 50%;

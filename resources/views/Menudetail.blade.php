@@ -639,130 +639,79 @@ if ($pos=0 or $pos=1){
 <body>
 <body class="hold-transition sidebar-mini">
 
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
-   <!-- Left navbar links -->
-   <!-- <div class="atas"> -->
-	<ul class="navbar-nav">
-	
-		<li class="nav-item d-none d-sm-inline-block" >
-			<a href="/dashboard1" class="nav-link" id="fon_24_wh">Dashboard/</a>
-		</li>
-		<li class="nav-item d-none d-sm-inline-block" >
-			<a href="#" class="nav-link" id="fon_24_wh">Customer Information/</a>
-		</li>
+	<!-- Navbar -->
+	<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+		<!-- Left navbar links -->
+		<!-- <div class="atas"> -->
+		<ul class="navbar-nav">
 		
-		<li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-			<a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
-		</li>
+			<li class="nav-item d-none d-sm-inline-block" >
+				<a href="/dashboard1" class="nav-link" id="fon_24_wh">Dashboard/</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block" >
+				<a href="#" class="nav-link" id="fon_24_wh">Customer Information/</a>
+			</li>
+			
+			<li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
+				<a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
+			</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
+				<span id="fon_24_wh">{{$user->fullname}}</span>
+				<div class="image" style="
+					margin-right: 59px;
+					margin-left: 10px;
+				">
+					<img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+				</div>
+			</div>
 		</ul>
-		<ul class="navbar-nav ml-auto">
-		<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-			<span id="fon_24_wh">{{$user->fullname}}</span>
-			<div class="image" style="
-				margin-right: 59px;
-				margin-left: 10px;
-			">
-				<img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-			</div>
+		<div class="atas1">
+			<div class="card-body">
+				<div class="row" id="case1"> 
+				
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-2">
+						<div class="form-group row">
+								<button class="form-control cmd" id="pil1" onclick="myFunction(1)">Data Pribadi</button>
+								<button class="form-control cmd2 collapse" id="pil11" onclick="myFunction(1)">Data Pribadi</button>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group row">
+								<button class="form-control cmd" id="pil12" onclick="myFunction(2)">Data Usaha</button>
+								<button class="form-control cmd2 collapse" id="pil2" onclick="myFunction(2)">Data Usaha</button>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group row">
+								<button class="form-control cmd" id="pil13" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
+								<button class="form-control cmd2 collapse" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group row">
+							<button class="form-control cmd" id="pil14" onclick="myFunction(4)">Data Jaminan</button>
+								<button class="form-control cmd2 collapse" id="pil4" onclick="myFunction(4)">Data Jaminan</button>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group row">
+						<button class="form-control cmd" id="pil15" onclick="myFunction(5)">Karakteristik</button>
+								<button class="form-control cmd2 collapse" id="pil5" onclick="myFunction(5)">Karakteristik</button>
+						</div>
+					</div>
+					<div class="col-md-1">
+					</div>
+				</div>
 		</div>
-	</ul>
-	<div class="atas1">
-	   
+	</nav>
 
-
-
-
-		<div class="card-body">
-			<div class="row" id="case1"> 
-			
-				<div class="col-md-1">
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-							<button class="form-control cmd" id="pil1" onclick="myFunction(1)">Data Pribadi</button>
-							<button class="form-control cmd2 collapse" id="pil11" onclick="myFunction(1)">Data Pribadi</button>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-							<button class="form-control cmd" id="pil12" onclick="myFunction(2)">Data Usaha</button>
-							<button class="form-control cmd2 collapse" id="pil2" onclick="myFunction(2)">Data Usaha</button>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-							<button class="form-control cmd" id="pil13" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
-							<button class="form-control cmd2 collapse" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-						<button class="form-control cmd" id="pil14" onclick="myFunction(4)">Data Jaminan</button>
-							<button class="form-control cmd2 collapse" id="pil4" onclick="myFunction(4)">Data Jaminan</button>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-					<button class="form-control cmd" id="pil15" onclick="myFunction(5)">Karakteristik</button>
-							<button class="form-control cmd2 collapse" id="pil5" onclick="myFunction(5)">Karakteristik</button>
-					</div>
-				</div>
-				<div class="col-md-1">
-				</div>
-			</div>
-
-			
-
-
-
-			<!-- 
-			<svg class="Rectangle_332" >
-				<rect id="Rectangle_332" rx="25" ry="25" x="0" y="0" width="202" height="50" >
-				</rect>
-			</svg>
-
-			<a onclick="myFunction(1)"  id="Data_Pribadi" >
-				<span>Data Pribadi</span>
-			</a>
-         
-
-			<svg class="Rectangle_332_wj">
-				<rect id="Rectangle_332_wj" rx="25" ry="25" x="0" y="0" width="202" height="50">
-				</rect>
-			</svg>
-			<a onclick="myFunction(2)" id="Data_Usaha">
-				<span>Data Usaha</span>
-			</a>
-			<svg class="Rectangle_332_yl">
-				<rect id="Rectangle_332_yl" rx="25" ry="25" x="0" y="0" width="202" height="50">
-				</rect>
-			</svg>
-			<a onclick="myFunction(3)"  id="Data_Kepemilikan">
-				<span>Data Kepemilikan</span>
-			</a>
-			<svg class="Rectangle_332_zw">
-				<rect id="Rectangle_332_zw" rx="25" ry="25" x="0" y="0" width="202" height="50">
-				</rect>
-			</svg>
-			<a onclick="myFunction(4)" id="Data_Jaminan">
-				<span>Data Jaminan</span>
-			</a>
-			<svg class="Rectangle_332_">
-				<rect id="Rectangle_332_" rx="25" ry="25" x="0" y="0" width="202" height="50">
-				</rect>
-			</svg>
-			<a onclick="myFunction(5)" id="Karakteristik">
-				<span>Karakteristik</span>
-			</a> -->
-   </div>
-</nav>
-
-<!-- Main Sidebar Container -->
-<div class="wrapper awal" style="
-	top: 150px;">
-		<form method="post" action="/detail1/save" enctype="multipart/form-data">
-			{{ csrf_field() }}
+	<!-- Main Sidebar Container -->
+	<div class="formwrapper awal" style="
+		top: 150px;">
 			<?php 
 				$inputuid           = $tbluser->uid;
 				$inputuser_id       = $tbluser->user_id; 
@@ -803,12 +752,7 @@ if ($pos=0 or $pos=1){
 				$inputlastchangeby  = $tbluser->lastchangeby; 
 				$inputldap          = $tbluser->ldap; 
 				$inputinactive      = $tbluser->inactive;
-
-
-
-			
-			
-			// foreach ($usr_profile as $key => $profile) {
+				// foreach ($usr_profile as $key => $profile) {
 				// $inputuser_id              = $data_profile->user_id; 
 				$inputkodesap              = $data_profile->kodesap; 
 				$inputnoktp                = $data_profile->noktp; 
@@ -854,361 +798,123 @@ if ($pos=0 or $pos=1){
 				$inputagama                = $data_profile->agama; 
 				$inputgoldarah             = $data_profile->goldarah; 
 				$inputheadgrp              = $data_profile->headgrp;
+				echo $id;
 			// }
 			?>
 			
+			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
+				{{ csrf_field() }}
+			
+				<div class="card-body">
+					<ul class="nav nav-tabs" id="custom-content-below-tab" style="display: none;"role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="custom-content-below-settings-tab-1" data-toggle="pill" href="#tab1" role="tab" aria-controls="custom-content-below-home" aria-selected="false">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="custom-content-below-settings-tab-2" data-toggle="pill" href="#tab2" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="custom-content-below-settings-tab-3" data-toggle="pill" href="#tab3" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Messages</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="custom-content-below-settings-tab-4" data-toggle="pill" href="#tab4" role="tab" aria-controls="custom-content-below-settings" aria-selected="true">Settings</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="custom-content-below-settings-tab-5" data-toggle="pill" href="#tab5" role="tab" aria-controls="custom-content-below-settings" aria-selected="true">Settings</a>
+						</li>
+					</ul>
+					<div class="tab-content" id="custom-content-below-tabContent">
+						<input type="hidden" id="inputuid" name="inputuid" value="{{$inputuid}}">
+						<input type="hidden" id="inputuserid" name="inputuserid" value="{{$inputuser_id}}">
+						<div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
 
-			<input type="hidden" id="inputuid" name="inputuid" value="{{$inputuid}}">
-			<input type="hidden" id="inputuserid" name="inputuserid" value="{{$inputuser_id}}">
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Informasi Personal: {{$id}}</h3>
 
-			<div class="card-body">
-            
-            <ul class="nav nav-tabs" id="custom-content-below-tab" style="display: none;"role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="custom-content-below-settings-tab-1" data-toggle="pill" href="#tab1" role="tab" aria-controls="custom-content-below-home" aria-selected="false">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-settings-tab-2" data-toggle="pill" href="#tab2" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-settings-tab-3" data-toggle="pill" href="#tab3" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Messages</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-settings-tab-4" data-toggle="pill" href="#tab4" role="tab" aria-controls="custom-content-below-settings" aria-selected="true">Settings</a>
-              </li>
-				  <li class="nav-item">
-                <a class="nav-link" id="custom-content-below-settings-tab-5" data-toggle="pill" href="#tab5" role="tab" aria-controls="custom-content-below-settings" aria-selected="true">Settings</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="custom-content-below-tabContent">
-              <div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Informasi Personal: {{$id}}</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-4">
-										<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
-											border-radius: 200px;
-    										border-color: black;"
-										>  
-										<input type="file" name="files" id="files">
-										<span id='val'></span>
-										<span id='button'>Rubah Foto Profil</span>
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
-									<!-- /.col -->
-									<div class="col-md-8">
-										<div class="form-group row">
-											<label for="inputfullname" class="col-sm-2 col-form-label">Nama Lengkap</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputnamaalias" class="col-sm-2 col-form-label">Alias</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}">
-											</div>
-										</div>
-										
-
-										<div class="form-group row">
-											<label for="inputbirthdate" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-											<div class="col-sm-10">
-												<!-- <div class="input-group-prepend">
-													<span class="input-group-text">
-														<i class="far fa-calendar-alt"></i>
-													</span>
-												</div> -->
-												<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputbirthplace" class="col-sm-2 col-form-label">Tempat Lahir</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label for="inputnoktp" class="col-sm-2 col-form-label">No KTP</label>
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputagama" class="col-sm-2 col-form-label">Agama</label>
-											<div class="col-sm-4">
-												<select class="form-control" id="inputagama" name="inputagama"> 
-												<?php 
-												foreach ($tblagama as $key => $value) {
-													?>
-													<option value="{{$value->id}}" <?php echo ($value->id == $inputagama?'selected':'');?>>{{$value->agama}}</option>
-													<?php
-												}
-												?>
-												</select>
-
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label for="inputgoldarah" class="col-sm-2 col-form-label">Golongan Darah</label>
-											<div class="col-sm-4">
-
-												<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
-												<?php 
-												foreach ($tbldarah  as $key => $value) {
-													?>
-													<option value="{{$value->id}}" <?php echo ($value->id == $inputgoldarah?'selected':'');?>>{{$value->darah}}</option>
-													<?php
-												}
-												?>
-												</select>
-
-											</div>
-										</div>
-									</div>
-									<!-- /.col -->
 								</div>
-								<!-- /.row -->
-							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Alamat KTP</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
-											<div class="col-sm-9">
-												<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ...">{{$inputalmtktp}}</textarea>
-											</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-4">
+											<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
+												border-radius: 200px;
+													border-color: black;
+											">  
+											<input type="file" name="files" id="files">
+											<span id='val'></span>
+											<span id='button'>Rubah Foto Profil</span>
 										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group row">
-										
-											<label for="inputkelktp" class="col-sm-3 col-form-label">Kelurahan</label>
-											
-											<div class="col-sm-9">
-												<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
-												onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"
-											>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkecktp" class="col-sm-3 col-form-label">Kecamatan</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecktp1" name="inputkecktp1" placeholder="Kecamatan" value="{{$inputkecktp}}" disabled>
-												<input type="hidden" class="form-control" id="inputkecktp" name="inputkecktp" placeholder="Kecamatan" value="{{$inputkecktp}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkotaktp" class="col-sm-3 col-form-label">Kabupaten</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotaktp1" name="inputkotaktp1" placeholder="Kabupaten" value="{{$inputkotaktp}}" disabled>
-												<input type="hidden" class="form-control" id="inputkotaktp" name="inputkotaktp" placeholder="Kabupaten" value="{{$inputkotaktp}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputpropktp" class="col-sm-3 col-form-label">Provinsi</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropktp1" name="inputpropktp1" placeholder="Provinsi" value={{$inputpropktp}} disabled>
-												<input type="hidden" class="form-control" id="inputpropktp" name="inputpropktp" placeholder="Provinsi" value={{$inputpropktp}}>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkdposktp" class="col-sm-3 col-form-label">Kode Pos</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposktp1" name="inputkdposktp1" placeholder="Kode Pos" value="{{$inputkdposktp}}" disabled>
-												<input type="hidden" class="form-control" id="inputkdposktp" name="inputkdposktp" placeholder="Kode Pos" value="{{$inputkdposktp}}">
-											</div>
-										</div>
-										
-									</div>
-									<!-- /.col -->
-								</div>
-								<!-- /.row -->
-							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-						<div class="card card-default">
-							<div class="card-header">
-								<div>
-									<h3 class="card-title font36">Alamat Rumah</h3>
-									<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
-									Duplicat
-								</div>
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
-											<div class="col-sm-9">
-												<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-												<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}">{{$inputalmtrmh}}</textarea>
-											</div>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecrmh1" name="inputkecrmh1" placeholder="Kecamatan" value="{{$inputkecrmh}}" disabled>
-												<input type="hidden" class="form-control" id="inputkecrmh" name="inputkecrmh" placeholder="Kecamatan" value="{{$inputkecrmh}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkotarmh" class="col-sm-3 col-form-label">Kabupaten</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotarmh1" name="inputkotarmh1" placeholder="Kabupaten" value="{{$inputkotarmh}}" disabled>
-												<input type="hidden" class="form-control" id="inputkotarmh" name="inputkotarmh" placeholder="Kabupaten" value="{{$inputkotarmh}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputproprmh1" name="inputproprmh1" placeholder="Provinsi" value="{{$inputproprmh}}" disabled>
-												<input type="hidden" class="form-control" id="inputproprmh" name="inputproprmh" placeholder="Provinsi" value="{{$inputproprmh}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkdposrmh" class="col-sm-3 col-form-label">Kode Pos</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposrmh1" name="inputkdposrmh1" placeholder="Kode Pos" value="{{$inputkdposrmh}}" disabled>
-												<input type="hidden" class="form-control" id="inputkdposrmh" name="inputkdposrmh" placeholder="Kode Pos" value="{{$inputkdposrmh}}">
-											</div>
-										</div>
-										
-									</div>
-									<!-- /.col -->
-								</div>
-								<!-- /.row -->
-							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Kontak</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputtlppri" class="col-sm-3 col-form-label">No Telp.</label>
-											<div class="col-sm-9">
-												<div class="input-group">
-													<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}">
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label for="inputfaxpri" class="col-sm-3 col-form-label">Fax.</label>
-											<div class="col-sm-9">
-												<div class="input-group">
-													<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputfaxpri}}">
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputhppri" class="col-sm-3 col-form-label">No HP</label>
-											<div class="col-sm-9">
-												<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
-												<div class="input-group">
-													<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}">
-												</div>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputemailpri" class="col-sm-3 col-form-label">Email</label>
-											<div class="col-sm-9">
-												<input type="email" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="{{$inputemailpri}}">
-											</div>
-										</div>
-									</div>
-									<!-- /.col -->
-								</div>
-								<!-- /.row -->
-							</div>
-
-
-								<div class="card-body" id="inpmedsospri">
-									<?php 
-									$i=-1;
-									foreach ($data_additional as $key => $data) {
-									if ($data->type == 'MEDSOS'){
-									$i++;
-									?>
-									<div class="row" id="rowsmedsospri{{$i}}">
-										<div class="col-md-6">
+										<!-- /.col -->
+										<div class="col-md-8">
 											<div class="form-group row">
-												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
-												<div class="col-sm-9">
-													
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]"> 
+												<label for="inputfullname" class="col-sm-2 col-form-label">Nama Lengkap</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputnamaalias" class="col-sm-2 col-form-label">Alias</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}">
+												</div>
+											</div>
+											
+
+											<div class="form-group row">
+												<label for="inputbirthdate" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+												<div class="col-sm-10">
+													<!-- <div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="far fa-calendar-alt"></i>
+														</span>
+													</div> -->
+													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputbirthplace" class="col-sm-2 col-form-label">Tempat Lahir</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label for="inputnoktp" class="col-sm-2 col-form-label">No KTP</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputagama" class="col-sm-2 col-form-label">Agama</label>
+												<div class="col-sm-4">
+													<select class="form-control" id="inputagama" name="inputagama"> 
 													<?php 
-													foreach ($tblmedsos as $key => $value) {
+													foreach ($tblagama as $key => $value) {
+														?>
+														<option value="{{$value->id}}" <?php echo ($value->id == $inputagama?'selected':'');?>>{{$value->agama}}</option>
+														<?php
+													}
 													?>
-														<option value="{{$value->seq}}" <?php echo ($value->seq == $data->sseq?'selected':'');?>>{{$value->desc}}</option>
-													<?php
+													</select>
+
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label for="inputgoldarah" class="col-sm-2 col-form-label">Golongan Darah</label>
+												<div class="col-sm-4">
+
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
+													<?php 
+													foreach ($tbldarah  as $key => $value) {
+														?>
+														<option value="{{$value->id}}" <?php echo ($value->id == $inputgoldarah?'selected':'');?>>{{$value->darah}}</option>
+														<?php
 													}
 													?>
 													</select>
@@ -1216,254 +922,497 @@ if ($pos=0 or $pos=1){
 												</div>
 											</div>
 										</div>
-										<div class="col-md-5">
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
+							</div>
+
+							
+
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Alamat KTP</h3>
+
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
 											<div class="form-group row">
-												<div class="col-sm-12">
-													<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
-												</div>
-											</div>
-										</div>
-										<div class="col-md-1">
-											<div class="form-group row">
-												<div class="col-sm-12">
-													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button> -->
+												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
+												<div class="col-sm-9">
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ...">{{$inputalmtktp}}</textarea>
 												</div>
 											</div>
 										</div>
 										<!-- /.col -->
-									</div>
-									<?php 
-									}
-									}
-									?>
-
-									<!-- /.row -->
-								</div>
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
-										</div>
-									</div>
-								</div>
-							
-
-							<div class="card-footer">
-								
-							</div>
-						</div>
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Data Keluarga</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<!-- <div class="col-md-1">
-										<div class="form-group row kotakexcel">
-											<div for="inputbtkush" class="col-sm-12 col-form-label font_21" id="">No</div>
+										<div class="col-md-6">
+											<div class="form-group row">
+											
+												<label for="inputkelktp" class="col-sm-3 col-form-label">Kelurahan</label>
+												
+												<div class="col-sm-9">
+													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
+													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"
+												>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkecktp" class="col-sm-3 col-form-label">Kecamatan</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkecktp1" placeholder="Kecamatan" value="{{$inputkecktp}}" disabled>
+													<input type="hidden" class="form-control" id="inputkecktp" name="inputkecktp" placeholder="Kecamatan" value="{{$inputkecktp}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkotaktp" class="col-sm-3 col-form-label">Kabupaten</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkotaktp1" placeholder="Kabupaten" value="{{$inputkotaktp}}" disabled>
+													<input type="hidden" class="form-control" id="inputkotaktp" name="inputkotaktp" placeholder="Kabupaten" value="{{$inputkotaktp}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputpropktp" class="col-sm-3 col-form-label">Provinsi</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputpropktp1" placeholder="Provinsi" value="{{$inputpropktp}}" disabled>
+													<input type="hidden" class="form-control" id="inputpropktp" name="inputpropktp" placeholder="Provinsi" value="{{$inputpropktp}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkdposktp" class="col-sm-3 col-form-label">Kode Pos</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkdposktp1" placeholder="Kode Pos" value="{{$inputkdposktp}}" disabled>
+													<input type="hidden" class="form-control" id="inputkdposktp" name="inputkdposktp" placeholder="Kode Pos" value="{{$inputkdposktp}}">
+												</div>
+											</div>
 											
 										</div>
-									</div> -->
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputtipebadanhukum" class="col-sm-12 col-form-label font_21">Nama</label>
-										</div>
+										<!-- /.col -->
 									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputnamausaha" class="col-sm-12 col-form-label font_21">Tempat Lahir</label>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Tanggal<br>lahir</label>
-										</div>
-									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
+							</div>
+							
 
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Jenis<br>Kelamin</label>
-										</div>
+							<div class="card card-default">
+								<div class="card-header">
+									<div>
+										<h3 class="card-title font36">Alamat Rumah</h3>
+										<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
+										Duplicat
 									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Status</label>
-										</div>
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel">
-											<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Pendidikan</label>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
+												<div class="col-sm-9">
+													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
+													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}">{{$inputalmtrmh}}</textarea>
+												</div>
+											</div>
+										</div>
+										<!-- /.col -->
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkecrmh1" placeholder="Kecamatan" value="{{$inputkecrmh}}" disabled>
+													<input type="hidden" class="form-control" id="inputkecrmh" name="inputkecrmh" placeholder="Kecamatan" value="{{$inputkecrmh}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkotarmh" class="col-sm-3 col-form-label">Kabupaten</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkotarmh1" placeholder="Kabupaten" value="{{$inputkotarmh}}" disabled>
+													<input type="hidden" class="form-control" id="inputkotarmh" name="inputkotarmh" placeholder="Kabupaten" value="{{$inputkotarmh}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputproprmh1"  placeholder="Provinsi" value="{{$inputproprmh}}" disabled>
+													<input type="hidden" class="form-control" id="inputproprmh" name="inputproprmh" placeholder="Provinsi" value="{{$inputproprmh}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkdposrmh" class="col-sm-3 col-form-label">Kode Pos</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkdposrmh1" placeholder="Kode Pos" value="{{$inputkdposrmh}}" disabled>
+													<input type="hidden" class="form-control" id="inputkdposrmh" name="inputkdposrmh" placeholder="Kode Pos" value="{{$inputkdposrmh}}">
+												</div>
+											</div>
+											
+										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
+							</div>
+
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Kontak</h3>
+
+									<div class="card-tools">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputtlppri" class="col-sm-3 col-form-label">No Telp.</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}">
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputfaxpri" class="col-sm-3 col-form-label">Fax.</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputfaxpri}}">
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<!-- /.col -->
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputhppri" class="col-sm-3 col-form-label">No HP</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}">
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputemailpri" class="col-sm-3 col-form-label">Email</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="{{$inputemailpri}}" onchange="myemail(this)" >
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="card card-default">
+								<div class="card-body" id="inpmedsospri">
+										<?php 
+										$i=-1;
+										foreach ($data_additional as $key => $data) {
+										if ($data->type == 'MEDSOS'){
+										$i++;
+										?>
+										<div class="row" id="rowsmedsospri{{$i}}">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
+													<div class="col-sm-9">
+														
+														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]"> 
+														<?php 
+														foreach ($tblmedsos as $key => $value) {
+														?>
+															<option value="{{$value->seq}}" <?php echo ($value->seq == $data->sseq?'selected':'');?>>{{$value->desc}}</option>
+														<?php
+														}
+														?>
+														</select>
 
-								<?php 
-								$txt='<option value="">-</option>';
-								foreach ($tblhubkelga as $key => $value) {
-									$txt.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
-								}
-								$txt1="";
-								foreach ($tblsex as $key => $value) {
-									$txt1.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
-								}
-								$txt2="";
-								foreach ($tblsekolah as $key => $value) {
-									$txt2.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
-								}
-								?>
-								<input type="hidden" id="opthubkelga" value="{{$txt}}">
-								<input type="hidden" id="optsex" value="{{$txt1}}">
-								<input type="hidden" id="optsekolah" value="{{$txt2}}">
-							<div class="card-body"  id="inpkelga">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-1">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button> -->
+													</div>
+												</div>
+											</div>
+											<!-- /.col -->
+										</div>
+										<?php 
+										}
+										}
+										?>
+
+										<!-- /.row -->
+									</div>
+									<div class="col-md-1">
+										<div class="form-group row ">
+											<div class="col-sm-12">
+												<button type="button" style="height:50px;width:50px" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
+											</div>
+										</div>
+									</div>
+								
+
+								<div class="card-footer">
+									
+								</div>
+							</div>
 							
-								<?php 
-								$i=-1;
-								foreach ($data_additional as $key => $data) {
-								if ($data->type == 'DATA_KELUARGA'){
-								$i++;
-								?>
-								<!-- <div class="row" id="rowkelga{{$i}}"> -->
-								<div class="row" id="rowkelga">
-									<!-- <div class="col-md-1">
-										<div class="form-group row kotakexcel_kosong">
-											<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$i}}</label>
-										</div>
-									</div> -->
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat" value="{{$data->value2}}" disabled>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tempat" value="{{$data->value3}}" disabled>
-										</div>
-									</div>
 
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargasex[]" name="inputkeluargasex[]" disabled> 
-											<?php 
-											foreach ($tblsex as $key => $value) {
-											?>
-												<option value="{{$value->info}}" <?php echo ($value->info == $data->value4?'selected':'');?>>{{$value->desc}}</option>
-											<?php
-											}
-											?>
-											</select>
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Data Keluarga</h3>
 
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<!-- <div class="col-md-1">
+											<div class="form-group row kotakexcel">
+												<div for="inputbtkush" class="col-sm-12 col-form-label font_21" id="">No</div>
+												
+											</div>
+										</div> -->
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label font_21">Nama</label>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputnamausaha" class="col-sm-12 col-form-label font_21">Tempat Lahir</label>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Tanggal<br>lahir</label>
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Jenis<br>Kelamin</label>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Status</label>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel">
+												<label for="inputlamausaha" class="col-sm-12 col-form-label font_21">Pendidikan</label>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargastatus[]" name="inputkeluargastatus[]" disabled> 
-											<?php 
-											foreach ($tblhubkelga as $key => $value) {
-											?>
-												<option value="{{$value->seq}}" <?php echo ($value->seq == $data->seq?'selected':'');?>>{{$value->desc}}</option>
-											<?php
-											}
-											?>
-											</select>
-										</div>
-									</div>
+								</div>
 
-									<div class="col-md-2">
-										<div class="form-group row kotakexcel_kosong">
-											<div class="col-sm-9">
-												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga"> 
+									<?php 
+									$txt='<option value="">-</option>';
+									foreach ($tblhubkelga as $key => $value) {
+										$txt.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
+									}
+									$txt1="";
+									foreach ($tblsex as $key => $value) {
+										$txt1.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
+									}
+									$txt2="";
+									foreach ($tblsekolah as $key => $value) {
+										$txt2.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
+									}
+									?>
+									<input type="hidden" id="opthubkelga" value="{{$txt}}">
+									<input type="hidden" id="optsex" value="{{$txt1}}">
+									<input type="hidden" id="optsekolah" value="{{$txt2}}">
+								<div class="card-body"  id="inpkelga">
+								
+									<?php 
+									$i=-1;
+									foreach ($data_additional as $key => $data) {
+									if ($data->type == 'DATA_KELUARGA'){
+									$i++;
+									?>
+									<!-- <div class="row" id="rowkelga{{$i}}"> -->
+									<div class="row" id="rowkelga">
+										<!-- <div class="col-md-1">
+											<div class="form-group row kotakexcel_kosong">
+												<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$i}}</label>
+											</div>
+										</div> -->
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputkeluargatempat1[]" placeholder="Tempat" value="{{$data->value2}}" disabled>
+												<input type="hidden" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat" value="{{$data->value2}}">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputkeluargatanggallahir1[]" placeholder="Tempat" value="{{$data->value3}}" disabled>
+												<input type="hidden" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tempat" value="{{$data->value3}}">
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="hidden" class="form-control" id="inputkeluargasex[]" name="inputkeluargasex[]" placeholder="Tempat" value="{{$data->value4}}">
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargasex1[]" disabled> 
 												<?php 
-												foreach ($tblsekolah as $key => $value) {
+												foreach ($tblsex as $key => $value) {
 												?>
-													<option value="{{$value->info}}" <?php echo ($value->info == $data->value6?'selected':'');?>>{{$value->desc}}</option>
+													<option value="{{$value->info}}" <?php echo ($value->info == $data->value4?'selected':'');?>>{{$value->desc}}</option>
+												<?php
+												}
+												?>
+												</select>
+
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="hidden" class="form-control" id="inputkeluargastatus[]" name="inputkeluargastatus[]" placeholder="Tempat" value="{{$data->seq}}">
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargastatus1[]" disabled> 
+												<?php 
+												foreach ($tblhubkelga as $key => $value) {
+												?>
+													<option value="{{$value->seq}}" <?php echo ($value->seq == $data->seq?'selected':'');?>>{{$value->desc}}</option>
 												<?php
 												}
 												?>
 												</select>
 											</div>
-											<div class="col-sm-2">
-												<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove3">X</button> -->
-											</div>
 										</div>
-									</div>
-								</div>
-								<?php
-									}
-								}
-								?>
-								<!-- /.row -->
-							</div>
-							<div class="col-md-1">
-								<div class="form-group row ">
-									<div class="col-sm-12">
-										<button type="button" style="height:50px;width:50px" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
-									</div>
-								</div>
-							</div>
-							
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
 
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Lain - lain</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group row">
-											<label for="inputhobby" class="col-sm-3 col-form-label">Hobby</label>
-											<div class="col-sm-9">
-												<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
-												<div class="input-group">
-												<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ...">{{$inputhobby}}</textarea>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-9">
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga"> 
+													<?php 
+													foreach ($tblsekolah as $key => $value) {
+													?>
+														<option value="{{$value->info}}" <?php echo ($value->info == $data->value6?'selected':'');?>>{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>
+												</div>
+												<div class="col-sm-2">
+													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove3">X</button> -->
 												</div>
 											</div>
 										</div>
-
-										
-
 									</div>
-									<!-- /.col -->
-									
-									<!-- /.col -->
+									<?php
+										}
+									}
+									?>
+									<!-- /.row -->
 								</div>
-								<!-- /.row -->
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button" style="height:50px;width:50px" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
+										</div>
+									</div>
+								</div>
+								
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
 							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
+
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Lain - lain</h3>
+
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group row">
+												<label for="inputhobby" class="col-sm-3 col-form-label">Hobby</label>
+												<div class="col-sm-9">
+													<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
+													<div class="input-group">
+													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ...">{{$inputhobby}}</textarea>
+													</div>
+												</div>
+											</div>
+
+											
+
+										</div>
+										<!-- /.col -->
+										
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
 							</div>
+
 						</div>
 
-              </div>
-              <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+					
 
-						<div class="card card-default">
+						<div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+
+							<div class="card card-default">
 								<div class="card-header">
 									<h3 class="card-title font36">Informasi Usaha</h3>
 
@@ -1587,7 +1536,8 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-5">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush[]" name="inputstatusush[]" style="color:white;height: 60px;background: rgba(51,122,183,1);" disabled> 
+													<input type="hidden" class="form-control" id="inputstatusush[]" name="inputstatusush[]" placeholder="Tempat" value="{{$data->desc}}">
+													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush1[]" style="color:white;height: 60px;background: rgba(51,122,183,1);" disabled> 
 													<?php 
 													foreach ($tabelstatus_usaha as $key => $value) {
 													?>
@@ -1629,82 +1579,82 @@ if ($pos=0 or $pos=1){
 
 
 
-							
+									
 
 
 
 							<div class="card card-default">
-							<div class="card-header">
-								<div>
-									<h3 class="card-title font36">Alamat usaha</h3>
-									<button type="button" style="height:50px;width:50px" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
-									Duplicat
-								</div>
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
-											<div class="col-sm-9">
-												<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-												<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ...">{{$inputalmtush}}</textarea>
-											</div>
-										</div>
+								<div class="card-header">
+									<div>
+										<h3 class="card-title font36">Alamat usaha</h3>
+										<button type="button" style="height:50px;width:50px" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
+										Duplicat
 									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecush1" name="inputkecush1" placeholder="Kecamatan" value="{{$inputkecush}}" disabled>
-												<input type="hidden" class="form-control" id="inputkecush" name="inputkecush" placeholder="Kecamatan" value="{{$inputkecush}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkotaush" class="col-sm-3 col-form-label">Kabupaten</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotaush1" name="inputkotaush1" placeholder="Kabupaten" value="{{$inputkotaush}}" disabled>
-												<input type="hidden" class="form-control" id="inputkotaush" name="inputkotaush" placeholder="Kabupaten" value="{{$inputkotaush}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropush1" name="inputpropush1" placeholder="Provinsi" value="{{$inputpropush}}" disabled>
-												<input type="hidden" class="form-control" id="inputpropush" name="inputpropush" placeholder="Provinsi" value="{{$inputpropush}}">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="inputkdposush" class="col-sm-3 col-form-label">Kode Pos</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposush1" name="inputkdposush1" placeholder="Kode Pos" value="{{$inputkdposush}}" disabled>
-												<input type="hidden" class="form-control" id="inputkdposush" name="inputkdposush" placeholder="Kode Pos" value="{{$inputkdposush}}">
-											</div>
-										</div>
-										
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
-									<!-- /.col -->
 								</div>
-								<!-- /.row -->
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
+												<div class="col-sm-9">
+													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
+													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ...">{{$inputalmtush}}</textarea>
+												</div>
+											</div>
+										</div>
+										<!-- /.col -->
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkecush1"  placeholder="Kecamatan" value="{{$inputkecush}}" disabled>
+													<input type="hidden" class="form-control" id="inputkecush" name="inputkecush" placeholder="Kecamatan" value="{{$inputkecush}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkotaush" class="col-sm-3 col-form-label">Kabupaten</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkotaush1" placeholder="Kabupaten" value="{{$inputkotaush}}" disabled>
+													<input type="hidden" class="form-control" id="inputkotaush" name="inputkotaush" placeholder="Kabupaten" value="{{$inputkotaush}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputpropush1" placeholder="Provinsi" value="{{$inputpropush}}" disabled>
+													<input type="hidden" class="form-control" id="inputpropush" name="inputpropush" placeholder="Provinsi" value="{{$inputpropush}}">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="inputkdposush" class="col-sm-3 col-form-label">Kode Pos</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkdposush1"  placeholder="Kode Pos" value="{{$inputkdposush}}" disabled>
+													<input type="hidden" class="form-control" id="inputkdposush" name="inputkdposush" placeholder="Kode Pos" value="{{$inputkdposush}}">
+												</div>
+											</div>
+											
+										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
 							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
 
 
 
@@ -1748,6 +1698,7 @@ if ($pos=0 or $pos=1){
 									</div>
 								</div>
 								<!-- /.card-header -->
+								
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -1759,7 +1710,7 @@ if ($pos=0 or $pos=1){
 													</div>
 												</div>
 											</div>
-
+											
 											<div class="form-group row">
 												<label for="inputfaxush" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
@@ -1770,6 +1721,9 @@ if ($pos=0 or $pos=1){
 											</div>
 										</div>
 										<!-- /.col -->
+
+									
+
 										<div class="col-md-6">
 											<div class="form-group row">
 												<label for="inputhpush" class="col-sm-3 col-form-label">No HP</label>
@@ -1779,10 +1733,13 @@ if ($pos=0 or $pos=1){
 													</div>
 												</div>
 											</div>
+											
+
 											<div class="form-group row">
 												<label for="inputemailush" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
-													<input type="email" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}">
+												<!-- tutup -->
+													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" />
 												</div>
 											</div>
 										</div>
@@ -1791,7 +1748,8 @@ if ($pos=0 or $pos=1){
 									<!-- /.row -->
 								</div>
 
-
+<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
+				{{ csrf_field() }}
 								<?php 
 								$txt='<option value="">-</option>';
 								foreach ($tblmedsos as $key => $value) {
@@ -1866,6 +1824,8 @@ if ($pos=0 or $pos=1){
 									the plugin. -->
 								</div>
 							</div>
+
+							
 
 							<div class="card card-default">
 								<div class="card-header">
@@ -1978,6 +1938,8 @@ if ($pos=0 or $pos=1){
 								</div>
 							</div>
 
+							
+
 							<div class="card card-default">
 								<div class="card-header">
 									<h3 class="card-title font36">Area Penjualan</h3>
@@ -2022,6 +1984,8 @@ if ($pos=0 or $pos=1){
 										</div>
 									</div>
 								</div>
+
+								
 
 								<?php 
 								$txt='<option value="">-</option>';
@@ -2203,1273 +2167,1301 @@ if ($pos=0 or $pos=1){
 								</div>
 							</div>
 
-              </div>
-              <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Bisnis Lain</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							
-							<div class="card-body" id="inpbisnislain">
-
-								<?php
-									$i=-1;
-									foreach ($data_additional as $key => $data) {
-										if   ($data->type == 'BISNIS_LAIN')
-										{
-											$i++;
-											?>
-								<div class="row" id="rowsbisnislain{{$i}}">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="{{$data->desc}}">	
-											</div>
-										</div>
-									</div>
-
-									<!-- /.col -->
-									<div class="col-md-5">
-										<div class="form-group row">
-											<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
-											<div class="col-sm-8">
-												<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset" value="{{$data->value1}}">	
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-1">
-										<div class="form-group row">
-											<div class="col-sm-12">
-												<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<?php
-										}
-									}
-								?>
-								
-							</div>
-							<!-- /.row -->
-							<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
-										</div>
-									</div>
-								</div>
-
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
 						</div>
 
-
 						
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Asset Pribadi</h3>
+						
+						<div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
 
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+								<div class="card card-default">
+									<div class="card-header">
+										<h3 class="card-title font36">Bisnis Lain</h3>
+
+										<div class="card-tools">
+											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										</div>
+									</div>
+									<!-- /.card-header -->
+									
+									<div class="card-body" id="inpbisnislain">
+
+										<?php
+											$i=-1;
+											foreach ($data_additional as $key => $data) {
+												if   ($data->type == 'BISNIS_LAIN')
+												{
+													$i++;
+													?>
+										<div class="row" id="rowsbisnislain{{$i}}">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="{{$data->desc}}">	
+													</div>
+												</div>
+											</div>
+
+											<!-- /.col -->
+											<div class="col-md-5">
+												<div class="form-group row">
+													<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
+													<div class="col-sm-8">
+														<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset" value="{{$data->value1}}">	
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-1">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<?php
+												}
+											}
+										?>
+										
+									</div>
+									<!-- /.row -->
+									<div class="col-md-1">
+											<div class="form-group row ">
+												<div class="col-sm-12">
+													<button type="button" style="height:50px;width:50px" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
+												</div>
+											</div>
+										</div>
+
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+										the plugin. -->
+									</div>
 								</div>
-							</div>
-							<!-- /.card-header -->
 
-							
 
-							<?php 
-							// $txt='<option value="">-</option>';
-							// foreach ($tblassetpribadi as $key => $value) {
-							// 	$txt.= '<option value="'.$value->desc.'">'.$value->desc.'</option>';
-							// }
-							?>
-							<!-- <input type="hidden" id="optassetpribadi" value="{{$txt}}"> -->
-							<?php 
+								
+								<div class="card card-default">
+									<div class="card-header">
+										<h3 class="card-title font36">Asset Pribadi</h3>
 
-							?>
-							
-							<div class="card-body" id="inpassetpribadi">
-							<?php
-									$i=-1;
-									foreach ($data_add_asset as $key => $data) {
-										if   ($data->type == 'ASSET_PRIBADI'){
-											?>
-								<div class="row" id="rowsassetpribadi{{$i}}">
-									<div class="col-md-2">
-										<div class="form-group row">
-											<div class="col-sm-12">
-												<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}">
-											</div>
+										<div class="card-tools">
+											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
 									</div>
-									<div class="col-md-5">
-										<div class="form-group row">
-											<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>
-											<div class="col-sm-8">
-												<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]" value="{{$data->value1}}">	
-												<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]" value="{{$data->seq}}">	
-											</div>
-											<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group row">
-											<label for="inputasetpribadirp" class="col-sm-4 col-form-label">{{$data->info3}}</label>
-											<div class="col-sm-8">
-												<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" value="{{$data->value2}}">	
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group row">
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]" value="{{$data->value3}}">	
-											</div>
-											<div class="col-sm-2">
-												<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove8">X</button> -->
-											</div>
-										</div>
-									</div>
+									<!-- /.card-header -->
 
 									
+
+									<?php 
+									// $txt='<option value="">-</option>';
+									// foreach ($tblassetpribadi as $key => $value) {
+									// 	$txt.= '<option value="'.$value->desc.'">'.$value->desc.'</option>';
+									// }
+									?>
+									<!-- <input type="hidden" id="optassetpribadi" value="{{$txt}}"> -->
+									<?php 
+
+									?>
+									
+									<div class="card-body" id="inpassetpribadi">
+									<?php
+											$i=-1;
+											foreach ($data_add_asset as $key => $data) {
+												if   ($data->type == 'ASSET_PRIBADI'){
+													?>
+										<div class="row" id="rowsassetpribadi{{$i}}">
+											<div class="col-md-2">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group row">
+													<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>
+													<div class="col-sm-8">
+														<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]" value="{{$data->value1}}">	
+														<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]" value="{{$data->seq}}">	
+													</div>
+													<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group row">
+													<label for="inputasetpribadirp" class="col-sm-4 col-form-label">{{$data->info3}}</label>
+													<div class="col-sm-8">
+														<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" value="{{$data->value2}}">	
+													</div>
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group row">
+													<div class="col-sm-10">
+														<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]" value="{{$data->value3}}">	
+													</div>
+													<div class="col-sm-2">
+														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove8">X</button> -->
+													</div>
+												</div>
+											</div>
+
+											
+										</div>
+										<?php
+												}
+											}
+													?>
+										<!-- /.row -->
+										
+									</div>
+									<div class="col-md-1">
+											<div class="form-group row ">
+												<div class="col-sm-12">
+													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi"> 
+													<option value="">Add</option>
+													<?php 
+													foreach ($tblassetpribadi as $key => $value) {
+														?>
+														<option value="{{$value->seq}}">Asset Pribadi bentuk {{$value->desc}}</option>
+														<?php
+													}
+													?>
+													</select>
+													
+													<!-- <button type="button" style="height:50px;width:50px" name="addassetpribadi" id="addassetpribadi" class="btn btn-success">Add</button> -->
+												</div>
+											</div>
+										</div>
+
+
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+										the plugin. -->
+									</div>
 								</div>
-								<?php
-										}
-									}
+
+
+								<div class="card card-default">
+									<div class="card-header">
+										<h3 class="card-title font36">Modal</h3>
+
+										<div class="card-tools">
+											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										</div>
+									</div>
+									<!-- /.card-header -->
+
+									
+
+									
+									
+									<div class="card-body">
+										<div class="row">
+											<?php
+											$i=-1;
+											foreach ($data_add_modalsendiri as $key => $data) {
+												if   ($data->type == 'MODAL')
+												{
+													?>
+													<div class="col-md-12">
+														<div class="form-group row">
+															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->desc}}</label>
+															<div class="col-sm-3">
+																<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}">	
+																<input type="hidden" id="inputmodalid[]" name="inputmodalid[]" value="{{$data->seq}}">	
+															</div>
+															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->info}}</label>
+														</div>
+													</div>
+
+												<?PHP
+												}
+											}
 											?>
-								<!-- /.row -->
+										</div>
+									</div>
+									
+									<?php 
+									
+									foreach ($tbljudulbank as $key => $value) {
+										$judul = $value->desc;
+										$persent = $value->info;
+									}
+
+									$txt='<option value="">-</option>';
+									foreach ($tblbank as $key => $value) {
+										$txt.= '<option value="'.$value->desc.'">'.$value->desc.'</option>';
+									}
+									?>
+									<input type="hidden" id="optmodalbank" value="{{$txt}}">
+									<?php 
+
+									?>
+									
+
+									<div class="card-body" id="inpmodalbank">
+										<?php
+											$i=-1;
+											foreach ($data_add_modalbank as $key => $data) {
+												if   ($data->type == 'MODAL_BANK')
+												{
+										?>	
+										<div class="row" id="rowsmodalbank">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
+													<div class="col-sm-6">
+														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="{{$data->value1}}">	
+													</div>
+													<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">{{$persent}}</label>
+												</div>
+											</div>
+											<!-- /.col -->
+											<div class="col-md-5">
+												<div class="form-group row">
+													<div class="col-sm-10">
+														<input type="text" class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" placeholder="%" value="{{$data->value2}}">	
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->seq}}">	
+													</div>
+													<div class="col-sm-2">
+														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove9">X</button> -->
+													</div>
+												</div>
+											</div>
+											
+
+											
+										</div>
+										<?php
+												}
+											}
+											?>	
+										<!-- /.row -->
+										<!-- <div class="form-group row" >
+											<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
+											</div> -->
+									</div>
+									<div class="col-md-1">
+											<div class="form-group row ">
+												<div class="col-sm-12">
+													<button type="button" style="height:50px;width:50px" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
+												</div>
+											</div>
+										</div>
+									
+
+
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+										the plugin. -->
+									</div>
+								</div>
+
+						</div>
+
+						
+						
+						<div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
+
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Jaminan</h3>
+
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
 								
-							</div>
-							<div class="col-md-1">
+								<div class="card-body" id="inpjaminan">
+									<?php
+									$i=-1;
+									foreach ($data_add_jaminanpribadi as $key => $data) {
+										if   ($data->type == 'JAMINAN_PRIBADI')
+										{
+											$i++;
+									?>
+									<div class="row" id="rowsjaminan{{$i}}">
+										<div class="col-md-2">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="{{$data->desc}}">	
+													<input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="{{$data->sseq}}">	
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-5">
+											<div class="form-group row">
+												<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info}}</label>
+												<div class="col-sm-6">
+													<input type="text" class="form-control" id="inputJaminanValue[]" name="inputJaminanValue[]" value="{{$data->value1}}">	
+													<input type="hidden" id="inputJaminanSseq[]" name="inputJaminanSseq[]" value="{{$data->seq}}">
+												</div>
+												<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info2}}</label>
+											</div>
+										</div>
+
+										<!-- /.col -->
+										<div class="col-md-3">
+											<div class="form-group row">
+												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">{{$data->info3}}</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="{{$data->value2}}">	
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
+												</div>
+												<div class="col-sm-2">
+													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button> -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<?php
+											}
+										}
+									?>
+
+									<!-- /.row -->
+									
+								</div>
+								<div class="col-md-4">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi"> 
+
+											<select class="btn btn-success" id="addjaminan" name="addjaminan"> 
 											<option value="">Add</option>
 											<?php 
-											foreach ($tblassetpribadi as $key => $value) {
+											foreach ($tbljaminanpribadi as $key => $value) {
 												?>
-												<option value="{{$value->seq}}">Asset Pribadi bentuk {{$value->desc}}</option>
+												<option value="{{$value->seq}}">create Jaminan dalam bentuk {{$value->desc}}</option>
 												<?php
 											}
 											?>
 											</select>
-											
-											<!-- <button type="button" style="height:50px;width:50px" name="addassetpribadi" id="addassetpribadi" class="btn btn-success">Add</button> -->
 										</div>
 									</div>
 								</div>
 
 
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Modal</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
 								</div>
 							</div>
-							<!-- /.card-header -->
 
-							
+						</div>
 
-							
-							
-							<div class="card-body">
-								<div class="row">
-									<?php
-									$i=-1;
-									foreach ($data_add_modalsendiri as $key => $data) {
-										if   ($data->type == 'MODAL')
-										{
-											?>
-											<div class="col-md-12">
-												<div class="form-group row">
-													<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->desc}}</label>
-													<div class="col-sm-3">
-														<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}">	
-														<input type="hidden" id="inputmodalid[]" name="inputmodalid[]" value="{{$data->seq}}">	
-													</div>
-													<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->info}}</label>
+						
+						<div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Karakteristik</h3>
+
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
+								
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ...">{{$inputkarakteristik}}</textarea>
 												</div>
 											</div>
+										</div>
+										
+									</div>
+									<!-- /.row -->
+								</div>
 
-										<?PHP
-										}
-									}
-									?>
+
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
 								</div>
 							</div>
-							
-							<?php 
-							
-							foreach ($tbljudulbank as $key => $value) {
-								$judul = $value->desc;
-								$persent = $value->info;
-							}
 
-							$txt='<option value="">-</option>';
-							foreach ($tblbank as $key => $value) {
-								$txt.= '<option value="'.$value->desc.'">'.$value->desc.'</option>';
-							}
-							?>
-							<input type="hidden" id="optmodalbank" value="{{$txt}}">
-							<?php 
 
-							?>
-							
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Photo</h3>
 
-							<div class="card-body" id="inpmodalbank">
-								<?php
-									$i=-1;
-									foreach ($data_add_modalbank as $key => $data) {
-										if   ($data->type == 'MODAL_BANK')
-										{
-								?>	
-								<div class="row" id="rowsmodalbank">
-									<div class="col-md-6">
-										<div class="form-group row">
-											<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
-											<div class="col-sm-6">
-												<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="{{$data->value1}}">	
-											</div>
-											<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">{{$persent}}</label>
-										</div>
-									</div>
-									<!-- /.col -->
-									<div class="col-md-5">
-										<div class="form-group row">
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" placeholder="%" value="{{$data->value2}}">	
-												<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->seq}}">	
-											</div>
-											<div class="col-sm-2">
-												<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove9">X</button> -->
-											</div>
-										</div>
-									</div>
-									
-
-									
-								</div>
-								<?php
-										}
-									}
-									?>	
-								<!-- /.row -->
-								<!-- <div class="form-group row" >
-									<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-									</div> -->
-							</div>
-							<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
-										</div>
+									<div class="card-tools">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
 								</div>
-							
+								<!-- /.card-header -->
+								
+								<div class="card-body" id="inpkarakteristikphoto">
+									<div class="row">
+
+										<div class="col-md-4">
+											<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
+												border-radius: 200px;
+													border-color: black;"
+											>  
+											<input type="file" name="files" id="files">
+											<span id='val'></span>
+											<span id='button'>Rubah Foto Profil</span>
+										</div>
+
+										<!-- <div class="col-12 col-sm-2">
+											<div class="form-group row">
+												<div class="product-image-thumb col-sm-9">
+													<img src="../../dist/img/prod-2.jpg" alt="Product Image">
+
+													
+													<div class="col-sm-3">
+														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
+													</div>	
+												</div>
+												
+											</div>
+										
+										</div> -->
+									</div>
+									<!-- /.row -->
+									
+								</div>
+								<div class="form-group row ">
+									<div class="col-sm-12">
+										<button type="button" style="height:50px;width:50px" name="addphotolain" id="addphotolain" class="btn btn-success">Add</button>
+									</div>
+								</div>
 
 
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
 							</div>
 						</div>
 
-              </div>
+					
+					
+					</div>
+				
+					
+							
+			</div>
 
-              <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
-
-					<div class="card card-default">
-						<div class="card-header">
-							<h3 class="card-title font36">Jaminan</h3>
-
-							<div class="card-tools">
-								<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-								<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-							</div>
+			<div class="row" >
+						<div class="col-md-4">
 						</div>
-						<!-- /.card-header -->
 						
-						<div class="card-body" id="inpjaminan">
-							<?php
-							$i=-1;
-							foreach ($data_add_jaminanpribadi as $key => $data) {
-								if   ($data->type == 'JAMINAN_PRIBADI')
-								{
-									$i++;
-							?>
-							<div class="row" id="rowsjaminan{{$i}}">
-								<div class="col-md-2">
-									<div class="form-group row">
-										<div class="col-sm-12">
-											<input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="{{$data->desc}}">	
-											<input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="{{$data->sseq}}">	
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-5">
-									<div class="form-group row">
-										<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info}}</label>
-										<div class="col-sm-6">
-											<input type="text" class="form-control" id="inputJaminanValue[]" name="inputJaminanValue[]" value="{{$data->value1}}">	
-											<input type="hidden" id="inputJaminanSseq[]" name="inputJaminanSseq[]" value="{{$data->seq}}">
-										</div>
-										<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info2}}</label>
-									</div>
-								</div>
-
-								<!-- /.col -->
-								<div class="col-md-3">
-									<div class="form-group row">
-										<label for="inputbisnislainrp" class="col-sm-3 col-form-label">{{$data->info3}}</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="{{$data->value2}}">	
-										</div>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
-										</div>
-										<div class="col-sm-2">
-											<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button> -->
-										</div>
-									</div>
+						<div class="col-md-2">
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">
 								</div>
 							</div>
-							<?php
-									}
-								}
-							?>
-
-							<!-- /.row -->
-							
+						</div>
+						<div class="col-md-2">
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<a href="/detail1/{{$idx}}/{{$id}}" class="btn btn-block btn-danger btn-lg">Cancel</a>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="form-group row ">
-								<div class="col-sm-12">
-
-									<select class="btn btn-success" id="addjaminan" name="addjaminan"> 
-									<option value="">Add</option>
-									<?php 
-									foreach ($tbljaminanpribadi as $key => $value) {
-										?>
-										<option value="{{$value->seq}}">create Jaminan dalam bentuk {{$value->desc}}</option>
-										<?php
-									}
-									?>
-									</select>
-								</div>
-							</div>
 						</div>
-
-
-						<!-- /.card-body -->
-						<div class="card-footer">
-							<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-							the plugin. -->
-						</div>
+						
 					</div>
-
-              </div>
-				  <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
-
-
-
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Karakteristik</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group row">
-											<div class="col-sm-12">
-												<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ...">{{$inputkarakteristik}}</textarea>
-											</div>
-										</div>
-									</div>
-									
-								</div>
-								<!-- /.row -->
-							</div>
-
-
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-
-						<div class="card card-default">
-							<div class="card-header">
-								<h3 class="card-title font36">Photo</h3>
-
-								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-									<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-								</div>
-							</div>
-							<!-- /.card-header -->
-							
-							<div class="card-body" id="inpkarakteristikphoto">
-								<div class="row">
-
-									<div class="col-md-4">
-										<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
-											border-radius: 200px;
-    										border-color: black;"
-										>  
-										<input type="file" name="files" id="files">
-										<span id='val'></span>
-										<span id='button'>Rubah Foto Profil</span>
-									</div>
-
-									<!-- <div class="col-12 col-sm-2">
-										<div class="form-group row">
-											<div class="product-image-thumb col-sm-9">
-												<img src="../../dist/img/prod-2.jpg" alt="Product Image">
-
-												
-												<div class="col-sm-3">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
-												</div>	
-											</div>
-											
-										</div>
-									
-									</div> -->
-								</div>
-								<!-- /.row -->
-								
-							</div>
-							<div class="form-group row ">
-								<div class="col-sm-12">
-									<button type="button" style="height:50px;width:50px" name="addphotolain" id="addphotolain" class="btn btn-success">Add</button>
-								</div>
-							</div>
-
-
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-								the plugin. -->
-							</div>
-						</div>
-
-
-
-              </div>
-            </div>
-            
-          </div>
-			 <div class="row" >
-				<div class="col-md-4">
-				</div>
-				
-				<div class="col-md-2">
-					<div class="form-group row">
-						<div class="col-sm-12">
-						<!-- <input type="submit"  class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);">Save</> -->
-						<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" value="Save">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="form-group row">
-						<div class="col-sm-12">
-							<!-- <button type="button" class="btn btn-block btn-danger btn-lg">Cancel</button> -->
-							<a href="/images" class="btn btn-block btn-danger btn-lg">Cancel</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-				</div>
-			</div>
-		</form>	
-</div>
-
-<!-- <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script> -->
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- DataTables -->
-
-<script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
-
-<script type="text/javascript">
-	$(function(){
-		$(".inputbirthdate").datepicker({
-			format: 'dd.mm.yyyy',
-			autoclose: true,
-			todayHighlight: true,
-		});
-	});
-
-
-	// $(".tm").on("change", function() {
-   //  this.setAttribute(
-   //      "data-date",
-   //      moment(this.value, "dd.mm.yyyy"))
-   //    //   .format( this.getAttribute("data-date-format") )
-   //  )
-   //  }).trigger("change")
-
-</script>
-
-<script type="text/javascript">
-    var route = "{{ url('autocomplete') }}";
-    $('#inputkelrmh').typeahead({
-         minLength: 4,
-         source:  function (term, process) {
-         return $.get(route, { term: term }, function (data) {
-            console.log(data);  
-                return process(data);
-            });
-        }
-	 });
-
-</script>
-
-<script type="text/javascript">
-    var route = "{{ url('autocomplete') }}";
-    $('#inputkelktp').typeahead({
-         minLength: 4,
-         source:  function (term, process) {
-         return $.get(route, { term: term }, function (data) {
-            console.log(data);  
-                return process(data);
-            });
-        }
-	 });
-</script>
-
-<script type="text/javascript">
-    var route = "{{ url('autocomplete') }}";
-    $('#inputkelush').typeahead({
-         minLength: 4,
-         source:  function (term, process) {
-         return $.get(route, { term: term }, function (data) {
-            console.log(data);  
-                return process(data);
-            });
-        }
-	 });
-</script>
-
-<script type="text/javascript">
-	function myduplicat() {
-		document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
-		document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
-		document.getElementById("inputkecrmh").value = document.getElementById("inputkecktp").value;
-		document.getElementById("inputkotarmh").value      = document.getElementById("inputkotaktp").value;
-		document.getElementById("inputproprmh").value  = document.getElementById("inputpropktp").value;
-		document.getElementById("inputkdposrmh").value   = document.getElementById("inputkdposktp").value;
+				</form>	
 
 		
-		document.getElementById("inputkecrmh1").value = document.getElementById("inputkecktp").value;
-		document.getElementById("inputkotarmh1").value      = document.getElementById("inputkotaktp").value;
-		document.getElementById("inputproprmh1").value  = document.getElementById("inputpropktp").value;
-		document.getElementById("inputkdposrmh1").value   = document.getElementById("inputkdposktp").value;
-	}
-</script>
+	</div>
 
-<script type="text/javascript">
+	<!-- <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script> -->
+	<!-- Bootstrap 4 -->
+	<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+	<!-- DataTables -->
 
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-      var isioptions=document.getElementById("optmedsos").value;
-		$('#addmedsosush').click(function(){  
-         i++;  
-			var txt = '<div class="row" id="rowmedsosush'+i+'">'+
-								'<div class="col-md-6">'+
-									'<div class="form-group row">'+
-										'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
-										'<div class="col-sm-9">'+
-											'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsosush[]" name="inputmedsosush[]">'+isioptions+
-											'</select>'+
-										'</div>'+
-									'</div>'+
-								'</div>'+
-								'<div class="col-md-5">'+
-									'<div class="form-group row ">'+
-										'<div class="col-sm-12">'+
-											'<input type="text" class="form-control" id="inputmedsosakunush[]" name="inputmedsosakunush[]" placeholder="Nama Akun Media Sosial">'+
-										'</div>'+
-									'</div>'+
-								'</div>'+
-								'<div class="col-md-1">'+
-									'<div class="form-group row">'+
-										'<div class="col-sm-12">'+
-											'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2">X</button>'+
-										'</div>'+
-									'</div>'+
-								'</div>';
-			$('#inpmedsosush').append(txt);
-		}); 
+	<script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+	<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
+	<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+	<!-- AdminLTE App -->
+	<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="{{asset('dist/js/demo.js')}}"></script>
 
-		$(document).on('click', '.btn_remove2', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowmedsosush'+button_id+'').remove();  
-      });  
-
-	});  
-</script>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-      var isioptions=document.getElementById("optmedsos").value;
-		$('#addmedsospri').click(function(){  
-         i++;  
-			var txt = '<div class="row" id="rowsmedsospri'+i+'">'+
-								'<div class="col-md-6">'+
-									'<div class="form-group row">'+
-										'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
-										'<div class="col-sm-9">'+
-											'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]">'+isioptions+
-											'</select>'+
-										'</div>'+
-									'</div>'+
-								'</div>'+
-								'<div class="col-md-5">'+
-									'<div class="form-group row ">'+
-										'<div class="col-sm-12">'+
-											'<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial">'+
-										'</div>'+
-									'</div>'+
-								'</div>'+
-								'<div class="col-md-1">'+
-									'<div class="form-group row">'+
-										'<div class="col-sm-12">'+
-											'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2x">X</button>'+
-										'</div>'+
-									'</div>'+
-								'</div>';
-			$('#inpmedsospri').append(txt);
-		}); 
-
-		$(document).on('click', '.btn_remove2x', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsmedsospri'+button_id+'').remove();  
-      });  
-
-	});  
-</script>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-		var isioptions=document.getElementById("optsex").value;
-		var isioptions2=document.getElementById("opthubkelga").value;
-		var isioptions3=document.getElementById("optsekolah").value;
-
-		$('#addkelga').click(function(){ 
-						var txt ='<div class="row" id="rowkelga'+i+'">'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargasex[]" name="inputkeluargasex[]" id="styledatakeluarga">'+isioptions+
-											'</select>'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargastatus[]" name="inputkeluargastatus[]" id="styledatakeluarga">'+isioptions2+
-											'</select>'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-2">'+
-										'<div class="form-group row kotakexcel_kosong">'+
-											'<div class="col-sm-9">'+
-												'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga">'+isioptions3+
-												'</select>'+
-											'</div>'+
-											'<div class="col-sm-3">'+
-												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
-											'</div>'+
-										'</div>'+
-									'</div>'+
-								'</div>';
-
-			$('#inpkelga').append(txt);
-		});
-
-		$(document).on('click', '.btn_remove3', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowkelga'+button_id+'').remove();  
-      });  
-
-	});  
-</script>
-
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-		
-		var isioptions=document.getElementById("optagenhub").value;
-		$('#addagenhub').click(function(){ 
-
-			var txt ='<div class="row" id="rowsagenhub'+i+'">'+
-												
-												'<div class="col-md-4">'+
-													'<div class="form-group row kotakexcel_kosong">'+
-														'<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama">'+
-													'</div>'+
-												'</div>'+
-												'<div class="col-md-4">'+
-													'<div class="form-group row kotakexcel_kosong">'+
-														'<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap">'+
-													'</div>'+
-												'</div>'+
-												'<div class="col-md-4">'+
-													'<div class="form-group row kotakexcel_kosong">'+
-														'<div class="col-sm-10">'+
-															'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]">'+isioptions+ 
-															'</select>'+
-														'</div>'+
-														'<div class="col-sm-2">'+
-															'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
-														'</div>'+
-													'</div>'+
-												'</div>'+
-											'</div>';
-			$('#inpagenhub').append(txt);
-		});
-
-		$(document).on('click', '.btn_remove4', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsagenhub'+button_id+'').remove();  
-      });  
-
-	});  
-</script>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1; 
-
-		var isioptions=document.getElementById("optareasubagen").value; 
-
-		$('#addareasubagen').click(function(){ 
-						var txt = '<div class="row" id="rowsareasubagen'+i+'">'+
-										'<div class="col-md-2">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]">'+isioptions+
-												'</select>'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama" name="inputNamaSubAgen[]" >'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-2">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="qty" name="inputQtySubAgen[]">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-3">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="sub agent" name="inputLokasiSubAgen[]">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-3">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<div class="col-sm-10">'+
-													'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="info" name="inputInfoSubAgen[]">'+
-												'</div>'+
-												'<div class="col-sm-2">'+
-													'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
-												'</div>'+
-											'</div>'+
-										'</div>'+
-									'</div>';
-			$('#inpareasubagen').append(txt);
-		});
-
-		$(document).on('click', '.btn_remove5', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsareasubagen'+button_id+'').remove();  
-      });  
-	});  
-</script>
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-
-		$('#addkompetitor').click(function(){ 
-			var txt = '<div class="row" id="rowskompetitor'+i+'">'+
-										'<div class="col-md-4">'+
-											'<div class="col-sm-12">'+
-												'<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-4">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<div class="col-sm-12">'+
-													'<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">'+	
-												'</div>'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-md-4">'+
-											'<div class="form-group row kotakexcel_kosong">'+
-												'<div class="col-sm-10">'+
-													'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
-												'</div>'+
-												'<div class="col-sm-2">'+
-													'<button type="button" name="remove" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
-												'</div>'+
-											'</div>'+
-										'</div>'+
-									'</div>';
-			$('#inpkompetitor').append(txt);
+	<script type="text/javascript">
+		$(function(){
+			$(".inputbirthdate").datepicker({
+				format: 'dd.mm.yyyy',
+				autoclose: true,
+				todayHighlight: true,
+			});
 		});
 
 
-		$(document).on('click', '.btn_remove6', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowskompetitor'+button_id+'').remove();  
-      });  
-	});  
-</script>	
+		// $(".tm").on("change", function() {
+		//  this.setAttribute(
+		//      "data-date",
+		//      moment(this.value, "dd.mm.yyyy"))
+		//    //   .format( this.getAttribute("data-date-format") )
+		//  )
+		//  }).trigger("change")
 
+	</script>
 
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-
-		$('#addbisnislain').click(function(){ 
-			var txt = '<div class="row" id="rowsbisnislain'+i+'">'+
-						'	<div class="col-md-6">'+
-						'		<div class="form-group row">'+
-						'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>'+
-						'			<div class="col-sm-9">'+
-						'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
-						'			</div>'+
-						'		</div>'+
-						'	</div>'+
-						'	<!-- /.col -->'+
-						'	<div class="col-md-5">'+
-						'		<div class="form-group row">'+
-						'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>'+
-						'			<div class="col-sm-8">'+
-						'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
-						'			</div>'+
-						'		</div>'+
-						'	</div>'+
-						'	<div class="col-md-1">'+
-						'		<div class="form-group row">'+
-						'			<div class="col-sm-12">'+
-						'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove7">X</button>'+
-						'			</div>'+
-						'		</div>'+
-						'	</div>'+
-						'</div>';
-			$('#inpbisnislain').append(txt);
-		});
-
-
-		$(document).on('click', '.btn_remove7', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsbisnislain'+button_id+'').remove();  
-      });  
-	});  
-</script>
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('select[name="addassetpribadi"]').on('change', function() {
-			  
-			var stateID = $(this).val();
-			
-			if(stateID) {
-				$.ajax({
-					url: '/getmsg2/'+stateID,
-					type: "GET",
-					dataType: "json",
-					success:function(data) {
-						$("#inpassetpribadi").append(data.msg);
+	<script type="text/javascript">
+			var route = "{{ url('autocomplete') }}";
+			$('#inputkelrmh').typeahead({
+					minLength: 4,
+					source:  function (term, process) {
+					return $.get(route, { term: term }, function (data) {
+							console.log(data);  
+									return process(data);
+							});
 					}
-				});
-			}
 		});
-		$(document).on('click', '.btn_remove8', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsassetpribadi'+button_id+'').remove();  
+
+	</script>
+
+	<script type="text/javascript">
+			var route = "{{ url('autocomplete') }}";
+			$('#inputkelktp').typeahead({
+					minLength: 4,
+					source:  function (term, process) {
+					return $.get(route, { term: term }, function (data) {
+							console.log(data);  
+									return process(data);
+							});
+					}
+		});
+	</script>
+
+	<script type="text/javascript">
+			var route = "{{ url('autocomplete') }}";
+			$('#inputkelush').typeahead({
+					minLength: 4,
+					source:  function (term, process) {
+					return $.get(route, { term: term }, function (data) {
+							console.log(data);  
+									return process(data);
+							});
+					}
+		});
+	</script>
+
+	<script type="text/javascript">
+		function myduplicat() {
+			document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
+			document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
+			document.getElementById("inputkecrmh").value = document.getElementById("inputkecktp").value;
+			document.getElementById("inputkotarmh").value      = document.getElementById("inputkotaktp").value;
+			document.getElementById("inputproprmh").value  = document.getElementById("inputpropktp").value;
+			document.getElementById("inputkdposrmh").value   = document.getElementById("inputkdposktp").value;
+
+			
+			document.getElementById("inputkecrmh1").value = document.getElementById("inputkecktp").value;
+			document.getElementById("inputkotarmh1").value      = document.getElementById("inputkotaktp").value;
+			document.getElementById("inputproprmh1").value  = document.getElementById("inputpropktp").value;
+			document.getElementById("inputkdposrmh1").value   = document.getElementById("inputkdposktp").value;
+		}
+	</script>
+
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+				var isioptions=document.getElementById("optmedsos").value;
+			$('#addmedsosush').click(function(){  
+					i++;  
+				var txt = '<div class="row" id="rowmedsosush'+i+'">'+
+									'<div class="col-md-6">'+
+										'<div class="form-group row">'+
+											'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
+											'<div class="col-sm-9">'+
+												'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsosush[]" name="inputmedsosush[]">'+isioptions+
+												'</select>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-5">'+
+										'<div class="form-group row ">'+
+											'<div class="col-sm-12">'+
+												'<input type="text" class="form-control" id="inputmedsosakunush[]" name="inputmedsosakunush[]" placeholder="Nama Akun Media Sosial">'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-1">'+
+										'<div class="form-group row">'+
+											'<div class="col-sm-12">'+
+												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2">X</button>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+				$('#inpmedsosush').append(txt);
+			}); 
+
+			$(document).on('click', '.btn_remove2', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowmedsosush'+button_id+'').remove();  
+				});  
+
 		});  
-	});
+	</script>
 
 
-   //  $(document).ready(function(){
-   //    var i=1;  
-	// 	var isioptions=document.getElementById("optassetpribadi").value;
+	<script type="text/javascript">
 
-		
-		
-	// 	$('#addassetpribadi').click(function(){ 
-	// 		var txt = 	'<div class="row" id="rowsassetpribadi'+i+'">'+
-	// 						'	<div class="col-md-2">'+
-	// 						'		<div class="form-group row">'+
-	// 						'			<div class="col-sm-12">'+
-	// 						'				<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputasetpribadi[]" name="inputasetpribadi[]">'+isioptions+ 
-	// 						'           </select>'+	
-	// 						'			</div>'+
-	// 						'		</div>'+
-	// 						'	</div>'+
-	// 						'	<div class="col-md-5">'+
-	// 						'		<div class="form-group row">'+
-	// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>'+
-	// 						'			<div class="col-sm-8">'+
-	// 						'				<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]">	'+
-	// 						'				<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]">	'+
-	// 						'			</div>'+
-	// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>'+
-	// 						'		</div>'+
-	// 						'	</div>'+
-	// 						'	<div class="col-md-3">'+
-	// 						'		<div class="form-group row">'+
-	// 						'			<label for="inputAssetAlamat" class="col-sm-4 col-form-label">{{$data->info3}}</label>'+
-	// 						'			<div class="col-sm-8">'+
-	// 						'				<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" >	'+
-	// 						'			</div>'+
-	// 						'		</div>'+
-	// 						'	</div>'+
-	// 						'	<div class="col-md-2">'+
-	// 						'		<div class="form-group row">'+
-	// 						'			<div class="col-sm-10">'+
-	// 						'				<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]">	'+
-	// 						'			</div>'+
-	// 						'			<div class="col-sm-2">'+
-	// 						'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove8">X</button>'+
-	// 						'			</div>'+
-	// 						'		</div>'+
-	// 						'	</div>'+
-	// 						'</div>';
-	// 		$('#inpassetpribadi').append(txt);
-	// 	});
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+				var isioptions=document.getElementById("optmedsos").value;
+			$('#addmedsospri').click(function(){  
+					i++;  
+				var txt = '<div class="row" id="rowsmedsospri'+i+'">'+
+									'<div class="col-md-6">'+
+										'<div class="form-group row">'+
+											'<label for="inputnotelp" class="col-sm-3 col-form-label">Media Sosial</label>'+
+											'<div class="col-sm-9">'+
+												'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]">'+isioptions+
+												'</select>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-5">'+
+										'<div class="form-group row ">'+
+											'<div class="col-sm-12">'+
+												'<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial">'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-1">'+
+										'<div class="form-group row">'+
+											'<div class="col-sm-12">'+
+												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2x">X</button>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+				$('#inpmedsospri').append(txt);
+			}); 
+
+			$(document).on('click', '.btn_remove2x', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsmedsospri'+button_id+'').remove();  
+				});  
+
+		});  
+	</script>
 
 
-	// 	$(document).on('click', '.btn_remove8', function(){  
-	// 		var button_id = $(this).attr("id");   
-	// 		$('#rowsassetpribadi'+button_id+'').remove();  
-   //    });  
-	// });  
-</script>
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+			var isioptions=document.getElementById("optsex").value;
+			var isioptions2=document.getElementById("opthubkelga").value;
+			var isioptions3=document.getElementById("optsekolah").value;
+
+			$('#addkelga').click(function(){ 
+							var txt ='<div class="row" id="rowkelga'+i+'">'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputkeluargatempat[]" name="inputkeluargatempat[]" placeholder="Tempat">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargasex[]" name="inputkeluargasex[]" id="styledatakeluarga">'+isioptions+
+												'</select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargastatus[]" name="inputkeluargastatus[]" id="styledatakeluarga">'+isioptions2+
+												'</select>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-2">'+
+											'<div class="form-group row kotakexcel_kosong">'+
+												'<div class="col-sm-9">'+
+													'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga">'+isioptions3+
+													'</select>'+
+												'</div>'+
+												'<div class="col-sm-3">'+
+													'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+
+				$('#inpkelga').append(txt);
+			});
+
+			$(document).on('click', '.btn_remove3', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowkelga'+button_id+'').remove();  
+				});  
+
+		});  
+	</script>
 
 
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-		
-      var i=1;  
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+			
+			var isioptions=document.getElementById("optagenhub").value;
+			$('#addagenhub').click(function(){ 
 
-		var isioptions=document.getElementById("optmodalbank").value;
-		$('#addmodalbank').click(function(){ 
-			var txt = 	'<div class="row" id="rowsmodalbank'+i+'">'+
+				var txt ='<div class="row" id="rowsagenhub'+i+'">'+
+													
+													'<div class="col-md-4">'+
+														'<div class="form-group row kotakexcel_kosong">'+
+															'<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama">'+
+														'</div>'+
+													'</div>'+
+													'<div class="col-md-4">'+
+														'<div class="form-group row kotakexcel_kosong">'+
+															'<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap">'+
+														'</div>'+
+													'</div>'+
+													'<div class="col-md-4">'+
+														'<div class="form-group row kotakexcel_kosong">'+
+															'<div class="col-sm-10">'+
+																'<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]">'+isioptions+ 
+																'</select>'+
+															'</div>'+
+															'<div class="col-sm-2">'+
+																'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
+															'</div>'+
+														'</div>'+
+													'</div>'+
+												'</div>';
+				$('#inpagenhub').append(txt);
+			});
+
+			$(document).on('click', '.btn_remove4', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsagenhub'+button_id+'').remove();  
+				});  
+
+		});  
+	</script>
+
+
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1; 
+
+			var isioptions=document.getElementById("optareasubagen").value; 
+
+			$('#addareasubagen').click(function(){ 
+							var txt = '<div class="row" id="rowsareasubagen'+i+'">'+
+											'<div class="col-md-2">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]">'+isioptions+
+													'</select>'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-2">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama" name="inputNamaSubAgen[]" >'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-2">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="qty" name="inputQtySubAgen[]">'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-3">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="sub agent" name="inputLokasiSubAgen[]">'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-3">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<div class="col-sm-10">'+
+														'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="info" name="inputInfoSubAgen[]">'+
+													'</div>'+
+													'<div class="col-sm-2">'+
+														'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
+													'</div>'+
+												'</div>'+
+											'</div>'+
+										'</div>';
+				$('#inpareasubagen').append(txt);
+			});
+
+			$(document).on('click', '.btn_remove5', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsareasubagen'+button_id+'').remove();  
+				});  
+		});  
+	</script>
+
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+
+			$('#addkompetitor').click(function(){ 
+				var txt = '<div class="row" id="rowskompetitor'+i+'">'+
+											'<div class="col-md-4">'+
+												'<div class="col-sm-12">'+
+													'<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-4">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<div class="col-sm-12">'+
+														'<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">'+	
+													'</div>'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-4">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<div class="col-sm-10">'+
+														'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
+													'</div>'+
+													'<div class="col-sm-2">'+
+														'<button type="button" name="remove" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
+													'</div>'+
+												'</div>'+
+											'</div>'+
+										'</div>';
+				$('#inpkompetitor').append(txt);
+			});
+
+
+			$(document).on('click', '.btn_remove6', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowskompetitor'+button_id+'').remove();  
+				});  
+		});  
+	</script>	
+
+
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+
+			$('#addbisnislain').click(function(){ 
+				var txt = '<div class="row" id="rowsbisnislain'+i+'">'+
 							'	<div class="col-md-6">'+
 							'		<div class="form-group row">'+
-							'			<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">Bank</label>'+
-							'			<div class="col-sm-6">'+
-							'				<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%">	'+
-							'			</div>'+
-							'			<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>'+
-							'		</div>'+
-							'	</div>'+
-							'	<div class="col-md-5">'+
-							'		<div class="form-group row">'+
-							'			<div class="col-sm-10">'+
-							'				<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]"> '+isioptions+
-							'				</select>'+
-							'			</div>'+
-							'			<div class="col-sm-2">'+
-							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove9">X</button>'+
+							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>'+
+							'			<div class="col-sm-9">'+
+							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'+
 							'			</div>'+
 							'		</div>'+
 							'	</div>'+
-							'</div>';
-			$('#inpmodalbank').append(txt);
-		});
-
-
-		$(document).on('click', '.btn_remove9', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsmodalbank'+button_id+'').remove();  
-      });  
-	});  
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="addjaminan"]').on('change', function() {
-			  
-            var stateID = $(this).val();
-				
-            if(stateID) {
-                $.ajax({
-                    url: '/getmsg/'+stateID,
-                    type: "GET",
-                    dataType: "json",
-                    success:function(data) {
-								$("#inpjaminan").append(data.msg);
-                    }
-                });
-            }
-        });
-		  $(document).on('click', '.btn_removea', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsjaminan'+button_id+'').remove();  
-      });  
-    });
-</script>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-		var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;  
-		var isioptions=document.getElementById("optstatususaha").value;
-		
-
-		$('#addstatususaha').click(function(){ 
-			var txt = 	'<div class="row" id="rowsstatususaha'+i+'">'+
+							'	<!-- /.col -->'+
 							'	<div class="col-md-5">'+
 							'		<div class="form-group row">'+
-							'			<div class="col-sm-12">'+
-							'				<select class="form-control btn btn-default btn-default btn-lg" id="inputstatusush[]" name="inputstatusush[]" style="height: 60px;background: rgba(51,122,183,1); color:white;">'+isioptions+
-							'				</select>'+
+							'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>'+
+							'			<div class="col-sm-8">'+
+							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">'+
 							'			</div>'+
 							'		</div>'+
 							'	</div>'+
 							'	<div class="col-md-1">'+
 							'		<div class="form-group row">'+
 							'			<div class="col-sm-12">'+
-							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeb">X</button>'+
+							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove7">X</button>'+
 							'			</div>'+
 							'		</div>'+
 							'	</div>'+
-							'</div>'
-			$('#inpstatususaha').append(txt);
+							'</div>';
+				$('#inpbisnislain').append(txt);
+			});
+
+
+			$(document).on('click', '.btn_remove7', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsbisnislain'+button_id+'').remove();  
+				});  
+		});  
+	</script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('select[name="addassetpribadi"]').on('change', function() {
+					
+				var stateID = $(this).val();
+				
+				if(stateID) {
+					$.ajax({
+						url: '/getmsg2/'+stateID,
+						type: "GET",
+						dataType: "json",
+						success:function(data) {
+							$("#inpassetpribadi").append(data.msg);
+						}
+					});
+				}
+			});
+			$(document).on('click', '.btn_remove8', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsassetpribadi'+button_id+'').remove();  
+			});  
 		});
 
 
-		$(document).on('click', '.btn_removeb', function(){  
-			var button_id = $(this).attr("id");   
-			$('#rowsstatususaha'+button_id+'').remove();  
-      });  
-	});  
-</script>
+		//  $(document).ready(function(){
+		//    var i=1;  
+		// 	var isioptions=document.getElementById("optassetpribadi").value;
+
+			
+			
+		// 	$('#addassetpribadi').click(function(){ 
+		// 		var txt = 	'<div class="row" id="rowsassetpribadi'+i+'">'+
+		// 						'	<div class="col-md-2">'+
+		// 						'		<div class="form-group row">'+
+		// 						'			<div class="col-sm-12">'+
+		// 						'				<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputasetpribadi[]" name="inputasetpribadi[]">'+isioptions+ 
+		// 						'           </select>'+	
+		// 						'			</div>'+
+		// 						'		</div>'+
+		// 						'	</div>'+
+		// 						'	<div class="col-md-5">'+
+		// 						'		<div class="form-group row">'+
+		// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>'+
+		// 						'			<div class="col-sm-8">'+
+		// 						'				<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]">	'+
+		// 						'				<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]">	'+
+		// 						'			</div>'+
+		// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>'+
+		// 						'		</div>'+
+		// 						'	</div>'+
+		// 						'	<div class="col-md-3">'+
+		// 						'		<div class="form-group row">'+
+		// 						'			<label for="inputAssetAlamat" class="col-sm-4 col-form-label">{{$data->info3}}</label>'+
+		// 						'			<div class="col-sm-8">'+
+		// 						'				<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" >	'+
+		// 						'			</div>'+
+		// 						'		</div>'+
+		// 						'	</div>'+
+		// 						'	<div class="col-md-2">'+
+		// 						'		<div class="form-group row">'+
+		// 						'			<div class="col-sm-10">'+
+		// 						'				<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]">	'+
+		// 						'			</div>'+
+		// 						'			<div class="col-sm-2">'+
+		// 						'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove8">X</button>'+
+		// 						'			</div>'+
+		// 						'		</div>'+
+		// 						'	</div>'+
+		// 						'</div>';
+		// 		$('#inpassetpribadi').append(txt);
+		// 	});
 
 
-						
+		// 	$(document).on('click', '.btn_remove8', function(){  
+		// 		var button_id = $(this).attr("id");   
+		// 		$('#rowsassetpribadi'+button_id+'').remove();  
+		//    });  
+		// });  
+	</script>
 
 
-<script type="text/javascript">
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				
-				reader.onload = function (e) {
-					$('#files-tag').attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-		}
-	}
-	$("#files").change(function(){
-		readURL(this);
-	});
-</script>	
 
-<script type="text/javascript">
-	function myduplikatalamatusaha() 
-	{
-		document.getElementById("inputalmtush").value    = document.getElementById("inputalmtktp").value;
-		document.getElementById("inputkelush").value = document.getElementById("inputkelktp").value;
-		document.getElementById("inputkecush").value = document.getElementById("inputkecktp").value;
-		document.getElementById("inputkotaush").value      = document.getElementById("inputkotaktp").value;
-		document.getElementById("inputpropush").value  = document.getElementById("inputpropktp").value;
-		document.getElementById("inputkdposush").value   = document.getElementById("inputkdposktp").value;
+	<script type="text/javascript">
 
-		document.getElementById("inputkecush1").value = document.getElementById("inputkecktp").value;
-		document.getElementById("inputkotaush1").value      = document.getElementById("inputkotaktp").value;
-		document.getElementById("inputpropush1").value  = document.getElementById("inputpropktp").value;
-		document.getElementById("inputkdposush1").value   = document.getElementById("inputkdposktp").value;
-	}
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+			
+				var i=1;  
 
-	
-</script>
+			var isioptions=document.getElementById("optmodalbank").value;
+			$('#addmodalbank').click(function(){ 
+				var txt = 	'<div class="row" id="rowsmodalbank'+i+'">'+
+								'	<div class="col-md-6">'+
+								'		<div class="form-group row">'+
+								'			<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">Bank</label>'+
+								'			<div class="col-sm-6">'+
+								'				<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%">	'+
+								'			</div>'+
+								'			<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>'+
+								'		</div>'+
+								'	</div>'+
+								'	<div class="col-md-5">'+
+								'		<div class="form-group row">'+
+								'			<div class="col-sm-10">'+
+								'				<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]"> '+isioptions+
+								'				</select>'+
+								'			</div>'+
+								'			<div class="col-sm-2">'+
+								'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove9">X</button>'+
+								'			</div>'+
+								'		</div>'+
+								'	</div>'+
+								'</div>';
+				$('#inpmodalbank').append(txt);
+			});
 
-<script type="text/javascript">
-	function mykelurahan(kode, isi) 
-	{
-		var  txt = isi.value;
-		var i = txt.search('-/-');
-		if (i > 0)
-		{
-			var nkelurahan = txt.substr(0, i);
-			var  txt = txt.substr(i+3);
-			var i = txt.search('-/-');
-			var nkecamatan = txt.substr(0, i);
-			var  txt = txt.substr(i+3);
-			var i = txt.search('-/-');
-			var nkabupaten = txt.substr(0, i);
-			var  txt = txt.substr(i+3);
-			var i = txt.search('-/-');
-			var nprovinsi = txt.substr(0, i);
-			var  txt = txt.substr(i+3);
-			var i = txt.search('-/-');
-			var nkodepos = txt.substr(0, i);
-			if (kode == 1){
-				document.getElementById("inputkelktp").value = nkelurahan;
-				document.getElementById("inputkecktp").value = nkecamatan;
-				document.getElementById("inputkotaktp").value = nkabupaten;
-				document.getElementById("inputpropktp").value = nprovinsi;
-				document.getElementById("inputkdposktp").value = nkodepos;
 
-				document.getElementById("inputkecktp1").value = nkecamatan;
-				document.getElementById("inputkotaktp1").value = nkabupaten;
-				document.getElementById("inputpropktp1").value = nprovinsi;
-				document.getElementById("inputkdposktp1").value = nkodepos;
-			} else if (kode == 2){
-				document.getElementById("inputkelrmh").value = nkelurahan;
-				document.getElementById("inputkecrmh").value = nkecamatan;
-				document.getElementById("inputkotarmh").value = nkabupaten;
-				document.getElementById("inputproprmh").value = nprovinsi;
-				document.getElementById("inputkdposrmh").value = nkodepos;
+			$(document).on('click', '.btn_remove9', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsmodalbank'+button_id+'').remove();  
+				});  
+		});  
+	</script>
 
-				document.getElementById("inputkecrmh1").value = nkecamatan;
-				document.getElementById("inputkotarmh1").value = nkabupaten;
-				document.getElementById("inputproprmh1").value = nprovinsi;
-				document.getElementById("inputkdposrmh1").value = nkodepos;
-			} else {
-				document.getElementById("inputkelush").value = nkelurahan;
-				document.getElementById("inputkecush").value = nkecamatan;
-				document.getElementById("inputkotaush").value = nkabupaten;
-				document.getElementById("inputpropush").value = nprovinsi;
-				document.getElementById("inputkdposush").value = nkodepos;
+	<script type="text/javascript">
+			$(document).ready(function() {
+					$('select[name="addjaminan"]').on('change', function() {
+					
+							var stateID = $(this).val();
+					
+							if(stateID) {
+									$.ajax({
+											url: '/getmsg/'+stateID,
+											type: "GET",
+											dataType: "json",
+											success:function(data) {
+									$("#inpjaminan").append(data.msg);
+											}
+									});
+							}
+					});
+				$(document).on('click', '.btn_removea', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsjaminan'+button_id+'').remove();  
+				});  
+			});
+	</script>
 
-				document.getElementById("inputkecush1").value = nkecamatan;
-				document.getElementById("inputkotaush1").value = nkabupaten;
-				document.getElementById("inputpropush1").value = nprovinsi;
-				document.getElementById("inputkdposush1").value = nkodepos;
+
+	<script type="text/javascript">
+
+			$(document).ready(function(){
+			var postURL = "<?php echo url('addmore'); ?>";
+				var i=1;  
+			var isioptions=document.getElementById("optstatususaha").value;
+			
+
+			$('#addstatususaha').click(function(){ 
+				var txt = 	'<div class="row" id="rowsstatususaha'+i+'">'+
+								'	<div class="col-md-5">'+
+								'		<div class="form-group row">'+
+								'			<div class="col-sm-12">'+
+								'				<select class="form-control btn btn-default btn-default btn-lg" id="inputstatusush[]" name="inputstatusush[]" style="height: 60px;background: rgba(51,122,183,1); color:white;">'+isioptions+
+								'				</select>'+
+								'			</div>'+
+								'		</div>'+
+								'	</div>'+
+								'	<div class="col-md-1">'+
+								'		<div class="form-group row">'+
+								'			<div class="col-sm-12">'+
+								'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeb">X</button>'+
+								'			</div>'+
+								'		</div>'+
+								'	</div>'+
+								'</div>'
+				$('#inpstatususaha').append(txt);
+			});
+
+
+			$(document).on('click', '.btn_removeb', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsstatususaha'+button_id+'').remove();  
+				});  
+		});  
+	</script>
+
+
+							
+
+
+	<script type="text/javascript">
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					
+					reader.onload = function (e) {
+						$('#files-tag').attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
 			}
 		}
-	}
-</script>
+		$("#files").change(function(){
+			readURL(this);
+		});
+	</script>	
 
+	<script type="text/javascript">
+		function myduplikatalamatusaha() 
+		{
+			document.getElementById("inputalmtush").value    = document.getElementById("inputalmtktp").value;
+			document.getElementById("inputkelush").value = document.getElementById("inputkelktp").value;
+			document.getElementById("inputkecush").value = document.getElementById("inputkecktp").value;
+			document.getElementById("inputkotaush").value      = document.getElementById("inputkotaktp").value;
+			document.getElementById("inputpropush").value  = document.getElementById("inputpropktp").value;
+			document.getElementById("inputkdposush").value   = document.getElementById("inputkdposktp").value;
 
+			document.getElementById("inputkecush1").value = document.getElementById("inputkecktp").value;
+			document.getElementById("inputkotaush1").value      = document.getElementById("inputkotaktp").value;
+			document.getElementById("inputpropush1").value  = document.getElementById("inputpropktp").value;
+			document.getElementById("inputkdposush1").value   = document.getElementById("inputkdposktp").value;
+		}
 
-
-<script type="text/javascript">
-
-	
-
-	$('#button').click(function(){
-		$("input[type='file']").trigger('click');
-	})
-
-	$("input[type='file']").change(function(){
-		$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
-	})  
-
-
-	
-
-	function myFunction(id) {
 		
-		if (id == 1){
-			$("#custom-content-below-settings-tab-1").click();
-		} else if (id == 2){
-			$("#custom-content-below-settings-tab-2").click();
-		} else if (id == 3){
-			$("#custom-content-below-settings-tab-3").click();
-		} else if (id == 4){
-			$("#custom-content-below-settings-tab-4").click();
-		} else if (id == 5){
-			$("#custom-content-below-settings-tab-5").click();
-		} 
- 
-	}
-</script>
+	</script>
+
+	<script type="text/javascript">
+		function mykelurahan(kode, isi) 
+		{
+			var  txt = isi.value;
+			var i = txt.search('-/-');
+			if (i > 0)
+			{
+				var nkelurahan = txt.substr(0, i);
+				var  txt = txt.substr(i+3);
+				var i = txt.search('-/-');
+				var nkecamatan = txt.substr(0, i);
+				var  txt = txt.substr(i+3);
+				var i = txt.search('-/-');
+				var nkabupaten = txt.substr(0, i);
+				var  txt = txt.substr(i+3);
+				var i = txt.search('-/-');
+				var nprovinsi = txt.substr(0, i);
+				var  txt = txt.substr(i+3);
+				var i = txt.search('-/-');
+				var nkodepos = txt.substr(0, i);
+				if (kode == 1){
+					document.getElementById("inputkelktp").value = nkelurahan;
+					document.getElementById("inputkecktp").value = nkecamatan;
+					document.getElementById("inputkotaktp").value = nkabupaten;
+					document.getElementById("inputpropktp").value = nprovinsi;
+					document.getElementById("inputkdposktp").value = nkodepos;
+
+					document.getElementById("inputkecktp1").value = nkecamatan;
+					document.getElementById("inputkotaktp1").value = nkabupaten;
+					document.getElementById("inputpropktp1").value = nprovinsi;
+					document.getElementById("inputkdposktp1").value = nkodepos;
+				} else if (kode == 2){
+					document.getElementById("inputkelrmh").value = nkelurahan;
+					document.getElementById("inputkecrmh").value = nkecamatan;
+					document.getElementById("inputkotarmh").value = nkabupaten;
+					document.getElementById("inputproprmh").value = nprovinsi;
+					document.getElementById("inputkdposrmh").value = nkodepos;
+
+					document.getElementById("inputkecrmh1").value = nkecamatan;
+					document.getElementById("inputkotarmh1").value = nkabupaten;
+					document.getElementById("inputproprmh1").value = nprovinsi;
+					document.getElementById("inputkdposrmh1").value = nkodepos;
+				} else {
+					document.getElementById("inputkelush").value = nkelurahan;
+					document.getElementById("inputkecush").value = nkecamatan;
+					document.getElementById("inputkotaush").value = nkabupaten;
+					document.getElementById("inputpropush").value = nprovinsi;
+					document.getElementById("inputkdposush").value = nkodepos;
+
+					document.getElementById("inputkecush1").value = nkecamatan;
+					document.getElementById("inputkotaush1").value = nkabupaten;
+					document.getElementById("inputpropush1").value = nprovinsi;
+					document.getElementById("inputkdposush1").value = nkodepos;
+				}
+			}
+		}
+	</script>
+
+
+	<script type="text/javascript">
+		// function myemail(isi) 
+		// {
+		// 	alert('supram');
+		// 	// var  txt = isi.value;
+		// 	// var i = txt.search('@');
+		// 	// if (i = 0)
+		// 	// {
+		// 	// 	alert('Inputan Harus ada @')
+		// 	// 	return false;
+		// 	// }
+		// }
+	</script>
+
+
+
+
+	<script type="text/javascript">
+
+
+		// $('#save').click(function(){
+		// 	alert('test');
+		// })
+
+
+		$('#button').click(function(){
+			$("input[type='file']").trigger('click');
+		})
+
+		$("input[type='file']").change(function(){
+			$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+		})  
+
+
+		
+
+		function myFunction(id) {
+			
+			if (id == 1){
+				$("#custom-content-below-settings-tab-1").click();
+			} else if (id == 2){
+				$("#custom-content-below-settings-tab-2").click();
+			} else if (id == 3){
+				$("#custom-content-below-settings-tab-3").click();
+			} else if (id == 4){
+				$("#custom-content-below-settings-tab-4").click();
+			} else if (id == 5){
+				$("#custom-content-below-settings-tab-5").click();
+			} 
+	
+		}
+	</script>
+
+
 
 </body>
 </html>
