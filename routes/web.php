@@ -26,9 +26,12 @@ Route::get('/company1/{id}', 'NewController@company')->name('company1');
 Route::get('/company/{id}', 'HomeController@company')->name('company');
 Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcompany1');
 Route::get('/subcompany/{id}/{id2}', 'HomeController@subcompany')->name('subcompany');
-Route::get('/detail1/{id}/{id2}', 'NewController@detail')->name('detail');
+Route::get('/detail1/{id}/{id2}/{id3}', 'NewController@detail')->name('detail');
 
 Route::post('/detailsave/{id}', 'NewController@detailsave')->name('detailsave');
+
+
+Route::get('/storeimage/{id}', 'NewController@storeimage')->name('storeimage');
 
 Route::get('/detail1/update/{id}', 'NewController@update')->name('update');
 
@@ -52,6 +55,7 @@ Route::get('/edit0401', 'HomeController@edit0401')->name('edit0401');
 Route::get('/karakteristik', 'HomeController@karakteristik')->name('karakteristik');
 Route::get('/edit0501', 'HomeController@edit0501')->name('edit0501');
 Route::get('/edit0501upload', 'HomeController@edit0501upload')->name('edit0501upload');
+
 
 Route::get('/setting', 'HomeController@setting')->name('setting');
 Route::get('/setting1', 'NewController@setting')->name('setting1');

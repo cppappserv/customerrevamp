@@ -318,7 +318,7 @@ $total = 134;
                      $changed_time  = $listdata[$i]->changed_time;
                      ?>
                   <tr>
-                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$uid}}">{{$customer_id}}<a></td>
+                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$pilcompany2}}/{{$uid}}">{{$customer_id}}<a></td>
                      <td id="tdpos">{{$customer_name}}</td>
                      <td id="tdpos">{{$bu}}</td>
                      <td id="tdpos">{{$created_by}}</td>

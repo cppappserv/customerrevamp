@@ -52,10 +52,10 @@ if ($pos=0 or $pos=1){
 
 
 	<style type="text/css">
-        input[type=file]{
+			/* input[type=file]{
         display: inline;
 		  opacity:0 
-        }
+        } */
         #image_preview {
         border: 1px solid black;
         padding: 10px;
@@ -803,6 +803,10 @@ if ($pos=0 or $pos=1){
 			
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
+
+				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
+				<input type="hidden" id="para2" name="para2" value="{{$idy}}">
+				<input type="hidden" id="para3" name="para3" value="{{$id}}">
 			
 				<div class="card-body">
 					<ul class="nav nav-tabs" id="custom-content-below-tab" style="display: none;"role="tablist">
@@ -840,33 +844,43 @@ if ($pos=0 or $pos=1){
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-4">
-											<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
-												border-radius: 200px;
-													border-color: black;
-											">  
-											<input type="file" name="files" id="files">
-											<span id='val'></span>
-											<span id='button'>Rubah Foto Profil</span>
+											
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<img src="/storeimage/{{ $inputuser_id }}" id="files-tag" width="80%" style="
+																border-radius: 50%;
+																margin: auto;">   
+													<span id='val' style="display:none"></span>
+													<input type="file" name="files" id="files" style="display:none;">
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span>
+												</div>
+											</div>
 										</div>
+										
+
 										<!-- /.col -->
 										<div class="col-md-8">
 											<div class="form-group row">
-												<label for="inputfullname" class="col-sm-2 col-form-label">Nama Lengkap</label>
-												<div class="col-sm-10">
+												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label for="inputnamaalias" class="col-sm-2 col-form-label">Alias</label>
-												<div class="col-sm-10">
+												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}">
 												</div>
 											</div>
 											
 
 											<div class="form-group row">
-												<label for="inputbirthdate" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-												<div class="col-sm-10">
+												<label for="inputbirthdate" class="col-sm-3 col-form-label">Tanggal Lahir</label>
+												<div class="col-sm-9">
 													<!-- <div class="input-group-prepend">
 														<span class="input-group-text">
 															<i class="far fa-calendar-alt"></i>
@@ -876,23 +890,23 @@ if ($pos=0 or $pos=1){
 												</div>
 											</div>
 											<div class="form-group row">
-												<label for="inputbirthplace" class="col-sm-2 col-form-label">Tempat Lahir</label>
-												<div class="col-sm-10">
+												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}">
 												</div>
 											</div>
 
 											<div class="form-group row">
-												<label for="inputnoktp" class="col-sm-2 col-form-label">No KTP</label>
-												<div class="col-sm-10">
+												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}">
 												</div>
 											</div>
 											<div class="form-group row">
-												<label for="inputagama" class="col-sm-2 col-form-label">Agama</label>
+												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
 													<select class="form-control" id="inputagama" name="inputagama"> 
-													<option>--- Select Agama ---</option>
+													<option value="">--- Select Agama ---</option>
 													<?php 
 													foreach ($tblagama as $key => $value) {
 														?>
@@ -906,11 +920,11 @@ if ($pos=0 or $pos=1){
 											</div>
 
 											<div class="form-group row">
-												<label for="inputgoldarah" class="col-sm-2 col-form-label">Golongan Darah</label>
+												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 
 													<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
-													<option>--- Select Golongan Darah ---</option>
+													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
 														?>
@@ -2370,8 +2384,7 @@ if ($pos=0 or $pos=1){
 											<?php
 											$i=-1;
 											foreach ($data_add_modalsendiri as $key => $data) {
-												if   ($data->type == 'MODAL')
-												{
+												
 													?>
 													<div class="col-md-12">
 														<div class="form-group row">
@@ -2380,12 +2393,12 @@ if ($pos=0 or $pos=1){
 																<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}">	
 																<input type="hidden" id="inputmodalid[]" name="inputmodalid[]" value="{{$data->seq}}">	
 															</div>
-															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->info}}</label>
+															<label for="sendiripersent" class="col-sm-2 col-form-label">{{$data->info}}</label>
 														</div>
 													</div>
 
 												<?PHP
-												}
+												
 											}
 											?>
 										</div>
@@ -2419,7 +2432,7 @@ if ($pos=0 or $pos=1){
 										<div class="row" id="rowsmodalbank">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label for="inputmodalbankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
+													<label for="bankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
 													<div class="col-sm-6">
 														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="{{$data->value1}}">	
 													</div>
@@ -2621,32 +2634,15 @@ if ($pos=0 or $pos=1){
 									<div class="row">
 
 										<div class="col-md-4">
-											<img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
+											<!-- <img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
 												border-radius: 200px;
 													border-color: black;"
-											>  
-											<input type="file" name="files" id="files">
-											<span id='val'></span>
-											<span id='button'>Rubah Foto Profil</span>
+											>   -->
+											<input type="file" name="files2[]" id="files2[]">
+											<span id='val2'></span>
+											<span id='button2'>Rubah Foto Profil</span>
 										</div>
-
-										<!-- <div class="col-12 col-sm-2">
-											<div class="form-group row">
-												<div class="product-image-thumb col-sm-9">
-													<img src="../../dist/img/prod-2.jpg" alt="Product Image">
-
-													
-													<div class="col-sm-3">
-														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
-													</div>	
-												</div>
-												
-											</div>
-										
-										</div> -->
 									</div>
-									<!-- /.row -->
-									
 								</div>
 								<div class="form-group row ">
 									<div class="col-sm-12">
@@ -2685,7 +2681,7 @@ if ($pos=0 or $pos=1){
 						<div class="col-md-2">
 							<div class="form-group row">
 								<div class="col-sm-12">
-									<a href="/detail1/{{$idx}}/{{$id}}" class="btn btn-block btn-danger btn-lg">Cancel</a>
+									<a href="/detail1/{{$idx}}/{{$idy}}/{{$id}}" class="btn btn-block btn-danger btn-lg">Cancel</a>
 								</div>
 							</div>
 						</div>
@@ -3149,60 +3145,7 @@ if ($pos=0 or $pos=1){
 		});
 
 
-		//  $(document).ready(function(){
-		//    var i=1;  
-		// 	var isioptions=document.getElementById("optassetpribadi").value;
-
-			
-			
-		// 	$('#addassetpribadi').click(function(){ 
-		// 		var txt = 	'<div class="row" id="rowsassetpribadi'+i+'">'+
-		// 						'	<div class="col-md-2">'+
-		// 						'		<div class="form-group row">'+
-		// 						'			<div class="col-sm-12">'+
-		// 						'				<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputasetpribadi[]" name="inputasetpribadi[]">'+isioptions+ 
-		// 						'           </select>'+	
-		// 						'			</div>'+
-		// 						'		</div>'+
-		// 						'	</div>'+
-		// 						'	<div class="col-md-5">'+
-		// 						'		<div class="form-group row">'+
-		// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>'+
-		// 						'			<div class="col-sm-8">'+
-		// 						'				<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]">	'+
-		// 						'				<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]">	'+
-		// 						'			</div>'+
-		// 						'			<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>'+
-		// 						'		</div>'+
-		// 						'	</div>'+
-		// 						'	<div class="col-md-3">'+
-		// 						'		<div class="form-group row">'+
-		// 						'			<label for="inputAssetAlamat" class="col-sm-4 col-form-label">{{$data->info3}}</label>'+
-		// 						'			<div class="col-sm-8">'+
-		// 						'				<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" >	'+
-		// 						'			</div>'+
-		// 						'		</div>'+
-		// 						'	</div>'+
-		// 						'	<div class="col-md-2">'+
-		// 						'		<div class="form-group row">'+
-		// 						'			<div class="col-sm-10">'+
-		// 						'				<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]">	'+
-		// 						'			</div>'+
-		// 						'			<div class="col-sm-2">'+
-		// 						'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove8">X</button>'+
-		// 						'			</div>'+
-		// 						'		</div>'+
-		// 						'	</div>'+
-		// 						'</div>';
-		// 		$('#inpassetpribadi').append(txt);
-		// 	});
-
-
-		// 	$(document).on('click', '.btn_remove8', function(){  
-		// 		var button_id = $(this).attr("id");   
-		// 		$('#rowsassetpribadi'+button_id+'').remove();  
-		//    });  
-		// });  
+		
 	</script>
 
 
@@ -3229,7 +3172,7 @@ if ($pos=0 or $pos=1){
 								'	<div class="col-md-5">'+
 								'		<div class="form-group row">'+
 								'			<div class="col-sm-10">'+
-								'				<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]"> '+isioptions+
+								'				<select class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]"> '+isioptions+
 								'				</select>'+
 								'			</div>'+
 								'			<div class="col-sm-2">'+
@@ -3321,15 +3264,15 @@ if ($pos=0 or $pos=1){
 					var reader = new FileReader();
 					
 					reader.onload = function (e) {
-						$('#files-tag').attr('src', e.target.result);
+							$('#files-tag').attr('src', e.target.result);
 					}
 					reader.readAsDataURL(input.files[0]);
 			}
 		}
 		$("#files").change(function(){
-			readURL(this);
+				readURL(this);
 		});
-	</script>	
+	</script>
 
 	<script type="text/javascript">
 		function myduplikatalamatusaha() 

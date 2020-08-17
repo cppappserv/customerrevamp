@@ -250,7 +250,7 @@ class NewAddController extends Controller
                            <div class="col-sm-9">
                               <div class="input-group">
                               <select class="form-control" id="inputusertype" name="inputusertype" > ';
-                           $txt .='<option>--- Select User Type ---</option>';
+                           $txt .='<option value="">--- Select User Type ---</option>';
                               foreach ($listgroup as $key => $value) {
                         $txt .='<option value="'.$value->idusergroup.'">'.$value->namegroup.'</option>';
                               }
@@ -263,7 +263,7 @@ class NewAddController extends Controller
                            <div class="col-sm-9">
                               <div class="input-group">
                               <select class="form-control" id="inputuserarea" name="inputuserarea" >';
-                           $txt .='<option>--- Select Area ---</option>';
+                           $txt .='<option value="">--- Select Area ---</option>';
                               foreach ($tblobject as $key => $value) {
                         $txt .='<option value="'.$value->objname.'">'.$value->desc.'</option>';
                               }
@@ -305,7 +305,7 @@ class NewAddController extends Controller
                            <div class="col-sm-9">
                               <div class="input-group">
                                  <select class="form-control" id="inputusercompany" name="inputusercompany" > 
-                                 <option>--- Select Company ---</option>
+                                 <option value="">--- Select Company ---</option>
                                  </select>
                               </div>
                            </div>
