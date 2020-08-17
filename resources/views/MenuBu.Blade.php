@@ -468,10 +468,11 @@
         <?php
         $max=count($percompany);
         for($i=0; $i<$max; $i++){
-           $des = $percompany[$i]->des;
-           $des2 = $percompany[$i]->des2;
-           $des3 = $percompany[$i]->des3;
-           $ttl = number_format($percompany[$i]->ttl);
+				$info = $percompany[$i]->info;
+				$des = $percompany[$i]->des;
+				$des2 = $percompany[$i]->des2;
+				$des3 = $percompany[$i]->des3;
+				$ttl = number_format($percompany[$i]->ttl);
 
           switch  ($i){
             case 0  : $warna = "#337ab7"; break;
@@ -490,7 +491,7 @@
           
             ?>
               <div class="col-md-6 col-sm-6 col-12">
-					<a href="/subcompany1/{{$pilcompany}}/{{$des}}">
+					<a href="/subcompany1/{{$pilcompany}}/{{$info}}">
 						<div class="info-box" id="form02kotak">
 							<span class="info-box-icon bg-info text" id="form02kotak2"
 							style="background-color: {{$warna}}!important;">

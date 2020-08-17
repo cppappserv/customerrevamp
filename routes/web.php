@@ -24,7 +24,7 @@ Route::get('/dashboard1', 'NewController@index')->name('home1');
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::get('/company1/{id}', 'NewController@company')->name('company1');
 Route::get('/company/{id}', 'HomeController@company')->name('company');
-Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcompany');
+Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcompany1');
 Route::get('/subcompany/{id}/{id2}', 'HomeController@subcompany')->name('subcompany');
 Route::get('/detail1/{id}/{id2}', 'NewController@detail')->name('detail');
 
@@ -37,6 +37,7 @@ Route::get('/detaildelete/{id}', 'HomeController@detaildelete')->name('detaildel
 Route::get('/datapribadi', 'HomeController@detail')->name('pribadi');
 Route::get('/edit0101', 'HomeController@edit0101')->name('edit0101');
 
+Route::delete('applicant_delete_modal', 'NewController@destroy')->name('applicant_delete');
 
 
 Route::get('/datausaha', 'HomeController@usaha')->name('usaha');
@@ -60,8 +61,10 @@ Route::get('/upload_history', 'HomeController@upload_history')->name('upload_his
 Route::get('/download', 'HomeController@download')->name('download');
 Route::get('/syncronize', 'HomeController@syncronize')->name('syncronize');
 Route::get('/info', 'HomeController@info')->name('info');
-Route::get('/info1', 'NewController@info')->name('info');
+Route::get('/info1', 'NewController@info')->name('info1');
 Route::get('/infoedit', 'HomeController@infoedit')->name('infoedit');
+Route::post('/info1edit/save', 'NewController@infosave')->name('infosave');
+// Route::post('/info1edit/add', 'NewController@infosave')->name('infosave');
 Route::get('/logout', 'HomeController@logout')->name('logout');
 
 Route::get('autocomplete', 'NewController@search');
@@ -71,6 +74,9 @@ Route::get('autohubkelga', 'NewController@searchhubkelga');
 //  Route::get('autocomplete', 'AutoCompleteController@search');
 Route::get("/getmsg/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@jaminan");
 Route::get("/getmsg2/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@assetpribadi");
+Route::get("/getmsg3/{id}/{id2}","NewAddController@inputinfomasi");
+Route::get("/getmsg4","NewAddController@inputinfomasinew");
+Route::get('/getmsg5/{id}', 'NewAddController@getcompany');
 Route::get("/addmore","ArrayController@addMore");
 Route::post("/addmore","ArrayController@addMorePost"); 
  

@@ -9,6 +9,7 @@ $hitam = "rgba(84,84,84,1)";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ Session::token() }}"> 
   <title>AdminLTE 3 | DataTables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -357,6 +358,11 @@ $hitam = "rgba(84,84,84,1)";
     border-radius: 10px;
     padding-left: 10px;
 	}
+   .judultable {
+      background:rgba(60,141,188,1);
+      color: #fff;
+      text-align: center;
+   }
 
   </style>
 </head>
@@ -417,152 +423,138 @@ $hitam = "rgba(84,84,84,1)";
             </div>
             <!-- /.card-header -->
             <?php 
-            foreach ($listuseredit as $key => $value2) {
+            
                // select '1' urut, 'supram.maharwantijo@cpp.co.id' userid, 
                // 'Administrator' usertype, 
                // 'Jakarta' userarea, '1234' userpassword, '1234' userrepassword
                ?>
-            <div class="card-body">
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="form-group row">
-                        <label for="inputuserid" class="col-sm-3 col-form-label">User ID</label>
-                        <div class="col-sm-9">
-                           <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
-                           <div class="input-group">
-                           <input type="email" class="form-control" id="inputuserid" placeholder="Email"
-                           value="{{$value2->userid}}">
+               <form method="post" id="myform" action="/info1edit/save" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                  <div class="card-body" id="inpinformasi">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group row">
+                              <label for="inputuserid" class="col-sm-3 col-form-label">User ID</label>
+                              <div class="col-sm-9">
+                                 <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
+                                 <div class="input-group">
+                                    <input type="text" class="form-control" id="inputuserid" name="inputuserid" onblur="cekinputan()">
+                                    <input type="hidden" id="inputbaris" name="inputbaris">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group row">
+                              <label for="inputusertype" class="col-sm-3 col-form-label">User Type</label>
+                              <div class="col-sm-9">
+                                 <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
+                                 <div class="input-group">
+                                    <select class="form-control" id="inputusertype" name="inputusertype" > 
+                                       <option value="" selected>--- Select User Type ---</option>
+                                    <?php
+                                    foreach ($listgroup as $key => $value) {
+                                    ?>
+                                       <option value="{{$value->idusergroup}}">{{$value->namegroup}}</option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group row">
+                              <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
+                              <div class="col-sm-9">
+                                 <div class="input-group">
+                                    <select class="form-control" id="inputuserarea" name="inputuserarea" > 
+                                    <option value="" selected>--- Select Area ---</option>
+                                    <?php
+                                    foreach ($tblobject as $key => $value) {
+                                    ?>
+                                       <option value="{{$value->objname}}">{{$value->desc}}</option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                     </div>
-                     
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                           <div class="form-group row">
+                              <label for="inputuserpass" class="col-sm-3 col-form-label">Password</label>
+                              <div class="col-sm-8">
+                                 <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
+                                 <div class="input-group">
+                                    <input type="password" class="form-control" id="inputuserpass" name="inputuserpass" placeholder="password" >
+                                 </div>
+                              </div>
+                              <button type="button" 
+                                 title="Show Password"
+                                 onclick="myFunction2(1)">          <!--  this is the title -->
+                                 <span class="fa fa-eye"></span> <!--  this is the icon  -->
+                              </button> 
+                           </div>
+                           <div class="form-group row">
+                              <label for="inputuserrepass" class="col-sm-3 col-form-label">Re-Type Password</label>
+                              <div class="col-sm-8">
+                                 <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
+                                 <div class="input-group">
+                                 <input type="password" class="form-control" id="inputuserrepass" name="inputuserrepass" placeholder="password" >
+                                 </div>
+                              </div>
+                              <button type="button" 
+                                 title="Show Password"
+                                 onclick="myFunction2(2)">          <!--  this is the title -->
+                                 <span class="fa fa-eye"></span> <!--  this is the icon  -->
+                              </button> 
+                           </div>
 
-
-                     <div class="form-group row">
-                        <label for="inputusertype" class="col-sm-3 col-form-label">User Type</label>
-                        <div class="col-sm-9">
-                           <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
-                           <div class="input-group">
-                              <select class="form-control" id="inputusertype"> 
-                              <?php 
-                              foreach ($liststatus as $key => $value) {
-                                 ?>
-                                 <option value="{{$value->urut}}" selected="">{{$value->tblstatus}}</option>
-                                 <?php
-                              }
-                              ?>
-                              </select>
+                           <div class="form-group row">
+                              <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
+                              <div class="col-sm-9">
+                                 <div class="input-group">
+                                    <select class="form-control" id="inputusercompany" name="inputusercompany" > 
+                                       <option>--- Select Company ---</option>
+                                    </select>
+                                 </div>
+                              </div>
                            </div>
                         </div>
+                        <!-- /.col -->
                      </div>
-
-                     <div class="form-group row">
-                        <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
-                        <div class="col-sm-9">
-                           <div class="input-group">
-                              <select class="form-control" id="inputuserarea"> 
-                              <option value="" selected="">Area</option>
-                              <?php 
-                              foreach ($listarea as $key => $value) {
-                                 ?>
-                                 <option value="{{$value->urut}}" <?php echo ($value->tblarea == $value2->userarea?'selected':'');?>>{{$value->tblarea}}</option>
-                                 <?php
-                              }
-                              ?>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-
+                     <!-- /.row -->
                   </div>
-                  <!-- /.col -->
-                  <div class="col-md-6">
-                     <div class="form-group row">
-                        <label for="inputuserpass" class="col-sm-3 col-form-label">Password</label>
-                        <div class="col-sm-8">
-                           <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
-                           <div class="input-group">
-                              <input type="password" class="form-control" id="inputuserpass" placeholder="password"
-                              value="{{$value2->userpassword}}">
-                           </div>
-                           
 
-                           
-
+               
+                  <div class="card-body" id="save" style="display:none" >
+                     <div class="row" >
+                        <div class="col-md-4">
                         </div>
-                        <button type="button" 
-                           title="Show Password"
-                           onclick="myFunction('inputuserpass')">          <!--  this is the title -->
-                           <span class="fa fa-eye"></span> <!--  this is the icon  -->
-                        </button> 
-                     </div>
-                     <div class="form-group row">
-                        <label for="inputuserrepass" class="col-sm-3 col-form-label">Re-Type Password</label>
-                        <div class="col-sm-8">
-                           <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
-                           <div class="input-group">
-                           <input type="password" class="form-control" id="inputuserrepass" placeholder="password"
-                           value="{{$value2->userrepassword}}">
+                        <div class="col-md-2">
+                           <div class="form-group row">
+                              <div class="col-sm-12">
+                                 <button type="submit" id="save_save" class="btn btn-block btn-primary btn-lg" data-toggle="modal" data-target="#modal-default" style="background: rgba(15,199,89,1);">Save</button>
+                              </div>
                            </div>
                         </div>
-                        <button type="button" 
-                           title="Show Password"
-                           onclick="myFunction('inputuserrepass')">          <!--  this is the title -->
-                           <span class="fa fa-eye"></span> <!--  this is the icon  -->
-                        </button> 
-                     </div>
-
-                     <div class="form-group row">
-                        <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
-                        <div class="col-sm-9">
-                           <div class="input-group">
-                              <select class="form-control" id="inputusercompany"> 
-                              <?php 
-                              foreach ($listcompany as $key => $value) {
-                                 ?>
-                                 <option value="{{$value->urut}}" selected="">{{$value->tblcompany}}</option>
-                                 <?php
-                              }
-                              ?>
-                              </select>
+                        <div class="col-md-2">
+                           <div class="form-group row">
+                              <div class="col-sm-12">
+                                 <button type="button" id="save_cancel" class="btn btn-block btn-danger btn-lg" data-toggle="modal" data-target="#modal-cancel">Cancel</button>
+                              </div>
                            </div>
                         </div>
-                     </div>
-                     
-                     
-                  </div>
-                  <!-- /.col -->
-               </div>
-               <!-- /.row -->
-            </div>
-            <?php 
-            }
-            ?>
-
-            <!-- /.card-body -->
-            <div class="card-footer collapese">
-               <div class="row collapse" >
-                  <div class="col-md-4">
-                  </div>
-                  <div class="col-md-2">
-                     <div class="form-group row">
-                        <div class="col-sm-12">
-                           <button type="button" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);">Save</button>
+                        <div class="col-md-4">
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-2">
-                     <div class="form-group row">
-                        <div class="col-sm-12">
-                           <button type="button" class="btn btn-block btn-danger btn-lg">Cancel</button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                  </div>
+               </form>
+               <!-- /.card-body -->
+               <div class="card-footer">
+                  
                </div>
             </div>
-         </div>
 
          <div class="card card-default">
             <div class="card-header">
@@ -571,103 +563,121 @@ $hitam = "rgba(84,84,84,1)";
                
             </div>
             <!-- /.card-header -->
-            
 
            
             <div class="card-body">
                <div class="form-group row">                    
-                  <div class="col-sm-2">
-                     <label for="inputusertype" class="col-sm-12 col-form-label">No</label>
+                  <div class="col-sm-1">
+                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">No</label>
                   </div>                    
                   
-                  <div class="col-sm-2">
-                  <label for="inputusertype" class="col-sm-12 col-form-label">User ID</label>
+                  <div class="col-sm-4">
+                  <label for="inputusertype" class="col-sm-12 col-form-label judultable">User ID</label>
                   </div>
 
                   <div class="col-sm-2" style="width:150px">
-                     <label for="inputusertype" class="col-sm-12 col-form-label">user Type</label>
+                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">user Type</label>
                   </div>
                   
                   <div class="col-sm-2">
-                     <label for="inputusertype" class="col-sm-12 col-form-label">Area</label>
+                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">Area</label>
                   </div>
 
-                  <div class="col-sm-2">
-                     <label for="inputusertype" class="col-sm-12 col-form-label">Password</label>
+                  <div class="col-sm-3">
+                        
+                     <label for="inputusertype" class="col-sm-11 col-form-label judultable">Password</label>
+                     
+                     <div class="input-group col-sm-1">      
+                        <!-- <label for="inputusertype" class="col-sm-12 col-form-label judultable">Password</label> -->
+                     </div>
                   </div>
-                  <div class="col-sm-2">
-                  </div>
+                  
                </div>
-            </div>
+            
+            <div id="inplist">
 
 <?php 
+$i=0;
 foreach ($listuser as $key => $value3) {
+   $i++;
    ?>
-            <div class="card-body">
+            
                <div class="form-group row">                    
                   <div class="col-sm-1">
                      <div class="input-group">
-                        <input type="text" id="inputno[]" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Nama" readonly=""
-                        value="{{$value3->urut}}"> 
+                        <input type="text" id="inputno_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Nama" readonly=""
+                        value="{{$i}}"> 
+                        <input type="hidden" id="inputuid_{{$i}}" value="{{$value3->uid}}"> 
                      </div>
                   </div>                    
                   
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                      <div class="input-group">                    
-                        <input type="text" id="inputuserid[]" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Tempat Lahir" readonly=""
-                        value="{{$value3->userid}}"> 
+                        <input type="text" id="inputuserid_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                        value="{{$value3->user_id}}"> 
                      </div>
                   </div>
 
                   <div class="col-sm-2" style="width:150px">
                      <div class="input-group">
-                        <input type="text" id="inputusertype[]" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Tempat Lahir" readonly=""
-                        value="{{$value3->usertype}}"> 
+                     <?php 
+                     foreach ($listgroup as $key => $value) {
+                        if ($value->idusergroup == $value3->usergroup){
+
+                        break;
+                        }
+                     }
+                     ?>
+                        <input type="text" id="inputusertype_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                        value="{{$value->namegroup}}"> 
                      </div>
                   </div>
+
                   <div class="col-sm-2">
                      <div class="input-group" id="select">                    
                         <div class="input->group">
-                           <input type="text" id="inputuserarea[]" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Tempat Lahir" readonly=""
-                           value="{{$value3->userarea}}"> 
+                           <input type="text" id="inputuserarea_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                              value="{{$value3->branch}}"> 
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-2">
-                     <div class="input-group col-sm-12">                    
-                        <input type="text" id="inputuserpass[]" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Tempat Lahir" readonly=""
-                        value="{{$value3->userpassword}}"> 
+
+                  <div class="col-sm-3 row">
+                     <div class="input-group col-sm-11">                    
+                        <input type="password" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control"  readonly=""
+                           value="({{md5($value3->password)}}"> 
+                        <input type="hidden" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control"  readonly=""
+                           value="{{$value3->company}}"> 
                      </div>
+                        <!-- <div class="input-group col-sm-1">
+                           <button type="button" 
+                              title="Show Password"
+                              onclick="myFunction({{$i}})"> 
+                              <span class="fa fa-eye"></span>
+                           </button> 
+                        </div> -->
+                        <div class="input-group col-sm-1">
+                           
+                           <button type="button" 
+                              title="Edit"
+                              onclick="myedit({{$i}})">          <!--  this is the title -->
+                              <i class="far fa-edit"></i> <!--  this is the icon  -->
+                           </button> 
+                        </div>
+                     <!-- </div> -->
                   </div>
-                  <div class="col-sm-1">
-                     <div class="input-group col-sm-12">
-                        <button type="button" 
-                           title="Show Password"
-                           onclick="myFunction('inputuserpass[]')">          <!--  this is the title -->
-                           <span class="fa fa-eye"></span> <!--  this is the icon  -->
-                        </button> 
-                     </div>
-                  </div>
-                  <div class="col-sm-1">
-                     <div class="input-group col-sm-12">
-                        <button type="button" 
-                           title="Show Password"
-                           onclick="myFunction('inputuserpass[]')">          <!--  this is the title -->
-                           <i class="far fa-edit"></i> <!--  this is the icon  -->
-                        </button> 
-                     </div>
-                  </div>
+                  
                </div>  
-            </div>
+            
    <?php
 }
 ?>
-            
+             </div> 
 
 
             
 
-
+            </div>
 
             <!-- /.card-body -->
             <div class="card-footer">
@@ -688,17 +698,38 @@ foreach ($listuser as $key => $value3) {
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- jquery-validation -->
+<script src="{{asset('plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-validation/additional-methods.min.js')}}"></script>
 <!-- DataTables -->
 <script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <!-- AdminLTE App -->
+
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- page script -->
 <script>
+   
    function myFunction(para_1) {
-      var x = document.getElementById(para_1);
+      
+      var x = document.getElementById('inputuserpass_'+para_1);
+
+      if (x.type === "password") {
+         x.type = "text";
+      } else {
+         x.type = "password";
+      }
+   }
+
+   function myFunction2(i) {
+      if (i==1){
+         var x = document.getElementById('inputuserpass');   
+      } else {
+         var x = document.getElementById('inputuserrepass');
+      }
+
       if (x.type === "password") {
          x.type = "text";
       } else {
@@ -707,6 +738,142 @@ foreach ($listuser as $key => $value3) {
    }
 </script>
 
+<script type="text/javascript">
+	function myedit(isi) 
+	{
+      var tx1 = 'inputuid_'+isi;
+      var tx2 = 'inputuserid_'+isi;
+      var tx3 = 'inputusertype_'+isi;
+      var tx4 = 'inputuserarea_'+isi;
+      var tx5 = 'inputuserpass_'+isi;
+      
+      var x = document.getElementById("save");
+      if (x.style.display === "none") {
+         x.style.display = "block";
+      
+      }
+      var uid = document.getElementById(tx1).value;
+      $.ajax({
+         url: '/getmsg3/'+uid+'/'+isi,
+         type: "GET",
+         dataType: "json",
+         success:function(data) {
+            $("#inpinformasi").html(data.msg);
+         }
+      });
+   }
+</script>
 
+<script type="text/javascript">
+
+   //  $(document).ready(function(){
+	// 	var x = document.getElementById("save");
+      
+   //    var xinputbaris = document.getElementById("inputbaris");
+      
+   //    var inputuserid = document.getElementById("inputuserid");
+   //    var inputusertype = document.getElementById("inputusertype");
+   //    var inputuserarea = document.getElementById("inputuserarea");
+   //    var inputuserpass = document.getElementById("inputuserpass");
+   //    var inputuserrepass = document.getElementById("inputuserrepass");
+   //    var inputusercompany = document.getElementById("inputusercompany");
+	// 	$('#save_save').click(function(){ 
+   //       if (xinputbaris.value === ""){
+   //          alert('save add');
+   //       } else {
+   //          alert('save update');
+   //       }
+         
+
+   //       // $.ajax({
+   //       //    method: 'POST',
+   //       //    url: '/info1edit/save',
+   //       //    dataType: 'json'
+   //       //    data: {
+   //       //       inputuserid: inputuserid.value,
+   //       //       inputusertype:  inputusertype.value,
+   //       //       inputuserarea:  inputuserarea.value,
+   //       //       inputuserpass:  inputuserpass.value,
+   //       //       inputuserrepass: inputuserrepass.value,
+   //       //       inputusercompany: inputusercompany.value
+   //       //    },
+   //       //    success:function(data){
+   //       //       $("#inpinformasi").html(data.msg);
+   //       //    }
+   //       // });
+         
+
+   //       // $.ajax({
+   //       //    url: '/info1edit/save',
+   //       //    type: "POST",
+   //       //    dataType: "json",
+   //       //    success:function(data) {
+   //       //       $("#inpinformasi").html(data.msg);
+   //       //    }
+   //       // });
+
+	// 	});
+
+      
+      $('#save_cancel').click(function(){ 
+         x.style.display = "none";
+
+         
+         $.ajax({
+            url: '/getmsg4',
+            type: "GET",
+            dataType: "json",
+            success:function(data) {
+               $("#inpinformasi").html(data.msg);
+            }
+         });
+		});
+	});  
+</script>
+
+<script>
+   function cekinputan(){
+      var x = document.getElementById("save");
+      var inputuserid = document.getElementById("inputuserid");
+      // var inputusertype = document.getElementById("inputusertype");
+      // var inputuserarea = document.getElementById("inputuserarea");
+      // var inputuserpass = document.getElementById("inputuserpass");
+      // var inputuserrepass = document.getElementById("inputuserrepass");
+      // var inputusercompany = document.getElementById("inputusercompany");
+      // if(inputuserid.value == '' || inputusertype.value == '' || inputuserarea.value == '' || inputuserpass.value == '' || inputuserrepass.value == '' || inputusercompany.value == ''){
+      if(inputuserid.value == ''){
+      } else {
+         x.style.display = "block";
+      }
+   }
+</script>
+
+
+<script type="text/javascript">
+   $(function() {
+      $('select[name=inputuserarea]').change(function() {
+         var stateID = $(this).val();
+         if(stateID) {
+            $.ajax({
+               url: '/getmsg5/'+stateID,
+               type: "GET",
+               dataType: "json",
+               success:function(data) {
+                  if(data){
+                     $("#inputusercompany").empty();
+                     $("#inputusercompany").append('<option>--- Select Company ---</option>');
+                     $.each(data,function(key,value){
+                           $("#inputusercompany").append('<option value="'+key+'">'+value+'</option>');
+                     });
+                  }
+                  
+               }
+            });
+         }
+      });
+    });
+</script>
+
+</script>
 </body>
 </html>

@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use App\Models\kodepost;
 use App\Models\Usrprofile;
 use App\Models\Usradditional;
+use App\Models\Dtadditional;
+use App\Models\Tblgroupuser;
+use App\Models\Tblobject;
+use App\Models\Zbranch;
+
 use DB;
 
 class NewController extends Controller
@@ -47,30 +52,45 @@ class NewController extends Controller
             select 8 urut, 'shrimp feed' des, 1692 ttl union
             select 9 urut, 'shrimp fry' des, 375 ttl
         ";
+        $sql = "
+            SELECT 0 AS urut, c1.info3 des ,COUNT(*) ttl 
+            FROM tbluser a1
+            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
+            INNER JOIN dt_additional c1 ON c1.info = a1.company
+            GROUP BY c1.info3
+        ";
         $grp = db::connection('mysql')->select($sql);
+        $i=0;
+        foreach ($grp as $key => $value) {
+            $i++;
+            $value->urut = $i;
+        }
         return $grp;
     }
 
-    public function datacompany()
+    public function datacompany($para1, $para2)
     {
+        // $para1 = "FISH FEED";
+        // $para2 = "12345";
         $sql = "
-            select 'kt3005901' customer_id, 'eddie susanto 01' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005902' customer_id, 'eddie susanto 02' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005903' customer_id, 'eddie susanto 03' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005904' customer_id, 'eddie susanto 04' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005905' customer_id, 'eddie susanto 05' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005906' customer_id, 'eddie susanto 06' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005907' customer_id, 'eddie susanto 07' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005908' customer_id, 'eddie susanto 08' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005909' customer_id, 'eddie susanto 09' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time union
-            select 'kt3005910' customer_id, 'eddie susanto 10' customer_name, 'agri inti prima' bu, 'aditya yudha' created_by, '01-11-2019' created_dt, '17:58:40' created_time, 'rahmat' changed_by, '14-05-2020' changed_dt, '13:21:24' changed_time 
-        ";
+        SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info4 bu, a2.fullname created_by, 
+        DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
+        a3.fullname changed_by, 
+        DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
+        FROM tbluser a1
+        INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
+        INNER JOIN dt_additional c1 ON c1.info = a1.company
+        LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
+        LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
+        WHERE c1.info3 = '".$para1."' AND a1.company = '".$para2."'
+           ";
         
         $grp = db::connection('mysql')->select($sql);
         return $grp;
+        
     }
 
-    public function grpcompany()
+    public function grpcompany($para)
     {
         $sql = "
             select 1 urut, 'cpb/'       des, 'pt central pertiwi bahari'   des2, '' des3, 1201 ttl union 
@@ -80,7 +100,21 @@ class NewController extends Controller
             select 5 urut, 'cpgp ckp/'  des, 'pt central pangan pertiwi '  des2, 'cikampek' des3, 1205 ttl union
             select 6 urut, 'cpp sda/'   des, 'pt. central proteina prima ' des2, 'sidoarjo' des3, 1206 ttl
         ";
+
+        $sql = "
+            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'/') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'/')) des3 ,COUNT(*) ttl 
+            FROM tbluser a1
+            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
+            INNER JOIN dt_additional c1 ON c1.info = a1.company
+            WHERE c1.info3 = '".$para."'
+            GROUP BY c1.info, c1.info2, c1.info4, c1.info5;
+        ";
         $grp = db::connection('mysql')->select($sql);
+        $i=0;
+        foreach ($grp as $key => $value) {
+            $i++;
+            $value->urut = $i;
+        }
         return $grp;
     }
 
@@ -162,7 +196,7 @@ class NewController extends Controller
     public function company($kode)
     {
         $user = $this->getuser();
-        $grpcmp = $this->grpcompany();
+        $grpcmp = $this->grpcompany($kode);
         $pilcompany = $kode;
         return view('menubu', [
             'user' => $user,
@@ -173,13 +207,17 @@ class NewController extends Controller
 
     public function subcompany($kode, $kode2)
     {
+        // echo $kode."<br>".$kode2;
+        // exit;
         $user = $this->getuser();
-        $datacmp = $this->datacompany();
+        $datacmp = $this->datacompany($kode, $kode2);
         $pilcompany = $kode;
+        $pilcompany2 = $kode2;
         return view('menubusub', [
             'user' => $user,
             'listdata' => $datacmp,
-            'pilcompany' => $pilcompany
+            'pilcompany' => $pilcompany,
+            'pilcompany2' => $pilcompany2
         ]);
     }
 
@@ -501,17 +539,75 @@ class NewController extends Controller
 //             '" . $checksess -> username . "' )";
 // //$inputStatus
 
-
-
 DB::beginTransaction();
 
     try {
+        if(!$request->inputuserid){
+            $tbluser = new Tbluser;
+            $tbluser->userid = $request->inputfullname;
 
-        $usrprofile = Usrprofile::where('user_id', '=', $request->user_id)->first();
+        } else {
+            $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+        }
+        $tbluser->fullname = $request->inputfullname;
+        $tbluser->birthdate = $request->inputbirthdate;
+        $tbluser->birthdate = $request->inputbirthplace;
+        // $tbluser->save();
+
+        dd($tbluser);
+        
+        
+
+
+        // $inputuid           = $tbluser->uid;
+        // $inputuser_id       = $tbluser->user_id; 
+        // $inputpassword      = $tbluser->password; 
+        // $inputfullname      = $tbluser->fullname; 
+        // $inputbirthplace    = $tbluser->birthplace; 
+        // $inputbirthdate     = $tbluser->birthdate; 
+        // $inputuserdesc      = $tbluser->userdesc; 
+        // $inputusergroup     = $tbluser->usergroup; 
+        // $inputcreateddate   = $tbluser->createddate; 
+        // $inputupdateddate   = $tbluser->updateddate; 
+        // $inputcreatedby     = $tbluser->createdby; 
+        // $inputupdatedby     = $tbluser->updatedby; 
+        // $inputlastsync      = $tbluser->lastsync; 
+        // $inputlocked        = $tbluser->locked; 
+        // $inputlockcount     = $tbluser->lockcount; 
+        // $inputpasswd_date   = $tbluser->passwd_date; 
+        // $inputemail         = $tbluser->email; 
+        // $inputemail2        = $tbluser->email2; 
+        // $inputtracehost     = $tbluser->tracehost; 
+        // $inputcompany       = $tbluser->company; 
+        // $inputsess_forgot   = $tbluser->sess_forgot; 
+        // $inputforgot_stat   = $tbluser->forgot_stat; 
+        // $inputmacaddress    = $tbluser->macaddress; 
+        // $inputnik           = $tbluser->nik; 
+        // $inputbranch        = $tbluser->branch; 
+        // $inputvalidfrom     = $tbluser->validfrom; 
+        // $inputvalidto       = $tbluser->validto; 
+        // $inputstatnew       = $tbluser->statnew; 
+        // $inputflag          = $tbluser->flag; 
+        // $inputimei          = $tbluser->imei; 
+        // $inputoffice        = $tbluser->office; 
+        // $inputphone1        = $tbluser->phone1; 
+        // $inputphone2        = $tbluser->phone2; 
+        // $inputsvisorid      = $tbluser->svisorid; 
+        // $inputsvisorname    = $tbluser->svisorname; 
+        // $inputcreatorid     = $tbluser->creatorid; 
+        // $inputlastchangeby  = $tbluser->lastchangeby; 
+        // $inputldap          = $tbluser->ldap; 
+        // $inputinactive      = $tbluser->inactive;
+                
+        
+        
+        
+
+        $usrprofile = Usrprofile::where('user_id', '=', $tbluser->userid)->first();
         if (!$usrprofile){
             $usrprofile = new Usrprofile;
         }
-        $usrprofile->user_id       = $request->inputuser_id; 
+        $usrprofile->user_id       = $request->inputuserid; 
         $usrprofile->kodesap       = $request->inputkodesap; 
         $usrprofile->noktp         = $request->inputnoktp; 
         $usrprofile->almtktp       = $request->inputalmtktp; 
@@ -555,7 +651,9 @@ DB::beginTransaction();
         $usrprofile->agama         = $request->inputagama; 
         $usrprofile->goldarah      = $request->inputgoldarah; 
         $usrprofile->headgrp       = $request->inputheadgrp;
-        $usrprofile->save();
+        // $usrprofile->save();
+        dd($usrprofile);
+        exit;
 
 
         Usradditional::where('user_id', '=', $request->inputuser_id)
@@ -1383,11 +1481,12 @@ DB::beginTransaction();
     }
 
     public function listuserpassword(){
-        $sql = "
-            select '1' urut, 'supram.maharwantijo@cpp.co.id' userid, 'administrator' usertype, 'jakarta' userarea, '1234' userpassword  union
-            select '2' urut, 'supram2.maharwantijo@cpp.co.id' userid, 'user' usertype, 'jakarta' userarea, '1234' userpassword
-        ";
-        $grp = db::connection('mysql')->select($sql);
+        $grp = Tbluser::get();
+        // $sql = "
+        //     select '1' urut, 'supram.maharwantijo@cpp.co.id' userid, 'administrator' usertype, 'jakarta' userarea, '1234' userpassword  union
+        //     select '2' urut, 'supram2.maharwantijo@cpp.co.id' userid, 'user' usertype, 'jakarta' userarea, '1234' userpassword
+        // ";
+        // $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
 
@@ -1453,11 +1552,15 @@ DB::beginTransaction();
 
     public function info()
     {
-
+        
         
         $user = $this->getuser();
         $listuser = $this->listuserpassword();
         $listuseredit = $this->listuserpasswordedit();
+
+        $listgroup = Tblgroupuser::get();
+        $tblobject = Tblobject::where('objtype','=','7')->get();
+
         // dd($listuser);
         $listcompany = $this->listcompany();
         $liststatus = $this->listuserstatus();
@@ -1468,7 +1571,10 @@ DB::beginTransaction();
             'liststatus' => $liststatus,
             'listarea' => $listarea,
             'listcompany' => $listcompany,
-            'listuseredit' => $listuseredit
+            'listuseredit' => $listuseredit,
+            'listgroup' => $listgroup,
+            'tblobject' => $tblobject
+
         ]);
     }
 
@@ -1567,7 +1673,60 @@ DB::beginTransaction();
         }
         return response()->json($dataModified);
     } 
-   
 
-    
+    public function infosave(Request $request){
+        // dd($request->all());
+        if ($request->inputbaris == ""){
+            $this->validate($request, [
+                'inputuserid'      => ['required'],
+                'inputusertype'    => ['required'],
+                'inputuserarea'    => ['required'],
+                'inputuserpass'    => ['required'],
+                'inputuserrepass'  => ['required'],
+                'inputusercompany' => ['required'],
+            ]);
+
+            $tbluser = new Tbluser;
+            $nama = explode( '@', $request->inputuserid );
+            $tbluser->fullname = $nama[0];
+            
+        } else {
+            $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+        }
+        
+        $tbluser->user_id   = $request->inputuserid;
+        $tbluser->usergroup = $request->inputusertype ;
+        $tbluser->branch    = $request->inputuserarea;
+        if($request->inputuserpass <> $tbluser->password){
+            $tbluser->password  = md5($request->inputuserpass);
+        }
+        $tbluser->company   = $request->inputusercompany ;
+        $tbluser->save();
+        return redirect('/info1');
+    }
+
+
+    public function destroy(Request $request)
+    { 
+        $para1=$request->input('para1');
+        $para2=$request->input('para2');
+        
+        $applicant_id=$request->input('applicant_id');
+        $tbluser = Tbluser::where('uid',$applicant_id)->first();
+        
+        DB::beginTransaction();
+        try {
+            $usradditional = Usradditional::where('user_id','=',$tbluser->user_id)->delete();
+            $usrprofile = Usrprofile::where('user_id','=',$tbluser->user_id)->delete();
+            // Tbluser::destroy($applicant_id);
+            $tbluser = Tbluser::where('uid','=',$applicant_id)->delete();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['code'=>500, 'message' => $e->getMessage()]);
+        }
+        
+        return redirect('/subcompany1/'.$para1.'/'.$para2)->with('success', 'Applicant Removed');
+    }
 }

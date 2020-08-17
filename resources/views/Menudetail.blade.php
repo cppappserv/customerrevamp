@@ -815,6 +815,7 @@ if ($pos=0 or $pos=1){
 				$inputalmtktp              = $data_profile->almtktp; 
 				$inputkelktp               = $data_profile->kelktp; 
 				$inputkecktp               = $data_profile->kecktp; 
+				// echo $inputkecktp;
 				$inputkotaktp              = $data_profile->kotaktp; 
 				$inputpropktp              = $data_profile->propktp; 
 				$inputkdposktp             = $data_profile->kdposktp; 
@@ -857,7 +858,8 @@ if ($pos=0 or $pos=1){
 			?>
 			
 
-			<input type="hidden" id="inputuid" name="inputuserid" value="{{$inputuid}}">
+			<input type="hidden" id="inputuid" name="inputuid" value="{{$inputuid}}">
+			<input type="hidden" id="inputuserid" name="inputuserid" value="{{$inputuser_id}}">
 
 			<div class="card-body">
             
@@ -1021,25 +1023,29 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkecktp" class="col-sm-3 col-form-label">Kecamatan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecktp" name="inputkecktp" placeholder="Kecamatan" name="{{$inputkecktp}}" disabled>
+												<input type="text" class="form-control" id="inputkecktp1" name="inputkecktp1" placeholder="Kecamatan" value="{{$inputkecktp}}" disabled>
+												<input type="hidden" class="form-control" id="inputkecktp" name="inputkecktp" placeholder="Kecamatan" value="{{$inputkecktp}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkotaktp" class="col-sm-3 col-form-label">Kabupaten</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotaktp" name="inputkotaktp" placeholder="Kabupaten" value="{{$inputkotaktp}}" disabled>
+												<input type="text" class="form-control" id="inputkotaktp1" name="inputkotaktp1" placeholder="Kabupaten" value="{{$inputkotaktp}}" disabled>
+												<input type="hidden" class="form-control" id="inputkotaktp" name="inputkotaktp" placeholder="Kabupaten" value="{{$inputkotaktp}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputpropktp" class="col-sm-3 col-form-label">Provinsi</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropktp" name="inputpropktp" placeholder="Provinsi" value={{$inputpropktp}} disabled>
+												<input type="text" class="form-control" id="inputpropktp1" name="inputpropktp1" placeholder="Provinsi" value={{$inputpropktp}} disabled>
+												<input type="hidden" class="form-control" id="inputpropktp" name="inputpropktp" placeholder="Provinsi" value={{$inputpropktp}}>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkdposktp" class="col-sm-3 col-form-label">Kode Pos</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposktp" name="inputkdposktp" placeholder="Kode Pos" value="{{$inputkdposktp}}" disabled>
+												<input type="text" class="form-control" id="inputkdposktp1" name="inputkdposktp1" placeholder="Kode Pos" value="{{$inputkdposktp}}" disabled>
+												<input type="hidden" class="form-control" id="inputkdposktp" name="inputkdposktp" placeholder="Kode Pos" value="{{$inputkdposktp}}">
 											</div>
 										</div>
 										
@@ -1075,7 +1081,7 @@ if ($pos=0 or $pos=1){
 											<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 											<div class="col-sm-9">
 												<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-												<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ...">{{$inputalmtrmh}}</textarea>
+												<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}">{{$inputalmtrmh}}</textarea>
 											</div>
 										</div>
 									</div>
@@ -1090,25 +1096,29 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecrmh" name="inputkecrmh" placeholder="Kecamatan" value="{{$inputkecrmh}}" disabled>
+												<input type="text" class="form-control" id="inputkecrmh1" name="inputkecrmh1" placeholder="Kecamatan" value="{{$inputkecrmh}}" disabled>
+												<input type="hidden" class="form-control" id="inputkecrmh" name="inputkecrmh" placeholder="Kecamatan" value="{{$inputkecrmh}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkotarmh" class="col-sm-3 col-form-label">Kabupaten</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotarmh" name="inputkotarmh" placeholder="Kabupaten" value="{{$inputkotarmh}}" disabled>
+												<input type="text" class="form-control" id="inputkotarmh1" name="inputkotarmh1" placeholder="Kabupaten" value="{{$inputkotarmh}}" disabled>
+												<input type="hidden" class="form-control" id="inputkotarmh" name="inputkotarmh" placeholder="Kabupaten" value="{{$inputkotarmh}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputproprmh" name="inputproprmh" placeholder="Provinsi" value="{{$inputproprmh}}" disabled>
+												<input type="text" class="form-control" id="inputproprmh1" name="inputproprmh1" placeholder="Provinsi" value="{{$inputproprmh}}" disabled>
+												<input type="hidden" class="form-control" id="inputproprmh" name="inputproprmh" placeholder="Provinsi" value="{{$inputproprmh}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkdposrmh" class="col-sm-3 col-form-label">Kode Pos</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposrmh" name="inputkdposrmh" placeholder="Kode Pos" value="{{$inputkdposrmh}}" disabled>
+												<input type="text" class="form-control" id="inputkdposrmh1" name="inputkdposrmh1" placeholder="Kode Pos" value="{{$inputkdposrmh}}" disabled>
+												<input type="hidden" class="form-control" id="inputkdposrmh" name="inputkdposrmh" placeholder="Kode Pos" value="{{$inputkdposrmh}}">
 											</div>
 										</div>
 										
@@ -1658,25 +1668,29 @@ if ($pos=0 or $pos=1){
 										<div class="form-group row">
 											<label for="inputkecrmh" class="col-sm-3 col-form-label">Kecamatan</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkecush" name="inputkecush" placeholder="Kecamatan" value="{{$inputkecush}}" disabled>
+												<input type="text" class="form-control" id="inputkecush1" name="inputkecush1" placeholder="Kecamatan" value="{{$inputkecush}}" disabled>
+												<input type="hidden" class="form-control" id="inputkecush" name="inputkecush" placeholder="Kecamatan" value="{{$inputkecush}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkotaush" class="col-sm-3 col-form-label">Kabupaten</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkotaush" name="inputkotaush" placeholder="Kabupaten" value="{{$inputkotaush}}" disabled>
+												<input type="text" class="form-control" id="inputkotaush1" name="inputkotaush1" placeholder="Kabupaten" value="{{$inputkotaush}}" disabled>
+												<input type="hidden" class="form-control" id="inputkotaush" name="inputkotaush" placeholder="Kabupaten" value="{{$inputkotaush}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputproprmh" class="col-sm-3 col-form-label">Provinsi</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputpropush" name="inputpropush" placeholder="Provinsi" value="{{$inputpropush}}" disabled>
+												<input type="text" class="form-control" id="inputpropush1" name="inputpropush1" placeholder="Provinsi" value="{{$inputpropush}}" disabled>
+												<input type="hidden" class="form-control" id="inputpropush" name="inputpropush" placeholder="Provinsi" value="{{$inputpropush}}">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="inputkdposush" class="col-sm-3 col-form-label">Kode Pos</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputkdposush" name="inputkdposush" placeholder="Kode Pos" value="{{$inputkdposush}}" disabled>
+												<input type="text" class="form-control" id="inputkdposush1" name="inputkdposush1" placeholder="Kode Pos" value="{{$inputkdposush}}" disabled>
+												<input type="hidden" class="form-control" id="inputkdposush" name="inputkdposush" placeholder="Kode Pos" value="{{$inputkdposush}}">
 											</div>
 										</div>
 										
@@ -2788,11 +2802,17 @@ if ($pos=0 or $pos=1){
 <script type="text/javascript">
 	function myduplicat() {
 		document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
-		document.getElementById("inputkelrmh").value = document.getElementById("inputkelktpan").value;
-		document.getElementById("inputkecrmh").value = document.getElementById("inputkecktpan").value;
+		document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
+		document.getElementById("inputkecrmh").value = document.getElementById("inputkecktp").value;
 		document.getElementById("inputkotarmh").value      = document.getElementById("inputkotaktp").value;
 		document.getElementById("inputproprmh").value  = document.getElementById("inputpropktp").value;
 		document.getElementById("inputkdposrmh").value   = document.getElementById("inputkdposktp").value;
+
+		
+		document.getElementById("inputkecrmh1").value = document.getElementById("inputkecktp").value;
+		document.getElementById("inputkotarmh1").value      = document.getElementById("inputkotaktp").value;
+		document.getElementById("inputproprmh1").value  = document.getElementById("inputpropktp").value;
+		document.getElementById("inputkdposrmh1").value   = document.getElementById("inputkdposktp").value;
 	}
 </script>
 
@@ -3340,16 +3360,6 @@ if ($pos=0 or $pos=1){
 </script>	
 
 <script type="text/javascript">
-	// function myduplikatalamat() 
-	// {
-	// 	document.getElementById("inputalmtrmh").value    = document.getElementById("inputalmtktp").value;
-	// 	document.getElementById("inputkelrmh").value = document.getElementById("inputkelktp").value;
-	// 	document.getElementById("inputkecrmh").value = document.getElementById("inputkecktp").value;
-	// 	document.getElementById("inputkotarmh").value      = document.getElementById("inputkotaktp").value;
-	// 	document.getElementById("inputproprmh").value  = document.getElementById("inputpropktp").value;
-	// 	document.getElementById("inputkdposrmh").value   = document.getElementById("inputkdposktp").value;
-	// }
-
 	function myduplikatalamatusaha() 
 	{
 		document.getElementById("inputalmtush").value    = document.getElementById("inputalmtktp").value;
@@ -3358,6 +3368,11 @@ if ($pos=0 or $pos=1){
 		document.getElementById("inputkotaush").value      = document.getElementById("inputkotaktp").value;
 		document.getElementById("inputpropush").value  = document.getElementById("inputpropktp").value;
 		document.getElementById("inputkdposush").value   = document.getElementById("inputkdposktp").value;
+
+		document.getElementById("inputkecush1").value = document.getElementById("inputkecktp").value;
+		document.getElementById("inputkotaush1").value      = document.getElementById("inputkotaktp").value;
+		document.getElementById("inputpropush1").value  = document.getElementById("inputpropktp").value;
+		document.getElementById("inputkdposush1").value   = document.getElementById("inputkdposktp").value;
 	}
 
 	
@@ -3389,18 +3404,33 @@ if ($pos=0 or $pos=1){
 				document.getElementById("inputkotaktp").value = nkabupaten;
 				document.getElementById("inputpropktp").value = nprovinsi;
 				document.getElementById("inputkdposktp").value = nkodepos;
+
+				document.getElementById("inputkecktp1").value = nkecamatan;
+				document.getElementById("inputkotaktp1").value = nkabupaten;
+				document.getElementById("inputpropktp1").value = nprovinsi;
+				document.getElementById("inputkdposktp1").value = nkodepos;
 			} else if (kode == 2){
 				document.getElementById("inputkelrmh").value = nkelurahan;
 				document.getElementById("inputkecrmh").value = nkecamatan;
 				document.getElementById("inputkotarmh").value = nkabupaten;
 				document.getElementById("inputproprmh").value = nprovinsi;
 				document.getElementById("inputkdposrmh").value = nkodepos;
+
+				document.getElementById("inputkecrmh1").value = nkecamatan;
+				document.getElementById("inputkotarmh1").value = nkabupaten;
+				document.getElementById("inputproprmh1").value = nprovinsi;
+				document.getElementById("inputkdposrmh1").value = nkodepos;
 			} else {
 				document.getElementById("inputkelush").value = nkelurahan;
 				document.getElementById("inputkecush").value = nkecamatan;
 				document.getElementById("inputkotaush").value = nkabupaten;
 				document.getElementById("inputpropush").value = nprovinsi;
 				document.getElementById("inputkdposush").value = nkodepos;
+
+				document.getElementById("inputkecush1").value = nkecamatan;
+				document.getElementById("inputkotaush1").value = nkabupaten;
+				document.getElementById("inputpropush1").value = nprovinsi;
+				document.getElementById("inputkdposush1").value = nkodepos;
 			}
 		}
 	}

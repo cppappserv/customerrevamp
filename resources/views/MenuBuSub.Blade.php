@@ -198,7 +198,7 @@ $total = 134;
    <ul class="navbar-nav">
    
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis" >
-         <a href="/dashboar1" class="nav-link" id="fon_24_wh">Dashboard/</a>
+         <a href="/dashboard1" class="nav-link" id="fon_24_wh">Dashboard/</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" >
          <a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
@@ -245,21 +245,27 @@ $total = 134;
       <div class="modal fade" id="modal-primary">
         <div class="modal-dialog" sytel="border-radius: 50px;">
           <div class="modal-content bg-outline-light" style="    border-radius: 75px;">
-            <div class="modal-header">
+            <form action="{{route('applicant_delete')}}" method="POST" class="remove-record-model">
+              {{ method_field('delete') }}
+              {{ csrf_field() }}
+              <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <input type="hidden", name="applicant_id" id="app_id">
+                <input type="hidden", name="para1" id="para1" value="{{$pilcompany}}">
+                <input type="hidden", name="para2" id="para2" value="{{$pilcompany2}}">
+              </div>
+              <div class="modal-body">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="width:49%; width: 49%;
+                  height: 60px;
+                  border-radius: 30px;background: rgba(15,199,89,1);">Cancel</button>
+                            <button type="submit" class="btn btn-danger delete_ya" style="width:49%; width: 49%;
+                  height: 60px;
+                  border-radius: 30px; ">Delete</button>
+              </div>
+              <div class="modal-footer justify-content-between">
               <h4 class="modal-title"></h4>
-              
-            </div>
-            <div class="modal-body">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" style="width:49%; width: 49%;
-    height: 60px;
-    border-radius: 30px;background: rgba(15,199,89,1);">Cancel</button>
-              <button type="button" class="btn btn-danger" style="width:49%; width: 49%;
-    height: 60px;
-    border-radius: 30px; ">Delete</button>
-            </div>
-            <div class="modal-footer justify-content-between">
-            <h4 class="modal-title"></h4>
-            </div>
+              </div>
+            </form>
           </div>
           <!-- /.modal-content -->
         </div>
@@ -296,6 +302,7 @@ $total = 134;
                 <tbody>
                 <?php
                   for($i=0; $i<$max; $i++){
+                     $uid           = $listdata[$i]->uid;
                      $customer_id   = $listdata[$i]->customer_id;
                      $customer_name = $listdata[$i]->customer_name;
                      $bu            = $listdata[$i]->bu;
@@ -323,7 +330,7 @@ $total = 134;
 
 
                         <!-- <a href="/detaildelete/{{$customer_id}}"> -->
-                        <button type="button" class="btn btn-default btn-sm" style="
+                        <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}" style="
                             border-radius: 50%;
                             height: 75px;
                             width: 75px;
@@ -404,8 +411,15 @@ $total = 134;
       "info": false,
       "autoWidth": false,
     });
-    
   });
+</script>
+
+<script>
+$(document).on('click','.deleteUser',function(){
+    var userID=$(this).attr('data-userid');
+    $('#app_id').val(userID); 
+    // $('#applicantDeleteModal').modal('show'); 
+});
 </script>
 </body>
 </html>
