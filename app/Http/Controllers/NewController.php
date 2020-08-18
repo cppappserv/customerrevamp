@@ -13,8 +13,24 @@ use App\Models\Tblgroupuser;
 use App\Models\Tblobject;
 use App\Models\Tbluserphoto;
 use App\Models\Zbranch;
+use App\Models\Usrupload;
+// CREATE TABLE `usr_upload` (
+//     `id` int(11) NOT NULL AUTO_INCREMENT,
+//     `filename` varchar(100) DEFAULT NULL,
+//     `file_status` varchar(10) DEFAULT NULL,
+//     `upload_time` datetime DEFAULT NULL,
+//     `proses_time` datetime DEFAULT NULL,
+//     `proses_row` int(5) DEFAULT NULL,
+//     `uploadby` varchar(30) DEFAULT NULL,
+//     PRIMARY KEY (`id`)
+//   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  
 // use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Concerns\ToModel;
+use App\Imports\CustomerImport;
 use Illuminate\Support\Facades\File;
+// use Maatwebsite\Excel\Facades\Excel;
+use Excel;
 use Redirect;
 use Image;
 use DB;
@@ -165,7 +181,7 @@ class NewController extends Controller
 
     public function tblmedsos()
     {
-        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'MEDSOS';";
+        $sql = "SELECT * FROM `dt_additional`  WHERE `type` = 'MEDSOS'";
         // $sql = "
         //     select '1' id, 'wa'  medsos union 
         //     select '2' id, 'gmail'  medsos
@@ -191,6 +207,9 @@ class NewController extends Controller
 
     public function index()
     {
+
+        // $result = Excel::load('/file_customer/test_upload.xls')->all();          
+        // var_dump($result);
         $user = $this->getuser();
         $grpcmp = $this->grpbu();
         return view('menuutama', [
@@ -346,7 +365,7 @@ class NewController extends Controller
     public function tabelstatus_usaha()
     {
         $sql = "
-            SELECT * FROM dt_additional a WHERE TYPE = 'STATUS_USAHA'
+            SELECT * FROM dt_additional a WHERE `type` = 'STATUS_USAHA'
         ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
@@ -382,7 +401,7 @@ class NewController extends Controller
         $sql = "
         SELECT * 
         FROM dt_additional WHERE
-          TYPE = 'NAMABANK'
+          TYPE = 'NAMA_BANK'
                   ORDER BY seq 
         ";
         $grp = db::connection('mysql')->select($sql);
@@ -442,7 +461,7 @@ class NewController extends Controller
         if ($para == 0){
             $sql = "
             SELECT b.*, 
-                    a.desc, 
+                    a.desc desc1, 
                     a.info, 
                     a.info2, 
                     a.info3, 
@@ -485,6 +504,56 @@ class NewController extends Controller
     }
 
 
+    public function addasset4($para, $para2)
+    {
+        
+        $sql = "
+            SELECT a.* , b.desc desc1, 
+                b.info, 
+                b.info2, 
+                b.info3, 
+                b.info4, 
+                b.parent, 
+                b.display, 
+                b.info5
+            FROM usr_additional a
+            INNER JOIN dt_additional b ON b.type = a.type AND a.sseq = b.seq
+            WHERE a.type IN ('".$para2."')
+            AND user_id = '".$para."'
+            ORDER BY a.seq
+        ";
+        
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+
+    public function addasset3($para, $para2)
+    {
+        $sql = "
+            SELECT b.*, 
+                    a.desc desc1, 
+                    a.info, 
+                    a.info2, 
+                    a.info3, 
+                    a.info4, 
+                    a.parent, 
+                    a.display, 
+                    a.info5
+            FROM dt_additional a 
+            cross JOIN usr_additional b 
+                ON A.type = B.type
+                    AND B.user_id='".$para."'
+            WHERE a.type IN ('".$para2."')
+            ORDER BY A.seq
+        ";
+        
+        
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+
+
     public function storeimage($image_id) {
         $image = Tbluserphoto::where('user_id', '=', $image_id)->first();
 		$image_file = Image::make($image->zimage);
@@ -518,9 +587,16 @@ class NewController extends Controller
         
         $iduser = $tbluser->user_id; 
         
-        
+       
         $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
+
+        // $data_add1 = Usradditional::
+        // wherein('type',['AREA_SUBAGEN','AREA_PETAMBAK','AREA_LAIN'])
+        // ->where('user_id', '=', $tbluser->user_id)
+        // ->get();
+        // dd($data_add1);
+
         // dd($data_add);
         $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
         $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
@@ -530,9 +606,6 @@ class NewController extends Controller
         
         $keluarga = $this->angotakeluarga();
         $pilcompany = $kode;
-        
-        
-        
         $tabelarea_subagen = $this->tabelarea_subagen();
         
 
@@ -569,46 +642,32 @@ class NewController extends Controller
             'tabelbadanhukum' => $this->tabelbadanhukum(),
             'data_add_asset' => $data_add_asset,
             'data_add_modalsendiri' => $data_add_modalsendiri,
-            'data_add_modalbank' => $this->addasset2($tbluser->user_id,'MODAL_BANK'),
-            'data_add_jaminanpribadi' => $this->addasset2($tbluser->user_id,'JAMINAN_PRIBADI')
+            'data_add_modalbank' => $this->addasset3($tbluser->user_id,'MODAL_BANK'),
+            'data_add_jaminanpribadi' => $this->addasset4($tbluser->user_id,'JAMINAN_PRIBADI')
         ]);
     }
 
-    public function detailsave($id, Request $request){
-       
-
-//         $sql = "insert into tbluser(`user_id`,`password`,`fullname`,`birthdate`,`birthplace`,`email`,`usergroup`,`branch`,`createddate`,`creatorid`)
-//         values (
-//             '" . $request->inputuser_id . "',
-//             md5('".$request->inputpassword."'),
-//             '" . $inputnamalengkap . "',
-//             '" . $inputtanggallahir . "',
-//             '" . $inputtempatlahir . "',
-//             '" . $inputemail . "',
-//             '" . $inputusertype . "',
-//             '" . $inputuserarea ."',
-//             '" . date( "y-m-d h:i:s", strtotime( "now" ) ) . "',
-//             '" . $checksess -> username . "' )";
-// //$inputStatus
+public function detailsave($id, Request $request){
 
 $dtadditional = Dtadditional::where('type','=','COMPANY')
     ->where('info','=',$request->para2)->first();
     $para1 = $dtadditional->info3;
     $para2 = $dtadditional->info;
 
+    if($id==0){
+        $tbluser = new Tbluser;
+        $tbluser->user_id = $request->inputfullname;
+        $tbluser->company = $dtadditional->info;
+        $tbluser->branch  = $dtadditional->desc;
+    } else {
+        $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+    }
 
-DB::beginTransaction();
+    
+    DB::beginTransaction();
     try {
-        if($id==0){
-            
-            
-            $tbluser = new Tbluser;
-            $tbluser->user_id = $request->inputfullname;
-            $tbluser->company = $dtadditional->info;
-            $tbluser->branch  = $dtadditional->desc;
-        } else {
-            $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
-        }
+        Usradditional::where('user_id', '=', $tbluser->user_id)
+        ->update(['value7' => 'X']);
         $tbluser->fullname = $request->inputfullname;
         $tbluser->birthdate = $request->inputbirthdate;
         $tbluser->birthplace = $request->inputbirthplace;
@@ -678,8 +737,15 @@ DB::beginTransaction();
         // $inputldap          = $tbluser->ldap; 
         // $inputinactive      = $tbluser->inactive;
          
+        
         Usradditional::where('user_id', '=', $tbluser->user_id)
         ->update(['value7' => 'X']);
+        // ganti di delete
+
+
+        // Usradditional::where('user_id', '=', $tbluser->user_id)
+        // ->where('type','=','DATA_KELUARGA')->delete(); 
+        // db::commit();       
 
         $namapsgn      = ""; 
         $tmptlhrpsgn   = ""; 
@@ -692,41 +758,42 @@ DB::beginTransaction();
         if ($request->inputkeluargastatus){
             foreach($request->inputkeluargastatus as $key => $values) {
                 $k++;
-                $tbl = Dtadditional::where('type', '=', 'HUB_KELUARGA')
-                    ->where('seq', '=', $values)
-                    ->first();
+                
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
-                    ->where('type', '=', $type)
-                    ->where('seq', '=', $j)->first();
+                    $tbl = Dtadditional::where('type', '=', 'HUB_KELUARGA')
+                        ->where('seq', '=', $values)
+                        ->first();
+                    $data_klg = Usradditional::where('user_id', '=', $tbluser->user_id)
+                        ->where('type', '=', $type)
+                        ->where('seq', '=', $j)->first();
                     
-                    if (!$data){
-                        $data = new Usradditional;
+                    if (!$data_klg){
+                        $data_klg = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    $data->sseq = $values;
-                    // $data->desc = $request->inputmedsosakunush[$k];
-                    $data->value1 = $request->inputkeluarganama[$k];
-                    $data->value2 = $request->inputkeluargatempat[$k];
-                    $data->value3 = $request->inputkeluargatanggallahir[$k];
-                    $data->value4 = $request->inputkeluargasex[$k];
-                    $data->value5 = $tbl->info;
-                    $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_klg->user_id = $tbluser->user_id;
+                    $data_klg->type    = $type;
+                    $data_klg->seq     = $values;
+                    $data_klg->sseq    = null;
+                    $data_klg->desc    = null;
+                    $data_klg->value1  = $request->inputkeluarganama[$k];
+                    $data_klg->value2  = $request->inputkeluargatempat[$k];
+                    $data_klg->value3  = $request->inputkeluargatanggallahir[$k];
+                    $data_klg->value4  = $request->inputkeluargasex[$k];
+                    $data_klg->value5  = $tbl->info;
+                    $data_klg->value6  = $request->inputkeluargapendidikan[$k];
+                    $data_klg->value7  = '';
+                    $data_klg->save();
+                    
                     if ($tbl->info == 'P'){
-                        $namapsgn      = $data->value1; 
-                        $tmptlhrpsgn   = $data->value2; 
-                        $tgllhrpsgn    = $data->value3; 
+                        $namapsgn      = $data_klg->value1; 
+                        $tmptlhrpsgn   = $data_klg->value2; 
+                        $tgllhrpsgn    = $data_klg->value3; 
                     }
                 }
             
             }
         }
-        
         
         $usrprofile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         if (!$usrprofile){
@@ -780,8 +847,7 @@ DB::beginTransaction();
 
         
 
-       
-
+        
         $j=0;
         $k=-1;
         $type="MEDSOS";
@@ -790,19 +856,29 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $data_medsospri = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
-                    ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    ->where('seq', '=', $values)
+                    ->where('desc', '=', $request->inputmedsosakunpri[$k])
+                    ->first();
+                    
+                    if (!$data_medsospri){
+                        $data_medsospri = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    $data->sseq = $values;
-                    $data->desc = $request->inputmedsosakunpri[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_medsospri->user_id = $tbluser->user_id;
+                    $data_medsospri->type    = $type;
+                    $data_medsospri->seq     = $values;
+                    $data_medsospri->sseq    = null;
+                    $data_medsospri->desc    = $request->inputmedsosakunpri[$k];
+                    $data_medsospri->value1  = null;
+                    $data_medsospri->value2  = null;
+                    $data_medsospri->value3  = null;
+                    $data_medsospri->value4  = null;
+                    $data_medsospri->value5  = null;
+                    $data_medsospri->value6  = null;
+                    $data_medsospri->value7  = null;
+                    $data_medsospri->save();
+                    
                     // dd($data);
                 }
             }
@@ -816,82 +892,70 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $data_medsosush = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
-                    ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    ->where('seq', '=', $values)
+                    ->where('desc', '=', $request->inputmedsosakunush[$k])
+                    ->first();
+                    if (!$data_medsosush){
+                        $data_medsosush = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    $data->sseq = $values;
-                    $data->desc = $request->inputmedsosakunush[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_medsosush->user_id = $tbluser->user_id;
+                    $data_medsosush->type    = $type;
+                    $data_medsosush->seq     = $values;
+                    $data_medsosush->sseq    = null;
+                    $data_medsosush->desc    = $request->inputmedsosakunush[$k];
+                    $data_medsosush->value1  = null;
+                    $data_medsosush->value2  = null;
+                    $data_medsosush->value3  = null;
+                    $data_medsosush->value4  = null;
+                    $data_medsosush->value5  = null;
+                    $data_medsosush->value6  = null;
+                    $data_medsosush->value7  = null;
+                    $data_medsosush->save();
                 }
             }
         }
 
         
-
-        // $j=0;
-        // $type="DATA_KELUARGA";
-        // foreach($request->inputkeluargastatus as $key => $values) {
-        //     if ($values != ""){
-        //         $j++;
-        //         $data = Usradditional::where('user_id', '=', $tbluser->user_id)
-        //         ->where('type', '=', $type)
-        //         ->where('seq', '=', $j)->first();
-        //         if (!$data){
-        //             $data = new Usradditional;
-        //         }
-        //         $data->user_id = $tbluser->user_id;
-        //         $data->type = $type;
-        //         $data->seq = $j;
-        //         $data->sseq = $values;
-        //         // $data->desc = $request->inputmedsosakunush[$k];
-        //         $data->value1 = $request->inputkeluarganama[$k];
-        //         $data->value2 = $request->inputkeluargatempat[$k];
-        //         $data->value3 = $request->inputkeluargatanggallahir[$k];
-        //         $data->value4 = $request->inputkeluargasex[$k];
-        //         $data->value5 = 'P';
-        //         $data->value6 = $request->inputkeluargapendidikan[$k];
-        //         $data->value7 = '';
-        //         $data->save();
-        //     }
-        // }
-        
+      
         $k=-1;
         $j=0;
+        // print_r($request->inputstatusush)."<br>";
+        // exit;
         $type="STATUSUSAHA";
         if ($request->inputstatusush){
             foreach($request->inputstatusush as $key => $values) {
                 $k++;
+                echo $values."<br>";
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $data_statusush = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
-                    ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    ->where('seq', '=', $j)
+                    ->first();
+                    if (!$data_statusush){
+                        $data_statusush = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    // $data->sseq = $values;
-                    $data->desc = $values;
-                    // $data->value1 = $request->inputkeluarganama[$k];
-                    // $data->value2 = $request->inputkeluargatempat[$k];
-                    // $data->value3 = $request->inputkeluargatanggallahir[$k];
-                    // $data->value4 = $request->inputkeluargasex[$k];
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_statusush->user_id = $tbluser->user_id;
+                    $data_statusush->type    = $type;
+                    $data_statusush->sseq    = null;
+                    $data_statusush->seq     = $j;
+                    $data_statusush->desc    = $values;
+                    $data_statusush->value1  = null;
+                    $data_statusush->value2  = null;
+                    $data_statusush->value3  = null;
+                    $data_statusush->value4  = null;
+                    $data_statusush->value5  = null;
+                    $data_statusush->value6  = null;
+                    $data_statusush->value7  = null;
+                    $data_statusush->save();
                 }
             }
         }
+
+        
+     
         
         
         $j=0;
@@ -902,30 +966,30 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $data_agenHubStatus = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
                     ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    if (!$data_agenHubStatus){
+                        $data_agenHubStatus = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    // $data->sseq = $values;
-                    // $data->desc = $values;
-                    $data->value1 = $request->inputagenhubnama[$k];
-                    $data->value2 = $request->inputagenaubkode[$k];
-                    // $data->value3 = $request->inputkeluargatanggallahir[$k];
-                    $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_agenHubStatus->user_id = $tbluser->user_id;
+                    $data_agenHubStatus->type    = $type;
+                    $data_agenHubStatus->seq     = $j;
+                    $data_agenHubStatus->sseq    = null;
+                    $data_agenHubStatus->desc    = null;
+                    $data_agenHubStatus->value1  = $request->inputagenhubnama[$k];
+                    $data_agenHubStatus->value2  = $request->inputagenaubkode[$k];
+                    $data_agenHubStatus->value3  = null;
+                    $data_agenHubStatus->value4  = $values;
+                    $data_agenHubStatus->value5  = null;
+                    $data_agenHubStatus->value6  = null;
+                    $data_agenHubStatus->value7  = null;
+                    $data_agenHubStatus->save();
                 }
             }
         }
         
-       
+        
         $j=0;
         $k=-1;
         // $type="AGEN_HUB";
@@ -934,29 +998,34 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $seq_Namaarea = Dtadditional::where('type', '=', $values)->first();
+                    $data_Namaarea = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $values)
-                    ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    ->where('seq', '=', $seq_Namaarea->seq)
+                    ->where('desc', '=', $request->inputQtySubAgen[$k])
+                    ->where('value1', '=', $request->inputNamaSubAgen[$k])->first();
+                    if (!$data_Namaarea){
+                        $data_Namaarea = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $values;
-                    $data->seq = $j;
-                    // $data->sseq = $values;
-                    $data->desc = $request->inputQtySubAgen[$k];
-                    $data->value1 = $request->inputNamaSubAgen[$k];
-                    $data->value2 = $request->inputLokasiSubAgen[$k];
-                    $data->value3 = $request->inputInfoSubAgen[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_Namaarea->user_id = $tbluser->user_id;
+                    $data_Namaarea->type    = $values;
+                    $data_Namaarea->seq     = $seq_Namaarea->seq;
+                    $data_Namaarea->sseq    = null;
+                    $data_Namaarea->desc    = $request->inputQtySubAgen[$k];
+                    $data_Namaarea->value1  = $request->inputNamaSubAgen[$k];
+                    $data_Namaarea->value2  = $request->inputLokasiSubAgen[$k];
+                    $data_Namaarea->value3  = $request->inputInfoSubAgen[$k];
+                    $data_Namaarea->value4  = null;
+                    $data_Namaarea->value5  = null;
+                    $data_Namaarea->value6  = null;
+                    $data_Namaarea->value7  = null;
+                    $data_Namaarea->save();
                 }
             }
         }
  
+        
+
         $j=0;
         $k=-1;
         $type="PAKAN_JUAL";
@@ -965,29 +1034,32 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $data_pakan = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
                     ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    if (!$data_pakan){
+                        $data_pakan = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    // $data->sseq = $values;
-                    $data->desc = $values;
-                    $data->value1 = $request->inputPakanJualV[$k];
-                    $data->value2 = $request->inputPakanJual[$k];
-                    // $data->value3 = $request->inputInfoSubAgen[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_pakan->user_id = $tbluser->user_id;
+                    $data_pakan->type    = $type;
+                    $data_pakan->seq     = $j;
+                    $data_pakan->sseq    = null;
+                    $data_pakan->desc    = $request->inputPakanJual[$k];
+                    $data_pakan->value1  = $request->inputPakanJualV[$k];
+                    $data_pakan->value2  = $values;
+                    $data_pakan->value3  = null;
+                    $data_pakan->value4  = null;
+                    $data_pakan->value5  = null;
+                    $data_pakan->value6  = null;
+                    $data_pakan->value7  = null;
+                    $data_pakan->save();
                 }
             }
         }
 
+       
+
+        
         
 
         $j=0;
@@ -1007,19 +1079,21 @@ DB::beginTransaction();
                     $data->user_id = $tbluser->user_id;
                     $data->type = $type;
                     $data->seq = $j;
-                    // $data->sseq = $values;
+                    $data->sseq = null;
                     $data->desc = $values;
                     $data->value1 = $request->inputbisnislainrp[$k];
-                    // $data->value2 = $request->inputPakanJual[$k];
-                    // $data->value3 = $request->inputInfoSubAgen[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
+                    $data->value2 = null;
+                    $data->value3 = null;
+                    $data->value4 = null;
+                    $data->value5 = null;
+                    $data->value6 = null;
+                    $data->value7 = null;
                     $data->save();
                 }
             }
         }
+
+        
 
         $j=0;
         $k=-1;
@@ -1029,28 +1103,32 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $seq_Namaarea = Dtadditional::where('type', '=', $type)
+                    ->where('desc', '=', $values)->first();
+                    $data_asetpribadi = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
                     ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    if (!$data_asetpribadi){
+                        $data_asetpribadi = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    // $data->sseq = $values;
-                    $data->desc = $values;
-                    $data->value1 = $request->inputAssetValue[$k];
-                    $data->value2 = $request->inputAssetSseq[$k];
-                    $data->value3 = $request->inputAssetLain[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_asetpribadi->user_id = $tbluser->user_id;
+                    $data_asetpribadi->type    = $type;
+                    $data_asetpribadi->seq     = $j;
+                    $data_asetpribadi->sseq    = $seq_Namaarea->seq;
+                    $data_asetpribadi->desc    = $values;
+                    $data_asetpribadi->value1  = $request->inputAssetValue[$k];
+                    $data_asetpribadi->value2  = $request->inputAssetAlamat[$k];
+                    $data_asetpribadi->value3  = $request->inputAssetLain[$k];
+                    $data_asetpribadi->value4  = null;
+                    $data_asetpribadi->value5  = null;
+                    $data_asetpribadi->value6  = null;
+                    $data_asetpribadi->value7  = null;
+                    $data_asetpribadi->save();
                 }
             }
         }
+
+        
         
         
 
@@ -1071,19 +1149,21 @@ DB::beginTransaction();
                     $data->user_id = $tbluser->user_id;
                     $data->type = $type;
                     $data->seq = $values;
-                    // $data->sseq = $values;
+                    $data->sseq = null;
                     $data->desc = $request->inputmodal[$k];
-                    // $data->value1 = $request->inputmodal[$k];
-                    // $data->value2 = $request->inputAssetSseq[$k];
-                    // $data->value3 = $request->inputAssetLain[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
+                    $data->value1 = null;
+                    $data->value2 = null;
+                    $data->value3 = null;
+                    $data->value4 = null;
+                    $data->value5 = null;
+                    $data->value6 = null;
+                    $data->value7 = null;
                     $data->save();
                 }
             }
         }
+
+        
         
         $j=0;
         $k=-1;
@@ -1102,19 +1182,26 @@ DB::beginTransaction();
                     $data->user_id = $tbluser->user_id;
                     $data->type = $type;
                     $data->seq = $j;
-                    // $data->sseq = $values;
-                    // $data->desc = $values;
+                    $data->sseq = null;
+                    $data->desc = null;
                     $data->value1 = $values;
                     $data->value2 = $request->inputmodalbanknamaid[$k];
-                    // $data->value3 = $request->inputAssetLain[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
+                    $data->value3 = null;
+                    $data->value4 = null;
+                    $data->value5 = null;
+                    $data->value6 = null;
+                    $data->value7 = null;
                     $data->save();
                 }
             }
         }
+
+        // db::commit();
+        // print_r($request->inputJaminanid)."<br>";
+        // print_r($request->inputJaminanValue)."<br>";
+        // print_r($request->inputJaminanAlamat)."<br>";
+        // print_r($request->inputJaminanLain)."<br>";
+        // exit;
         
         $j=0;
         $k=-1;
@@ -1124,31 +1211,33 @@ DB::beginTransaction();
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $data = Usradditional::where('user_id', '=', $tbluser->user_id)
+                    $seq_Namaarea = Dtadditional::where('type', '=', $type)
+                    ->where('seq', '=', $values)->first();
+                    $data_jaminanpribadi = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $type)
                     ->where('seq', '=', $j)->first();
-                    if (!$data){
-                        $data = new Usradditional;
+                    if (!$data_jaminanpribadi){
+                        $data_jaminanpribadi = new Usradditional;
                     }
-                    $data->user_id = $tbluser->user_id;
-                    $data->type = $type;
-                    $data->seq = $j;
-                    $data->sseq = $values;
-                    $data->desc = $request->inputJaminanPribadi[$k];
-                    $data->value1 = $request->inputJaminanValue[$k];
-                    $data->value2 = $request->inputJaminanAlamat[$k];
-                    $data->value3 = $request->inputJaminanLain[$k];
-                    // $data->value4 = $values;
-                    // $data->value5 = 'P';
-                    // $data->value6 = $request->inputkeluargapendidikan[$k];
-                    $data->value7 = '';
-                    $data->save();
+                    $data_jaminanpribadi->user_id = $tbluser->user_id;
+                    $data_jaminanpribadi->type    = $type;
+                    $data_jaminanpribadi->seq     = $j;
+                    $data_jaminanpribadi->sseq    = $values;
+                    $data_jaminanpribadi->desc    = $seq_Namaarea->desc;
+                    $data_jaminanpribadi->value1  = $request->inputJaminanValue[$k];
+                    $data_jaminanpribadi->value2  = $request->inputJaminanAlamat[$k];
+                    $data_jaminanpribadi->value3  = $request->inputJaminanLain[$k];
+                    $data_jaminanpribadi->value4  = null;
+                    $data_jaminanpribadi->value5  = null;
+                    $data_jaminanpribadi->value6  = null;
+                    $data_jaminanpribadi->value7  = null;
+                    $data_jaminanpribadi->save();
                 }
             }
         }
+       
         DB::table('usr_additional')->where('user_id', '=', $tbluser->user_id)
         ->where('value7', '=', 'X')->delete();
-        // DB::rollback();
         DB::commit();
     } catch (\Exception $e) {
         DB::rollback();
@@ -1681,6 +1770,7 @@ DB::beginTransaction();
     {
         $user = $this->getuser();
         $fileupload = $this->fileupload();
+        
         return view('menuupload',[
             'user' => $user,
             'fileupload' => $fileupload
@@ -1881,4 +1971,64 @@ DB::beginTransaction();
         
         return redirect('/subcompany1/'.$para1.'/'.$para2)->with('success', 'Applicant Removed');
     }
+
+    public function uploadexcel(Request $request)
+    {
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+ 
+		// menangkap file excel
+        $file = $request->file('file');
+        
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file_siswa di dalam folder public
+		$file->move('file_customer',$nama_file);
+ 
+		// import data
+		Excel::import(new CustomerImport, public_path('/file_customer/'.$nama_file));
+ 
+		// notifikasi dengan session
+		Session::flash('sukses','Data Customer Berhasil Diimport!');
+ 
+        $txt='
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="no[]" name="no[]" value="20">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="nama[]" name="nama[]" value="21">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="alamat[]" name="alamat[]" value="22">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="hp[]" name="hp[]" value="22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ';
+        return response()->json(array('msg'=> $txt), 200);
+    }
+    
 }

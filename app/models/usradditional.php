@@ -8,10 +8,11 @@ class Usradditional extends Model
 {
     //
     protected $table = "usr_additional";
-    protected $primaryKey = null;
+    // protected $primaryKey = null;
     public $timestamps = false;
     public $incrementing = false;
     protected $fillable = [
+        'id',
       	'user_id', 
         'type', 
         'sseq', 

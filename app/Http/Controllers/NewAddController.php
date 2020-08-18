@@ -37,45 +37,52 @@ class NewAddController extends Controller
       if ($id5=='-'){$id5='';}
       if ($id6=='-'){$id6='';}
 
+      $dis2=($id3=="Luas"?"number":"text");
+      if($id5==""){$inp="hidden";} else {$inp="text";}
+
       $i=1;
-      $txt = 	'<div class="row" id="rowsjaminan'.$i.'">'.
-							'	<div class="col-md-2">'.
-							'		<div class="form-group row">'.
-							'			<div class="col-sm-12">'.
-                     '				<input type="text" class="form-control" id="inputbisnislain1[]" placeholder="Nama Bisnis" value="'.$id2.'" disabled>'.
-                     '				<input type="hidden" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="'.$id2.'">'.
-                     '           <input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="'.$id.'">'.	
-							'			</div>'.
-							'		</div>'.
-							'	</div>'.
-							'	<div class="col-md-5">'.
-							'		<div class="form-group row">'.
-							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">'.$id3.'</label>'.
-							'			<div class="col-sm-6">'.
-							'				<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	'.
-							'			</div>'.
-							'			<label for="inputbisnislain" class="col-sm-3 col-form-label">'.$id4.'</label>'.
-							'		</div>'.
-							'	</div>'.
-							'	<div class="col-md-3">'.
-							'		<div class="form-group row">'.
-							'			<label for="inputbisnislainrp" class="col-sm-3 col-form-label">'.$id5.'</label>'.
-							'			<div class="col-sm-9">'.
-							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="'.$id5.'">'.
-							'			</div>'.
-							'		</div>'.
-							'	</div>'.
-							'	<div class="col-md-2">'.
-							'		<div class="form-group row">'.
-							'			<div class="col-sm-10">'.
-							'				<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]">'.
-							'			</div>'.
-							'			<div class="col-sm-2">'.
-							'				<button type="button" name="remove" id="'.$i.'" class="btn btn-danger btn_removea">X</button>'.
-							'			</div>'.
-							'		</div>'.
-							'	</div>'.
-                     '</div>';
+      $txt = 	'
+         <div class="row" id="rowsjaminan'.$i.'">
+            <div class="col-md-2">
+               <div class="form-group row">
+                  <div class="col-sm-12">
+                     <input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="'.$id2.'" disabled>	
+                     <input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="'.$id.'">	
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-md-5">
+               <div class="form-group row">
+                  <label for="inputbisnislain" class="col-sm-3 col-form-label">'.$id3.'</label>
+                  <div class="col-sm-6">
+                     <input type="'.$dis2.'" class="form-control" id="inputJaminanValue[]" name="inputJaminanValue[]">	
+                  </div>
+                  <label for="inputbisnislain" class="col-sm-3 col-form-label">'.$id4.'</label>
+               </div>
+            </div>
+
+            <!-- /.col -->
+            <div class="col-md-3">
+               <div class="form-group row">
+                  <label for="inputbisnislainrp" class="col-sm-3 col-form-label">'.$id5.'</label>
+                  <div class="col-sm-9">
+                     <input type="'.$inp.'" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]">	
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-2">
+               <div class="form-group row">
+                  <div class="col-sm-10">
+                     <input type="'.$inp.'" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]">	
+                  </div>
+                  <div class="col-sm-2">
+                     <button type="button" name="remove" id="'.$i.'" class="btn btn-danger btn_removea">X</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      ';
        return response()->json(array('msg'=> $txt), 200);
    }
 

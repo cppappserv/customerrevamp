@@ -61,6 +61,10 @@ Route::get('/setting', 'HomeController@setting')->name('setting');
 Route::get('/setting1', 'NewController@setting')->name('setting1');
 Route::get('/upload', 'HomeController@upload')->name('upload');
 Route::get('/upload1', 'NewController@upload')->name('upload');
+Route::post('/uploadexcel', 'NewController@uploadexcel')->name('uploadexcel');
+
+
+
 Route::get('/upload_history', 'HomeController@upload_history')->name('upload_history');
 Route::get('/download', 'HomeController@download')->name('download');
 Route::get('/syncronize', 'HomeController@syncronize')->name('syncronize');

@@ -315,6 +315,9 @@ $hitam = "rgba(84,84,84,1)";
    
 </nav>
 
+<!-- Import Excel -->
+
+
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -325,6 +328,29 @@ $hitam = "rgba(84,84,84,1)";
     
     ">
 
+      <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document" style="margin-left:10%;margin-right:10%">
+            <form method="post" action="/uploadexcel" enctype="multipart/form-data">
+            {{ csrf_field() }}
+               <div class="modal-content" style="width:250%;">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                  </div>
+                  <div class="modal-body" id="hslexcel">
+                     <div class="form-group">
+                        <label>PILIH FILE</label>
+                        <input type="file" name="file" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-primary">Import</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+
 		<div class="container-fluid">
 
       <div class="card card-default">
@@ -334,10 +360,14 @@ $hitam = "rgba(84,84,84,1)";
                                  <button type="button" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(245,180,67,1);">History</button>
 										</div>
                               <div class="card-tools">
-                                 <button type="button" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(15,199,89,1);">Upload</button>
+                                 <button type="button" id="button" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(15,199,89,1);" 
+                                 data-toggle="modal" data-target="#importExcel"
+                                 >Upload</button>
+                                 <span id='val' style="display:none"></span>
 										</div>
                               
 									</div>
+                           <input type="file" name="file" required="required" style="display:none;">
 									<!-- /.card-header -->
                            <div style="height: 10px; left: 10px; fill: rgba(51,122,183,1);color: white;">
                               <svg class="Rectangle_248_coa">
@@ -366,7 +396,7 @@ $hitam = "rgba(84,84,84,1)";
                                  foreach ($fileupload as $key => $value) {
                                  ?>   
                                  <tr>
-                                    <td>{{$value->urut}}</td>
+                                    <td>{{$value->urut}} </td>
                                     <td>{{$value->filename}}</td>
                                     <td>{{$value->status}}</td>
                                     <td>{{$value->uploadtime}}</td>
@@ -425,6 +455,30 @@ $(function () {
   });
 </script>
 
+<!-- <script type="text/javascript">
+		$('#button').click(function(){
+			$("input[type='file']").trigger('click');
+		})
+
+		$("input[type='file']").change(function(){
+         let file = $("input[type=file]").val();
+         let _token   = $('input[name="_token"]').val();
+         $.ajax({
+            url: '/uploadexcel',
+            type: "POST",
+            data:{
+               file:file,
+               _token: _token
+            },
+            // dataType: "json",
+            success:function(data) {
+               // $("#hslexcel").empty();
+               $("#hslexcel").html(data.msg);
+               $('#importExcel').modal('show');
+            }
+         });
+		})  
+	</script> -->
 
 </body>
 </html>

@@ -1163,7 +1163,7 @@ if ($pos=0 or $pos=1){
 														<?php 
 														foreach ($tblmedsos as $key => $value) {
 														?>
-															<option value="{{$value->seq}}" <?php echo ($value->seq == $data->sseq?'selected':'');?>>{{$value->desc}}</option>
+															<option value="{{$value->seq}}" <?php echo ($value->seq == $data->seq?'selected':'');?>>{{$value->desc}}</option>
 														<?php
 														}
 														?>
@@ -1763,12 +1763,10 @@ if ($pos=0 or $pos=1){
 									<!-- /.row -->
 								</div>
 
-<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
-				{{ csrf_field() }}
 								<?php 
 								$txt='<option value="">-</option>';
 								foreach ($tblmedsos as $key => $value) {
-									$txt.= '<option value="'.$value->desc.'">'.$value->desc.'</option>';
+									$txt.= '<option value="'.$value->seq.'">'.$value->desc.'</option>';
 								}
 								?>
 								<input type="hidden" id="optmedsos" value="{{$txt}}">
@@ -2388,7 +2386,7 @@ if ($pos=0 or $pos=1){
 													?>
 													<div class="col-md-12">
 														<div class="form-group row">
-															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->desc}}</label>
+															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->desc1}}</label>
 															<div class="col-sm-3">
 																<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}">	
 																<input type="hidden" id="inputmodalid[]" name="inputmodalid[]" value="{{$data->seq}}">	
@@ -2443,8 +2441,17 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-5">
 												<div class="form-group row">
 													<div class="col-sm-10">
-														<input type="text" class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" placeholder="%" value="{{$data->value2}}">	
-														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->seq}}">	
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->value2}}">	
+														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" disabled>
+														<?PHP 
+														foreach ($tblbank as $key => $value) {
+														?>
+															<option value="{{$value->desc}}" <?php echo ($value->desc == $data->value2?'selected':'');?>>{{$value->desc}}</option>
+														<?PHP	
+														}
+														?>
+														</select>
+
 													</div>
 													<div class="col-sm-2">
 														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove9">X</button> -->
@@ -2504,13 +2511,15 @@ if ($pos=0 or $pos=1){
 									foreach ($data_add_jaminanpribadi as $key => $data) {
 										if   ($data->type == 'JAMINAN_PRIBADI')
 										{
+											$dis2=($data->info=="Luas"?"text":"text");
+											$dis5=($data->info3==""?"hidden":"text");
 											$i++;
 									?>
 									<div class="row" id="rowsjaminan{{$i}}">
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="{{$data->desc}}">	
+													<input type="text" class="form-control" id="inputJaminanPribadi[]" name="inputJaminanPribadi[]" value="{{$data->desc}}" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanid[]" name="inputJaminanid[]" value="{{$data->sseq}}">	
 												</div>
 											</div>
@@ -2520,8 +2529,8 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info}}</label>
 												<div class="col-sm-6">
-													<input type="text" class="form-control" id="inputJaminanValue[]" name="inputJaminanValue[]" value="{{$data->value1}}">	
-													<input type="hidden" id="inputJaminanSseq[]" name="inputJaminanSseq[]" value="{{$data->seq}}">
+													<input type="{{$dis2}}" class="form-control" id="inputJaminanValue1[]" name="inputJaminanValue1[]" value="{{$data->value1}}" disabled>	
+													<input type="hidden" id="inputJaminanValue[]" name="inputJaminanValue[]" value="{{$data->value1}}">
 												</div>
 												<label for="inputbisnislain" class="col-sm-3 col-form-label">{{$data->info2}}</label>
 											</div>
@@ -2532,17 +2541,19 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">{{$data->info3}}</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="{{$data->value2}}">	
+													<input type="{{$dis5}}" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="{{$data->value2}}" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="{{$data->value2}}">	
 												</div>
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
+													<input type="{{$dis5}}" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="{{$data->value3}}" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
 												</div>
 												<div class="col-sm-2">
-													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button> -->
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
 												</div>
 											</div>
 										</div>
