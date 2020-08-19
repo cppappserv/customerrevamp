@@ -4,16 +4,16 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>0200 Dashboard</title>
+<title>0101 Login 1</title>
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
-		--web-view-name: 0200 Dashboard;
-		--web-view-id: ID0200_Dashboard;
+		--web-view-name: 0101 Login 1;
+		--web-view-id: ID0101_Login_1;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
 	:root {
-		--web-view-ids: ID0200_Dashboard;
+		--web-view-ids: ID0101_Login_1;
 	}
 	* {
 		margin: 0;
@@ -21,824 +21,119 @@
 		box-sizing: border-box;
 		border: none;
 	}
-	#ID0200_Dashboard {
+	#ID0101_Login_1 {
 		position: absolute;
 		width: 1366px;
-		height: 838px;
+		height: 768px;
 		background-color: rgba(239,239,239,1);
 		overflow: hidden;
-		--web-view-name: 0200 Dashboard;
-		--web-view-id: ID0200_Dashboard;
+		--web-view-name: 0101 Login 1;
+		--web-view-id: ID0101_Login_1;
 		--web-scale-on-resize: true;
 		--web-enable-deep-linking: true;
 	}
+	@keyframes fadein {
+	
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	
+	}
 	@keyframes  {
 	
 	
 	}
-	@keyframes  {
-	
-	
-	}
-	@keyframes  {
-	
-	
-	}
-	#Rectangle_242_bc {
-		fill: rgba(255,255,255,1);
-	}
-	.Rectangle_242_bc {
+	#ON_DUTY {
 		position: absolute;
-		overflow: visible;
 		width: 1366px;
-		height: 257px;
+		height: 768px;
 		left: 0px;
-		top: 99px;
+		top: 0px;
+		overflow: visible;
+		transition: all 1s ease-out;
+		--web-animation: fadein 1s ease-out;
+		--web-action-type: page;
+		--web-action-target: 101_Login_2.html;
+		cursor: pointer;
 	}
-	#Path_169 {
+	#Path_120 {
 		fill: rgba(255,255,255,1);
 	}
-	.Path_169 {
+	.Path_120 {
+		filter: drop-shadow(-5px 3px 20px rgba(0, 0, 0, 0.102));
+		overflow: visible;
+		position: absolute;
+		width: 525.698px;
+		height: 827.546px;
+		left: 900px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Group_399 {
+		position: absolute;
+		width: 316px;
+		height: 103px;
+		left: 978px;
+		top: 228px;
+		overflow: visible;
+	}
+	#Welcome_to_Customer_Profile {
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 317px;
+		white-space: nowrap;
+		line-height: 55px;
+		margin-top: -7.5px;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 40px;
+		color: rgba(84,84,84,1);
+	}
+	#Google_sign_in_Low_Res {
+		position: absolute;
+		width: 320px;
+		height: 77px;
+		left: 978.349px;
+		top: 397px;
+		overflow: visible;
+	}
+	#Google_sign_in_Low_Res_bp {
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
 		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 564px;
-		top: 196.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Path_170 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_170 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+		width: 320px;
+		height: 77px;
+		left: 0px;
+		top: 0px;
 		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 816px;
-		top: 196.842px;
-		transform: matrix(1,0,0,1,0,0);
+		--web-animation: fadein undefineds undefined;
+		--web-action-type: page;
+		/* --web-action-target: dashboard; */
+		cursor: pointer;
 	}
-	#Path_171 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_171 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 1068px;
-		top: 196.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_21 {
-		fill: rgba(55,183,51,1);
-	}
-	.Intersection_21 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 564px;
-		top: 196px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_22 {
-		fill: rgba(245,180,67,1);
-	}
-	.Intersection_22 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 816px;
-		top: 196px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_23 {
-		fill: rgba(158,51,183,1);
-	}
-	.Intersection_23 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 1068px;
-		top: 196px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Line_116_bj {
+	#Line_1 {
+		opacity: 0.6;
 		fill: transparent;
-		stroke: rgba(255,255,255,1);
-		stroke-width: 1px;
+		stroke: rgba(112,112,112,1);
+		stroke-width: 3px;
 		stroke-linejoin: miter;
 		stroke-linecap: butt;
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.Line_116_bj {
+	.Line_1 {
 		overflow: visible;
 		position: absolute;
-		width: 1px;
-		height: 81.394px;
-		left: 60px;
-		top: 550.606px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Group_399_bk {
-		position: absolute;
-		width: 388px;
-		height: 43px;
-		left: 59px;
-		top: 130px;
-		overflow: visible;
-	}
-	#Welcome_Aditya_Yudha_bl {
-		left: 0px;
-		top: 0px;
-		position: absolute;
-		overflow: visible;
-		width: 389px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 36px;
-		color: rgba(88,88,88,1);
-	}
-	#Group_716 {
-		position: absolute;
-		width: 236.001px;
-		height: 276.253px;
-		left: 60px;
-		top: 196px;
-		overflow: visible;
-		--web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		/* --web-action-target: 0201_Detail_Fish_Feed__1__Main_.html; */
-		--web-action-target: company;
-		cursor: pointer;
-	}
-	#Path_130 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_130 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 0px;
-		top: 0.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_2 {
-		fill: rgba(51,122,183,1);
-	}
-	.Intersection_2 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Fish_Feed_bp {
-		left: 51px;
-		top: 50.286px;
-		position: absolute;
-		overflow: visible;
-		width: 138px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Customer {
-		left: 67px;
-		top: 229.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID1201 {
-		left: 37px;
-		top: 150.286px;
-		position: absolute;
-		overflow: visible;
-		width: 161px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bs {
-		left: 631px;
-		top: 425.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID2492 {
-		left: 601px;
-		top: 346.286px;
-		position: absolute;
-		overflow: visible;
-		width: 161px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bu {
-		left: 883px;
-		top: 425.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID1592 {
-		left: 853px;
-		top: 346.286px;
-		position: absolute;
-		overflow: visible;
-		width: 161px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bw {
-		left: 1135px;
-		top: 425.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID2094 {
-		left: 1105px;
-		top: 346.286px;
-		position: absolute;
-		overflow: visible;
-		width: 161px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Group_715 {
-		position: absolute;
-		width: 236.001px;
-		height: 276.253px;
-		left: 312px;
-		top: 196px;
-		overflow: visible;
-		/* --web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: 0201_Detail_Fish_Feed__1__Main_.html; */
-		cursor: pointer;
-	}
-	#Path_168 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_168 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 0px;
-		top: 0.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_20 {
-		fill: rgba(214,63,63,1);
-	}
-	.Intersection_20 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Customer_b {
-		left: 67px;
-		top: 229.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID502 {
-		left: 64px;
-		top: 150.286px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Fish_Fry {
-		left: 63px;
-		top: 45.286px;
-		position: absolute;
-		overflow: visible;
-		width: 113px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Food {
-		left: 647px;
-		top: 241.286px;
-		position: absolute;
-		overflow: visible;
-		width: 73px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#FPD {
-		left: 906px;
-		top: 241.286px;
-		position: absolute;
-		overflow: visible;
-		width: 59px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Pet_CWS {
-		left: 1125px;
-		top: 241.286px;
-		position: absolute;
-		overflow: visible;
-		width: 125px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Path_182 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_182 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 312px;
-		top: 493.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Path_183 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_183 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 564px;
-		top: 493.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Path_184 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_184 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 816px;
-		top: 493.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_24 {
-		fill: rgba(43,185,201,1);
-	}
-	.Intersection_24 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 312px;
-		top: 493px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_25 {
-		fill: rgba(77,106,184,1);
-	}
-	.Intersection_25 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 564px;
-		top: 493px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_26 {
-		fill: rgba(0,167,110,1);
-	}
-	.Intersection_26 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 816px;
-		top: 493px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Path_186 {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_186 {
-		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-		overflow: visible;
-		position: absolute;
-		width: 254px;
-		height: 293.411px;
-		left: 60px;
-		top: 493.842px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Intersection_28 {
-		fill: rgba(202,214,32,1);
-	}
-	.Intersection_28 {
-		overflow: visible;
-		position: absolute;
-		width: 236.001px;
-		height: 138.001px;
-		left: 60px;
-		top: 493px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Pet_SuHS {
-		left: 111px;
-		top: 543.286px;
-		position: absolute;
-		overflow: visible;
-		width: 135px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Customer_bg {
-		left: 127px;
-		top: 722.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID902 {
-		left: 124px;
-		top: 643.286px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bi {
-		left: 379px;
-		top: 722.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID557 {
-		left: 376px;
-		top: 643.286px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bk {
-		left: 631px;
-		top: 722.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID1692 {
-		left: 601px;
-		top: 643.286px;
-		position: absolute;
-		overflow: visible;
-		width: 161px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Customer_bm {
-		left: 883px;
-		top: 722.286px;
-		position: absolute;
-		overflow: visible;
-		width: 105px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(84,84,84,1);
-	}
-	#ID375 {
-		left: 880px;
-		top: 643.286px;
-		position: absolute;
-		overflow: visible;
-		width: 107px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 64px;
-		color: rgba(84,84,84,1);
-		letter-spacing: -0.25px;
-	}
-	#Probiotik {
-		left: 367px;
-		top: 538.286px;
-		position: absolute;
-		overflow: visible;
-		width: 129px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Shrimp_Feed {
-		left: 594px;
-		top: 538.286px;
-		position: absolute;
-		overflow: visible;
-		width: 179px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Shrimp_Fry {
-		left: 859px;
-		top: 538.286px;
-		position: absolute;
-		overflow: visible;
-		width: 153px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 32px;
-		color: rgba(255,255,255,1);
-	}
-	#Rectangle_43_bs {
-		fill: url(#Rectangle_43_bs);
-	}
-	.Rectangle_43_bs {
-		position: fixed;
-		overflow: visible;
-		width: 1366px;
-		height: 99px;
-		left: 0px;
-		top: 0px;
-	}
-	#Dashboard_bt {
-		left: 60px;
-		top: 35.286px;
-		position: fixed;
-		overflow: visible;
-		width: 117px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(255,255,255,1);
-	}
-	#Setting_bu {
-		left: 250px;
-		top: 35.286px;
-		position: fixed;
-		overflow: visible;
-		width: 77px;
-		white-space: nowrap;
-		--web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: setting;
-		cursor: pointer;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(255,255,255,1);
-	}
-	#Rectangle_241_bv {
-		fill: rgba(255,255,255,1);
-	}
-	.Rectangle_241_bv {
-		position: fixed;
-		overflow: visible;
-		width: 152px;
-		height: 19px;
-		left: 42px;
-		top: 80px;
-	}
-	#Aditya_Yudha_bw {
-		left: 1066px;
-		top: 33.286px;
-		position: fixed;
-		overflow: visible;
-		width: 142px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: rgba(255,255,255,1);
-	}
-	#Group_661_bx {
-		position: fixed;
-		width: 65.971px;
-		height: 65.971px;
-		left: 1237px;
-		top: 16.561px;
-		overflow: visible;
-		cursor: pointer;
-		--web-animation: ;
-		--web-action-type: page;
-		--web-action-target: logout;
-	}
-	#Ellipse_16_by {
-		fill: rgba(255,255,255,1);
-	}
-	.Ellipse_16_by {
-		position: absolute;
-		overflow: visible;
-		width: 65.971px;
-		height: 65.972px;
-		left: 0px;
-		top: 0px;
-	}
-	#Intersection_1_b {
-		fill: rgba(88,88,88,1);
-		stroke: rgba(0,0,0,0);
-		stroke-width: 1px;
-		stroke-linejoin: miter;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
-	}
-	.Intersection_1_b {
-		overflow: visible;
-		position: absolute;
-		width: 55.955px;
-		height: 56.61px;
-		left: 5.896px;
-		top: 10.268px;
+		width: 320px;
+		height: 3px;
+		left: 978.5px;
+		top: 356.5px;
 		transform: matrix(1,0,0,1,0,0);
 	}
 </style>
@@ -3671,208 +2966,25 @@ window.application = new Application();
 </script>
 </head>
 <body>
-<div id="ID0200_Dashboard">
-	<svg class="Rectangle_242_bc">
-		<rect id="Rectangle_242_bc" rx="0" ry="0" x="0" y="0" width="1366" height="257">
-		</rect>
-	</svg>
-	<svg class="Path_169" viewBox="0 0 236 275.411">
-		<path id="Path_169" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
+<div id="ID0101_Login_1">
+	<img onclick="application.goToTargetView(event)" id="ON_DUTY" src="{{asset('image/ON_DUTY.png')}}" srcset="{{asset('image/ON_DUTY.png')}} 1x, {{asset('image/ON_DUTY@2x.png')}} 2x">
+	<svg class="Path_120" viewBox="0 0 465.698 767.545">
+		<path id="Path_120" d="M 0 0 L 465.6977844238281 0 L 465.6977844238281 767.5454711914063 L 0 767.5454711914063 L 0 0 Z">
 		</path>
 	</svg>
-	<svg class="Path_170" viewBox="0 0 236 275.411">
-		<path id="Path_170" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
-		</path>
-	</svg>
-	<svg class="Path_171" viewBox="0 0 236 275.411">
-		<path id="Path_171" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_21" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_21" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_22" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_22" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_23" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_23" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Line_116_bj" viewBox="0 0 1 81.393">
-		<path id="Line_116_bj" d="M 0 0 L 0 81.393310546875">
-		</path>
-	</svg>
-	<div id="Group_399_bk">
-		<div id="Welcome_Aditya_Yudha_bl">
-			<span>Welcome</span><span style="font-style:normal;font-weight:normal;">, </span><span style="font-style:normal;font-weight:normal;color:rgba(56,154,198,1);">Aditya Yudha!</span>
+	<div id="Group_399">
+		<div id="Welcome_to_Customer_Profile">
+			<span>Welcome to<br/>Customer Profile.</span>
 		</div>
 	</div>
-	<div onclick="application.goToTargetView(event)" id="Group_716">
-		<svg class="Path_130" viewBox="0 0 236 275.411">
-			<path id="Path_130" d="M 7.892985820770264 0 L 228.1072998046875 0 C 232.4664764404297 0 236.0002746582031 3.747895956039429 236.0002746582031 8.371158599853516 L 236.0002746582031 267.0399780273438 C 236.0002746582031 271.6632385253906 232.4664764404297 275.4111328125 228.1072998046875 275.4111328125 L 7.892985820770264 275.4111328125 C 3.533810138702393 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.747895956039429 3.533810138702393 0 7.892985820770264 0 Z">
-			</path>
-		</svg>
-		<svg class="Intersection_2" viewBox="0 0 236.001 138.001">
-			<path id="Intersection_2" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-			</path>
-		</svg>
-		<div id="Fish_Feed_bp">
-			<span>Fish Feed</span>
-		</div>
-		<div id="Customer">
-			<span>Customer</span>
-		</div>
-		<div id="ID1201">
-			<span>1.201</span>
-		</div>
+	<div id="Google_sign_in_Low_Res" class="Google_sign_in__Low_Res_">
+		<a href="/dashboard1"><img id="Google_sign_in_Low_Res_bp" src="{{asset('image/Google_sign_in_Low_Res_bp.png')}}" srcset="{{asset('image/Google_sign_in_Low_Res_bp.png')}} 1x, {{asset('image/Google_sign_in_Low_Res_bp@2x.png')}} 2x">
+		</a>
 	</div>
-	<div id="Customer_bs">
-		<span>Customer</span>
-	</div>
-	<div id="ID2492">
-		<span>2.492</span>
-	</div>
-	<div id="Customer_bu">
-		<span>Customer</span>
-	</div>
-	<div id="ID1592">
-		<span>1.592</span>
-	</div>
-	<div id="Customer_bw">
-		<span>Customer</span>
-	</div>
-	<div id="ID2094">
-		<span>2.094</span>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Group_715">
-		<svg class="Path_168" viewBox="0 0 236 275.411">
-			<path id="Path_168" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
-			</path>
-		</svg>
-		<svg class="Intersection_20" viewBox="0 0 236.001 138.001">
-			<path id="Intersection_20" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-			</path>
-		</svg>
-		<div id="Customer_b">
-			<span>Customer</span>
-		</div>
-		<div id="ID502">
-			<span>502</span>
-		</div>
-		<div id="Fish_Fry">
-			<span>Fish Fry</span>
-		</div>
-	</div>
-	<div id="Food">
-		<span>Food</span>
-	</div>
-	<div id="FPD">
-		<span>FPD</span>
-	</div>
-	<div id="Pet_CWS">
-		<span>Pet CWS</span>
-	</div>
-	<svg class="Path_182" viewBox="0 0 236 275.411">
-		<path id="Path_182" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
+	<svg class="Line_1" viewBox="0 0 320 3">
+		<path id="Line_1" d="M 0 0 L 320 0">
 		</path>
 	</svg>
-	<svg class="Path_183" viewBox="0 0 236 275.411">
-		<path id="Path_183" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
-		</path>
-	</svg>
-	<svg class="Path_184" viewBox="0 0 236 275.411">
-		<path id="Path_184" d="M 7.8929762840271 0 L 228.1070251464844 0 C 232.4662017822266 0 236 3.74789571762085 236 8.371158599853516 L 236 267.0399780273438 C 236 271.6632385253906 232.4662017822266 275.4111328125 228.1070251464844 275.4111328125 L 7.8929762840271 275.4111328125 C 3.533805847167969 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.74789571762085 3.533805847167969 0 7.8929762840271 0 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_24" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_24" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_25" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_25" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_26" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_26" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<svg class="Path_186" viewBox="0 0 236 275.411">
-		<path id="Path_186" d="M 7.892985820770264 0 L 228.1072998046875 0 C 232.4664764404297 0 236.0002746582031 3.747895956039429 236.0002746582031 8.371158599853516 L 236.0002746582031 267.0399780273438 C 236.0002746582031 271.6632385253906 232.4664764404297 275.4111328125 228.1072998046875 275.4111328125 L 7.892985820770264 275.4111328125 C 3.533810138702393 275.4111328125 0 271.6632385253906 0 267.0399780273438 L 0 8.371158599853516 C 0 3.747895956039429 3.533810138702393 0 7.892985820770264 0 Z">
-		</path>
-	</svg>
-	<svg class="Intersection_28" viewBox="0 0 236.001 138.001">
-		<path id="Intersection_28" d="M 0 91.22920989990234 L 0 9.999899864196777 C 0 4.477499961853027 4.477499961853027 0 9.999899864196777 0 L 225.9999084472656 0 C 231.5232086181641 0 236.0007019042969 4.477499961853027 236.0007019042969 9.999899864196777 L 236.0007019042969 92.15694427490234 C 205.0950775146484 120.6171264648438 163.8258819580078 138.0006103515625 118.5003051757813 138.0006103515625 C 72.68302154541016 138.0006103515625 31.01273345947266 120.2398910522461 0 91.22920989990234 Z">
-		</path>
-	</svg>
-	<div id="Pet_SuHS">
-		<span>Pet SuHS</span>
-	</div>
-	<div id="Customer_bg">
-		<span>Customer</span>
-	</div>
-	<div id="ID902">
-		<span>902</span>
-	</div>
-	<div id="Customer_bi">
-		<span>Customer</span>
-	</div>
-	<div id="ID557">
-		<span>557</span>
-	</div>
-	<div id="Customer_bk">
-		<span>Customer</span>
-	</div>
-	<div id="ID1692">
-		<span>1.692</span>
-	</div>
-	<div id="Customer_bm">
-		<span>Customer</span>
-	</div>
-	<div id="ID375">
-		<span>375</span>
-	</div>
-	<div id="Probiotik">
-		<span>Probiotik</span>
-	</div>
-	<div id="Shrimp_Feed">
-		<span>Shrimp Feed</span>
-	</div>
-	<div id="Shrimp_Fry">
-		<span>Shrimp Fry</span>
-	</div>
-	<svg class="Rectangle_43_bs">
-		<linearGradient id="Rectangle_43_bs" spreadMethod="pad" x1="0.674" x2="0.397" y1="1.977" y2="-1.213">
-			<stop offset="0" stop-color="#3c8dbc" stop-opacity="1"></stop>
-			<stop offset="1" stop-color="#6fbce6" stop-opacity="1"></stop>
-		</linearGradient>
-		<rect id="Rectangle_43_bs" rx="0" ry="0" x="0" y="0" width="1366" height="99">
-		</rect>
-	</svg>
-	<div id="Dashboard_bt">
-		<span>Dashboard</span>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Setting_bu">
-		<span>Setting</span>
-	</div>
-	<svg class="Rectangle_241_bv">
-		<rect id="Rectangle_241_bv" rx="10" ry="10" x="0" y="0" width="152" height="19">
-		</rect>
-	</svg>
-	<div id="Aditya_Yudha_bw">
-		<span>Aditya Yudha</span>
-	</div>
-	<div onclick="application.goToTargetView(event)" id="Group_661_bx">
-		<svg class="Ellipse_16_by">
-			<ellipse id="Ellipse_16_by" rx="32.985595703125" ry="32.98560333251953" cx="32.985595703125" cy="32.98560333251953">
-			</ellipse>
-		</svg>
-		<svg class="Intersection_1_b" viewBox="0 0 54.523 55.612">
-			<path id="Intersection_1_b" d="M 0 41.54434967041016 C 0.4987514615058899 41.16975021362305 1.093924999237061 40.89059829711914 1.781647324562073 40.69922256469727 C 3.158003091812134 40.31534957885742 4.515820026397705 39.8591194152832 5.88132381439209 39.43138885498047 C 10.01445865631104 38.13913345336914 14.14488220214844 36.84280776977539 18.27982521057129 35.5600471496582 C 18.71524810791016 35.42575073242188 18.86039352416992 35.30367660522461 18.52399063110352 34.88000869750977 C 17.00249099731445 32.96604156494141 15.86080455780029 30.83097648620605 15.00849628448486 28.54940795898438 C 12.96928215026855 23.08558082580566 12.09391307830811 17.48656272888184 13.36310863494873 11.70939445495605 C 14.27239036560059 7.57490348815918 16.33330535888672 4.160690784454346 20.06854629516602 1.951015472412109 C 23.11741638183594 0.1482788622379303 26.44707679748535 -0.2722240090370178 29.90424346923828 0.152348205447197 C 34.01205062866211 0.6560474038124084 37.29151916503906 2.580865383148193 39.63141632080078 6.020398139953613 C 41.73122406005859 9.108608245849609 42.47682571411133 12.60646820068359 42.60026550292969 16.26755523681641 C 42.67351150512695 18.42840003967285 42.44924163818359 20.57296371459961 42.04365921020508 22.69492149353027 C 41.19406509399414 27.13642311096191 39.64363098144531 31.28719902038574 36.85293579101563 34.90171432495117 C 36.54050445556641 35.30638885498047 36.67659759521484 35.42305374145508 37.08624649047852 35.5491943359375 C 39.29230880737305 36.22652053833008 41.49384307861328 36.92148590087891 43.69537734985352 37.60966110229492 C 47.10010147094727 38.67403411865234 50.5070686340332 39.7275505065918 53.90726852416992 40.80638885498047 C 54.12361145019531 40.87493133544922 54.32894897460938 40.95231628417969 54.52326202392578 41.03830718994141 C 49.03708267211914 49.23665237426758 39.97286224365234 54.83963775634766 29.56497383117676 55.6119270324707 C 27.9155387878418 55.61203384399414 26.26505851745605 55.61209869384766 24.61562728881836 55.61210632324219 C 14.42110061645508 54.85667419433594 5.517290592193604 49.46823501586914 0 41.54434967041016 Z">
-			</path>
-		</svg>
-	</div>
 </div>
 </body>
 </html>

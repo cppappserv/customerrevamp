@@ -2906,7 +2906,7 @@ if ($pos=0 or $pos=1){
 										'</div>'+
 										'<div class="col-md-2">'+
 											'<div class="form-group row kotakexcel_kosong">'+
-												'<input type="text" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
+												'<input type="date" class="form-control" id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]" placeholder="Tanggal">'+
 											'</div>'+
 										'</div>'+
 										'<div class="col-md-2">'+

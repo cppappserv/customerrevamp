@@ -1,0 +1,14 @@
+/node_modules
+/public/hot
+/public/storage
+/public/file_customer
+/public/acl/acl_test.php
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
