@@ -25,7 +25,9 @@ $hitam = "rgba(84,84,84,1)";
   @include('include.incsetting1')
   
   <style id="applicationStylesheet" type="text/css">
-	
+	.imglogin {
+		border-radius: 50%;
+	}
    .atas{
       position: fixed;
       width: 100%;
@@ -90,13 +92,14 @@ $hitam = "rgba(84,84,84,1)";
 <body class="hold-transition sidebar-mini">
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
+style="margin-left: 0px;">
    <!-- Left navbar links -->
    <!-- <div class="atas"> -->
       <ul class="navbar-nav">
       
          <li class="nav-item d-none d-sm-inline-block" >
-            <a href="/dashboard1" class="nav-link" id="fon_28_wh">Dashboard/</a>
+            <a href="/home" class="nav-link" id="fon_28_wh">Dashboard/</a>
          </li>
          <li class="nav-item d-none d-sm-inline-block" >
             <a href="#" class="nav-link" id="fon_28_wh">Setting</a>
@@ -111,7 +114,12 @@ $hitam = "rgba(84,84,84,1)";
                margin-right: 59px;
                margin-left: 10px;
             ">
-               <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+               <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+							 class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
             </div>
          </div>
       </ul>

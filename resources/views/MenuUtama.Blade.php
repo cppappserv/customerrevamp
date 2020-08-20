@@ -28,6 +28,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <style id="applicationStylesheet" type="text/css">
+  .imglogin {
+		border-radius: 50%;
+	}
 	    a { text-decoration: none; }
      #Group_716 {
       position: absolute;
@@ -213,7 +216,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav" >
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/dashboard1" class="nav-link"  style="color: white;font-size: 28px;">Dashboard</a>
+        <a href="/home" class="nav-link"  style="color: white;font-size: 28px;">Dashboard</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/setting1" class="nav-link"  style="color: white;font-size: 28px;">Setting</a>
@@ -228,7 +231,12 @@
             margin-right: 59px;
             margin-left: 10px;
           ">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+            class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
           </div>
         </div>
     </ul>

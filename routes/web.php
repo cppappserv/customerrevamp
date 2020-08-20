@@ -10,39 +10,40 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-  return view('welcome');
-});
-Auth::routes(['register' => false]);
+
+Auth::routes(['register' => true]);
 Route::get('/logout', 'HomeController@logout');
-// Route::get('/', 'HomeController@index')->name('home');
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/company1/{id}', 'CstcompanyController@index')->name('company1');
 
-Route::get('/dashboard1', 'NewController@index')->name('home1');
-Route::get('/company1/{id}', 'NewController@company')->name('company1');
-Route::get('/subcompany1/{id}/{id2}', 'NewController@subcompany')->name('subcompany1');
-Route::delete('applicant_delete_modal', 'NewController@destroy')->name('applicant_delete');
-Route::get('/detail1/{id}/{id2}/{id3}', 'NewController@detail')->name('detail');
+Route::get('/subcompany1/{id}/{id2}', 'CstsubcompanyController@index')->name('subcompany1');
 
+Route::delete('applicant_delete_modal', 'CstdetailController@destroy')->name('applicant_delete');
+Route::get('/detail1/{id}/{id2}/{id3}/{id4}', 'CstdetailController@index')->name('detail');
+Route::get('/detail2/{id}/{id2}/{id3}/{id4}', 'CstdetailController@edit')->name('edit');
 
-Route::post('/detailsave/{id}', 'NewController@detailsave')->name('detailsave');
-
-
-Route::get('/storeimage/{id}', 'NewController@storeimage')->name('storeimage');
-
-Route::get('/detail1/update/{id}', 'NewController@update')->name('update');
-
-Route::delete('applicant_delete_modal', 'NewController@destroy')->name('applicant_delete');
-Route::get('/setting1', 'NewController@setting')->name('setting1');
-Route::get('/upload1', 'NewController@upload')->name('upload');
-Route::post('/uploadexcel', 'NewController@uploadexcel')->name('uploadexcel');
+Route::post('/detailsave/{id}', 'CstdetailController@detailsave')->name('detailsave');
 
 
+Route::get('/storeimage/{id}', 'CstdetailController@storeimage')->name('storeimage');
+Route::get('/imagelogin/{id}', 'HomeController@storeimage')->name('storeimage');
 
-Route::get('/info1', 'NewController@info')->name('info1');
-Route::post('/info1edit/save', 'NewController@infosave')->name('infosave');
-Route::get('autocomplete', 'NewController@search');
-Route::get('autohubkelga', 'NewController@searchhubkelga');
+Route::get('/detail1/update/{id}', 'CstdetailController@update')->name('update');
+
+Route::delete('applicant_delete_modal', 'CstdetailController@destroy')->name('applicant_delete');
+Route::get('/setting1', 'CstsettingController@index')->name('setting1');
+Route::get('/upload1', 'CstuploadController@index')->name('upload');
+Route::post('/uploadexcel', 'CstuploadController@uploadexcel')->name('uploadexcel');
+Route::post('/prosesdata', 'CstuploadController@prosesexcel')->name('prosesexcel');
+
+
+
+
+Route::get('/info1', 'CstinformasiController@index')->name('info1');
+Route::post('/info1edit/save', 'CstdetailController@infosave')->name('infosave');
+Route::get('autocomplete', 'CstdetailController@search');
+Route::get('autohubkelga', 'CstdetailController@searchhubkelga');
 Route::get("/getmsg/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@jaminan");
 Route::get("/getmsg2/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@assetpribadi");
 Route::get("/getmsg3/{id}/{id2}","NewAddController@inputinfomasi");
@@ -50,7 +51,9 @@ Route::get("/getmsg4","NewAddController@inputinfomasinew");
 Route::get('/getmsg5/{id}', 'NewAddController@getcompany');
 Route::get("/addmore","ArrayController@addMore");
 Route::post("/addmore","ArrayController@addMorePost"); 
- 
+
+
+
 
 
 // Route::get('/setuser', 'Menus\SetuserController@index')->name('Setuser_view');

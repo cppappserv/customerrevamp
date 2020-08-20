@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use App\Models\kodepost;
+use App\Models\Usrprofile;
+use App\Models\Usradditional;
 use App\Models\Dtadditional;
 use App\Models\Tblgroupuser;
 use App\Models\Tblobject;
+use App\Models\Tbluserphoto;
 use App\Models\Zbranch;
+use App\Models\Usrupload;
 use DB;
 
 class NewAddController extends Controller
@@ -329,5 +333,5 @@ class NewAddController extends Controller
       ->pluck('infox','info');
       // ->select('info2','info');
     return response()->json($data); 
-   }
+   }    
 }

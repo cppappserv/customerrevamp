@@ -377,6 +377,10 @@
 			display: flex;
 			align-items: center;
 		}
+
+		.imglogin {
+		border-radius: 50%;
+	}
   </style>
   
 </head>
@@ -398,7 +402,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav" >
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/dashboard1" class="nav-link"  style="color: white;font-size: 28px;">Dashboard /</a>
+        <a href="/home" class="nav-link"  style="color: white;font-size: 28px;">Dashboard /</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"  style="color: white;font-size: 28px;">{{ $pilcompany }}</a>
@@ -413,7 +417,12 @@
             margin-right: 59px;
             margin-left: 10px;
           ">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+							class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
           </div>
         </div>
     </ul>
@@ -459,13 +468,6 @@
         <!-- Small boxes (Stat box) -->
 
 			<div class="row">
-				
-
-		  
-
-		  
-
-        
         <?php
         $max=count($percompany);
         for($i=0; $i<$max; $i++){

@@ -8,10 +8,10 @@ class Importprofile extends Model
 {
     //
    protected $table = "import_profile";
-   protected $primaryKey = null;
    public $timestamps = false;
    public $incrementing = false;
    protected $fillable = [
+      'id', 
       'user_id', 
       'kodesap', 
       'noktp', 
@@ -55,6 +55,7 @@ class Importprofile extends Model
       'namaalias', 
       'agama', 
       'goldarah', 
-      'headgrp'
+      'headgrp',
+      'uid'
     ];
 }

@@ -18,12 +18,17 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style id="applicationStylesheet" type="text/css">
+  .imglogin {
+		border-radius: 50%;
+	}
    .atas{
       position: fixed;
       width: 100%;
       height: 100px;
       background: rgba(43,185,201,1);
    }
+
+   
    #fon_24_wh{
       color: white;
       font-size:24px;
@@ -196,13 +201,23 @@
 $total = 134;
 ?>
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
+style="
+      margin-left: 0px;
+      position: fixed;
+      background-color: rgba(43,185,201,1);
+      top: 0;
+      width: 100%;
+      font-size: 24px;
+      height: 100px
+      /* z-index:0; */
+    ">
    <!-- Left navbar links -->
    <td>
    <ul class="navbar-nav">
    
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis" >
-         <a href="/dashboard1" class="nav-link" id="fon_28_wh">Dashboard/</a>
+         <a href="/home" class="nav-link" id="fon_28_wh">Dashboard/</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" >
          <a href="#" class="nav-link atas" id="fon_28_wh">{{$pilcompany}}</a>
@@ -215,7 +230,12 @@ $total = 134;
             margin-right: 59px;
             margin-left: 10px;
           ">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+              class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
           </div>
         </div>
     </ul>
@@ -224,10 +244,13 @@ $total = 134;
 <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <div class="wrapper awal" style="position: relative;">
+  <div class="wrapper awal" style="position: relative;
+    margin-left: 0px;
+    ">
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="
+    margin-left: 0px;">
     <!-- Content Header (Page header) -->
     <!-- <section class="content-header">
       <div class="container-fluid">
@@ -289,6 +312,7 @@ $total = 134;
             <h1>{{$max}} Customers Found</h1>
             </div>
             <!-- /.card-header -->
+            
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
@@ -305,6 +329,7 @@ $total = 134;
                 </thead>
                 <tbody>
                 <?php
+
                   for($i=0; $i<$max; $i++){
                      $uid           = $listdata[$i]->uid;
                      $customer_id   = $listdata[$i]->customer_id;
@@ -318,7 +343,7 @@ $total = 134;
                      $changed_time  = $listdata[$i]->changed_time;
                      ?>
                   <tr>
-                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$pilcompany2}}/{{$uid}}">{{$customer_id}}<a></td>
+                     <td id="tdpos"><a href="/detail1/{{$pilcompany}}/{{$pilcompany2}}/{{$uid}}/1">{{$customer_id}}<a></td>
                      <td id="tdpos">{{$customer_name}}</td>
                      <td id="tdpos">{{$bu}}</td>
                      <td id="tdpos">{{$created_by}}</td>

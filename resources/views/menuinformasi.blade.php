@@ -27,6 +27,9 @@ $hitam = "rgba(84,84,84,1)";
   @include('include.incdetail1')
   
   <style id="applicationStylesheet" type="text/css">
+  .imglogin {
+		border-radius: 50%;
+	}
 	/* #custom-content-below-home-tab {
 		display: none;
 	}
@@ -374,7 +377,8 @@ $hitam = "rgba(84,84,84,1)";
 <body class="hold-transition sidebar-mini">
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
+style="margin-left: 0px;">
    <!-- Left navbar links -->
    <!-- <div class="atas"> -->
    <ul class="navbar-nav">
@@ -392,7 +396,12 @@ $hitam = "rgba(84,84,84,1)";
             margin-right: 59px;
             margin-left: 10px;
          ">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+            class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
          </div>
       </div>
    </ul>
@@ -439,7 +448,7 @@ $hitam = "rgba(84,84,84,1)";
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="text" class="form-control" id="inputuserid" name="inputuserid" onblur="cekinputan()">
+                                    <input type="text" class="form-control" id="inputuserid" name="inputuserid" onchange="cekinputan()">
                                     <input type="hidden" id="inputbaris" name="inputbaris">
                                  </div>
                               </div>
@@ -449,7 +458,7 @@ $hitam = "rgba(84,84,84,1)";
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <select class="form-control" id="inputusertype" name="inputusertype" > 
+                                    <select class="form-control" id="inputusertype" name="inputusertype" onblur="cekinputan()"> 
                                        <option value="" selected>--- Select User Type ---</option>
                                     <?php
                                     foreach ($listgroup as $key => $value) {
@@ -466,7 +475,7 @@ $hitam = "rgba(84,84,84,1)";
                               <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control" id="inputuserarea" name="inputuserarea" > 
+                                    <select class="form-control" id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
                                     <option value="" selected>--- Select Area ---</option>
                                     <?php
                                     foreach ($tblobject as $key => $value) {
@@ -487,7 +496,7 @@ $hitam = "rgba(84,84,84,1)";
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="password" class="form-control" id="inputuserpass" name="inputuserpass" placeholder="password" >
+                                    <input type="password" class="form-control" id="inputuserpass" name="inputuserpass" placeholder="password" onblur="cekinputan()">
                                  </div>
                               </div>
                               <button type="button" 
@@ -501,7 +510,7 @@ $hitam = "rgba(84,84,84,1)";
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                 <input type="password" class="form-control" id="inputuserrepass" name="inputuserrepass" placeholder="password" >
+                                 <input type="password" class="form-control" id="inputuserrepass" name="inputuserrepass" placeholder="password" onblur="cekinputan()">
                                  </div>
                               </div>
                               <button type="button" 
@@ -515,7 +524,7 @@ $hitam = "rgba(84,84,84,1)";
                               <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control" id="inputusercompany" name="inputusercompany" > 
+                                    <select class="form-control" id="inputusercompany" name="inputusercompany" onblur="cekinputan()"> 
                                        <option>--- Select Company ---</option>
                                     </select>
                                  </div>
@@ -717,7 +726,7 @@ foreach ($listuser as $key => $value3) {
       
       var x = document.getElementById('inputuserpass_'+para_1);
 
-      if (x.type === "password") {
+      if (x.type == "password") {
          x.type = "text";
       } else {
          x.type = "password";
@@ -731,7 +740,7 @@ foreach ($listuser as $key => $value3) {
          var x = document.getElementById('inputuserrepass');
       }
 
-      if (x.type === "password") {
+      if (x.type == "password") {
          x.type = "text";
       } else {
          x.type = "password";
@@ -749,7 +758,7 @@ foreach ($listuser as $key => $value3) {
       var tx5 = 'inputuserpass_'+isi;
       
       var x = document.getElementById("save");
-      if (x.style.display === "none") {
+      if (x.style.display == "none") {
          x.style.display = "block";
       
       }
@@ -768,7 +777,7 @@ foreach ($listuser as $key => $value3) {
 <script type="text/javascript">
 
    //  $(document).ready(function(){
-	// 	var x = document.getElementById("save");
+		var x = document.getElementById("save");
       
    //    var xinputbaris = document.getElementById("inputbaris");
       
@@ -779,7 +788,7 @@ foreach ($listuser as $key => $value3) {
    //    var inputuserrepass = document.getElementById("inputuserrepass");
    //    var inputusercompany = document.getElementById("inputusercompany");
 	// 	$('#save_save').click(function(){ 
-   //       if (xinputbaris.value === ""){
+   //       if (xinputbaris.value == ""){
    //          alert('save add');
    //       } else {
    //          alert('save update');
@@ -817,6 +826,7 @@ foreach ($listuser as $key => $value3) {
 
       
       $('#save_cancel').click(function(){ 
+         alert('test');
          x.style.display = "none";
 
          
@@ -834,15 +844,18 @@ foreach ($listuser as $key => $value3) {
 
 <script>
    function cekinputan(){
+     
       var x = document.getElementById("save");
-      var inputuserid = document.getElementById("inputuserid");
-      // var inputusertype = document.getElementById("inputusertype");
-      // var inputuserarea = document.getElementById("inputuserarea");
-      // var inputuserpass = document.getElementById("inputuserpass");
-      // var inputuserrepass = document.getElementById("inputuserrepass");
-      // var inputusercompany = document.getElementById("inputusercompany");
-      // if(inputuserid.value == '' || inputusertype.value == '' || inputuserarea.value == '' || inputuserpass.value == '' || inputuserrepass.value == '' || inputusercompany.value == ''){
-      if(inputuserid.value == ''){
+      
+      var inputuserid      = document.getElementById("inputuserid");
+      var inputusertype    = document.getElementById("inputusertype");
+      var inputuserarea    = document.getElementById("inputuserarea");
+      var inputuserpass    = document.getElementById("inputuserpass");
+      var inputuserrepass  = document.getElementById("inputuserrepass");
+      var inputusercompany = document.getElementById("inputusercompany");
+
+      if(inputuserid.value == "" || inputusertype.value == "" || inputuserarea.value == "" || inputuserpass.value == "" || inputuserrepass.value == "" || inputusercompany.value == ""){
+         x.style.display = "none";
       } else {
          x.style.display = "block";
       }

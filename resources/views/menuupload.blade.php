@@ -26,6 +26,9 @@ $hitam = "rgba(84,84,84,1)";
   @include('include.incdetail1')
   
   <style id="applicationStylesheet" type="text/css">
+  .imglogin {
+		border-radius: 50%;
+	}
 	/* #custom-content-below-home-tab {
 		display: none;
 	}
@@ -290,12 +293,13 @@ $hitam = "rgba(84,84,84,1)";
 <body class="hold-transition sidebar-mini">
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
+style="margin-left:0px">
    <!-- Left navbar links -->
    <!-- <div class="atas"> -->
    <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="/dashboard1" class="nav-link" id="fon_24_wh">Seting/</a>
+         <a href="/setting1" class="nav-link" id="fon_24_wh">Seting/</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
          <a href="#" class="nav-link atas" id="fon_24_wh">Upload Data From Excel</a>
@@ -308,7 +312,12 @@ $hitam = "rgba(84,84,84,1)";
             margin-right: 59px;
             margin-left: 10px;
          ">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
+            class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
          </div>
       </div>
    </ul>
@@ -323,24 +332,65 @@ $hitam = "rgba(84,84,84,1)";
   <!-- Main Sidebar Container -->
 	<div class="wrapper awal" style="
     top: 75px;
-    left: 3%;
-    width: 94%;
+    left: 1%;
+    width: 98%;
     
     ">
-
+      <?php 
+      $max=count($data_upload);
+      if($max > 0){
+         $proses="prosesdata";
+      } else {
+         $proses="uploadexcel";
+      }
+      ?>
       <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog" role="document" style="margin-left:10%;margin-right:10%">
-            <form method="post" action="/uploadexcel" enctype="multipart/form-data">
+            <form method="post" action="/{{$proses}}" enctype="multipart/form-data">
             {{ csrf_field() }}
                <div class="modal-content" style="width:250%;">
                   <div class="modal-header">
                      <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
                   </div>
                   <div class="modal-body" id="hslexcel">
+                  <?php 
+                     if(data_upload==0){
+                     ?>
                      <div class="form-group">
                         <label>PILIH FILE</label>
                         <input type="file" name="file" class="form-control" required>
                     </div>
+                     
+                     <?php
+                     }else{
+                        ?>
+                        <table id="example1" class="table table-bordered table-hover">
+                           <thead>
+                           <tr>
+                              <th>No</th>
+                              <th>Nama</th>
+                              <th>Alamat</th>
+                              <th>HP</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <?php
+                           for($i=0; $i<$max; $i++){
+                           ?>
+                           <tr>
+                              <td>{{$i}}</td>
+                              <td>{{$data_upload[$i]->namaalias}}</td>
+                              <td>{{$data_upload[$i]->almtktp}}</td>
+                              <td>{{$data_upload[$i]->hppri}}</td>
+                           </tr>
+                           <?php
+                           }
+                           ?>
+                           </tbody>
+                     </table>
+                     <?php
+                     }
+                     ?>
                   </div>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -454,6 +504,24 @@ $(function () {
     });
   });
 </script>
+<?php 
+if ($max > 0){
+?>
+   <script>
+      $(function () {
+         $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+         });
+      });
+   </script>
+<?php
+}
+?>
 
 <!-- <script type="text/javascript">
 		$('#button').click(function(){

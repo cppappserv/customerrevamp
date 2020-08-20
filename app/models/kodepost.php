@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class kodepost extends Model
 {
     //
-	protected $table = "tblkodepos";
+	protected $table = "tbl_kodepos";
     protected $fillable = [
       'id', 
 	'kelurahan', 

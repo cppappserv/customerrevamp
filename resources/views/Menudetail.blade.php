@@ -1,6 +1,14 @@
 <?php 
 $putih = "white";
 $hitam = "rgba(84,84,84,1)";
+if($edit_noedit == 0){
+	$stsedit = "disabled";
+	$stssave = 'style="display:none"';
+} else {
+	$stsedit = "";
+	$stssave = 'style="display:block"';
+}
+
 // $max_kel=count($keluarga);
 // $bcg_klg = 288 + ($max_kel * 106);
 // $pos_add = 1902 + $bcg_klg;
@@ -39,15 +47,15 @@ if ($pos=0 or $pos=1){
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<!-- daterange picker -->
-	<link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
-	<link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}"> 
+	<!-- <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}"> -->
+	<!-- <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">  -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 
 	<!-- date-range-picker -->
-	<script src="{{asset('plugins/bootstrap-daterangepicker/daterangepicker.css')}}"></script>
+	<!-- <script src="{{asset('plugins/bootstrap-daterangepicker/daterangepicker.css')}}"></script> -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> -->
 
 
@@ -161,7 +169,7 @@ if ($pos=0 or $pos=1){
 		left: 0px;
 		top: 0px;
 	}
-	img {
+	.imglogin {
 		border-radius: 50%;
 	}
    #fon_24_wh{
@@ -640,13 +648,14 @@ if ($pos=0 or $pos=1){
 <body class="hold-transition sidebar-mini">
 
 	<!-- Navbar -->
-	<nav class="main-header navbar navbar-expand navbar-white navbar-light atas">
+	<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
+	style="margin-left: 0px;">
 		<!-- Left navbar links -->
 		<!-- <div class="atas"> -->
 		<ul class="navbar-nav">
 		
 			<li class="nav-item d-none d-sm-inline-block" >
-				<a href="/dashboard1" class="nav-link" id="fon_24_wh">Dashboard/</a>
+				<a href="/home" class="nav-link" id="fon_24_wh">Dashboard/</a>
 			</li>
 			<li class="nav-item d-none d-sm-inline-block" >
 				<a href="#" class="nav-link" id="fon_24_wh">Customer Information/</a>
@@ -663,7 +672,12 @@ if ($pos=0 or $pos=1){
 					margin-right: 59px;
 					margin-left: 10px;
 				">
-					<img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+				<!-- <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image"> -->
+						<img src="/storeimage/{{ $user->user_id }}" width="50" height="50" class="imglogin"
+							style="
+								width: 60px;
+								height: 60px;"
+						>
 				</div>
 			</div>
 		</ul>
@@ -803,7 +817,6 @@ if ($pos=0 or $pos=1){
 			
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
-
 				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
 				<input type="hidden" id="para2" name="para2" value="{{$idy}}">
 				<input type="hidden" id="para3" name="para3" value="{{$id}}">
@@ -836,6 +849,13 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Informasi Personal: {{$id}}</h3>
 
 									<div class="card-tools">
+									<!-- <a href=""><img src="{{asset('image/edit.png')}}"></span> -->
+									<!-- @if($edit_noedit == 0) -->
+									<!-- <a href="/detail2/{{$idx}}/{{$idy}}/{{$id}}/1"> <img src="{{asset('image/edit.png')}}"></a> -->
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+									<!-- @endif -->
+									<!-- <span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span> -->
+
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -867,13 +887,13 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}">
+													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}">
+													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}}>
 												</div>
 											</div>
 											
@@ -886,26 +906,26 @@ if ($pos=0 or $pos=1){
 															<i class="far fa-calendar-alt"></i>
 														</span>
 													</div> -->
-													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}">
+													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}">
+													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}}>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}">
+													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
-													<select class="form-control" id="inputagama" name="inputagama"> 
+													<select class="form-control" id="inputagama" name="inputagama" {{$stsedit}}> 
 													<option value="">--- Select Agama ---</option>
 													<?php 
 													foreach ($tblagama as $key => $value) {
@@ -923,7 +943,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 
-													<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}}> 
 													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
@@ -955,8 +975,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Alamat KTP</h3>
 
 									<div class="card-tools">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -966,7 +985,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ...">{{$inputalmtktp}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}}>{{$inputalmtktp}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -978,7 +997,7 @@ if ($pos=0 or $pos=1){
 												
 												<div class="col-sm-9">
 													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
-													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"
+													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}}
 												>
 												</div>
 											</div>
@@ -1025,16 +1044,19 @@ if ($pos=0 or $pos=1){
 							
 
 							<div class="card card-default">
+								
 								<div class="card-header">
-									<div>
-										<h3 class="card-title font36">Alamat Rumah</h3>
+									
+										<h3 class="card-title font36">Alamat Rumah </h3>
 										<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
 										Duplicat
-									</div>
+									
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
 									</div>
+									
 								</div>
 								<!-- /.card-header -->
 								<div class="card-body">
@@ -1044,7 +1066,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}">{{$inputalmtrmh}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}" {{$stsedit}}>{{$inputalmtrmh}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1053,7 +1075,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}">
+													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -1111,7 +1133,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputtlppri" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}">
+														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
@@ -1119,7 +1141,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputfaxpri" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputfaxpri}}">
+														<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputfaxpri}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
@@ -1131,14 +1153,14 @@ if ($pos=0 or $pos=1){
 												<label for="inputhppri" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}">
+														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputemailpri" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="{{$inputemailpri}}" onchange="myemail(this)" >
+													<input type="text" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="{{$inputemailpri}}" onchange="myemail(this)" {{$stsedit}}>
 												</div>
 											</div>
 										</div>
@@ -1159,7 +1181,7 @@ if ($pos=0 or $pos=1){
 													<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
 													<div class="col-sm-9">
 														
-														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]"> 
+														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]" > 
 														<?php 
 														foreach ($tblmedsos as $key => $value) {
 														?>
@@ -1182,7 +1204,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button> -->
+														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button>
 													</div>
 												</div>
 											</div>
@@ -1217,6 +1239,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1389,6 +1412,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1400,7 +1424,7 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
 													<div class="input-group">
-													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ...">{{$inputhobby}}</textarea>
+													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ..." {{$stsedit}}>{{$inputhobby}}</textarea>
 													</div>
 												</div>
 											</div>
@@ -1434,6 +1458,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1526,6 +1551,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Status Usaha</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1606,6 +1632,7 @@ if ($pos=0 or $pos=1){
 										Duplicat
 									</div>
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1845,6 +1872,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Sanak Saudara yang jadi Agen / Distributor</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1958,6 +1986,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Area Penjualan</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2095,6 +2124,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Jenis Produk Yang Dijual (Kompetitor)</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2191,6 +2221,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Bisnis Lain</h3>
 
 										<div class="card-tools">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2263,6 +2294,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Asset Pribadi</h3>
 
 										<div class="card-tools">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2367,6 +2399,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Modal</h3>
 
 										<div class="card-tools">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2499,6 +2532,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Jaminan</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(4)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2601,6 +2635,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Karakteristik</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2635,6 +2670,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Photo</h3>
 
 									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2677,30 +2713,16 @@ if ($pos=0 or $pos=1){
 					
 							
 			</div>
+			
+			<?php 
+			$xsave = '/detail1/'.$idx.'/'.$idy.'/'.$id.'/1';
 
-			<div class="row" >
-						<div class="col-md-4">
-						</div>
-						
-						<div class="col-md-2">
-							<div class="form-group row">
-								<div class="col-sm-12">
-									<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">
-								</div>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group row">
-								<div class="col-sm-12">
-									<a href="/detail1/{{$idx}}/{{$idy}}/{{$id}}" class="btn btn-block btn-danger btn-lg">Cancel</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-						</div>
-						
-					</div>
-				</form>	
+			?>
+			<input type="hidden" value="{{$xsave}}" id="xtombolsave">
+			<div class="row" id="tombolsave">
+			
+			</div>
+		</form>	
 
 		
 	</div>
@@ -3228,6 +3250,13 @@ if ($pos=0 or $pos=1){
 	</script>
 
 
+
+
+
+
+	
+
+
 	<script type="text/javascript">
 
 			$(document).ready(function(){
@@ -3379,6 +3408,71 @@ if ($pos=0 or $pos=1){
 			}
 		}
 	</script>
+
+<script type="text/javascript">
+	function klikedit(id) {
+		
+		var isioptions=document.getElementById("xtombolsave").value;
+		$xsave = '<div class="col-md-4">'+
+				'</div>'+
+				'<div class="col-md-2">'+
+					'<div class="form-group row">'+
+						'<div class="col-sm-12">'+
+							'<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="col-md-2">'+
+					'<div class="form-group row">'+
+						'<div class="col-sm-12">'+
+							'<a href="'+isioptions+'" class="btn btn-block btn-danger btn-lg">Cancel</a>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="col-md-4">'+
+				'</div>';
+
+		$(".klikedit").hide();
+		$(".klikedit").hide();
+		// $(":input").prop("disabled", false);
+		$("#tombolsave").append($xsave);
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputnamaalias").disabled = false;
+		document.getElementById("inputbirthdate").disabled = false;
+		document.getElementById("inputbirthplace").disabled = false;
+		document.getElementById("inputnoktp").disabled = false;
+		document.getElementById("inputagama").disabled = false;
+
+		document.getElementById("inputgoldarah").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+
+		document.getElementById("inputalmtktp").disabled = false;
+ 		document.getElementById("inputkelktp").disabled = false;
+		document.getElementById("inputalmtush").disabled = false;   
+		document.getElementById("inputkelush").disabled = false;  
+		document.getElementById("inputalmtrmh").disabled = false;  
+		document.getElementById("inputkelrmh").disabled = false;   
+
+		document.getElementById("inputtlppri").disabled = false;  
+		document.getElementById("inputfaxpri").disabled = false;  
+		document.getElementById("inputhppri").disabled = false;   
+		document.getElementById("inputemailpri").disabled = false; 
+		
+
+
+
+
+		
+
+
+		
+
+		
+
+	}
+</script>
 
 
 	<script type="text/javascript">
