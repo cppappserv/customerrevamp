@@ -876,7 +876,7 @@ if ($pos=0 or $pos=1){
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span>
+													<span id='button' style="display: block; margin: auto;" onclick="ambilphoto()">Rubah Foto Profil</span>
 												</div>
 											</div>
 										</div>
@@ -887,13 +887,13 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											
@@ -906,26 +906,26 @@ if ($pos=0 or $pos=1){
 															<i class="far fa-calendar-alt"></i>
 														</span>
 													</div> -->
-													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}}>
+													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
-													<select class="form-control" id="inputagama" name="inputagama" {{$stsedit}}> 
+													<select class="form-control" id="inputagama" name="inputagama" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Agama ---</option>
 													<?php 
 													foreach ($tblagama as $key => $value) {
@@ -943,7 +943,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 
-													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}}> 
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
@@ -985,7 +985,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}}>{{$inputalmtktp}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -997,7 +997,7 @@ if ($pos=0 or $pos=1){
 												
 												<div class="col-sm-9">
 													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
-													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}}
+													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}} khususinput="yes"
 												>
 												</div>
 											</div>
@@ -1066,7 +1066,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}" {{$stsedit}}>{{$inputalmtrmh}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}" {{$stsedit}} khususinput="yes">{{$inputalmtrmh}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1133,7 +1133,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputtlppri" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}" {{$stsedit}}>
+														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlppri}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1153,7 +1153,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputhppri" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}" {{$stsedit}}>
+														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhppri}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1181,7 +1181,7 @@ if ($pos=0 or $pos=1){
 													<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
 													<div class="col-sm-9">
 														
-														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]" > 
+														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]" {{$stsedit}} khususinput="yes"> 
 														<?php 
 														foreach ($tblmedsos as $key => $value) {
 														?>
@@ -1197,7 +1197,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-5">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
+														<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1319,7 +1319,7 @@ if ($pos=0 or $pos=1){
 										</div> -->
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputkeluarganama[]" name="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}">
+												<input type="text" class="form-control" id="inputkeluarganama[]" khususinput="yes" name="inputkeluarganama[]" placeholder="Nama" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-2">
@@ -1368,7 +1368,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-9">
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga"> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]" id="styledatakeluarga" {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tblsekolah as $key => $value) {
 													?>
@@ -1468,7 +1468,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbtkush" class="col-sm-3 col-form-label">Bentuk Usaha</label>
 												<div class="col-sm-9">
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}}> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tabelbentukusaha as $key => $value) {
 													?>
@@ -1484,7 +1484,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputtipeush" class="col-sm-3 col-form-label">Tipe Badan Hukum</label>
 												<div class="col-sm-9">
-												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputtipeush" name="inputtipeush" style="font-size: 1rem;" {{$stsedit}}> 
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputtipeush" name="inputtipeush" style="font-size: 1rem;" {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tabelbadanhukum as $key => $value) {
 													?>
@@ -1498,13 +1498,13 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputnamausaha" class="col-sm-3 col-form-label">Nama Usaha</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamausaha" name="inputnamausaha" placeholder="Nama Usaha" value="{{$inputnamausaha}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputnamausaha" name="inputnamausaha" placeholder="Nama Usaha" value="{{$inputnamausaha}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputlmusaha" class="col-sm-3 col-form-label">Lama Usaha</label>
 												<div class="col-sm-6">	
-													<input type="number" class="form-control" id="inputlmusaha" name="inputlmusaha" placeholder="Lama Usaha" value="{{$inputlmusaha}}" {{$stsedit}}>
+													<input type="number" class="form-control" id="inputlmusaha" name="inputlmusaha" placeholder="Lama Usaha" value="{{$inputlmusaha}}" {{$stsedit}} khususinput="yes">
 												</div>
 												<label for="inputlmusaha" class="col-sm-3 col-form-label">Tahun</label>
 											</div>
@@ -1515,19 +1515,19 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputnpwp" class="col-sm-3 col-form-label">NPWP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP" value="{{$inputnpwp}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP" value="{{$inputnpwp}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputheadgrp" class="col-sm-3 col-form-label">Head Group</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputheadgrp" name="inputheadgrp" placeholder="Head Group" value="{{$inputheadgrp}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputheadgrp" name="inputheadgrp" placeholder="Head Group" value="{{$inputheadgrp}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											
@@ -1577,8 +1577,8 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-5">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<input type="hidden" class="form-control" id="inputstatusush[]" name="inputstatusush[]" placeholder="Tempat" value="{{$data->desc}}">
-													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush1[]" style="color:white;height: 60px;background: rgba(51,122,183,1);" disabled> 
+													<!-- <input type="hidden" class="form-control" id="inputstatusush[]" name="inputstatusush[]" placeholder="Tempat" value="{{$data->desc}}"> -->
+													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush[]" name="inputstatusush[]" style="color:white;height: 60px;background: rgba(51,122,183,1);"  {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tabelstatus_usaha as $key => $value) {
 													?>
@@ -1645,7 +1645,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ..." {{$stsedit}}>{{$inputalmtush}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtush}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1654,7 +1654,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
@@ -1748,7 +1748,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputtlpush" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" id="inputtlpush" name="inputtlpush" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlpush}}" {{$stsedit}}>
+														<input type="text" id="inputtlpush" name="inputtlpush" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlpush}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1757,7 +1757,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputfaxush" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputfaxush" name="inputfaxush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true"  value="{{$inputfaxush}}" {{$stsedit}}>
+														<input type="text" class="form-control" id="inputfaxush" name="inputfaxush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true"  value="{{$inputfaxush}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1771,7 +1771,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputhpush" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhpush" name="inputhpush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhpush}}" {{$stsedit}}>
+														<input type="text" class="form-control" id="inputhpush" name="inputhpush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhpush}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -1781,7 +1781,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputemailush" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
 												<!-- tutup -->
-													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 										</div>
@@ -1814,7 +1814,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
 												<div class="col-sm-9">
 													
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsosush[]" name="inputmedsosush[]"> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsosush[]" name="inputmedsosush[]" {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tblmedsos as $key => $value) {
 													?>
@@ -1830,7 +1830,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-5">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<input type="text" class="form-control" id="inputmedsosakunush[]" name="inputmedsosakunush[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}">
+													<input type="text" class="form-control" id="inputmedsosakunush[]" name="inputmedsosakunush[]" placeholder="Nama Akun Media Sosial" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
 										</div>
@@ -1930,18 +1930,18 @@ if ($pos=0 or $pos=1){
 												</div> -->
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
-														<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama" value="{{$data->value1}}">
+														<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
-														<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap" value="{{$data->value2}}">
+														<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
 														<div class="col-sm-10">
-															<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]"> 
+															<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]" {{$stsedit}} khususinput="yes"> 
 															<?php 
 															foreach ($tblagenhubunganstatus as $key => $value) {
 															?>
@@ -2054,7 +2054,7 @@ if ($pos=0 or $pos=1){
 									<div class="row" id="rowsareasubagen{{$i}}">
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]"> 
+												<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]" {{$stsedit}} khususinput="yes"> 
 												<?php
 												foreach ($tabelarea_usaha as $key => $value) {
 													?>
@@ -2071,25 +2071,25 @@ if ($pos=0 or $pos=1){
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}">
+												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
 												
-												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="qty" value="{{$data->desc}}">
+												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="qty" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="lokasi" value="{{$data->value2}}">
+												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="lokasi" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="info" value="{{$data->value3}}">
+													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="info" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">
 												</div>
 												<div class="col-sm-2">
 													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove5">X</button> -->
@@ -2169,20 +2169,20 @@ if ($pos=0 or $pos=1){
 									<div class="row" id="rowskompetitor{{$i}}">
 										<div class="col-md-4">
 											<div class="col-sm-12">	
-												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]" value="{{$data->value2}}">	
+												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-12">	
-													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]" value="{{$data->desc}}">	
+													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">	
 												</div>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}">	
+													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 												</div>
 												<div class="col-sm-2">
 													<button type="button" name="removekompetitor" id="{{$i}}" class="btn btn-danger btn_remove6">X</button>
@@ -2242,7 +2242,7 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="{{$data->desc}}">	
+														<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">	
 													</div>
 												</div>
 											</div>
@@ -2252,7 +2252,7 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
 													<div class="col-sm-8">
-														<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset" value="{{$data->value1}}">	
+														<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 													</div>
 												</div>
 											</div>
@@ -2324,7 +2324,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-2">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}">
+														<input type="text" class="form-control" id="inputasetpribadi[]" name="inputasetpribadi[]" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
 											</div>
@@ -2332,7 +2332,7 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info}}</label>
 													<div class="col-sm-8">
-														<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]" value="{{$data->value1}}">	
+														<input type="text" class="form-control" id="inputAssetValue[]" name="inputAssetValue[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 														<input type="hidden" class="form-control" id="inputAssetSseq[]" name="inputAssetSseq[]" value="{{$data->seq}}">	
 													</div>
 													<label for="inputbisnislainrp" class="col-sm-2 col-form-label">{{$data->info2}}</label>
@@ -2342,14 +2342,14 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="inputasetpribadirp" class="col-sm-4 col-form-label">{{$data->info3}}</label>
 													<div class="col-sm-8">
-														<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" value="{{$data->value2}}">	
+														<input type="text" class="form-control" id="inputAssetAlamat[]" name="inputAssetAlamat[]" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
 													</div>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="form-group row">
 													<div class="col-sm-10">
-														<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]" value="{{$data->value3}}">	
+														<input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">	
 													</div>
 													<div class="col-sm-2">
 														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove8">X</button> -->
@@ -2369,7 +2369,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi"> 
+													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" {{$stsedit}} khususinput="yes"> 
 													<option value="">Add</option>
 													<?php 
 													foreach ($tblassetpribadi as $key => $value) {
@@ -2421,7 +2421,7 @@ if ($pos=0 or $pos=1){
 														<div class="form-group row">
 															<label for="inputmodalsendiripersent" class="col-sm-2 col-form-label">{{$data->desc1}}</label>
 															<div class="col-sm-3">
-																<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}">	
+																<input type="text" class="form-control" id="inputmodal[]" name="inputmodal[]" placeholder="%" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">	
 																<input type="hidden" id="inputmodalid[]" name="inputmodalid[]" value="{{$data->seq}}">	
 															</div>
 															<label for="sendiripersent" class="col-sm-2 col-form-label">{{$data->info}}</label>
@@ -2465,7 +2465,7 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="bankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
 													<div class="col-sm-6">
-														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="{{$data->value1}}">	
+														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 													</div>
 													<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">{{$persent}}</label>
 												</div>
@@ -2474,7 +2474,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-5">
 												<div class="form-group row">
 													<div class="col-sm-10">
-														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->value2}}">	
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
 														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" disabled>
 														<?PHP 
 														foreach ($tblbank as $key => $value) {
@@ -2647,7 +2647,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-12">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ..." {{$stsedit}}>{{$inputkarakteristik}}</textarea>
+													<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputkarakteristik}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -2821,7 +2821,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 
-				var i=1;  
+				var i=10;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsosush').click(function(){  
 					i++;  
@@ -2865,7 +2865,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 			
-				var i=1;  
+				var i=10;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsospri').click(function(){  
 					i++;  
@@ -2909,7 +2909,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 			
-				var i=1;  
+				var i=10;  
 			var isioptions=document.getElementById("optsex").value;
 			var isioptions2=document.getElementById("opthubkelga").value;
 			var isioptions3=document.getElementById("optsekolah").value;
@@ -3018,7 +3018,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 			
-				var i=1; 
+				var i=10; 
 
 			var isioptions=document.getElementById("optareasubagen").value; 
 
@@ -3070,7 +3070,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 			
-				var i=1;  
+				var i=10;  
 
 			$('#addkompetitor').click(function(){ 
 				var txt = '<div class="row" id="rowskompetitor'+i+'">'+
@@ -3092,7 +3092,7 @@ if ($pos=0 or $pos=1){
 														'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
 													'</div>'+
 													'<div class="col-sm-2">'+
-														'<button type="button" name="removekompetitor" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
+														'<button type="button" name="removekompetitor" id="'+i+'" class="btn btn-danger btn_remove6">X</button>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
@@ -3113,7 +3113,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).ready(function(){
 			
-				var i=1;  
+				var i=10;  
 
 			$('#addbisnislain').click(function(){ 
 				var txt = '<div class="row" id="rowsbisnislain'+i+'">'+
@@ -3188,7 +3188,7 @@ if ($pos=0 or $pos=1){
 			$(document).ready(function(){
 			
 			
-				var i=1;  
+				var i=10;  
 
 			var isioptions=document.getElementById("optmodalbank").value;
 			$('#addmodalbank').click(function(){ 
@@ -3260,7 +3260,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-				var i=1;  
+				var i=10;  
 			var isioptions=document.getElementById("optstatususaha").value;
 			
 
@@ -3432,49 +3432,54 @@ if ($pos=0 or $pos=1){
 				'</div>';
 
 		$(".klikedit").hide();
-		$(".klikedit").hide();
-		// $(":input").prop("disabled", false);
+		$("this :input").prop("disabled", false);
 		$("#tombolsave").append($xsave);
-		document.getElementById("inputfullname").disabled = false;
-		document.getElementById("inputnamaalias").disabled = false;
-		document.getElementById("inputbirthdate").disabled = false;
-		document.getElementById("inputbirthplace").disabled = false;
-		document.getElementById("inputnoktp").disabled = false;
-		document.getElementById("inputagama").disabled = false;
 
-		document.getElementById("inputgoldarah").disabled = false;
-		document.getElementById("inputfullname").disabled = false;
-		document.getElementById("inputfullname").disabled = false;
-		document.getElementById("inputfullname").disabled = false;
+		var  arr =$("div").find(`[khususinput='yes']`);
+		for(i=0;i<arr.length;i++){
+			$(arr[i]).prop("disabled",false);
+		}
 
-		document.getElementById("inputalmtktp").disabled = false;
- 		document.getElementById("inputkelktp").disabled = false;
-		document.getElementById("inputalmtush").disabled = false;   
-		document.getElementById("inputkelush").disabled = false;  
-		document.getElementById("inputalmtrmh").disabled = false;  
-		document.getElementById("inputkelrmh").disabled = false;   
+		// document.getElementById("inputfullname").disabled = false;
+		// document.getElementById("inputnamaalias").disabled = false;
+		// document.getElementById("inputbirthdate").disabled = false;
+		// document.getElementById("inputbirthplace").disabled = false;
+		// document.getElementById("inputnoktp").disabled = false;
+		// document.getElementById("inputagama").disabled = false;
 
-		document.getElementById("inputtlppri").disabled = false;  
-		document.getElementById("inputfaxpri").disabled = false;  
-		document.getElementById("inputhppri").disabled = false;   
-		document.getElementById("inputemailpri").disabled = false; 
-		document.getElementById("inputhobby").disabled = false; 
+		// document.getElementById("inputgoldarah").disabled = false;
+		// document.getElementById("inputfullname").disabled = false;
+		// document.getElementById("inputfullname").disabled = false;
+		// document.getElementById("inputfullname").disabled = false;
+
+		// document.getElementById("inputalmtktp").disabled = false;
+ 		// document.getElementById("inputkelktp").disabled = false;
+		// document.getElementById("inputalmtush").disabled = false;   
+		// document.getElementById("inputkelush").disabled = false;  
+		// document.getElementById("inputalmtrmh").disabled = false;  
+		// document.getElementById("inputkelrmh").disabled = false;   
+
+		// document.getElementById("inputtlppri").disabled = false;  
+		// document.getElementById("inputfaxpri").disabled = false;  
+		// document.getElementById("inputhppri").disabled = false;   
+		// document.getElementById("inputemailpri").disabled = false; 
+		// document.getElementById("inputhobby").disabled = false; 
 
 		
-		document.getElementById("inputbtkush").disabled = false; 
-		document.getElementById("inputtipeush").disabled = false; 
-		document.getElementById("inputnamausaha").disabled = false; 
-		document.getElementById("inputlmusaha").disabled = false; 
-		document.getElementById("inputnpwp").disabled = false; 
-		document.getElementById("inputheadgrp").disabled = false; 
-		document.getElementById("inputkodesap").disabled = false; 
+		// document.getElementById("inputbtkush").disabled = false; 
+		// document.getElementById("inputtipeush").disabled = false; 
+		// document.getElementById("inputnamausaha").disabled = false; 
+		// document.getElementById("inputlmusaha").disabled = false; 
+		// document.getElementById("inputnpwp").disabled = false; 
+		// document.getElementById("inputheadgrp").disabled = false; 
+		// document.getElementById("inputkodesap").disabled = false; 
 
-		document.getElementById("inputtlpush").disabled = false; 
-		document.getElementById("inputfaxush").disabled = false; 
-		document.getElementById("inputhpush").disabled = false; 
-		document.getElementById("inputemailush").disabled = false; 
+		// document.getElementById("inputtlpush").disabled = false; 
+		// document.getElementById("inputfaxush").disabled = false; 
+		// document.getElementById("inputhpush").disabled = false; 
+		// document.getElementById("inputemailush").disabled = false; 
 
-		document.getElementById("inputkarakteristik").disabled = false; 
+		// document.getElementById("inputkarakteristik").disabled = false; 
 		
 
 
@@ -3530,10 +3535,14 @@ if ($pos=0 or $pos=1){
 		// })
 
 
-		$('#button').click(function(){
-			$("input[type='file']").trigger('click');
-		})
+		// $('#button').click(function(){
+		// 	$("input[type='file']").trigger('click');
+		// })
 
+function ambilphoto(){
+	// $("input[type='file']").trigger('click');
+	$('#files').click();
+}
 		$("input[type='file']").change(function(){
 			$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
 		})  

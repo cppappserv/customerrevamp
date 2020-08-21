@@ -44,7 +44,7 @@ class NewAddController extends Controller
       $dis2=($id3=="Luas"?"number":"text");
       if($id5==""){$inp="hidden";} else {$inp="text";}
 
-      $i=1;
+      $i=10;
       $txt = 	'
          <div class="row" id="rowsjaminan'.$i.'">
             <div class="col-md-2">
@@ -96,7 +96,7 @@ class NewAddController extends Controller
       if ($info2=='-'){$info2='';}
       if ($info3=='-'){$info3='';}
       if ($info4=='-'){$info4='';}
-      $i=1;
+      $i=10;
       $txt = 	'
          <div class="row" id="rowsassetpribadi'.$i.'">
             <div class="col-md-2">

@@ -338,6 +338,7 @@ style="margin-left:0px">
     ">
       <?php 
       $max=count($data_upload);
+      
       if($max > 0){
          $proses="prosesdata";
       } else {
@@ -354,12 +355,12 @@ style="margin-left:0px">
                   </div>
                   <div class="modal-body" id="hslexcel">
                   <?php 
-                     if(data_upload==0){
+                     if($max==0){
                      ?>
-                     <div class="form-group">
-                        <label>PILIH FILE</label>
-                        <input type="file" name="file" class="form-control" required>
-                    </div>
+                        <div class="form-group">
+                           <label>PILIH FILE</label>
+                           <input type="file" name="file" class="form-control" required>
+                     </div>
                      
                      <?php
                      }else{
@@ -492,6 +493,9 @@ style="margin-left:0px">
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- page script -->
 <script>
+@if($max>0)
+$("#importExcel").modal("show")
+@endif
 
 $(function () {
     $('#example2').DataTable({

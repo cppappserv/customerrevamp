@@ -45,8 +45,9 @@ class CstuploadController extends Controller
      */
     public function getuser()
     {
-        $user = Auth::user(); 
-        // tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
+        $user1 = Auth::user(); // tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
+        $user = tbluser::where('uid','=',$user1->uid)->first();
+        
         return $user;
     }
 
@@ -120,11 +121,12 @@ class CstuploadController extends Controller
     {
       $user = $this->getuser();
       $fileupload = $this->fileupload();
+      $data_upload = Importprofile::where('uid', '=', $value->user_id)->get();
       
       return view('menuupload',[
           'user' => $user,
           'fileupload' => $fileupload,
-          'data_upload' => []
+          'data_upload' => $data_upload
       ]);
     }
 
@@ -162,19 +164,19 @@ class CstuploadController extends Controller
         $tbllog->upltime = now(); 
         $tbllog->stime = now();
         $tbllog->etime = now();
-        $tbllog->stat = now();
-        $tbllog->prog = '5';
+        $tbllog->stat = '5';
+        $tbllog->prog = '100';
         $tbllog->procid = '100';
         $tbllog->row =  $data_upload->count();
         $tbllog->log = null;
         $tbllog->save();
 
         $tbllog = DB::table('tbl_log as a')
-            ->join('tbl_user as b', function($join){
-            $join->on('b.uid', '=', 'a.uid' );
+            ->join('tbluser as b', function($join){
+            $join->on('b.uid', '=', 'a.fid' );
             // $join->on('b.bukrs', '=', 'a.company_code');
          })
-        ->select('a.id as urut', 'a.filename', 'a.status', 'a.upltime as uploadtime',
+        ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
         'a.etime as processtime','a.row as totalrow','b.fullname as user')
         ->get();
         $i=0;
