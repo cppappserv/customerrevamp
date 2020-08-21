@@ -15,15 +15,15 @@
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<!-- daterange picker -->
-	<link rel="stylesheet" href="http://localhost:8000/plugins/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" href="http://localhost:8000/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> 
+	<!-- <link rel="stylesheet" href="http://localhost:8000/plugins/daterangepicker/daterangepicker.css"> -->
+	<!-- <link rel="stylesheet" href="http://localhost:8000/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">  -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 
 	<!-- date-range-picker -->
-	<script src="http://localhost:8000/plugins/bootstrap-daterangepicker/daterangepicker.css"></script>
+	<!-- <script src="http://localhost:8000/plugins/bootstrap-daterangepicker/daterangepicker.css"></script> -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> -->
 
 
@@ -696,7 +696,7 @@
 		position: relative;">
 						
 			<form method="post" action="/detailsave/157" enctype="multipart/form-data">
-				<input type="hidden" name="_token" value="xYuxB4dBRO68c02M8k41SNXjrPMWJZ1r26LeDcdR">
+				<input type="hidden" name="_token" value="a29SsLkDdm2YPI7RB3B68sRG8Mx0TkovmZuNvarP">
 				<input type="hidden" id="para1" name="para1" value="FISH FEED">
 				<input type="hidden" id="para2" name="para2" value="12345">
 				<input type="hidden" id="para3" name="para3" value="157">
@@ -730,7 +730,11 @@
 
 									<div class="card-tools">
 									<!-- <a href=""><img src="http://localhost:8000/image/edit.png"></span> -->
-																		<!-- <span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span> -->
+									<!--  -->
+									<!-- <a href="/detail2/FISH FEED/12345/157/1"> <img src="http://localhost:8000/image/edit.png"></a> -->
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(1)" class="klikedit">
+									<!--  -->
+									<!-- <span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span> -->
 
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
@@ -763,13 +767,13 @@
 											<div class="form-group row">
 												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="agent1" >
+													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="agent1" disabled>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="">
+													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="" disabled>
 												</div>
 											</div>
 											
@@ -782,30 +786,30 @@
 															<i class="far fa-calendar-alt"></i>
 														</span>
 													</div> -->
-													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="2018-03-05">
+													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="2018-03-05" disabled>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="Jakarta">
+													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="Jakarta" disabled>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="1234">
+													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="1234" disabled>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
-													<select class="form-control" id="inputagama" name="inputagama"> 
+													<select class="form-control" id="inputagama" name="inputagama" disabled> 
 													<option value="">--- Select Agama ---</option>
 																											<option value="1" >Buddha</option>
 																												<option value="2" >Hindu</option>
-																												<option value="3" >Islam</option>
+																												<option value="3" selected>Islam</option>
 																												<option value="4" >Katolik</option>
 																												<option value="5" >Khonghucu</option>
 																												<option value="6" >Kristen</option>
@@ -818,12 +822,12 @@
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 
-													<select class="form-control" id="inputgoldarah" name="inputgoldarah"> 
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah" disabled> 
 													<option value="">--- Select Golongan Darah ---</option>
 																											<option value="1" >A</option>
 																												<option value="2" >AB</option>
 																												<option value="3" >B</option>
-																												<option value="4" >O</option>
+																												<option value="4" selected>O</option>
 																											</select>
 
 												</div>
@@ -847,8 +851,7 @@
 									<h3 class="card-title font36">Alamat KTP</h3>
 
 									<div class="card-tools">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -858,7 +861,7 @@
 											<div class="form-group row">
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ...">Perumahan Dmapple Residence Blok F 5</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." disabled>Perumahan Dmapple Residence Blok F 5</textarea>
 												</div>
 											</div>
 										</div>
@@ -870,7 +873,7 @@
 												
 												<div class="col-sm-9">
 													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
-													onchange="mykelurahan(1,this)" value="RATU JAYA"
+													onchange="mykelurahan(1,this)" value="RATU JAYA"  disabled
 												>
 												</div>
 											</div>
@@ -917,16 +920,19 @@
 							
 
 							<div class="card card-default">
+								
 								<div class="card-header">
-									<div>
-										<h3 class="card-title font36">Alamat Rumah</h3>
+									
+										<h3 class="card-title font36">Alamat Rumah </h3>
 										<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
 										Duplicat
-									</div>
+									
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(1)" class="klikedit">
 									</div>
+									
 								</div>
 								<!-- /.card-header -->
 								<div class="card-body">
@@ -936,7 +942,7 @@
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="Jakarta">Jakarta</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="Jakarta" disabled>Jakarta</textarea>
 												</div>
 											</div>
 										</div>
@@ -945,7 +951,7 @@
 											<div class="form-group row">
 												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="RATU JAYA">
+													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="RATU JAYA" disabled>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -1003,7 +1009,7 @@
 												<label for="inputtlppri" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="">
+														<input type="text" class="form-control" id="inputtlppri" name="inputtlppri" ata-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="" disabled>
 													</div>
 												</div>
 											</div>
@@ -1011,7 +1017,7 @@
 												<label for="inputfaxpri" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="bizquarte@gmail.com">
+														<input type="text" class="form-control" id="inputfaxpri" name="inputfaxpri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="bizquarte@gmail.com" disabled>
 													</div>
 												</div>
 											</div>
@@ -1023,14 +1029,14 @@
 												<label for="inputhppri" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="">
+														<input type="text" class="form-control" id="inputhppri" name="inputhppri" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="" disabled>
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputemailpri" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="" onchange="myemail(this)" >
+													<input type="text" class="form-control" id="inputemailpri" name="inputemailpri" placeholder="Email" value="" onchange="myemail(this)" disabled>
 												</div>
 											</div>
 										</div>
@@ -1064,6 +1070,7 @@
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1266,6 +1273,7 @@
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(1)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1277,7 +1285,7 @@
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
 													<div class="input-group">
-													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ..."></textarea>
+													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ..." disabled></textarea>
 													</div>
 												</div>
 											</div>
@@ -1311,6 +1319,7 @@
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1404,6 +1413,7 @@
 									<h3 class="card-title font36">Status Usaha</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1523,6 +1533,7 @@
 										Duplicat
 									</div>
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1708,6 +1719,7 @@
 									<h3 class="card-title font36">Sanak Saudara yang jadi Agen / Distributor</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -1853,6 +1865,7 @@
 									<h3 class="card-title font36">Area Penjualan</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2112,6 +2125,7 @@
 									<h3 class="card-title font36">Jenis Produk Yang Dijual (Kompetitor)</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(2)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2221,6 +2235,7 @@
 										<h3 class="card-title font36">Bisnis Lain</h3>
 
 										<div class="card-tools">
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2310,6 +2325,7 @@
 										<h3 class="card-title font36">Asset Pribadi</h3>
 
 										<div class="card-tools">
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2447,6 +2463,8 @@
 													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi"> 
 													<option value="">Add</option>
 																											<option value="1/Rumah/Luas/M2/Alamat/Keterangan lain">Asset Pribadi bentuk Rumah</option>
+																												<option value="10//Luas/M2/Alamat/Keterangan Lain">Asset Pribadi bentuk </option>
+																												<option value="11//Jenis/-/CPB Bahari 1/-">Asset Pribadi bentuk </option>
 																												<option value="2/Apartment/Luas /M2/Alamat/Keterangan lain">Asset Pribadi bentuk Apartment</option>
 																												<option value="3/Bungalow/Luas/M2/Alamat/Keterangan lain">Asset Pribadi bentuk Bungalow</option>
 																												<option value="4/Tambak/Kolam/Luas/M2/Alamat/Keterangan lain">Asset Pribadi bentuk Tambak/Kolam</option>
@@ -2476,6 +2494,7 @@
 										<h3 class="card-title font36">Modal</h3>
 
 										<div class="card-tools">
+										<img src="http://localhost:8000/image/edit.png" onclick="klikedit(3)" class="klikedit">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2523,7 +2542,7 @@
 												<div class="form-group row">
 													<label for="bankpersent" class="col-sm-4 col-form-label">BANK</label>
 													<div class="col-sm-6">
-														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="30">	
+														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="20">	
 													</div>
 													<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>
 												</div>
@@ -2532,7 +2551,7 @@
 											<div class="col-md-5">
 												<div class="form-group row">
 													<div class="col-sm-10">
-														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="BCA">	
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="BNI">	
 														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" disabled>
 																												</select>
 
@@ -2552,7 +2571,7 @@
 												<div class="form-group row">
 													<label for="bankpersent" class="col-sm-4 col-form-label">BANK</label>
 													<div class="col-sm-6">
-														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="20">	
+														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%" value="30">	
 													</div>
 													<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">%</label>
 												</div>
@@ -2561,7 +2580,7 @@
 											<div class="col-md-5">
 												<div class="form-group row">
 													<div class="col-sm-10">
-														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="BNI">	
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="BCA">	
 														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" disabled>
 																												</select>
 
@@ -2609,6 +2628,7 @@
 									<h3 class="card-title font36">Jaminan</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(4)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2726,9 +2746,9 @@
 										<!-- /.col -->
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">CPB Bahari 1</label>
+												<label for="inputbisnislainrp" class="col-sm-3 col-form-label"></label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="">	
 												</div>
 											</div>
@@ -2736,7 +2756,7 @@
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="">	
 												</div>
 												<div class="col-sm-2">
@@ -2769,9 +2789,9 @@
 										<!-- /.col -->
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">CPB Bahari 1</label>
+												<label for="inputbisnislainrp" class="col-sm-3 col-form-label"></label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="">	
 												</div>
 											</div>
@@ -2779,7 +2799,7 @@
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="">	
 												</div>
 												<div class="col-sm-2">
@@ -2812,9 +2832,9 @@
 										<!-- /.col -->
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">CPB Bahari 1</label>
+												<label for="inputbisnislainrp" class="col-sm-3 col-form-label"></label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="">	
 												</div>
 											</div>
@@ -2822,7 +2842,7 @@
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="">	
 												</div>
 												<div class="col-sm-2">
@@ -2855,9 +2875,9 @@
 										<!-- /.col -->
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label for="inputbisnislainrp" class="col-sm-3 col-form-label">CPB Bahari 1</label>
+												<label for="inputbisnislainrp" class="col-sm-3 col-form-label"></label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanAlamat1[]" name="inputJaminanAlamat1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanAlamat[]" name="inputJaminanAlamat[]" value="">	
 												</div>
 											</div>
@@ -2865,7 +2885,7 @@
 										<div class="col-md-2">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
+													<input type="hidden" class="form-control" id="inputJaminanLain1[]" name="inputJaminanLain1[]" value="" disabled>	
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="">	
 												</div>
 												<div class="col-sm-2">
@@ -2885,14 +2905,16 @@
 											<select class="btn btn-success" id="addjaminan" name="addjaminan"> 
 											<option value="">Add</option>
 																							<option value="1/Rumah/Luas/M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Rumah</option>
+																								<option value="10//Luas/M2/-/-">create Jaminan dalam bentuk </option>
+																								<option value="11//Jenis/-/-/-">create Jaminan dalam bentuk </option>
 																								<option value="2/Apartment/Luas /M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Apartment</option>
 																								<option value="3/Bungalow/Luas/M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Bungalow</option>
 																								<option value="4/Tambak/Kolam/Luas/M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Tambak/Kolam</option>
 																								<option value="5/Villa/Luas/M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Villa</option>
 																								<option value="6/Gudang/Luas/M2/Alamat/Keterangan lain">create Jaminan dalam bentuk Gudang</option>
-																								<option value="7/Mobil/Jenis/-/CPB Bahari 1/-">create Jaminan dalam bentuk Mobil</option>
-																								<option value="8/Motor/Jenis/-/CPB Bahari 1/-">create Jaminan dalam bentuk Motor</option>
-																								<option value="9/Kapal/Jenis/-/CPB Bahari 1/-">create Jaminan dalam bentuk Kapal</option>
+																								<option value="7/Mobil/Jenis/-/-/-">create Jaminan dalam bentuk Mobil</option>
+																								<option value="8/Motor/Jenis/-/-/-">create Jaminan dalam bentuk Motor</option>
+																								<option value="9/Kapal/Jenis/-/-/-">create Jaminan dalam bentuk Kapal</option>
 																							</select>
 										</div>
 									</div>
@@ -2915,6 +2937,7 @@
 									<h3 class="card-title font36">Karakteristik</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(5)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2949,6 +2972,7 @@
 									<h3 class="card-title font36">Photo</h3>
 
 									<div class="card-tools">
+									<img src="http://localhost:8000/image/edit.png" onclick="klikedit(5)" class="klikedit">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2991,30 +3015,11 @@
 					
 							
 			</div>
-							<div class="row">
-					<div class="col-md-4">
-					</div>
-						
-					<div class="col-md-2">
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<a href="/detail1/FISH FEED/12345/157" class="btn btn-block btn-danger btn-lg">Cancel</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-					</div>
-						
-				</div>
-				
-							
+			
+						<input type="hidden" value="/detail1/FISH FEED/12345/157/1" id="xtombolsave">
+			<div class="row" id="tombolsave">
+			
+			</div>
 		</form>	
 
 		
@@ -3113,7 +3118,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+
 				var i=1;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsosush').click(function(){  
@@ -3157,7 +3162,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsospri').click(function(){  
@@ -3201,7 +3206,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 			var isioptions=document.getElementById("optsex").value;
 			var isioptions2=document.getElementById("opthubkelga").value;
@@ -3265,7 +3270,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 			
 			var isioptions=document.getElementById("optagenhub").value;
@@ -3310,7 +3315,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1; 
 
 			var isioptions=document.getElementById("optareasubagen").value; 
@@ -3362,7 +3367,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 
 			$('#addkompetitor').click(function(){ 
@@ -3405,7 +3410,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 
 			$('#addbisnislain').click(function(){ 
@@ -3479,7 +3484,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 			
 				var i=1;  
 
@@ -3543,20 +3548,8 @@
 	</script>
 
 
-<!-- 
-<script type="text/javascript">
-	function klikedit(id) {
-		$.ajax({
-			var stateID = $(this).val();
-			url: '/detail2/'+'FISH%20FEED'+'/'+'12345'+'/'+'157',
-			type: "GET",
-			dataType: "json",
-			success:function(data) {
-				
-			}
-		});
-	}
-	</script> -->
+
+
 
 
 	
@@ -3565,7 +3558,7 @@
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "http://localhost:8000/addmore";
+			
 				var i=1;  
 			var isioptions=document.getElementById("optstatususaha").value;
 			
@@ -3713,6 +3706,71 @@
 			}
 		}
 	</script>
+
+<script type="text/javascript">
+	function klikedit(id) {
+		
+		var isioptions=document.getElementById("xtombolsave").value;
+		$xsave = '<div class="col-md-4">'+
+				'</div>'+
+				'<div class="col-md-2">'+
+					'<div class="form-group row">'+
+						'<div class="col-sm-12">'+
+							'<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="col-md-2">'+
+					'<div class="form-group row">'+
+						'<div class="col-sm-12">'+
+							'<a href="'+isioptions+'" class="btn btn-block btn-danger btn-lg">Cancel</a>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+				'<div class="col-md-4">'+
+				'</div>';
+
+		$(".klikedit").hide();
+		$(".klikedit").hide();
+		// $(":input").prop("disabled", false);
+		$("#tombolsave").append($xsave);
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputnamaalias").disabled = false;
+		document.getElementById("inputbirthdate").disabled = false;
+		document.getElementById("inputbirthplace").disabled = false;
+		document.getElementById("inputnoktp").disabled = false;
+		document.getElementById("inputagama").disabled = false;
+
+		document.getElementById("inputgoldarah").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+		document.getElementById("inputfullname").disabled = false;
+
+		document.getElementById("inputalmtktp").disabled = false;
+ 		document.getElementById("inputkelktp").disabled = false;
+		document.getElementById("inputalmtush").disabled = false;   
+		document.getElementById("inputkelush").disabled = false;  
+		document.getElementById("inputalmtrmh").disabled = false;  
+		document.getElementById("inputkelrmh").disabled = false;   
+
+		document.getElementById("inputtlppri").disabled = false;  
+		document.getElementById("inputfaxpri").disabled = false;  
+		document.getElementById("inputhppri").disabled = false;   
+		document.getElementById("inputemailpri").disabled = false; 
+		
+
+
+
+
+		
+
+
+		
+
+		
+
+	}
+</script>
 
 
 	<script type="text/javascript">

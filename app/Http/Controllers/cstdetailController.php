@@ -347,9 +347,9 @@ class CstdetailController extends Controller
     public function tbljaminanpribadi($para)
     {
         $sql = "
-            SELECT CONCAT(seq,'/',COALESCE(`desc`,'/'),'/',COALESCE(info,'-'),'/',COALESCE(info2,'-'),'/',COALESCE(info3,'-'),'/',COALESCE(info4,'-')) seq,`desc` 
+            SELECT CONCAT(seq,'/',COALESCE(`desc`,'-'),'/',COALESCE(info,'-'),'/',COALESCE(info2,'-'),'/',COALESCE(info3,'-'),'/',COALESCE(info4,'-')) seq,`desc` 
             FROM dt_additional 
-            WHERE  TYPE = '".$para."' and coalesce(`desc`,'') <> ''
+            WHERE  TYPE = '".$para."'
             ORDER BY seq
         ";
         $grp = db::connection('mysql')->select($sql);

@@ -1204,7 +1204,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button>
+														<button type="button" name="removemedsospri" id="{{$i}}" class="btn btn-danger btn_remove2x">X</button>
 													</div>
 												</div>
 											</div>
@@ -1468,7 +1468,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbtkush" class="col-sm-3 col-form-label">Bentuk Usaha</label>
 												<div class="col-sm-9">
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;"> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}}> 
 													<?php 
 													foreach ($tabelbentukusaha as $key => $value) {
 													?>
@@ -1484,7 +1484,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputtipeush" class="col-sm-3 col-form-label">Tipe Badan Hukum</label>
 												<div class="col-sm-9">
-												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputtipeush" name="inputtipeush" style="font-size: 1rem;;"> 
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputtipeush" name="inputtipeush" style="font-size: 1rem;" {{$stsedit}}> 
 													<?php 
 													foreach ($tabelbadanhukum as $key => $value) {
 													?>
@@ -1498,13 +1498,13 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputnamausaha" class="col-sm-3 col-form-label">Nama Usaha</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamausaha" name="inputnamausaha" placeholder="Nama Usaha" value="{{$inputnamausaha}}">
+													<input type="text" class="form-control" id="inputnamausaha" name="inputnamausaha" placeholder="Nama Usaha" value="{{$inputnamausaha}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputlmusaha" class="col-sm-3 col-form-label">Lama Usaha</label>
 												<div class="col-sm-6">	
-													<input type="number" class="form-control" id="inputlmusaha" name="inputlmusaha" placeholder="Lama Usaha" value="{{$inputlmusaha}}">
+													<input type="number" class="form-control" id="inputlmusaha" name="inputlmusaha" placeholder="Lama Usaha" value="{{$inputlmusaha}}" {{$stsedit}}>
 												</div>
 												<label for="inputlmusaha" class="col-sm-3 col-form-label">Tahun</label>
 											</div>
@@ -1515,19 +1515,19 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputnpwp" class="col-sm-3 col-form-label">NPWP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP" value="{{$inputnpwp}}">
+													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP" value="{{$inputnpwp}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputheadgrp" class="col-sm-3 col-form-label">Head Group</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputheadgrp" name="inputheadgrp" placeholder="Head Group" value="{{$inputheadgrp}}">
+													<input type="text" class="form-control" id="inputheadgrp" name="inputheadgrp" placeholder="Head Group" value="{{$inputheadgrp}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}">
+													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}}>
 												</div>
 											</div>
 											
@@ -1645,7 +1645,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ...">{{$inputalmtush}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ..." {{$stsedit}}>{{$inputalmtush}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1654,7 +1654,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}">
+													<input type="text" class="form-control" id="inputkelush" name="inputkelush" placeholder="Kelurahan" onchange="mykelurahan(3,this)" name="{{$inputkelush}}" {{$stsedit}}>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -1748,7 +1748,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputtlpush" class="col-sm-3 col-form-label">No Telp.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" id="inputtlpush" name="inputtlpush" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlpush}}">
+														<input type="text" id="inputtlpush" name="inputtlpush" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputtlpush}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
@@ -1757,7 +1757,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputfaxush" class="col-sm-3 col-form-label">Fax.</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputfaxush" name="inputfaxush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true"  value="{{$inputfaxush}}">
+														<input type="text" class="form-control" id="inputfaxush" name="inputfaxush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true"  value="{{$inputfaxush}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
@@ -1771,7 +1771,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputhpush" class="col-sm-3 col-form-label">No HP</label>
 												<div class="col-sm-9">
 													<div class="input-group">
-														<input type="text" class="form-control" id="inputhpush" name="inputhpush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhpush}}">
+														<input type="text" class="form-control" id="inputhpush" name="inputhpush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhpush}}" {{$stsedit}}>
 													</div>
 												</div>
 											</div>
@@ -1781,7 +1781,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputemailush" class="col-sm-3 col-form-label">Email</label>
 												<div class="col-sm-9">
 												<!-- tutup -->
-													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" />
+													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" {{$stsedit}}>
 												</div>
 											</div>
 										</div>
@@ -1837,7 +1837,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-1">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove2">X</button> -->
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove20">X</button>
 												</div>
 											</div>
 										</div>
@@ -2185,7 +2185,7 @@ if ($pos=0 or $pos=1){
 													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}">	
 												</div>
 												<div class="col-sm-2">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove6">X</button>
+													<button type="button" name="removekompetitor" id="{{$i}}" class="btn btn-danger btn_remove6">X</button>
 												</div>
 											</div>
 										</div>
@@ -2260,7 +2260,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
+														<button type="button" name="removebisnislain" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
 													</div>
 												</div>
 											</div>
@@ -2587,7 +2587,7 @@ if ($pos=0 or $pos=1){
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
 												</div>
 												<div class="col-sm-2">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
+													<button type="button" name="removejaminan" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
 												</div>
 											</div>
 										</div>
@@ -2647,7 +2647,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-12">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ...">{{$inputkarakteristik}}</textarea>
+													<textarea class="form-control" rows="10" id="inputkarakteristik" name="inputkarakteristik" placeholder="Enter ..." {{$stsedit}}>{{$inputkarakteristik}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -2741,13 +2741,13 @@ if ($pos=0 or $pos=1){
 	<script src="{{asset('dist/js/demo.js')}}"></script>
 
 	<script type="text/javascript">
-		$(function(){
-			$(".inputbirthdate").datepicker({
-				format: 'dd.mm.yyyy',
-				autoclose: true,
-				todayHighlight: true,
-			});
-		});
+		// $(function(){
+		// 	$(".inputbirthdate").datepicker({
+		// 		format: 'dd.mm.yyyy',
+		// 		autoclose: true,
+		// 		todayHighlight: true,
+		// 	});
+		// });
 
 
 		// $(".tm").on("change", function() {
@@ -2820,7 +2820,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+
 				var i=1;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsosush').click(function(){  
@@ -2845,14 +2845,14 @@ if ($pos=0 or $pos=1){
 									'<div class="col-md-1">'+
 										'<div class="form-group row">'+
 											'<div class="col-sm-12">'+
-												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2">X</button>'+
+												'<button type="button" name="removemedsosush" id="'+i+'" class="btn btn-danger btn_remove20">X</button>'+
 											'</div>'+
 										'</div>'+
 									'</div>';
 				$('#inpmedsosush').append(txt);
 			}); 
 
-			$(document).on('click', '.btn_remove2', function(){  
+			$(document).on('click', '.btn_remove20', function(){  
 				var button_id = $(this).attr("id");   
 				$('#rowmedsosush'+button_id+'').remove();  
 				});  
@@ -2864,7 +2864,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1;  
 				var isioptions=document.getElementById("optmedsos").value;
 			$('#addmedsospri').click(function(){  
@@ -2889,7 +2889,7 @@ if ($pos=0 or $pos=1){
 									'<div class="col-md-1">'+
 										'<div class="form-group row">'+
 											'<div class="col-sm-12">'+
-												'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove2x">X</button>'+
+												'<button type="button" name="removemedsospri" id="'+i+'" class="btn btn-danger btn_remove2x">X</button>'+
 											'</div>'+
 										'</div>'+
 									'</div>';
@@ -2908,7 +2908,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1;  
 			var isioptions=document.getElementById("optsex").value;
 			var isioptions2=document.getElementById("opthubkelga").value;
@@ -2950,7 +2950,7 @@ if ($pos=0 or $pos=1){
 													'</select>'+
 												'</div>'+
 												'<div class="col-sm-3">'+
-													'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
+													'<button type="button" name="removekelga" id="'+i+'" class="btn btn-danger btn_remove3">X</button>'+
 												'</div>'+
 											'</div>'+
 										'</div>'+
@@ -2972,7 +2972,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1;  
 			
 			var isioptions=document.getElementById("optagenhub").value;
@@ -2997,7 +2997,7 @@ if ($pos=0 or $pos=1){
 																'</select>'+
 															'</div>'+
 															'<div class="col-sm-2">'+
-																'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
+																'<button type="button" name="removeagenhub" id="'+i+'" class="btn btn-danger btn_remove4">X</button>'+
 															'</div>'+
 														'</div>'+
 													'</div>'+
@@ -3017,7 +3017,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1; 
 
 			var isioptions=document.getElementById("optareasubagen").value; 
@@ -3051,7 +3051,7 @@ if ($pos=0 or $pos=1){
 														'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="info" name="inputInfoSubAgen[]">'+
 													'</div>'+
 													'<div class="col-sm-2">'+
-														'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
+														'<button type="button" name="removeareasubagen" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
@@ -3069,7 +3069,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1;  
 
 			$('#addkompetitor').click(function(){ 
@@ -3092,7 +3092,7 @@ if ($pos=0 or $pos=1){
 														'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
 													'</div>'+
 													'<div class="col-sm-2">'+
-														'<button type="button" name="remove" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
+														'<button type="button" name="removekompetitor" id="remove6_'+i+'" class="btn btn-danger btn_remove6">X</button>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
@@ -3112,7 +3112,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 				var i=1;  
 
 			$('#addbisnislain').click(function(){ 
@@ -3137,7 +3137,7 @@ if ($pos=0 or $pos=1){
 							'	<div class="col-md-1">'+
 							'		<div class="form-group row">'+
 							'			<div class="col-sm-12">'+
-							'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove7">X</button>'+
+							'				<button type="button" name="removebisnislain" id="'+i+'" class="btn btn-danger btn_remove7">X</button>'+
 							'			</div>'+
 							'		</div>'+
 							'	</div>'+
@@ -3186,7 +3186,7 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
+			
 			
 				var i=1;  
 
@@ -3209,7 +3209,7 @@ if ($pos=0 or $pos=1){
 								'				</select>'+
 								'			</div>'+
 								'			<div class="col-sm-2">'+
-								'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove9">X</button>'+
+								'				<button type="button" name="removemodalbank" id="'+i+'" class="btn btn-danger btn_remove9">X</button>'+
 								'			</div>'+
 								'		</div>'+
 								'	</div>'+
@@ -3260,7 +3260,6 @@ if ($pos=0 or $pos=1){
 	<script type="text/javascript">
 
 			$(document).ready(function(){
-			var postURL = "<?php echo url('addmore'); ?>";
 				var i=1;  
 			var isioptions=document.getElementById("optstatususaha").value;
 			
@@ -3278,7 +3277,7 @@ if ($pos=0 or $pos=1){
 								'	<div class="col-md-1">'+
 								'		<div class="form-group row">'+
 								'			<div class="col-sm-12">'+
-								'				<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeb">X</button>'+
+								'				<button type="button" name="removestatususaha" id="'+i+'" class="btn btn-danger btn_removeb">X</button>'+
 								'			</div>'+
 								'		</div>'+
 								'	</div>'+
@@ -3459,7 +3458,38 @@ if ($pos=0 or $pos=1){
 		document.getElementById("inputfaxpri").disabled = false;  
 		document.getElementById("inputhppri").disabled = false;   
 		document.getElementById("inputemailpri").disabled = false; 
+		document.getElementById("inputhobby").disabled = false; 
+
 		
+		document.getElementById("inputbtkush").disabled = false; 
+		document.getElementById("inputtipeush").disabled = false; 
+		document.getElementById("inputnamausaha").disabled = false; 
+		document.getElementById("inputlmusaha").disabled = false; 
+		document.getElementById("inputnpwp").disabled = false; 
+		document.getElementById("inputheadgrp").disabled = false; 
+		document.getElementById("inputkodesap").disabled = false; 
+
+		document.getElementById("inputtlpush").disabled = false; 
+		document.getElementById("inputfaxush").disabled = false; 
+		document.getElementById("inputhpush").disabled = false; 
+		document.getElementById("inputemailush").disabled = false; 
+
+		document.getElementById("inputkarakteristik").disabled = false; 
+		
+
+
+
+		
+
+
+
+		
+		
+
+
+		
+
+
 
 
 

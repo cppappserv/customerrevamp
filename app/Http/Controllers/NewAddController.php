@@ -81,7 +81,7 @@ class NewAddController extends Controller
                      <input type="'.$inp.'" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]">	
                   </div>
                   <div class="col-sm-2">
-                     <button type="button" name="remove" id="'.$i.'" class="btn btn-danger btn_removea">X</button>
+                     <button type="button" name="removejaminan" id="'.$i.'" class="btn btn-danger btn_removea">X</button>
                   </div>
                </div>
             </div>
@@ -130,7 +130,7 @@ class NewAddController extends Controller
                      <input type="text" class="form-control" id="inputAssetLain[]" name="inputAssetLain[]">	
                   </div>
                   <div class="col-sm-2">
-                     <button type="button" name="remove" id="'.$i.'" class="btn btn-danger btn_remove8">X</button>
+                     <button type="button" name="removeassetpribadi" id="'.$i.'" class="btn btn-danger btn_remove8">X</button>
                   </div>
                </div>
             </div>
