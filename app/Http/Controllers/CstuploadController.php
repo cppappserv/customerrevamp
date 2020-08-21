@@ -121,7 +121,7 @@ class CstuploadController extends Controller
     {
       $user = $this->getuser();
       $fileupload = $this->fileupload();
-      $data_upload = Importprofile::where('uid', '=', $value->user_id)->get();
+      $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
       
       return view('menuupload',[
           'user' => $user,
