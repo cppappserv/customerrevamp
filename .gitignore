@@ -6,6 +6,7 @@
 /public/sapapi/incDBPG.php
 /public/sapapi/coreAPI.php
 /public/acl/acl_test.php
+/public/file_customer
 /vendor/composer
 /storage/*.key
 .env
