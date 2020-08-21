@@ -45,22 +45,11 @@ class CstdetailController extends Controller
     public function grpbu()
     {
         $sql = "
-            select 1 urut, 'fish feed' des, 1200 ttl union 
-            select 2 urut, 'fish fry' des, 502 ttl union
-            select 3 urut, 'food' des, 2492 ttl union
-            select 4 urut, 'fpd' des, 1592 ttl union
-            select 5 urut, 'pet cws' des, 2049 ttl union
-            select 6 urut, 'pet suhs' des, 902 ttl union
-            select 7 urut, 'probiotik' des, 557 ttl union
-            select 8 urut, 'shrimp feed' des, 1692 ttl union
-            select 9 urut, 'shrimp fry' des, 375 ttl
-        ";
-        $sql = "
-            SELECT 0 AS urut, c1.info3 des ,COUNT(*) ttl 
-            FROM tbluser a1
-            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-            INNER JOIN dt_additional c1 ON c1.info = a1.company
-            GROUP BY c1.info3
+        select 0 as urut, c1.info3 des ,count(*) ttl 
+        from tbluser a1
+        inner join tblobject b1 on b1.objtype='7' and a1.branch = b1.objname
+        inner join dt_additional c1 on c1.info = a1.company
+        group by c1.info3
         ";
         $grp = db::connection('mysql')->select($sql);
         $i=0;
@@ -76,16 +65,16 @@ class CstdetailController extends Controller
         // $para1 = "FISH FEED";
         // $para2 = "12345";
         $sql = "
-        SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info4 bu, a2.fullname created_by, 
-        DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
+        select a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info4 bu, a2.fullname created_by, 
+        date_format(a1.createddate,'%y-%m-%d') created_dt, date_format(a1.createddate,'%h:%i:%s') created_time, 
         a3.fullname changed_by, 
-        DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
-        FROM tbluser a1
-        INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-        INNER JOIN dt_additional c1 ON c1.info = a1.company
-        LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
-        LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
-        WHERE c1.info3 = '".$para1."' AND a1.company = '".$para2."'
+        date_format(a1.updateddate,'%y-%m-%d') changed_dt, date_format(a1.updateddate,'%h:%i:%s') changed_time
+        from tbluser a1
+        inner join tblobject b1 on b1.objtype='7' and a1.branch = b1.objname
+        inner join dt_additional c1 on c1.info = a1.company
+        left outer join tbluser a2 on a1.createdby = a2.uid
+        left outer join tbluser a3 on a1.updatedby = a3.uid
+        where c1.info3 = '".$para1."' and a1.company = '".$para2."'
            ";
         
         $grp = db::connection('mysql')->select($sql);
@@ -96,12 +85,12 @@ class CstdetailController extends Controller
     public function grpcompany($para)
     {
         $sql = "
-            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'/') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'/')) des3 ,COUNT(*) ttl 
-            FROM tbluser a1
-            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-            INNER JOIN dt_additional c1 ON c1.info = a1.company
-            WHERE c1.info3 = '".$para."'
-            GROUP BY c1.info, c1.info2, c1.info4, c1.info5;
+        select 0 urut, c1.info, concat(c1.info2,'/') des, concat(c1.info4,'/') des2, if(c1.info5 is null,'',concat(c1.info5,'/')) des3 ,count(*) ttl 
+        from tbluser a1
+        inner join tblobject b1 on b1.objtype='7' and a1.branch = b1.objname
+        inner join dt_additional c1 on c1.info = a1.company
+        where c1.info3 = '".$para."'
+        group by c1.info, c1.info2, c1.info4, c1.info5;
         ";
         $grp = db::connection('mysql')->select($sql);
         $i=0;
@@ -179,7 +168,7 @@ class CstdetailController extends Controller
     {
         
         // $sql = "select info id, `desc` sex from `dt_additional` where `type` = 'jenis_kelamin'";
-        $sql = "SELECT * FROM `dt_additional`  WHERE TYPE = 'JENIS_KELAMIN'";
+        $sql = "select * from `dt_additional`  where type = 'jenis_kelamin'";
         // $sql = "
         //     select 'l' id, 'laki-laki'  sex union 
         //     select 'w' id, 'wanita'  sex
@@ -346,10 +335,10 @@ class CstdetailController extends Controller
     public function tbljaminanpribadi($para)
     {
         $sql = "
-            SELECT CONCAT(seq,'/',COALESCE(`desc`,'-'),'/',COALESCE(info,'-'),'/',COALESCE(info2,'-'),'/',COALESCE(info3,'-'),'/',COALESCE(info4,'-')) seq,`desc` 
-            FROM dt_additional 
-            WHERE  TYPE = '".$para."'
-            ORDER BY seq
+        select concat(seq,'/',coalesce(`desc`,'-'),'/',coalesce(info,'-'),'/',coalesce(info2,'-'),'/',coalesce(info3,'-'),'/',coalesce(info4,'-')) seq,`desc` 
+        from dt_additional 
+        where  type = '".$para."'
+        order by seq
         ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
@@ -358,22 +347,22 @@ class CstdetailController extends Controller
     public function addasset($para, $para2)
     {
         $sql = "
-            SELECT b.*, 
-                a.desc, 
-                a.info, 
-                a.info2, 
-                a.info3, 
-                a.info4, 
-                a.parent, 
-                a.display, 
-                a.info5
-            FROM dt_additional A
-                    INNER JOIN usr_additional B
-                    ON A.type = B.type
-                    AND B.user_id='".$para."'
-                    WHERE  A.type IN ('".$para2."')
-                    AND a.seq = b.sseq
-                    ORDER BY A.seq
+        select b.*, 
+        a.desc, 
+        a.info, 
+        a.info2, 
+        a.info3, 
+        a.info4, 
+        a.parent, 
+        a.display, 
+        a.info5
+    from dt_additional a
+            inner join usr_additional b
+            on a.type = b.type
+            and b.user_id='".$para."'
+            where  a.type in ('".$para2."')
+            and a.seq = b.sseq
+            order by a.seq
         ";
         $grp = db::connection('mysql')->select($sql);
         return $grp;
@@ -383,7 +372,7 @@ class CstdetailController extends Controller
     {
         if ($para == 0){
             $sql = "
-            SELECT b.*, 
+            select b.*, 
                     a.desc desc1, 
                     a.info, 
                     a.info2, 
@@ -392,17 +381,17 @@ class CstdetailController extends Controller
                     a.parent, 
                     a.display, 
                     a.info5
-            FROM dt_additional a 
-            LEFT OUTER JOIN usr_additional b 
-                ON A.type = B.type
-                    AND B.user_id='".$para."'
-                    AND a.seq = b.seq
-            WHERE a.type IN ('".$para2."')
-            ORDER BY A.seq
+            from dt_additional a 
+            left outer join usr_additional b 
+                on a.type = b.type
+                    and b.user_id='".$para."'
+                    and a.seq = b.seq
+            where a.type in ('".$para2."')
+            order by a.seq
         ";
         } else {
             $sql = "
-            SELECT b.*, 
+            select b.*, 
                     a.desc, 
                     a.info, 
                     a.info2, 
@@ -411,14 +400,14 @@ class CstdetailController extends Controller
                     a.parent, 
                     a.display, 
                     a.info5
-            FROM dt_additional a 
-            LEFT OUTER JOIN usr_additional b 
-                ON A.type = B.type
-                    AND B.user_id='".$para."'
-                    AND a.seq = b.seq
-            WHERE a.type IN ('".$para2."')
-                AND b.user_id IS NOT NULL
-            ORDER BY A.seq
+            from dt_additional a 
+            left outer join usr_additional b 
+                on a.type = b.type
+                    and b.user_id='".$para."'
+                    and a.seq = b.seq
+            where a.type in ('".$para2."')
+                and b.user_id is not null
+            order by a.seq
         ";
         }
         
@@ -431,19 +420,19 @@ class CstdetailController extends Controller
     {
         
         $sql = "
-            SELECT a.* , b.desc desc1, 
-                b.info, 
-                b.info2, 
-                b.info3, 
-                b.info4, 
-                b.parent, 
-                b.display, 
-                b.info5
-            FROM usr_additional a
-            INNER JOIN dt_additional b ON b.type = a.type AND a.sseq = b.seq
-            WHERE a.type IN ('".$para2."')
-            AND user_id = '".$para."'
-            ORDER BY a.seq
+        select a.* , b.desc desc1, 
+        b.info, 
+        b.info2, 
+        b.info3, 
+        b.info4, 
+        b.parent, 
+        b.display, 
+        b.info5
+    from usr_additional a
+    inner join dt_additional b on b.type = a.type and a.sseq = b.seq
+    where a.type in ('".$para2."')
+    and user_id = '".$para."'
+    order by a.seq
         ";
         
         $grp = db::connection('mysql')->select($sql);
@@ -454,21 +443,21 @@ class CstdetailController extends Controller
     public function addasset3($para, $para2)
     {
         $sql = "
-            SELECT b.*, 
-                    a.desc desc1, 
-                    a.info, 
-                    a.info2, 
-                    a.info3, 
-                    a.info4, 
-                    a.parent, 
-                    a.display, 
-                    a.info5
-            FROM dt_additional a 
-            cross JOIN usr_additional b 
-                ON A.type = B.type
-                    AND B.user_id='".$para."'
-            WHERE a.type IN ('".$para2."')
-            ORDER BY A.seq
+        select b.*, 
+        a.desc desc1, 
+        a.info, 
+        a.info2, 
+        a.info3, 
+        a.info4, 
+        a.parent, 
+        a.display, 
+        a.info5
+from dt_additional a 
+cross join usr_additional b 
+    on a.type = b.type
+        and b.user_id='".$para."'
+where a.type in ('".$para2."')
+order by a.seq
         ";
         
         
