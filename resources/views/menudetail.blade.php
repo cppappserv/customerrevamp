@@ -8,6 +8,9 @@ if($edit_noedit == 0){
 	$stsedit = "";
 	$stssave = 'style="display:block"';
 }
+$ttl_photo = count($data_photo);
+
+
 
 // $max_kel=count($keluarga);
 // $bcg_klg = 288 + ($max_kel * 106);
@@ -437,6 +440,14 @@ if ($pos=0 or $pos=1){
 		font-style: normal;
 		font-weight: normal;
 		font-size: 36px;
+		color: rgba(51,122,183,1);
+	}
+
+	.font28{
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
 		color: rgba(51,122,183,1);
 	}
 	.kotakexcel{
@@ -870,13 +881,13 @@ if ($pos=0 or $pos=1){
 													<img src="/storeimage/{{ $inputuser_id }}" id="files-tag" width="80%" style="
 																border-radius: 50%;
 																margin: auto;">   
-													<span id='val' style="display:none"></span>
-													<input type="file" name="files" id="files" style="display:none;">
+													<!-- <span id='val' style="display:none"></span> -->
+													<input type="file" name="files" id="files" style="display:none;" onchange="readURL(this)">
 												</div>
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<span id='button' style="display: block; margin: auto;" onclick="ambilphoto()">Rubah Foto Profil</span>
+													<span id='button' khususinput2='yes' style="display: block; margin: auto;display:none;" onclick="ambilphoto()">Rubah Foto Profil</span>
 												</div>
 											</div>
 										</div>
@@ -1048,9 +1059,13 @@ if ($pos=0 or $pos=1){
 								<div class="card-header">
 									
 										<h3 class="card-title font36">Alamat Rumah </h3>
-										<button type="button" style="height:50px;width:50px" onclick="myduplikatalamat()"><ion-icon name="add-circle"></ion-icon>Dup</button>
-										Duplicat
-									
+										<button type="button" class="font28" style="height:50px;width:200px;background: none;display:none;border:none;
+										::after, ::before {
+												/* box-sizing: border-box; */
+										}
+										" onclick="myduplikatalamat()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Duplicat</button>
+										
+										
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
@@ -1204,7 +1219,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="removemedsospri" id="{{$i}}" class="btn btn-danger btn_remove2x">X</button>
+														<button type="button" name="removemedsospri" id="{{$i}}" class="btn btn-danger btn_remove2x" khususinput='yes' style="display:none;">X</button>
 													</div>
 												</div>
 											</div>
@@ -1220,7 +1235,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 										<div class="form-group row ">
 											<div class="col-sm-12">
-												<button type="button" style="height:50px;width:50px" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
+												<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
 											</div>
 										</div>
 									</div>
@@ -1393,7 +1408,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -1606,7 +1621,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -1837,7 +1852,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-1">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove20">X</button>
+													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove20" khususinput='yes' style="display:none;">X</button>
 												</div>
 											</div>
 										</div>
@@ -1854,7 +1869,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addmedsosush" id="addmedsosush" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none" name="addmedsosush" id="addmedsosush" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -1969,7 +1984,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2108,7 +2123,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2185,7 +2200,7 @@ if ($pos=0 or $pos=1){
 													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 												</div>
 												<div class="col-sm-2">
-													<button type="button" name="removekompetitor" id="{{$i}}" class="btn btn-danger btn_remove6">X</button>
+													<button type="button" name="removekompetitor" id="{{$i}}" class="btn btn-danger btn_remove6" khususinput='yes' style="display:none;">X</button>
 												</div>
 											</div>
 										</div>
@@ -2198,7 +2213,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" style="height:50px;width:50px" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2260,7 +2275,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="removebisnislain" id="{{$i}}" class="btn btn-danger btn_remove7">X</button>
+														<button type="button" name="removebisnislain" id="{{$i}}" class="btn btn-danger btn_remove7" khususinput='yes' style="display:none;">X</button>
 													</div>
 												</div>
 											</div>
@@ -2275,7 +2290,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<button type="button" style="height:50px;width:50px" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
+													<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
 												</div>
 											</div>
 										</div>
@@ -2369,7 +2384,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" {{$stsedit}} khususinput="yes"> 
+													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" khususinput2="yes" style="display:none;"> 
 													<option value="">Add</option>
 													<?php 
 													foreach ($tblassetpribadi as $key => $value) {
@@ -2507,7 +2522,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<button type="button" style="height:50px;width:50px" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
+													<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
 												</div>
 											</div>
 										</div>
@@ -2587,7 +2602,7 @@ if ($pos=0 or $pos=1){
 													<input type="hidden" class="form-control" id="inputJaminanLain[]" name="inputJaminanLain[]" value="{{$data->value3}}">	
 												</div>
 												<div class="col-sm-2">
-													<button type="button" name="removejaminan" id="{{$i}}" class="btn btn-danger btn_removea">X</button>
+													<button type="button" name="removejaminan" id="{{$i}}" class="btn btn-danger btn_removea" khususinput='yes' style="display:none;">X</button>
 												</div>
 											</div>
 										</div>
@@ -2604,7 +2619,7 @@ if ($pos=0 or $pos=1){
 									<div class="form-group row ">
 										<div class="col-sm-12">
 
-											<select class="btn btn-success" id="addjaminan" name="addjaminan"> 
+											<select class="btn btn-success" id="addjaminan" name="addjaminan" style="display:none" khususinput2="yes"> 
 											<option value="">Add</option>
 											<?php 
 											foreach ($tbljaminanpribadi as $key => $value) {
@@ -2677,41 +2692,50 @@ if ($pos=0 or $pos=1){
 								</div>
 								<!-- /.card-header -->
 								
-								<div class="card-body" id="inpkarakteristikphoto">
-									<div class="row">
+								<div class="card-body">
+									
+										<!-- <div class="row" id="rowsstatususaha{{$i}}"> -->
+									<div class="row" id="inpphoto">
+										<?php 
+										$urut = 1;
+										foreach ($data_photo as $key => $data) {
+											$urut = $data->seq;
+										?>
+										<div class="col-lg-2 col-6" id="rowsphoto{{$urut}}">
+											<div class="form-group row">
+												<div class="col-sm-10">
+													<img id="blah{{ $urut }}" name="gambar[]" src="/storeimageadd/{{ $data->id }}" alt="your image" />
+													<input type="file" name="filenames{{$urut}}" id="filenames{{$urut}}" class="myfrm form-control" onchange="readURL2(this,{{$urut}})" style="display:none;">
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$urut}}" class="btn btn-danger btn_removez" style="display:none" khususinput2="yes">X</button>
+													<input type="hidden" name="idgambar[]" value="{{$urut}}">
+												</div>
+											</div>
+										</div>
+										<?php 
+										}
+										?>
+										<input type="hidden" id="urutgambar" value="{{$urut}}">
+									</div>
 
-										<div class="col-md-4">
-											<!-- <img class="img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" id="files-tag" width="80%" style="
-												border-radius: 200px;
-													border-color: black;"
-											>   -->
-											<input type="file" name="files2[]" id="files2[]">
-											<span id='val2'></span>
-											<span id='button2'>Rubah Foto Profil</span>
+									
+								</div>
+								<div class="col-md-1">
+									<div class="form-group row ">
+										<div class="col-sm-12">
+											<button type="button"  style="height:50px;width:50px;display:none" name="addphoto" id="addphoto" class="btn btn-success" khususinput2="yes">Add</button>
 										</div>
 									</div>
 								</div>
-								<div class="form-group row ">
-									<div class="col-sm-12">
-										<button type="button" style="height:50px;width:50px" name="addphotolain" id="addphotolain" class="btn btn-success">Add</button>
-									</div>
-								</div>
-
-
 								<!-- /.card-body -->
 								<div class="card-footer">
-									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									<!-- Visit <a href="Alamat Rumahhttps://select2.github.io/">Select2 documentation</a> for more examples and information about
 									the plugin. -->
 								</div>
+
 							</div>
 						</div>
-
-					
-					
-					</div>
-				
-					
-							
 			</div>
 			
 			<?php 
@@ -3249,6 +3273,40 @@ if ($pos=0 or $pos=1){
 			});
 	</script>
 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#addphoto').click(function(){ 
+				
+				var i = document.getElementById("urutgambar").value;
+				i++;
+				document.getElementById("urutgambar").value = i;
+				var txt = ''+
+					'<div class="col-lg-2 col-6" id="rowsphoto'+i+'">'+
+						'<div class="form-group row">'+
+							'<div class="col-sm-10">'+
+								'<img id="blah'+i+'" name="gambar[]" src="#" alt="your image"/>'+
+								'<input type="file" name="filenames'+i+'" id="filenames'+i+'" class="myfrm form-control" onchange="readURL2(this,'+i+')" style="display:none;">'+
+							'</div>'+
+						// '</div>'+
+						// '<div class="form-group row">'+
+							'<div class="col-sm-2">'+
+								'<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removez">X</button>'+
+								'<input type="hidden" name="idgambar[]" value="'+i+'">'+
+							'</div>'+
+						'</div>'+
+					'</div>';
+				$('#inpphoto').append(txt);
+				$('#filenames'+i).click();
+			});
+
+
+			$(document).on('click', '.btn_removez', function(){  
+				var button_id = $(this).attr("id");   
+				$('#rowsphoto'+button_id+'').remove();  
+				});  
+		});  
+	</script>
+
 
 
 
@@ -3288,7 +3346,7 @@ if ($pos=0 or $pos=1){
 
 			$(document).on('click', '.btn_removeb', function(){  
 				var button_id = $(this).attr("id");   
-				$('#rowsstatususaha'+button_id+'').remove();  
+				$('#rowsstatususaha'+button_id).remove();  
 				});  
 		});  
 	</script>
@@ -3299,7 +3357,9 @@ if ($pos=0 or $pos=1){
 
 	<script type="text/javascript">
 		function readURL(input) {
+			// alert('supram');
 			if (input.files && input.files[0]) {
+				
 					var reader = new FileReader();
 					
 					reader.onload = function (e) {
@@ -3308,10 +3368,54 @@ if ($pos=0 or $pos=1){
 					reader.readAsDataURL(input.files[0]);
 			}
 		}
-		$("#files").change(function(){
-				readURL(this);
-		});
+		// $("#files").change(function(){
+		// 		readURL(this);
+		// });
 	</script>
+
+<script type="text/javascript">
+		function readURL2(input, pos) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#blah'+pos).attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		
+	</script>
+
+	<!-- <script type="text/javascript">
+
+    $(document).ready(function() {
+			
+
+      $(".btn-success").click(function(){ 
+				
+				var isi = ''+
+					'<div class="clone">'+
+						'<div class="hdtuto control-group lst input-group" style="margin-top:10px">'+
+						'<img id="blah[]" src="#" alt="your image" />'+
+							'<input type="file" name="filenames[]" class="myfrm form-control" onchange="readURL2(this)">'+
+							'<div class="input-group-btn"> '+
+								'<button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>'+
+							'</div>'+
+						'</div>'+
+					'</div>';
+					// alert(isi);
+          // var html = isi; //$(".clone").html();
+          $("#inpgambar").append(isi);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+	</script> -->
 
 	<script type="text/javascript">
 		function myduplikatalamatusaha() 
@@ -3437,7 +3541,17 @@ if ($pos=0 or $pos=1){
 
 		var  arr =$("div").find(`[khususinput='yes']`);
 		for(i=0;i<arr.length;i++){
-			$(arr[i]).prop("disabled",false);
+			if(arr[i].type == 'button'){
+				arr[i].style.display="block"
+			} else {
+				$(arr[i]).prop("disabled",false);
+			}
+			
+		}
+
+		var  arr =$("div").find(`[khususinput2='yes']`);
+		for(i=0;i<arr.length;i++){
+				arr[i].style.display="block"
 		}
 
 		// document.getElementById("inputfullname").disabled = false;
@@ -3539,13 +3653,19 @@ if ($pos=0 or $pos=1){
 		// 	$("input[type='file']").trigger('click');
 		// })
 
-function ambilphoto(){
-	// $("input[type='file']").trigger('click');
-	$('#files').click();
-}
-		$("input[type='file']").change(function(){
-			$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
-		})  
+		function ambilphoto(){
+			// $("input[type='file']").trigger('click');
+			$('#files').click();
+		}
+
+		function ambilphoto2(){
+			// $("input[type='file']").trigger('click');
+			var i = document.getElementById("urutgambar").value;
+			$('#files'+i).click();
+		}
+		// $("input[type='file']").change(function(){
+		// 	$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+		// })  
 
 
 		

@@ -119,13 +119,28 @@ class CstuploadController extends Controller
 
     public function index()
     {
-      $user = $this->getuser();
-      $fileupload = $this->fileupload();
-      $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
+        $user = $this->getuser();
+        $fileupload = $this->fileupload();
+        $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
+
+        $tbllog = DB::table('tbl_log as a')
+            ->join('tbluser as b', function($join){
+            $join->on('b.uid', '=', 'a.fid' );
+        })
+        ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
+        'a.etime as processtime','a.row as totalrow','b.fullname as user')
+        ->get();
+        $i=0;
+        foreach ($tbllog as $key => $value) {
+            $i++;
+            $value->urut = $i;
+        }
+        // dd($tbllog);
+        
       
       return view('menuupload',[
           'user' => $user,
-          'fileupload' => $fileupload,
+          'fileupload' => $tbllog,
           'data_upload' => $data_upload
       ]);
     }

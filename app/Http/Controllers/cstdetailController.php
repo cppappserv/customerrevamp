@@ -10,6 +10,7 @@ use App\Models\Dtadditional;
 use App\Models\Tblgroupuser;
 use App\Models\Tblobject;
 use App\Models\Tbluserphoto;
+use App\Models\Tbluserphotoadd;
 use App\Models\Zbranch;
 use App\Models\Usrupload;
 use Response;
@@ -481,6 +482,17 @@ order by a.seq
 		return $response;
     }
 
+    public function storeimageother($image_id) {
+        $image = Tbluserphotoadd::where('id', '=', $image_id)->first();
+        if(!$image or $image->zimage == ""){
+            $image = Tbluserphoto::where('user_id', '=', '-123')->first();
+        }
+		$image_file = Image::make($image->zimage);
+		$response = Response::make($image_file->encode('jpeg'));
+		$response->header('Content-Type', 'image/jpeg');
+		return $response;
+    }
+
     public function index($kode, $kode3, $kode2, $kode4)
     {
         $user = $this->getuser();  // login pertama
@@ -506,10 +518,11 @@ order by a.seq
         $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
         $pilcompany = $kode;
         $tabelarea_subagen = $this->tabelarea_subagen();
-        
-        
-
         // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
+        $photo = Tbluserphotoadd::where('user_id', '=', $tbluser->user_id)->orderBy('seq', 'asc')
+        ->select('id','seq')
+        ->get();
+
         return view('menudetail',[
             'idedit' => $iduser,
             'user' => $user,
@@ -544,84 +557,88 @@ order by a.seq
             'data_add_modalbank' => $this->addasset3($tbluser->user_id,'MODAL_BANK'),
             'data_add_jaminanpribadi' => $this->addasset4($tbluser->user_id,'JAMINAN_PRIBADI'),
             'edit_noedit' => 0,
-            'pos_page' => $kode4
+            'pos_page' => $kode4,
+            'data_photo' => $photo
+            
 
         ]);
 
 
     }
 
-    public function edit($kode, $kode3, $kode2, $kode4){
-    {
-        $user = $this->getuser();  // login pertama
+    
 
-        $id = $kode2;
-        // $id = 0;
-        $idx = $kode;
-        $idy = $kode3;
-        $tbluser = Tbluser::where('uid', '=', $id)->first();
-        if (!$tbluser){
-            $tbluser = new Tbluser;
-            $tbluser->user_id='';
-        }
+    // public function edit($kode, $kode3, $kode2, $kode4){
+    // {
+    //     $user = $this->getuser();  // login pertama
+
+    //     $id = $kode2;
+    //     // $id = 0;
+    //     $idx = $kode;
+    //     $idy = $kode3;
+    //     $tbluser = Tbluser::where('uid', '=', $id)->first();
+    //     if (!$tbluser){
+    //         $tbluser = new Tbluser;
+    //         $tbluser->user_id='';
+    //     }
         
-        $iduser = $tbluser->user_id; 
+    //     $iduser = $tbluser->user_id; 
         
        
-        $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
-        $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
+    //     $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
+    //     $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
 
-        $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
-        $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
-        $pilcompany = $kode;
-        $tabelarea_subagen = $this->tabelarea_subagen();
+    //     $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
+    //     $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
+    //     $pilcompany = $kode;
+    //     $tabelarea_subagen = $this->tabelarea_subagen();
         
 
-        // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
-        return view('menudetail',[
-            'idedit' => $iduser,
-            'user' => $user,
-            'tbluser' => $tbluser,
-            'pilcompany' => $pilcompany,
-            'id' => $id,
-            'idx' => $idx,
-            'idy' => $idy,
-            'tblagama' => $this->tblagama(),
-            'tbldarah' => $this->tbldarah(),
-            'tblmedsos' => $this->tblmedsos(),
-            'tblsex' => $this->tblsex(),
-            'tblstatus' => $this->tblstatus(),
-            'tblsekolah' => $this->tblsekolah(),
-            'tabelarea_subagen' => $tabelarea_subagen,
-            'data_additional' => $data_add,
-            'data_profile' => $usr_profile,
-            'tblpakan' => $this->tblpakan(),
-            'tabelstatus_usaha' => $this->tabelstatus_usaha(),
-            'tblhubkelga' => $this->tblhubkelga(),
-            'tblagenhubunganstatus' => $this->tblagenhubunganstatus(),
-            'tabelarea_usaha' => $this->tabelarea_usaha(),
-            // 'tblassetpribadi' => $this->tblassetpribadi(),
-            'tblbank' => $this->tblbank(),
-            'tbljudulbank' => $this->tbljudulbank(),
-            'tbljaminanpribadi' => $this->tbljaminanpribadi('JAMINAN_PRIBADI'),
-            'tblassetpribadi' => $this->tbljaminanpribadi('ASSET_PRIBADI'),
-            'tabelbentukusaha' => $this->tabelbentukusaha(),
-            'tabelbadanhukum' => $this->tabelbadanhukum(),
-            'data_add_asset' => $data_add_asset,
-            'data_add_modalsendiri' => $data_add_modalsendiri,
-            'data_add_modalbank' => $this->addasset3($tbluser->user_id,'MODAL_BANK'),
-            'data_add_jaminanpribadi' => $this->addasset4($tbluser->user_id,'JAMINAN_PRIBADI'),
-            'edit_noedit' => 1,
-            'pos_page' => $kode4
-        ]);
+    //     // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
+    //     return view('menudetail',[
+    //         'idedit' => $iduser,
+    //         'user' => $user,
+    //         'tbluser' => $tbluser,
+    //         'pilcompany' => $pilcompany,
+    //         'id' => $id,
+    //         'idx' => $idx,
+    //         'idy' => $idy,
+    //         'tblagama' => $this->tblagama(),
+    //         'tbldarah' => $this->tbldarah(),
+    //         'tblmedsos' => $this->tblmedsos(),
+    //         'tblsex' => $this->tblsex(),
+    //         'tblstatus' => $this->tblstatus(),
+    //         'tblsekolah' => $this->tblsekolah(),
+    //         'tabelarea_subagen' => $tabelarea_subagen,
+    //         'data_additional' => $data_add,
+    //         'data_profile' => $usr_profile,
+    //         'tblpakan' => $this->tblpakan(),
+    //         'tabelstatus_usaha' => $this->tabelstatus_usaha(),
+    //         'tblhubkelga' => $this->tblhubkelga(),
+    //         'tblagenhubunganstatus' => $this->tblagenhubunganstatus(),
+    //         'tabelarea_usaha' => $this->tabelarea_usaha(),
+    //         // 'tblassetpribadi' => $this->tblassetpribadi(),
+    //         'tblbank' => $this->tblbank(),
+    //         'tbljudulbank' => $this->tbljudulbank(),
+    //         'tbljaminanpribadi' => $this->tbljaminanpribadi('JAMINAN_PRIBADI'),
+    //         'tblassetpribadi' => $this->tbljaminanpribadi('ASSET_PRIBADI'),
+    //         'tabelbentukusaha' => $this->tabelbentukusaha(),
+    //         'tabelbadanhukum' => $this->tabelbadanhukum(),
+    //         'data_add_asset' => $data_add_asset,
+    //         'data_add_modalsendiri' => $data_add_modalsendiri,
+    //         'data_add_modalbank' => $this->addasset3($tbluser->user_id,'MODAL_BANK'),
+    //         'data_add_jaminanpribadi' => $this->addasset4($tbluser->user_id,'JAMINAN_PRIBADI'),
+    //         'edit_noedit' => 1,
+    //         'pos_page' => $kode4
+    //     ]);
 
 
-    }
-    }
+    // }
+    // }
 
 public function detailsave($id, Request $request){
 
-$dtadditional = Dtadditional::where('type','=','COMPANY')
+    $dtadditional = Dtadditional::where('type','=','COMPANY')
     ->where('info','=',$request->para2)->first();
     $para1 = $dtadditional->info3;
     $para2 = $dtadditional->info;
@@ -636,6 +653,12 @@ $dtadditional = Dtadditional::where('type','=','COMPANY')
     }
 
     
+    // print_r($request->filenames2);
+
+
+
+    
+    
     DB::beginTransaction();
     try {
         Usradditional::where('user_id', '=', $tbluser->user_id)
@@ -646,7 +669,6 @@ $dtadditional = Dtadditional::where('type','=','COMPANY')
         $tbluser->save();
 
         
-
 
         
 
@@ -669,6 +691,7 @@ $dtadditional = Dtadditional::where('type','=','COMPANY')
                 DB::table('tbl_userphoto')->where('user_id', '=', $tbluser->user_id)->update($form_data);
             }
         }
+        
 
         
 
@@ -1213,6 +1236,66 @@ $dtadditional = Dtadditional::where('type','=','COMPANY')
        
         DB::table('usr_additional')->where('user_id', '=', $tbluser->user_id)
         ->where('value7', '=', 'X')->delete();
+
+        Tbluserphotoadd::where('user_id', '=', $tbluser->user_id)
+        ->update(['flag' => 'X']);
+        
+        if ($request->idgambar){
+            $j=0;
+            $k=-1;
+            foreach($request->idgambar as $key => $values) {
+                $k++;
+                $var = 'filenames'.$values;
+                if ($request->hasfile($var)){
+                    $image_file = $request->files;
+                    $gambar = $request->file($var)->getClientOriginalName();
+                    $image = Image::make($request->file($var)->getRealPath());
+                    Response::make($image->encode('jpeg'));
+                    $form_data = array(
+                        'user_id' => $tbluser->user_id,
+                        'zimage' => $image,
+                        'seq'    => $values,
+                        'flag'    => null
+                    );
+                    Tbluserphotoadd::create($form_data);
+                } else {
+                    $form_data = array(
+                        'user_id' => $tbluser->user_id,
+                        'flag'    => null
+                    );
+                    DB::table('tbl_userphoto_add')
+                    ->where('user_id', '=', $tbluser->user_id)
+                    ->where('seq', '=', $values)
+                    ->update($form_data);
+    
+                }
+            }
+        }        
+        DB::table('tbl_userphoto_add')->where('user_id', '=', $tbluser->user_id)
+        ->where('flag', '=', 'X')->delete();
+        
+        // $datasort = Tbluserphotoadd::where('user_id', '=', $tbluser->user_id)
+        // ->orderby('seq', 'asc')
+        // ->get();
+        // $i=0;
+        // foreach ($datasort as $key => $value) {
+        //     $i++;
+        //     if ($value <> $i){
+        //         $form_data = array(
+        //             'seq' => $i
+        //         );
+        //         DB::table('tbl_userphoto_add')
+        //             ->where('id', '=', $value->$id)
+        //             ->update($form_data);
+        //     } 
+        // }
+
+
+
+
+
+
+
         DB::commit();
     } catch (\Exception $e) {
         DB::rollback();

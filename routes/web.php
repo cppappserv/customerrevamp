@@ -27,7 +27,7 @@ Route::post('/detailsave/{id}', 'CstdetailController@detailsave')->name('details
 
 
 Route::get('/storeimage/{id}', 'CstdetailController@storeimage')->name('storeimage');
-Route::get('/imagelogin/{id}', 'HomeController@storeimage')->name('storeimage');
+Route::get('/storeimageadd/{id}', 'CstdetailController@storeimageother')->name('storeimage');
 
 Route::get('/detail1/update/{id}', 'CstdetailController@update')->name('update');
 
