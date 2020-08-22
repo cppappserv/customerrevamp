@@ -63,6 +63,11 @@ if ($pos=0 or $pos=1){
 
 
 	<style type="text/css">
+	.dropdown-menu-lg {
+    /* max-width: 300px; */
+    /* min-width: 280px; */
+    /* padding: 0; */
+}
 			/* input[type=file]{
         display: inline;
 		  opacity:0 
@@ -526,7 +531,7 @@ if ($pos=0 or $pos=1){
 }
   </style>
 
-	<script>
+	<!-- <script>
 		$(document).ready(function(){
 			$("#pil1").click(function(){
 				$("pil1").show();
@@ -652,7 +657,7 @@ if ($pos=0 or $pos=1){
 			});
 
 		});
-	</script>
+	</script> -->
 
 </head>
 <body>
@@ -675,23 +680,8 @@ if ($pos=0 or $pos=1){
 			<li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
 				<a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
 			</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-			<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-				<span id="fon_24_wh">{{$user->fullname}}</span>
-				<div class="image" style="
-					margin-right: 59px;
-					margin-left: 10px;
-				">
-				<!-- <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image"> -->
-						<img src="/storeimage/{{ $user->user_id }}" width="50" height="50" class="imglogin"
-							style="
-								width: 60px;
-								height: 60px;"
-						>
-				</div>
-			</div>
 		</ul>
+		@include('layouts.logo')
 		<div class="atas1">
 			<div class="card-body">
 				<div class="row" id="case1"> 
@@ -825,7 +815,7 @@ if ($pos=0 or $pos=1){
 				$inputheadgrp              = $data_profile->headgrp;
 			// }
 			?>
-			
+
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
@@ -3687,7 +3677,18 @@ if ($pos=0 or $pos=1){
 		}
 	</script>
 
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
 
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
 
+	
 </body>
 </html>

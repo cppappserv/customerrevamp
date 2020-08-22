@@ -18,6 +18,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style id="applicationStylesheet" type="text/css">
+  .dropdown-menu-lg {
+    /* max-width: 300px; */
+    /* min-width: 280px; */
+    /* padding: 0; */
+}
   .imglogin {
 		border-radius: 50%;
 	}
@@ -202,7 +207,7 @@ $total = 134;
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
-style="
+  style="
       margin-left: 0px;
       position: fixed;
       background-color: rgba(43,185,201,1);
@@ -213,7 +218,7 @@ style="
       /* z-index:0; */
     ">
    <!-- Left navbar links -->
-   <td>
+   
    <ul class="navbar-nav">
    
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis" >
@@ -222,24 +227,8 @@ style="
       <li class="nav-item d-none d-sm-inline-block" >
          <a href="#" class="nav-link atas" id="fon_28_wh">{{$pilcompany}}</a>
       </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-          <span id="fon_28_wh">{{$user->fullname}}</span>
-          <div class="image" style="
-            margin-right: 59px;
-            margin-left: 10px;
-          ">
-            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
-              class="imglogin"
-							style="
-								width: 60px;
-								height: 60px;"
-						>
-          </div>
-        </div>
     </ul>
-    </td>
+    @include('layouts.logo')
 </nav>
 <!-- /.navbar -->
 

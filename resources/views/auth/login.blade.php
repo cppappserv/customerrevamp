@@ -2980,7 +2980,7 @@ window.application = new Application();
 	<div id="Google_sign_in_Low_Res" class="Google_sign_in__Low_Res_">
   <form action="{{ route('login') }}" method="post">
     @csrf
-    <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <!-- <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
     <input type="text" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required autocomplete="current-password">
 
 		<div class="form-group row mb-0">
@@ -2991,7 +2991,14 @@ window.application = new Application();
 
                                
                             </div>
-                        </div>
+                        </div> -->
+
+												<input type="hidden" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <input type="hidden" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required autocomplete="current-password">
+
+		<a href="{{ route('login.provider', 'google') }}"><img id="Google_sign_in_Low_Res_bp" src="{{asset('image/Google_sign_in_Low_Res_bp.png')}}" srcset="{{asset('image/Google_sign_in_Low_Res_bp.png')}} 1x, {{asset('image/Google_sign_in_Low_Res_bp@2x.png')}} 2x">
+    <!-- /dashboard1 -->
+		</a>
     </form>
 	</div>
 	<svg class="Line_1" viewBox="0 0 320 3">

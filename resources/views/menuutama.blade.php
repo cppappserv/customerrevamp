@@ -29,6 +29,11 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <style id="applicationStylesheet" type="text/css">
+  .dropdown-menu-lg {
+    /* max-width: 300px; */
+    /* min-width: 280px; */
+    /* padding: 0; */
+}
   .imglogin {
 		border-radius: 50%;
 	}
@@ -196,6 +201,11 @@
       left: 20px;
       top: 80px;
     }
+    .dropdown-menu-lg {
+        /* max-width: 300px; */
+        /* min-width: 280px; */
+        /* padding: 0; */
+    }
   </style>
   
 </head>
@@ -225,22 +235,7 @@
     </ul>
 
     
-    <ul class="navbar-nav ml-auto">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-          <span style="color: white;font-size: 28px;">{{$user->fullname}}</span>
-          <div class="image" style="
-            margin-right: 59px;
-            margin-left: 10px;
-          ">
-            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
-            class="imglogin"
-							style="
-								width: 60px;
-								height: 60px;"
-						>
-          </div>
-        </div>
-    </ul>
+    @include('layouts.logo')
     <svg class="Rectangle_241_bv">
       <rect id="Rectangle_241_bv" rx="10" ry="10" x="0" y="0" width="125" height="19">
       </rect>

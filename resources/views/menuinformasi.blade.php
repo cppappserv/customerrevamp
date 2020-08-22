@@ -27,6 +27,11 @@ $hitam = "rgba(84,84,84,1)";
   @include('include.incdetail1')
   
   <style id="applicationStylesheet" type="text/css">
+  .dropdown-menu-lg {
+    /* max-width: 300px; */
+    /* min-width: 280px; */
+    /* padding: 0; */
+}
   .imglogin {
 		border-radius: 50%;
 	}
@@ -388,23 +393,8 @@ style="margin-left: 0px;">
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
          <a href="#" class="nav-link atas" id="fon_28_wh">User Profile</a>
       </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="top: 20px;height: 75px;">
-         <span id="fon_28_wh">{{$user->fullname}}</span>
-         <div class="image" style="
-            margin-right: 59px;
-            margin-left: 10px;
-         ">
-            <img src="/storeimage/{{ $user->user_id }}" width="50" height="50"
-            class="imglogin"
-							style="
-								width: 60px;
-								height: 60px;"
-						>
-         </div>
-      </div>
    </ul>
+   @include('layouts.logo')
    
 </nav>
 
