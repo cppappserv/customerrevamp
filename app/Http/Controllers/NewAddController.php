@@ -333,5 +333,12 @@ class NewAddController extends Controller
       ->pluck('infox','info');
       // ->select('info2','info');
     return response()->json($data); 
-   }    
+   }   
+   
+   public function getrec($id){
+      $data = Tbluser::where('company','=',$id)
+      ->count();
+      // ->select('info2','info');
+    return response()->json($data); 
+   }   
 }

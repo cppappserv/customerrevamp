@@ -98,7 +98,7 @@ $hitam = "rgba(84,84,84,1)";
 
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
-style="margin-left: 0px;">
+	style="margin-left: 0px;">
    <!-- Left navbar links -->
    <!-- <div class="atas"> -->
       <ul class="navbar-nav">
@@ -120,7 +120,56 @@ style="margin-left: 0px;">
 
   <!-- Main Sidebar Container -->
 <div class="wrapper awal" style="position: relative;">
-   
+
+		<div class="modal fade" id="modal-default">
+			<div class="modal-dialog">
+				<div class="modal-content bg-default">
+					<!-- <div class="modal-header">
+						<h4 class="modal-title">default Modal</h4>
+					</div> -->
+					<div class="modal-body">
+						<form method="post" action="/export_excel" enctype="multipart/form-data">
+            {{ csrf_field() }}
+						<div class="col-md-12">
+							<div class="form-group row">
+								<label for="inputalmtktp" class="col-sm-3 col-form-label">Bussines Unit</label>
+								<div class="col-sm-9">
+									<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbu" name="inputbu" > 
+										<option value="">-- Select --</option>
+										<?php 
+										foreach ($databu as $key => $value) {
+										?>
+											<option value="{{$value->objname}}">{{$value->desc}}</option>
+										<?php
+										}
+										?>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputalmtktp" class="col-sm-3 col-form-label">Company</label>
+								<div class="col-sm-9">
+									<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputcompany" name="inputcompany" > 
+											<option value="">-- Select --</option>
+									</select>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="modal-footer justify-content-between"  id="showexcel" style="display:none;background:rgba(0,167,110,1);" >
+						<!-- <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button> -->
+						<!-- <span type="submit" id="showinfo" style="width:100%;background:rgba(0,167,110,1);color:white;text-align: center;font-size:28px" onclick="prsexcel()" >Download Data to Excel</span> -->
+						<button type="submit" id="showinfo" class="btn btn-primary">Import</button>
+					</div>
+					</form>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
 
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper" style="/* min-height: 320.012px; */background: white;">
@@ -161,7 +210,8 @@ style="margin-left: 0px;">
 				</a>
 			</div>
 
-   <div onclick="application.showOverlay(event,'ID0302_Download_Data_to_Excel',0,0)" id="Group_732_cg" style="
+<!-- <a href="/download" id="Group_732_cg" style=" -->
+   <div onclick="downloadmodal()" id="Group_732_cg" style="
     top: 237px;
     left: 0px;
 ">
@@ -275,6 +325,7 @@ style="margin-left: 0px;">
 			</div>
 		</div>
 	</div>
+	<!-- </a> -->
 
    <div onclick="application.goToTargetView(event)" id="Group_734_cid" style="top:110px;">
 		<svg class="Rectangle_519_cie">
@@ -359,6 +410,60 @@ style="margin-left: 0px;">
 <!-- page script -->
 <script>
 
+function downloadmodal() {
+	$("#modal-default").modal("show")
+}
+</script>
+
+<script type="text/javascript">
+   $(function() {
+      $('select[name=inputbu]').change(function() {
+         var stateID = $(this).val();
+         if(stateID) {
+            $.ajax({
+               url: '/getmsg5/'+stateID,
+               type: "GET",
+               dataType: "json",
+               success:function(data) {
+                  if(data){
+                     $("#inputcompany").empty();
+                     $("#inputcompany").append('<option>--- Select Company ---</option>');
+                     $.each(data,function(key,value){
+                           $("#inputcompany").append('<option value="'+key+'">'+value+'</option>');
+                     });
+                  }
+                  
+               }
+            });
+         }
+      });
+    });
+</script>
+
+<script type="text/javascript">
+   $(function() {
+      $('select[name=inputcompany]').change(function() {
+         var stateID = $(this).val();
+         if(stateID) {
+            $.ajax({
+               url: '/getrec/'+stateID,
+               type: "GET",
+               dataType: "json",
+               success:function(data) {
+                  if(data > 0){
+										$('#showexcel').show();
+                    $("#showinfo").html('Download Data to Excel ('+data+' Customer)');
+                  }
+               }
+            });
+         }
+      });
+    });
+
+		function prsexcel(){
+			
+		}
+</script>
 
 </body>
 </html>

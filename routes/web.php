@@ -33,9 +33,13 @@ Route::get('/detail1/update/{id}', 'CstdetailController@update')->name('update')
 
 Route::delete('applicant_delete_modal', 'CstdetailController@destroy')->name('applicant_delete');
 Route::get('/setting1', 'CstsettingController@index')->name('setting1');
+Route::post('/export_excel', 'CstsettingController@export_excel')->name('export_excel');
+
 Route::get('/upload1', 'CstuploadController@index')->name('upload');
 Route::post('/uploadexcel', 'CstuploadController@uploadexcel')->name('uploadexcel');
 Route::post('/prosesdata', 'CstuploadController@prosesexcel')->name('prosesexcel');
+
+Route::get('/download', 'CstuploadController@index')->name('download');
 
 
 
@@ -49,6 +53,10 @@ Route::get("/getmsg2/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@asset
 Route::get("/getmsg3/{id}/{id2}","NewAddController@inputinfomasi");
 Route::get("/getmsg4","NewAddController@inputinfomasinew");
 Route::get('/getmsg5/{id}', 'NewAddController@getcompany');
+Route::get('/getrec/{id}', 'NewAddController@getrec');
+
+
+
 Route::get("/addmore","ArrayController@addMore");
 Route::post("/addmore","ArrayController@addMorePost"); 
 
