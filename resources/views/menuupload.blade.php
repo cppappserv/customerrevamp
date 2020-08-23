@@ -53,7 +53,7 @@ $hitam = "rgba(84,84,84,1)";
    .atas{
       position: fixed;
       width: 100%;
-      height: 70px;
+      height: 100px;
       background: rgba(43,185,201,1);
    }
    .atas1{
@@ -321,7 +321,7 @@ $hitam = "rgba(84,84,84,1)";
 
   <!-- Main Sidebar Container -->
 	<div class="wrapper awal" style="
-    top: 75px;
+    top: 100px;
     left: 1%;
     width: 98%;
     
@@ -398,7 +398,8 @@ $hitam = "rgba(84,84,84,1)";
 									<div class="card-header">
 										<h3 class="card-title font36">Upload Customer</h3>
                               <div class="card-tools">
-                                 <button type="button" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(245,180,67,1);">History</button>
+                                 <button type="button" onclick="pdisp(1)" id="Hist" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(245,180,67,1);">History</button>
+                                 <button type="button" onclick="pdisp(2)" id="backHist" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(245,180,67,1);display:none">Back to Upload</button>
 										</div>
                               <div class="card-tools">
                                  <button type="button" id="button" class="btn btn-block btn-primary btn-lg button_proses" style="background: rgba(15,199,89,1);" 
@@ -416,7 +417,7 @@ $hitam = "rgba(84,84,84,1)";
                                  </rect>
                               </svg>
                               </div>
-                           <div class="card-body">
+                           <div class="card-body" id="tableact" style="display:block">
                               <table id="example2" class="table table-bordered table-hover">
                                  <thead>
                                  <tr style="background: rgba(60,141,188,1);
@@ -451,6 +452,47 @@ $hitam = "rgba(84,84,84,1)";
                                  </tbody>
                                  
                               </table>
+
+                              
+                           </div>
+
+                           <div class="card-body" id="tablehist" style="display:none">
+                              <table id="example3" class="table table-bordered table-hover">
+                                 <thead>
+                                 <tr style="background: rgba(60,141,188,1);
+                                    color: white;
+                                    text-align: center;
+                                    font-family: Roboto;">
+                                    <th>No</th>
+                                    <th>File Name</th>
+                                    <th>Status</th>
+                                    <th>Upload Time</th>
+                                    <th>Process Time</th>
+                                    <th>Total Row</th>
+                                    <th>User</th>
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 <?php
+                                 foreach ($fileuploadh as $key => $value) {
+                                 ?>   
+                                 <tr>
+                                    <td>{{$value->urut}} </td>
+                                    <td>{{$value->filename}}</td>
+                                    <td>{{$value->status}}</td>
+                                    <td>{{$value->uploadtime}}</td>
+                                    <td>{{$value->processtime}}</td>
+                                    <td>{{$value->totalrow}}</td>
+                                    <td>{{$value->user}}</td>
+                                 </tr>
+                                 <?php
+                                 }
+                                 ?>
+                                 </tbody>
+                                 
+                              </table>
+
+                              
                            </div>
 
 
@@ -496,8 +538,47 @@ $(function () {
       "info": true,
       "autoWidth": false,
     });
+
+    $('#example3').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+    });
   });
 </script>
+
+<script type="text/javascript">
+   function pdisp(i){
+      if(i==1){
+         // document.getElementById("backHist").style.display="block";
+         // document.getElementById("button").style.display="none";
+         // document.getElementById("Hist").style.display="none";
+
+         $('#backHist').show()
+         $('#button').hide()
+         $('#Hist').hide()
+
+         $('#tableact').hide()
+         $('#tablehist').show()
+      } else {
+         // document.getElementById("backHist").style.display="none";
+         // document.getElementById("button").style.display="block";
+         // document.getElementById("Hist").style.display="block";
+         $('#backHist').hide()
+         $('#button').show()
+         $('#Hist').show()
+
+
+         $('#tablehist').hide()
+         $('#tableact').show()
+      }
+   }
+</script>
+
+
 <?php 
 if ($max > 0){
 ?>

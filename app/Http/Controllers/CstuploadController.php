@@ -117,32 +117,54 @@ class CstuploadController extends Controller
         redirect("/upload1");
     }
 
-    public function index()
-    {
-        $user = $this->getuser();
-        $fileupload = $this->fileupload();
-        $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
-
-        $tbllog = DB::table('tbl_log as a')
+    public function callh($var){
+        $tbllogh = DB::table('tbl_log as a')
             ->join('tbluser as b', function($join){
             $join->on('b.uid', '=', 'a.fid' );
         })
         ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
         'a.etime as processtime','a.row as totalrow','b.fullname as user')
         ->get();
+        return $tbllogh;
+    }
+
+    public function calln($var)
+    {
+        $now = Carbon::now();
+        $tbllog = DB::table('tbl_log as a')
+            ->join('tbluser as b', function($join){
+            $join->on('b.uid', '=', 'a.fid' );
+        })
+        ->where('upltime', '=', $now->format('Y-m-d'))
+        ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
+        'a.etime as processtime','a.row as totalrow','b.fullname as user')
+        ->orderby('a.upltime', 'desc')
+        ->limit(1)
+        ->get();
+        return $tbllog;
+    }
+
+    public function index()
+    {
+        
+        $user = $this->getuser();
+        $fileupload = $this->fileupload();
+        $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
+        
+        $tbllog = $this->calln($user->user_id);
+        $tbllogh = $this->callh($user->user_id);
+        
         $i=0;
         foreach ($tbllog as $key => $value) {
             $i++;
             $value->urut = $i;
         }
-        // dd($tbllog);
-        
-      
-      return view('menuupload',[
-          'user' => $user,
-          'fileupload' => $tbllog,
-          'data_upload' => $data_upload
-      ]);
+        return view('menuupload',[
+            'user' => $user,
+            'fileupload' => $tbllog,
+            'data_upload' => $data_upload,
+            'fileuploadh' => $tbllogh
+        ]);
     }
 
     public function uploadexcel(Request $request)
@@ -168,7 +190,7 @@ class CstuploadController extends Controller
 		// notifikasi dengan session
         
         $user = $this->getuser();
-        $fileupload = $this->fileupload();
+        // $fileupload = $this->fileupload();
         $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
         $now = Carbon::now();
         $tbllog = new Tbllog;
@@ -186,25 +208,28 @@ class CstuploadController extends Controller
         $tbllog->log = null;
         $tbllog->save();
 
-        $tbllog = DB::table('tbl_log as a')
-            ->join('tbluser as b', function($join){
-            $join->on('b.uid', '=', 'a.fid' );
-            // $join->on('b.bukrs', '=', 'a.company_code');
-         })
-        ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
-        'a.etime as processtime','a.row as totalrow','b.fullname as user')
-        ->get();
+        // $tbllog = DB::table('tbl_log as a')
+        //     ->join('tbluser as b', function($join){
+        //     $join->on('b.uid', '=', 'a.fid' );
+        //     // $join->on('b.bukrs', '=', 'a.company_code');
+        //  })
+        // ->select('a.id as urut', 'a.filename', 'a.stat as status', 'a.upltime as uploadtime',
+        // 'a.etime as processtime','a.row as totalrow','b.fullname as user')
+        // ->get();
+        $tbllog = $this->calln($user->user_id);
         $i=0;
          foreach ($tbllog as $key => $value) {
             $i++;
             $value->urut = $i;
          }
+         $tbllogh = $this->callh($user->user_id);
 
       
         return view('menuupload',[
             'user' => $user,
             'fileupload' => $tbllog,
-            'data_upload' => $data_upload
+            'data_upload' => $data_upload,
+            'fileuploadh' => $tbllogh
         ]);
  
         $txt='
