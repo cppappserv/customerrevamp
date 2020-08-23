@@ -531,133 +531,7 @@ if ($pos=0 or $pos=1){
 }
   </style>
 
-	<!-- <script>
-		$(document).ready(function(){
-			$("#pil1").click(function(){
-				$("pil1").show();
-				$("pil2").hide();
-				$("pil3").hide();
-				$("pil4").hide();
-				$("pil5").hide();
-				$("pil11").show();
-				$("pil12").show();
-				$("pil13").show();
-				$("pil14").show();
-				$("pil15").show();
-			});
-			$("#pil2").click(function(){
-				$("pil1").hide();
-				$("pil2").show();
-				$("pil3").hide();
-				$("pil4").hide();
-				$("pil5").hide();
-				$("pil11").show();
-				$("pil12").hide();
-				$("pil13").show();
-				$("pil14").show();
-				$("pil15").show();
-			});
-			$("#pil3").click(function(){
-				$("pil1").hide();
-				$("pil2").hide();
-				$("pil3").show();
-				$("pil4").hide();
-				$("pil5").hide();
-				$("pil11").show();
-				$("pil12").show();
-				$("pil13").hide();
-				$("pil14").show();
-				$("pil15").show();
-			});
-			$("#pil4").click(function(){
-				$("pil1").hide();
-				$("pil2").hide();
-				$("pil3").hide();
-				$("pil4").show();
-				$("pil5").hide();
-				$("pil11").show();
-				$("pil12").show();
-				$("pil13").show();
-				$("pil14").hide();
-				$("pil15").show();
-			});
-			$("#pil5").click(function(){
-				$("pil1").hide();
-				$("pil2").hide();
-				$("pil3").hide();
-				$("pil4").hide();
-				$("pil5").show();
-				$("pil11").show();
-				$("pil12").show();
-				$("pil13").show();
-				$("pil14").show();
-				$("pil15").hide();
-			});
-
-
-			$("#pil11").click(function(){
-				$("pil1").hide();
-				$("pil2").show();
-				$("pil3").show();
-				$("pil4").show();
-				$("pil5").show();
-				$("pil11").show();
-				$("pil12").hide();
-				$("pil13").hide();
-				$("pil14").hide();
-				$("pil15").hide();
-			});
-			$("#pil12").click(function(){
-				$("pil1").show();
-				$("pil2").hide();
-				$("pil3").show();
-				$("pil4").show();
-				$("pil5").show();
-				$("pil11").hide();
-				$("pil12").show();
-				$("pil13").hide();
-				$("pil14").hide();
-				$("pil15").hide();
-			});
-			$("#pil13").click(function(){
-				$("pil1").show();
-				$("pil2").show();
-				$("pil3").hide();
-				$("pil4").show();
-				$("pil5").show();
-				$("pil11").hide();
-				$("pil12").hide();
-				$("pil13").show();
-				$("pil14").hide();
-				$("pil15").hide();
-			});
-			$("#pil14").click(function(){
-				$("pil1").show();
-				$("pil2").show();
-				$("pil3").show();
-				$("pil4").hide();
-				$("pil5").show();
-				$("pil11").hide();
-				$("pil12").hide();
-				$("pil13").hide();
-				$("pil14").show();
-				$("pil15").hide();
-			});
-			$("#pil15").click(function(){
-				$("pil1").show();
-				$("pil2").show();
-				$("pil3").show();
-				$("pil4").show();
-				$("pil5").hide();
-				$("pil11").hide();
-				$("pil12").hide();
-				$("pil13").hide();
-				$("pil14").hide();
-				$("pil15").show();
-			});
-
-		});
-	</script> -->
+	
 
 </head>
 <body>
@@ -690,32 +564,32 @@ if ($pos=0 or $pos=1){
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
-								<button class="form-control cmd" id="pil1" onclick="myFunction(1)">Data Pribadi</button>
-								<button class="form-control cmd2 collapse" id="pil11" onclick="myFunction(1)">Data Pribadi</button>
+								<!-- <button class="form-control cmd" id="pil1" onclick="myFunction(1)">Data Pribadi</button> -->
+								<button class="form-control cmd2 " id="pil1" onclick="myFunction(1)">Data Pribadi</button>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
-								<button class="form-control cmd" id="pil12" onclick="myFunction(2)">Data Usaha</button>
-								<button class="form-control cmd2 collapse" id="pil2" onclick="myFunction(2)">Data Usaha</button>
+								<button class="form-control cmd" id="pil2" onclick="myFunction(2)">Data Usaha</button>
+								<!-- <button class="form-control cmd2 collapse" id="pil2" onclick="myFunction(2)">Data Usaha</button> -->
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
-								<button class="form-control cmd" id="pil13" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
-								<button class="form-control cmd2 collapse" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
+								<button class="form-control cmd" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
+								<!-- <button class="form-control cmd2 collapse" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button> -->
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
-							<button class="form-control cmd" id="pil14" onclick="myFunction(4)">Data Jaminan</button>
-								<button class="form-control cmd2 collapse" id="pil4" onclick="myFunction(4)">Data Jaminan</button>
+							<button class="form-control cmd" id="pil4" onclick="myFunction(4)">Data Jaminan</button>
+								<!-- <button class="form-control cmd2 collapse" id="pil4" onclick="myFunction(4)">Data Jaminan</button> -->
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
-						<button class="form-control cmd" id="pil15" onclick="myFunction(5)">Karakteristik</button>
-								<button class="form-control cmd2 collapse" id="pil5" onclick="myFunction(5)">Karakteristik</button>
+						<button class="form-control cmd" id="pil5" onclick="myFunction(5)">Karakteristik</button>
+								<!-- <button class="form-control cmd2 collapse" id="pil5" onclick="myFunction(5)">Karakteristik</button> -->
 						</div>
 					</div>
 					<div class="col-md-1">
@@ -727,7 +601,7 @@ if ($pos=0 or $pos=1){
 	<!-- Main Sidebar Container -->
 	<div class="formwrapper awal" style="
 		position: relative;">
-			<?php 
+			<?php
 				$inputuid           = $tbluser->uid;
 				$inputuser_id       = $tbluser->user_id; 
 				$inputpassword      = $tbluser->password; 
@@ -770,6 +644,7 @@ if ($pos=0 or $pos=1){
 				// foreach ($usr_profile as $key => $profile) {
 				// $inputuser_id              = $data_profile->user_id; 
 				$inputkodesap              = $data_profile->kodesap; 
+
 				$inputnoktp                = $data_profile->noktp; 
 				$inputalmtktp              = $data_profile->almtktp; 
 				$inputkelktp               = $data_profile->kelktp; 
@@ -821,6 +696,8 @@ if ($pos=0 or $pos=1){
 				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
 				<input type="hidden" id="para2" name="para2" value="{{$idy}}">
 				<input type="hidden" id="para3" name="para3" value="{{$id}}">
+				<input type="hidden" id="pos_page" name="pos_page" value="{{$pos_page}}">
+				
 			
 				<div class="card-body">
 					<ul class="nav nav-tabs" id="custom-content-below-tab" style="display: none;"role="tablist">
@@ -3659,20 +3536,33 @@ if ($pos=0 or $pos=1){
 
 
 		
-
+		$('#rowsstatususaha'+button_id)
 		function myFunction(id) {
+			document.getElementById("pos_page").value = id;
+			for (let i = 1; i < 6; i++) {
+				if(i==id){
+					$('#pil'+i).css('border', 'none');
+					$('#pil'+i).css('background-color', 'rgba(207,161,62,1)');
+					$('#pil'+i).css('color', 'white');
+				} else {
+					$('#pil'+i).css('border', 'none');
+					$('#pil'+i).css('background-color', 'white');
+					$('#pil'+i).css('color', 'black');
+				}
+			}
 			
-			if (id == 1){
-				$("#custom-content-below-settings-tab-1").click();
-			} else if (id == 2){
-				$("#custom-content-below-settings-tab-2").click();
-			} else if (id == 3){
-				$("#custom-content-below-settings-tab-3").click();
-			} else if (id == 4){
-				$("#custom-content-below-settings-tab-4").click();
-			} else if (id == 5){
-				$("#custom-content-below-settings-tab-5").click();
-			} 
+			$('#custom-content-below-settings-tab-'+id).click();
+			// if (id == 1){
+			// 	$("#custom-content-below-settings-tab-1").click();
+			// } else if (id == 2){
+			// 	$("#custom-content-below-settings-tab-2").click();
+			// } else if (id == 3){
+			// 	$("#custom-content-below-settings-tab-3").click();
+			// } else if (id == 4){
+			// 	$("#custom-content-below-settings-tab-4").click();
+			// } else if (id == 5){
+			// 	$("#custom-content-below-settings-tab-5").click();
+			// } 
 	
 		}
 	</script>
