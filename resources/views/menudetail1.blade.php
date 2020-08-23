@@ -26,7 +26,7 @@ if ($pos=0 or $pos=1){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laravel 5.7 Autocomplete Search using Bootstrap Typeahead JS - ItSolutionStuff.com</title>
+	<title>Customer</title>
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
