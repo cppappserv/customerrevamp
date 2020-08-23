@@ -8,7 +8,7 @@ $hitam = "rgba(84,84,84,1)";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Customer</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -53,7 +53,7 @@ $hitam = "rgba(84,84,84,1)";
    }
 	 #fon_28_wh{
       color: white;
-      font-size:24px;
+      font-size:28px;
    }
    .awal{
       top:25px;
