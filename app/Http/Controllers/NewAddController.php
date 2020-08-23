@@ -158,7 +158,7 @@ class NewAddController extends Controller
             <label for="inputuserid" class="col-sm-3 col-form-label">User ID</label>
             <div class="col-sm-9">
                <div class="input-group">
-                  <input type="text" class="form-control" id="inputuserid" name="inputuserid" value="'.$tbluser->user_id.'" onblur="cekinputan()">
+                  <input type="text" class="form-control" id="inputuserid" name="inputuserid" value="'.$tbluser->user_id.'" onblur="cekinputan()" readonly>
                   <input type="hidden" id="inputbaris" name="inputbaris" value="'.$id2.'">
                   <input type="hidden" id="inputuid" name="inputuid" value="'.$tbluser->uid.'">
                   <input type="hidden" id="inputbaru" name="inputbaru" value="1">

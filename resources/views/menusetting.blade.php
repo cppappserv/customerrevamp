@@ -162,7 +162,7 @@ $hitam = "rgba(84,84,84,1)";
 					<div class="modal-footer justify-content-between"  id="showexcel" style="display:none;background:rgba(0,167,110,1);" >
 						<!-- <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button> -->
 						<!-- <span type="submit" id="showinfo" style="width:100%;background:rgba(0,167,110,1);color:white;text-align: center;font-size:28px" onclick="prsexcel()" >Download Data to Excel</span> -->
-						<button type="submit" id="showinfo" class="btn btn-primary">Import</button>
+						<button type="submit" id="showinfo" style="width:100%;background:rgba(0,167,110,1);color:white;text-align: center;font-size:26px" class="btn btn-primary">Import</button>
 					</div>
 					</form>
 				</div>
