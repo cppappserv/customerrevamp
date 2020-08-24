@@ -2965,9 +2965,15 @@ var Application = function() {
 window.application = new Application();
 </script>
 </head>
-<body>
+<body style="margin-left:10%">
 <div id="ID0101_Login_1">
-	<img onclick="application.goToTargetView(event)" id="ON_DUTY" src="{{asset('image/ON_DUTY.png')}}" srcset="{{asset('image/ON_DUTY.png')}} 1x, {{asset('image/ON_DUTY@2x.png')}} 2x">
+<div class="w3-content w3-section" style="max-width:1340px">
+  <img class="mySlides" src="{{asset('image/ON_DUTY.png')}}" style="width:100%">
+  <img class="mySlides" src="{{asset('image/IMG_2268.png')}}" style="width:100%">
+  
+</div>
+
+	<!-- <img onclick="application.goToTargetView(event)" id="ON_DUTY" src="{{asset('image/ON_DUTY.png')}}" srcset="{{asset('image/ON_DUTY.png')}} 1x, {{asset('image/ON_DUTY@2x.png')}} 2x"> -->
 	<svg class="Path_120" viewBox="0 0 465.698 767.545">
 		<path id="Path_120" d="M 0 0 L 465.6977844238281 0 L 465.6977844238281 767.5454711914063 L 0 767.5454711914063 L 0 0 Z">
 		</path>
@@ -3006,6 +3012,23 @@ window.application = new Application();
 		</path>
 	</svg>
 </div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 8000); // Change image every 2 seconds
+}
+</script>
 </body>
 </html>
 
