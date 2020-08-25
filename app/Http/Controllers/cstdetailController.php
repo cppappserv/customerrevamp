@@ -683,7 +683,6 @@ public function detailsave($id, Request $request){
 
 
     
-    
     DB::beginTransaction();
     try {
         if($id==0){
@@ -691,6 +690,7 @@ public function detailsave($id, Request $request){
             $tbluser->user_id = $request->inputuserid;
             $tbluser->company = $dtadditional->info;
             $tbluser->branch  = $dtadditional->desc;
+            $tbluser->password  = "123";
         } else {
             $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
         }
@@ -698,7 +698,7 @@ public function detailsave($id, Request $request){
         $tbluser->birthdate = $request->inputbirthdate;
         $tbluser->birthplace = $request->inputbirthplace;
         $tbluser->save();
-
+        
         // Usradditional::where('user_id', '=', $tbluser->user_id)
         // ->update(['value7' => 'X']);
 
@@ -775,9 +775,9 @@ public function detailsave($id, Request $request){
         // ->where('type','=','DATA_KELUARGA')->delete(); 
         // db::commit();       
 
-        $namapsgn      = ""; 
-        $tmptlhrpsgn   = ""; 
-        $tgllhrpsgn    = ""; 
+        $namapsgn      = null; 
+        $tmptlhrpsgn   = null; 
+        $tgllhrpsgn    = null; 
         
         $j=0;
         $k=-1;
