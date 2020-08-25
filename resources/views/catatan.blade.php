@@ -24,6 +24,7 @@
     info5 = ?
 
 3.  update tbluser set company = '12345'  (tergantung user ada di area mana)
+    change structure company dari 5 menjadi 20
 4.  tbl_userimage add field zimage type blob
     Penamambaan record user_id = -123 zimage = image kosong
 5.  add tabel baru (untuk latihan)

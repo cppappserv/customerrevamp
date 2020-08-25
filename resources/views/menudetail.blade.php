@@ -4,7 +4,9 @@ $hitam = "rgba(84,84,84,1)";
 if ($idedit == "0"){
 	$stsedit = "";
 	$stssave = 'style="display:block"';
+	$tomboladd = "";
 } else {
+	$tomboladd = "display:none;";
 	if($edit_noedit == 0){
 		$stsedit = "disabled";
 		$stssave = 'style="display:none"';
@@ -1261,7 +1263,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 										<div class="form-group row ">
 											<div class="col-sm-12">
-												<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
+												<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
 											</div>
 										</div>
 									</div>
@@ -1434,7 +1436,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -1647,7 +1649,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -1895,7 +1897,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none" name="addmedsosush" id="addmedsosush" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmedsosush" id="addmedsosush" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2010,7 +2012,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2149,7 +2151,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2239,7 +2241,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
 										</div>
 									</div>
 								</div>
@@ -2316,7 +2318,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
+													<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
 												</div>
 											</div>
 										</div>
@@ -2410,7 +2412,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" khususinput2="yes" style="display:none;"> 
+													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" khususinput2="yes" style="{{$tomboladd}}"> 
 													<option value="">Add</option>
 													<?php 
 													foreach ($tblassetpribadi as $key => $value) {
@@ -2548,7 +2550,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<button type="button" khususinput2='yes' style="height:50px;width:50px;display:none;" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
+													<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
 												</div>
 											</div>
 										</div>
@@ -2645,7 +2647,7 @@ if ($pos=0 or $pos=1){
 									<div class="form-group row ">
 										<div class="col-sm-12">
 
-											<select class="btn btn-success" id="addjaminan" name="addjaminan" style="display:none" khususinput2="yes"> 
+											<select class="btn btn-success" id="addjaminan" name="addjaminan" style="{{$tomboladd}}" khususinput2="yes"> 
 											<option value="">Add</option>
 											<?php 
 											foreach ($tbljaminanpribadi as $key => $value) {
@@ -2750,7 +2752,7 @@ if ($pos=0 or $pos=1){
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button"  style="height:50px;width:50px;display:none" name="addphoto" id="addphoto" class="btn btn-success" khususinput2="yes">Add</button>
+											<button type="button"  style="height:50px;width:50px;{{$tomboladd}}" name="addphoto" id="addphoto" class="btn btn-success" khususinput2="yes">Add</button>
 										</div>
 									</div>
 								</div>
