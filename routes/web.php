@@ -12,7 +12,7 @@
 */
 
 Auth::routes(['register' => true]);
-Route::get('/logout', 'HomeController@logout');
+Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/company1/{id}', 'CstcompanyController@index')->name('company1');

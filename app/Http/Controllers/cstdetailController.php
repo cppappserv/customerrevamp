@@ -510,7 +510,11 @@ order by a.seq
         ->where('info3', '=', $kode)
         ->select('info2')
         ->first();
-        
+        if(!$idcusto){
+            $idcustokd = 'CKK'; 
+        } else {
+            $idcustokd = $idcusto->info2;
+        }
         // $id = 0;
         $idx = $kode;
         $idy = $kode3;
@@ -538,7 +542,7 @@ order by a.seq
 
 
         return view('menudetail',[
-            'idcusto' => $idcusto->info2,
+            'idcusto' => $idcustokd,
             'idedit' => $iduser,
             'user' => $user,
             'tbluser' => $tbluser,

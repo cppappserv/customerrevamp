@@ -3,14 +3,26 @@
 2.  Penambahan dt_additional
     type = COMPANY	
     seq = 1		
-    desc = ?
+    desc = AREA_WEST
     info = 12345
     info2 = CPB
-    info3 = PT. Central Pertiwi Bahari
-    info4 = FISH FEED
+    info3 = FISH FEED
+    info4 = PT. Central Pertiwi Bahari
     parent = ?
     display = ?
     info5 = Pertiwi Cikampek
+
+    type = IDCOMPANY	
+    seq = 1		
+    desc = AREA_WEST
+    info = 12345
+    info2 = CKP
+    info3 = FISH FEED
+    info4 = ?
+    parent = ?
+    display = ?
+    info5 = ?
+
 3.  update tbluser set company = '12345'  (tergantung user ada di area mana)
 4.  tbl_userimage add field zimage type blob
     Penamambaan record user_id = -123 zimage = image kosong

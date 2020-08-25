@@ -28,7 +28,6 @@ class HomeController extends Controller
     {
         $user1 = Auth::user(); // tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
         $user = tbluser::where('uid','=',$user1->uid)->first();
-
         return $user;
     }
 
@@ -55,13 +54,16 @@ class HomeController extends Controller
     public function index()
     {
         $user = $this->getuser();
-        $grpcmp = $this->grpbu();
-        // return view('home1');
-        return view('menuutama', [
-            'user' => $user,
-            'perbu' => $grpcmp
-        ]);
 
+        if (!$user){
+            return redirect()->route('logout');
+        } else {
+            $grpcmp = $this->grpbu();
+            return view('menuutama', [
+                'user' => $user,
+                'perbu' => $grpcmp
+            ]);
+        }
         
     }
 
