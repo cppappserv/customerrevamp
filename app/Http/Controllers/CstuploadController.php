@@ -17,6 +17,7 @@ use App\Models\Tblobject;
 use App\Models\Tbluserphoto;
 use App\Models\Zbranch;
 use App\Models\Usrupload;
+use App\Models\Tblfile;
 use Session;
 use Response;
 use Image;
@@ -59,6 +60,15 @@ class CstuploadController extends Controller
         $grp = db::connection('mysql')->select($sql);
         return $grp;
     }
+
+    public function typefileupload(){
+        $sql = "
+        SELECT * FROM tbl_file WHERE COALESCE(`format`,'') <> '';
+        ";
+        $grp = db::connection('mysql')->select($sql);
+        return $grp;
+    }
+    
 
     public function prosesexcel(){
         $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
@@ -131,6 +141,7 @@ class CstuploadController extends Controller
     public function calln($var)
     {
         $now = Carbon::now();
+        dd($now); 
         $tbllog = DB::table('tbl_log as a')
             ->join('tbluser as b', function($join){
             $join->on('b.uid', '=', 'a.fid' );
@@ -141,18 +152,20 @@ class CstuploadController extends Controller
         ->orderby('a.upltime', 'desc')
         ->limit(1)
         ->get();
+        dd($tbllog);
         return $tbllog;
     }
 
     public function index()
     {
-        
+
         $user = $this->getuser();
         $fileupload = $this->fileupload();
         $data_upload = Importprofile::where('uid', '=', $user->user_id)->get();
         
         $tbllog = $this->calln($user->user_id);
         $tbllogh = $this->callh($user->user_id);
+        $typefileupload = $this->typefileupload();
         
         $i=0;
         foreach ($tbllog as $key => $value) {
@@ -163,7 +176,8 @@ class CstuploadController extends Controller
             'user' => $user,
             'fileupload' => $tbllog,
             'data_upload' => $data_upload,
-            'fileuploadh' => $tbllogh
+            'fileuploadh' => $tbllogh,
+            'typefileupload' => $typefileupload
         ]);
     }
 
@@ -188,7 +202,11 @@ class CstuploadController extends Controller
 		// import data
         $ttl = Excel::import(new CustomerImport, public_path('/file_customer/'.$nama_file));
 		// notifikasi dengan session
-        
+        $nmformat = Tblfile::where('type','=',$request->inputtypeupload)
+        ->select('format as nmformat')
+        ->first();
+ 
+
         $user = $this->getuser();
         // $fileupload = $this->fileupload();
         $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
@@ -196,7 +214,7 @@ class CstuploadController extends Controller
         $tbllog = new Tbllog;
         $tbllog->fid = Auth::user()->uid;
         $tbllog->uplid = Auth::user()->uid;
-        $tbllog->filename = '1. Template Customer Profile.xlsx';
+        $tbllog->filename = $nmformat;
         $tbllog->bpath = public_path('/file_customer/'.$nama_file);
         $tbllog->upltime = now(); 
         $tbllog->stime = now();

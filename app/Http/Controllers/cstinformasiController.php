@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use App\Models\kodepost;
@@ -35,11 +36,12 @@ class CstinformasiController extends Controller
      */
     public function getuser()
     {
-        $user = tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
+      $user1 = Auth::user(); // tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
+      $user = tbluser::where('uid','=',$user1->uid)->first();
         return $user;
     }
     public function listuserpassword(){
-      $grp = Tbluser::get();
+      $grp = Tbluser::where('email','LIKE', '%@cpp.co.id')->get();
       // $sql = "
       //     select '1' urut, 'supram.maharwantijo@cpp.co.id' userid, 'administrator' usertype, 'jakarta' userarea, '1234' userpassword  union
       //     select '2' urut, 'supram2.maharwantijo@cpp.co.id' userid, 'user' usertype, 'jakarta' userarea, '1234' userpassword
@@ -103,4 +105,36 @@ class CstinformasiController extends Controller
 
       ]);
     }    
+
+    public function infosave(Request $request){
+      // dd($request->all());
+      if ($request->inputbaris == ""){
+          $this->validate($request, [
+              'inputuserid'      => ['required'],
+              'inputusertype'    => ['required'],
+              'inputuserarea'    => ['required'],
+              'inputuserpass'    => ['required'],
+              'inputuserrepass'  => ['required'],
+              'inputusercompany' => ['required'],
+          ]);
+
+          $tbluser = new Tbluser;
+          $nama = explode( '@', $request->inputuserid );
+          $tbluser->fullname = $nama[0];
+          
+      } else {
+          $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+      }
+      $tbluser->user_id   = $request->inputuserid;
+      $tbluser->usergroup = $request->inputusertype ;
+      $tbluser->branch    = $request->inputuserarea;
+      if($request->inputuserpass <> $tbluser->password){
+          $tbluser->password  = md5($request->inputuserpass);
+      }
+      $tbluser->company   = $request->inputusercompany ;
+      $tbluser->save();
+
+      // ada program triger save ke table tbluser langsung save ke tabel users
+      return redirect('/info1');
+  }
 }

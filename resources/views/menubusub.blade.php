@@ -147,7 +147,7 @@
 		width: 107px;
 		height: 107px;
 		left: 1197px;
-		top: 619px;
+		top: 750px;
 		overflow: visible;
 		cursor: pointer;
 		--web-animation: fadein 0.3s ease-out;
@@ -343,14 +343,18 @@ $total = 134;
 
                         <div>
                         <!-- <a href="/detaildelete/{{$customer_id}}"> -->
-                        <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}" style="
+                        <!-- <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}" style="
                             border-radius: 50%;
                             height: 75px;
                             width: 75px;
                             font-size: -webkit-xxx-large;
                             background: red;
                             color: white;
-                        " data-toggle="modal" data-target="#modal-primary"><i class="far fa-trash-alt"></i>
+                        " data-toggle="modal" data-target="#modal-primary"> -->
+                        <!-- <i class="far fa-trash-alt"></i> -->
+                        <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}"
+                        data-toggle="modal" data-target="#modal-primary">
+                        <img src="{{asset('image/delete.png')}}"> 
                         </button>
                            
                         <!-- </a> -->
@@ -371,7 +375,8 @@ $total = 134;
                 </tr>
                 </tfoot> -->
               </table>
-              <div onclick="application.showOverlay(event,'ID0401_Add_customer_PopUp',0,0)" id="Group_680">
+              
+              <a href="/detail1/{{$pilcompany}}/{{$pilcompany2}}/0/1" id="Group_680">
                   <svg class="Rectangle_292">
                      <rect id="Rectangle_292" rx="0" ry="0" x="0" y="0" width="67" height="74">
                      </rect>
@@ -380,7 +385,7 @@ $total = 134;
                      <path id="add" d="M 53.5 0 C 23.99892997741699 0 0 23.99892997741699 0 53.5 C 0 83.00106811523438 23.99892997741699 107 53.5 107 C 83.00106811523438 107 107 83.00106811523438 107 53.5 C 107 23.99892997741699 83.00106811523438 0 53.5 0 Z M 76.90625 57.95805358886719 L 57.95805358886719 57.95805358886719 L 57.95805358886719 76.90625 C 57.95805358886719 79.36752319335938 55.96127319335938 81.36430358886719 53.5 81.36430358886719 C 51.03872680664063 81.36430358886719 49.04194641113281 79.36752319335938 49.04194641113281 76.90625 L 49.04194641113281 57.95805358886719 L 30.09375 57.95805358886719 C 27.63247871398926 57.95805358886719 25.63569450378418 55.96127319335938 25.63569450378418 53.5 C 25.63569450378418 51.03872680664063 27.63247489929199 49.04194641113281 30.09375 49.04194641113281 L 49.04194641113281 49.04194641113281 L 49.04194641113281 30.09375 C 49.04194641113281 27.63247871398926 51.03872680664063 25.63569450378418 53.5 25.63569450378418 C 55.96127319335938 25.63569450378418 57.95805358886719 27.63247489929199 57.95805358886719 30.09375 L 57.95805358886719 49.04194641113281 L 76.90625 49.04194641113281 C 79.36752319335938 49.04194641113281 81.36430358886719 51.03872680664063 81.36430358886719 53.5 C 81.36430358886719 55.96127319335938 79.36752319335938 57.95805358886719 76.90625 57.95805358886719 Z M 76.90625 57.95805358886719">
                      </path>
                   </svg>
-               </div>
+               </a>
             </div>
             <!-- /.card-body -->
           </div>

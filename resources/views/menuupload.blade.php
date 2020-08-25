@@ -347,9 +347,21 @@ $hitam = "rgba(84,84,84,1)";
                   <?php 
                      if($max==0){
                      ?>
-                        <div class="form-group">
-                           <label>PILIH FILE</label>
-                           <input type="file" name="file" class="form-control" required>
+                        
+                     <label>PILIH FILE</label>
+                     <select class="form-control" id="inputtypeupload" name="inputtypeupload" onblur="cekinputan()"> 
+                        <option value="" selected>--- Select User Type ---</option>
+                        <?php
+                        foreach ($typefileupload as $key => $value) {
+                        ?>
+                           <option value="{{$value->type}}">{{$value->format}}</option>
+                        <?php
+                        }
+                        ?>
+                     </select>
+                     <div class="form-group">
+                        <label>PILIH FILE</label>
+                        <input type="file" name="file" class="form-control" required>
                      </div>
                      
                      <?php

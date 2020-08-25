@@ -8,7 +8,7 @@ class Tbluser extends Model
 {
     //
   protected $table = "tbluser";
-  protected $primaryKey = null;
+  protected $primaryKey = 'uid';
   public $timestamps = false;
   public $incrementing = false;
     protected $fillable = [

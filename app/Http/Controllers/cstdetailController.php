@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Auth;
+use Session;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use App\Models\kodepost;
@@ -13,6 +14,10 @@ use App\Models\Tbluserphoto;
 use App\Models\Tbluserphotoadd;
 use App\Models\Zbranch;
 use App\Models\Usrupload;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Redirect;
 use Response;
 use Image;
 use DB;
@@ -495,8 +500,16 @@ order by a.seq
 
     public function index($kode, $kode3, $kode2, $kode4)
     {
+        // FISH FEED - 12345
+        // FISH FEED - 12345 - 157 - 1 -
+        // echo $kode." - ".$kode3." - ".$kode2." - ".$kode4." - ";
+        // exit;
         $user = $this->getuser();  // login pertama
-
+        $idcusto = Dtadditional::where('type', '=', 'IDCOMPANY')
+        ->where('info', '=', $kode3)
+        ->where('info3', '=', $kode)
+        ->select('info2')
+        ->first();
         
         // $id = 0;
         $idx = $kode;
@@ -505,7 +518,7 @@ order by a.seq
         $tbluser = Tbluser::where('uid', '=', $id)->first();
         if (!$tbluser){
             $tbluser = new Tbluser;
-            $tbluser->user_id='';
+            $tbluser->user_id='0';
         }
         
         $iduser = $tbluser->user_id; 
@@ -523,7 +536,9 @@ order by a.seq
         ->select('id','seq')
         ->get();
 
+
         return view('menudetail',[
+            'idcusto' => $idcusto->info2,
             'idedit' => $iduser,
             'user' => $user,
             'tbluser' => $tbluser,
@@ -637,20 +652,26 @@ order by a.seq
     // }
 
 public function detailsave($id, Request $request){
+    $this->validate($request,[
+        'inputuserid' => ['required', 'string', 'max:10'],
+        'inputfullname' => ['required', 'string', 'max:35'],
+        'inputnamaalias' => ['required', 'string', 'max:35'],
+        'inputbirthdate' => ['required', 'string', 'max:10'],
+        'inputbirthplace' => ['required', 'string', 'max:35'],
+        'inputnoktp' => ['required', 'string', 'max:16'],
+        'inputagama' => ['required'],
+        'inputgoldarah' => ['required'],
+        'inputalmtktp' => ['required', 'string', 'max:100'],
+        'inputkdposktp' => ['required', 'string', 'max:35']
+    ]);
+    
 
     $dtadditional = Dtadditional::where('type','=','COMPANY')
     ->where('info','=',$request->para2)->first();
     $para1 = $dtadditional->info3;
     $para2 = $dtadditional->info;
 
-    if($id==0){
-        $tbluser = new Tbluser;
-        $tbluser->user_id = $request->inputfullname;
-        $tbluser->company = $dtadditional->info;
-        $tbluser->branch  = $dtadditional->desc;
-    } else {
-        $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
-    }
+    
 
     
     // print_r($request->filenames2);
@@ -661,16 +682,21 @@ public function detailsave($id, Request $request){
     
     DB::beginTransaction();
     try {
-        Usradditional::where('user_id', '=', $tbluser->user_id)
-        ->update(['value7' => 'X']);
+        if($id==0){
+            $tbluser = new Tbluser;
+            $tbluser->user_id = $request->inputuserid;
+            $tbluser->company = $dtadditional->info;
+            $tbluser->branch  = $dtadditional->desc;
+        } else {
+            $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+        }
         $tbluser->fullname = $request->inputfullname;
         $tbluser->birthdate = $request->inputbirthdate;
         $tbluser->birthplace = $request->inputbirthplace;
         $tbluser->save();
 
-        
-
-        
+        // Usradditional::where('user_id', '=', $tbluser->user_id)
+        // ->update(['value7' => 'X']);
 
         if ($request->hasFile('files')) {
             $image_file = $request->files;
@@ -748,7 +774,6 @@ public function detailsave($id, Request $request){
         $namapsgn      = ""; 
         $tmptlhrpsgn   = ""; 
         $tgllhrpsgn    = ""; 
-
         
         $j=0;
         $k=-1;
@@ -1908,36 +1933,7 @@ public function detailsave($id, Request $request){
         return response()->json($dataModified);
     } 
 
-    public function infosave(Request $request){
-        // dd($request->all());
-        if ($request->inputbaris == ""){
-            $this->validate($request, [
-                'inputuserid'      => ['required'],
-                'inputusertype'    => ['required'],
-                'inputuserarea'    => ['required'],
-                'inputuserpass'    => ['required'],
-                'inputuserrepass'  => ['required'],
-                'inputusercompany' => ['required'],
-            ]);
-
-            $tbluser = new Tbluser;
-            $nama = explode( '@', $request->inputuserid );
-            $tbluser->fullname = $nama[0];
-            
-        } else {
-            $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
-        }
-        
-        $tbluser->user_id   = $request->inputuserid;
-        $tbluser->usergroup = $request->inputusertype ;
-        $tbluser->branch    = $request->inputuserarea;
-        if($request->inputuserpass <> $tbluser->password){
-            $tbluser->password  = md5($request->inputuserpass);
-        }
-        $tbluser->company   = $request->inputusercompany ;
-        $tbluser->save();
-        return redirect('/info1');
-    }
+    
 
 
     public function destroy(Request $request)

@@ -36,7 +36,7 @@ class CstcompanyController extends Controller
     public function grpcompany($para)
     {
         $sql = "
-            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'/') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'/')) des3 ,COUNT(*) ttl 
+            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'')) des3 ,COUNT(*) ttl 
             FROM tbluser a1
             INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
             INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company

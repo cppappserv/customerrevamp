@@ -1,12 +1,17 @@
 <?php 
 $putih = "white";
 $hitam = "rgba(84,84,84,1)";
-if($edit_noedit == 0){
-	$stsedit = "disabled";
-	$stssave = 'style="display:none"';
-} else {
+if ($idedit == "0"){
 	$stsedit = "";
 	$stssave = 'style="display:block"';
+} else {
+	if($edit_noedit == 0){
+		$stsedit = "disabled";
+		$stssave = 'style="display:none"';
+	} else {
+		$stsedit = "";
+		$stssave = 'style="display:block"';
+	}
 }
 $ttl_photo = count($data_photo);
 
@@ -534,8 +539,8 @@ if ($pos=0 or $pos=1){
 	
 
 </head>
-<body>
 <body class="hold-transition sidebar-mini">
+	@if (Auth::check())
 
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
@@ -552,8 +557,12 @@ if ($pos=0 or $pos=1){
 			</li>
 			
 			<li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-				<a href="#" class="nav-link atas" id="fon_24_wh">{{$pilcompany}}</a>
+				<a href="/subcompany1/{{$idx}}/{{$idy}}" class="nav-link atas back"  id="fon_24_wh">{{$pilcompany}}</a>
 			</li>
+			<?php 
+			
+			?>
+			
 		</ul>
 		@include('layouts.logo')
 		<div class="atas1">
@@ -780,18 +789,17 @@ if ($pos=0 or $pos=1){
 					$inputheadgrp              = "";
 
 				}
-				
 			// }
 			?>
 
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				<input type="hidden" id="bck" name="bck" value="subcompany1/{{$idx}}/{{$idy}}">
 				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
 				<input type="hidden" id="para2" name="para2" value="{{$idy}}">
 				<input type="hidden" id="para3" name="para3" value="{{$id}}">
 				<input type="hidden" id="pos_page" name="pos_page" value="{{$pos_page}}">
-				
-			
+				<input type="hidden" id="idedit" name="idedit" value="{{$idedit}}">
 				<div class="card-body">
 					<ul class="nav nav-tabs" id="custom-content-below-tab" style="display: none;"role="tablist">
 						<li class="nav-item">
@@ -812,7 +820,7 @@ if ($pos=0 or $pos=1){
 					</ul>
 					<div class="tab-content" id="custom-content-below-tabContent">
 						<input type="hidden" id="inputuid" name="inputuid" value="{{$inputuid}}">
-						<input type="hidden" id="inputuserid" name="inputuserid" value="{{$inputuser_id}}">
+						
 						<div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
 
 							<div class="card card-default">
@@ -820,22 +828,13 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Informasi Personal: {{$id}}</h3>
 
 									<div class="card-tools">
-									<!-- <a href=""><img src="{{asset('image/edit.png')}}"></span> -->
-									<!-- @if($edit_noedit == 0) -->
-									<!-- <a href="/detail2/{{$idx}}/{{$idy}}/{{$id}}/1"> <img src="{{asset('image/edit.png')}}"></a> -->
 									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
-									<!-- @endif -->
-									<!-- <span id='button' style="display: block; margin: auto;">Rubah Foto Profil</span> -->
-
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
 								</div>
 								<!-- /.card-header -->
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-4">
-											
 											<div class="form-group row">
 												<div class="col-sm-12">
 													<img src="/storeimage/{{ $inputuser_id }}" id="files-tag" width="80%" style="
@@ -855,16 +854,48 @@ if ($pos=0 or $pos=1){
 
 										<!-- /.col -->
 										<div class="col-md-8">
+											<?php 
+											if ($inputuser_id == "0"){
+												?>
+												<div class="form-group row">
+													<label for="inputfullname" class="col-sm-3 col-form-label">Customer ID</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control @error('inputuserid') is-invalid @enderror" required autocomplete="inputuserid" autofocus
+															id="inputuserid" name="inputuserid" placeholder="Customer ID" value="{{$idcusto}}" {{$stsedit}} khususinput="yes">
+														@error('inputuserid')
+															<span class="invalid-feedback" role="alert">
+																<strong>{{ $message }}</strong>
+															</span>
+														@enderror
+													</div>
+												</div>
+												<?php
+											} else {
+												?>
+												<input type="hidden" id="inputuserid" name="inputuserid" value="{{$inputuser_id}}">
+												<?php
+											}
+											?>
 											<div class="form-group row">
 												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control @error('inputfullname') is-invalid @enderror" required autocomplete="inputfullname" autofocus id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
+													@error('inputfullname')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control @error('inputnamaalias') is-invalid @enderror" required autocomplete="inputnamaalias" autofocus id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}} khususinput="yes">
+													@error('inputnamaalias')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 											
@@ -877,26 +908,41 @@ if ($pos=0 or $pos=1){
 															<i class="far fa-calendar-alt"></i>
 														</span>
 													</div> -->
-													<input type="date" class="form-control  pull-right" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}} khususinput="yes">
+													<input type="date" class="form-control  pull-right  @error('inputbirthdate') is-invalid @enderror" required autocomplete="inputbirthdate" autofocus id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}} khususinput="yes">
+													@error('inputbirthdate')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control  @error('inputbirthplace') is-invalid @enderror" required autocomplete="inputbirthplace" autofocus id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}} khususinput="yes">
+													@error('inputbirthplace')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control @error('inputnoktp') is-invalid @enderror" required autocomplete="inputnoktp" autofocus id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
+													@error('inputnoktp')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
-													<select class="form-control" id="inputagama" name="inputagama" {{$stsedit}} khususinput="yes"> 
+													<select class="form-control @error('inputagama') is-invalid @enderror" required autocomplete="inputagama" autofocus id="inputagama" name="inputagama" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Agama ---</option>
 													<?php 
 													foreach ($tblagama as $key => $value) {
@@ -906,6 +952,11 @@ if ($pos=0 or $pos=1){
 													}
 													?>
 													</select>
+													@error('inputagama')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 
 												</div>
 											</div>
@@ -914,7 +965,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 
-													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
+													<select class="form-control @error('inputgoldarah') is-invalid @enderror" required autocomplete="inputgoldarah" autofocus id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
@@ -924,6 +975,11 @@ if ($pos=0 or $pos=1){
 													}
 													?>
 													</select>
+													@error('inputgoldarah')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 
 												</div>
 											</div>
@@ -956,7 +1012,13 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
+													<textarea class="form-control @error('inputalmtktp') is-invalid @enderror" required autocomplete="inputalmtktp" autofocus rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
+													@error('inputalmtktp')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
+
 												</div>
 											</div>
 										</div>
@@ -967,9 +1029,13 @@ if ($pos=0 or $pos=1){
 												<label for="inputkelktp" class="col-sm-3 col-form-label">Kelurahan</label>
 												
 												<div class="col-sm-9">
-													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
-													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}} khususinput="yes"
-												>
+													<input type="text" class="form-control @error('inputkelktp') is-invalid @enderror" required autocomplete="inputkelktp" autofocus name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
+													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}} khususinput="yes">
+													@error('inputkelktp')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
 												</div>
 											</div>
 											<div class="form-group row">
@@ -3347,35 +3413,7 @@ if ($pos=0 or $pos=1){
 		
 	</script>
 
-	<!-- <script type="text/javascript">
-
-    $(document).ready(function() {
-			
-
-      $(".btn-success").click(function(){ 
-				
-				var isi = ''+
-					'<div class="clone">'+
-						'<div class="hdtuto control-group lst input-group" style="margin-top:10px">'+
-						'<img id="blah[]" src="#" alt="your image" />'+
-							'<input type="file" name="filenames[]" class="myfrm form-control" onchange="readURL2(this)">'+
-							'<div class="input-group-btn"> '+
-								'<button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>'+
-							'</div>'+
-						'</div>'+
-					'</div>';
-					// alert(isi);
-          // var html = isi; //$(".clone").html();
-          $("#inpgambar").append(isi);
-      });
-
-      $("body").on("click",".btn-danger",function(){ 
-          $(this).parents(".control-group").remove();
-      });
-
-    });
-
-	</script> -->
+	
 
 	<script type="text/javascript">
 		function myduplikatalamatusaha() 
@@ -3513,121 +3551,43 @@ if ($pos=0 or $pos=1){
 		for(i=0;i<arr.length;i++){
 				arr[i].style.display="block"
 		}
-
-		// document.getElementById("inputfullname").disabled = false;
-		// document.getElementById("inputnamaalias").disabled = false;
-		// document.getElementById("inputbirthdate").disabled = false;
-		// document.getElementById("inputbirthplace").disabled = false;
-		// document.getElementById("inputnoktp").disabled = false;
-		// document.getElementById("inputagama").disabled = false;
-
-		// document.getElementById("inputgoldarah").disabled = false;
-		// document.getElementById("inputfullname").disabled = false;
-		// document.getElementById("inputfullname").disabled = false;
-		// document.getElementById("inputfullname").disabled = false;
-
-		// document.getElementById("inputalmtktp").disabled = false;
- 		// document.getElementById("inputkelktp").disabled = false;
-		// document.getElementById("inputalmtush").disabled = false;   
-		// document.getElementById("inputkelush").disabled = false;  
-		// document.getElementById("inputalmtrmh").disabled = false;  
-		// document.getElementById("inputkelrmh").disabled = false;   
-
-		// document.getElementById("inputtlppri").disabled = false;  
-		// document.getElementById("inputfaxpri").disabled = false;  
-		// document.getElementById("inputhppri").disabled = false;   
-		// document.getElementById("inputemailpri").disabled = false; 
-		// document.getElementById("inputhobby").disabled = false; 
-
-		
-		// document.getElementById("inputbtkush").disabled = false; 
-		// document.getElementById("inputtipeush").disabled = false; 
-		// document.getElementById("inputnamausaha").disabled = false; 
-		// document.getElementById("inputlmusaha").disabled = false; 
-		// document.getElementById("inputnpwp").disabled = false; 
-		// document.getElementById("inputheadgrp").disabled = false; 
-		// document.getElementById("inputkodesap").disabled = false; 
-
-		// document.getElementById("inputtlpush").disabled = false; 
-		// document.getElementById("inputfaxush").disabled = false; 
-		// document.getElementById("inputhpush").disabled = false; 
-		// document.getElementById("inputemailush").disabled = false; 
-
-		// document.getElementById("inputkarakteristik").disabled = false; 
-		
-
-
-
-		
-
-
-
-		
-		
-
-
-		
-
-
-
-
-
-
-		
-
-
-		
-
-		
-
 	}
-</script>
-
-
-	<script type="text/javascript">
-		// function myemail(isi) 
-		// {
-		// 	alert('supram');
-		// 	// var  txt = isi.value;
-		// 	// var i = txt.search('@');
-		// 	// if (i = 0)
-		// 	// {
-		// 	// 	alert('Inputan Harus ada @')
-		// 	// 	return false;
-		// 	// }
-		// }
 	</script>
-
-
-
-
 	<script type="text/javascript">
-
-
-		// $('#save').click(function(){
-		// 	alert('test');
-		// })
-
-
-		// $('#button').click(function(){
-		// 	$("input[type='file']").trigger('click');
-		// })
-
+		@if ($idedit == "0")
+			
+			$(".klikedit").hide();
+			var isioptions=document.getElementById("bck").value;
+			$xsave = '<div class="col-md-4">'+
+					'</div>'+
+					'<div class="col-md-2">'+
+						'<div class="form-group row">'+
+							'<div class="col-sm-12">'+
+								'<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+					'<div class="col-md-2">'+
+						'<div class="form-group row">'+
+							'<div class="col-sm-12">'+
+								'<a href="/'+isioptions+'" class="btn btn-block btn-danger btn-lg">Cancel</a>'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+					'<div class="col-md-4">'+
+					'</div>';
+			$("#tombolsave").append($xsave);
+		@endif
+	</script>
+	<script type="text/javascript">
 		function ambilphoto(){
-			// $("input[type='file']").trigger('click');
 			$('#files').click();
 		}
 
 		function ambilphoto2(){
-			// $("input[type='file']").trigger('click');
 			var i = document.getElementById("urutgambar").value;
 			$('#files'+i).click();
 		}
-		// $("input[type='file']").change(function(){
-		// 	$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
-		// })  
-
-
 		
 		$('#rowsstatususaha'+button_id)
 		function myFunction(id) {
@@ -3672,6 +3632,12 @@ if ($pos=0 or $pos=1){
 		}
 	</script>
 
-	
+	@else
+		<?php
+			// header('Location: http://01659440.dyn.cbn.net.id:8815/login');
+
+			die();
+		?>
+	@endif	
 </body>
 </html>

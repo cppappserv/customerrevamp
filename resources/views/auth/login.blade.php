@@ -2965,9 +2965,9 @@ var Application = function() {
 window.application = new Application();
 </script>
 </head>
-<body style="margin-left:10%">
+<body style="margin-left:10%; height:100%">
 <div id="ID0101_Login_1">
-<div class="w3-content w3-section" style="max-width:1340px">
+<div class="w3-content w3-section" style="max-width:100%">
   <img class="mySlides" src="{{asset('image/ON_DUTY.png')}}" style="width:100%">
   <img class="mySlides" src="{{asset('image/IMG_2268.png')}}" style="width:100%">
   

@@ -432,8 +432,13 @@ style="margin-left: 0px;">
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="text" class="form-control" id="inputuserid" name="inputuserid" onchange="cekinputan()">
+                                    <input type="text" class="form-control @error('inputuserid') is-invalid @enderror"  required autocomplete="inputuserid" autofocus id="inputuserid" name="inputuserid" onchange="cekinputan()">
                                     <input type="hidden" id="inputbaris" name="inputbaris">
+                                    @error('inputuserid')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
                                  </div>
                               </div>
                            </div>
@@ -442,7 +447,7 @@ style="margin-left: 0px;">
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <select class="form-control" id="inputusertype" name="inputusertype" onblur="cekinputan()"> 
+                                    <select class="form-control @error('inputusertype') is-invalid @enderror"  required autocomplete="inputusertype" autofocus id="inputusertype" name="inputusertype" onblur="cekinputan()"> 
                                        <option value="" selected>--- Select User Type ---</option>
                                     <?php
                                     foreach ($listgroup as $key => $value) {
@@ -452,6 +457,13 @@ style="margin-left: 0px;">
                                     }
                                     ?>
                                     </select>
+
+                                    @error('inputusertype')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
+
                                  </div>
                               </div>
                            </div>
@@ -459,7 +471,7 @@ style="margin-left: 0px;">
                               <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control" id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
+                                    <select class="form-control @error('inputuserarea') is-invalid @enderror"  required autocomplete="inputuserarea" autofocus id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
                                     <option value="" selected>--- Select Area ---</option>
                                     <?php
                                     foreach ($tblobject as $key => $value) {
@@ -469,6 +481,11 @@ style="margin-left: 0px;">
                                     }
                                     ?>
                                     </select>
+                                    @error('inputuserarea')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
                                  </div>
                               </div>
                            </div>
@@ -480,7 +497,12 @@ style="margin-left: 0px;">
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="password" class="form-control" id="inputuserpass" name="inputuserpass" placeholder="password" onblur="cekinputan()">
+                                    <input type="password" class="form-control @error('inputuserpass') is-invalid @enderror"  required autocomplete="inputuserpass" autofocus id="inputuserpass" name="inputuserpass" placeholder="password" onblur="cekinputan()">
+                                    @error('inputuserpass')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
                                  </div>
                               </div>
                               <button type="button" 
@@ -494,7 +516,14 @@ style="margin-left: 0px;">
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                 <input type="password" class="form-control" id="inputuserrepass" name="inputuserrepass" placeholder="password" onblur="cekinputan()">
+                                    <input type="password" class="form-control @error('inputuserrepass') is-invalid @enderror"  required autocomplete="inputuserrepass" autofocus id="inputuserrepass" name="inputuserrepass" placeholder="password" onblur="cekinputan()">
+
+                                    @error('inputuserrepass')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
+
                                  </div>
                               </div>
                               <button type="button" 
@@ -508,9 +537,15 @@ style="margin-left: 0px;">
                               <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control" id="inputusercompany" name="inputusercompany" onblur="cekinputan()"> 
+                                    <select class="form-control @error('inputusercompany') is-invalid @enderror"  required autocomplete="inputusercompany" autofocus id="inputusercompany" name="inputusercompany" onblur="cekinputan()"> 
                                        <option>--- Select Company ---</option>
                                     </select>
+                                    
+                                    @error('inputusercompany')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                    @enderror
                                  </div>
                               </div>
                            </div>
