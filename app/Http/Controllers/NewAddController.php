@@ -329,7 +329,8 @@ class NewAddController extends Controller
    public function getcompany($id){
       $data = Dtadditional::where('type','=','COMPANY')
       ->where('desc','=',$id)
-      ->select(DB::raw("CONCAT(info2,' - ',info4,' - ',info5) AS infox"),'info')
+      // ->select(DB::raw("CONCAT(info2,' - ',info4,' - ',info5) AS infox"),'info')
+      ->select('info2 AS infox','info')
       ->pluck('infox','info');
       // ->select('info2','info');
     return response()->json($data); 
