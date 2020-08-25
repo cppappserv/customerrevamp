@@ -505,15 +505,15 @@ order by a.seq
         // echo $kode." - ".$kode3." - ".$kode2." - ".$kode4." - ";
         // exit;
         $user = $this->getuser();  // login pertama
-        $idcusto = Dtadditional::where('type', '=', 'IDCOMPANY')
+        $idcusto = Dtadditional::where('type', '=', 'COMPANY')
         ->where('info', '=', $kode3)
-        ->where('info3', '=', $kode)
-        ->select('info2')
+        ->where('desc', '=', $kode)
+        ->select('info6')
         ->first();
         if(!$idcusto){
             $idcustokd = 'CKK'; 
         } else {
-            $idcustokd = $idcusto->info2;
+            $idcustokd = $idcusto->info6;
         }
         // $id = 0;
         $idx = $kode;

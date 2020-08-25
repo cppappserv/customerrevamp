@@ -141,7 +141,6 @@ class CstuploadController extends Controller
     public function calln($var)
     {
         $now = Carbon::now();
-        dd($now); 
         $tbllog = DB::table('tbl_log as a')
             ->join('tbluser as b', function($join){
             $join->on('b.uid', '=', 'a.fid' );
@@ -152,7 +151,6 @@ class CstuploadController extends Controller
         ->orderby('a.upltime', 'desc')
         ->limit(1)
         ->get();
-        dd($tbllog);
         return $tbllog;
     }
 

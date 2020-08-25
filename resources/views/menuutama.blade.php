@@ -300,14 +300,21 @@
             case 10 : $warna = "rgba(214,63,63,1)"; break;
             case 11 : $warna = "rgba(55,183,51,1)"; break;
           }
-          $tulis1=50;
-          if (strlen($des) < 4){
+          $tulis1=35;
+          if (strlen($des) < 10){
+            $tulis1 = 50;
+          } else if (strlen($des) < 7){
             $tulis1 = 75;
           }
           $tulis2=50;
-          if (strlen($ttl) < 4){
+          if(strlen($ttl) == 1){
+            $tulis2 = 110;
+          } else if (strlen($ttl) == 2){
+            $tulis2 = 100;
+          } else if (strlen($ttl) < 4){
             $tulis2 = 75;
           }
+
           ?>
           <div class="col-lg-2 col-6">
             <a href="/company1/{{$des}}">

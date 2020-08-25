@@ -38,18 +38,31 @@ class CstsubcompanyController extends Controller
         // $para1 = "FISH FEED";
         // $para2 = "12345";
         $sql = "
-        SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info4 bu, a2.fullname created_by, 
-        DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
-        a3.fullname changed_by, 
-        DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
-        FROM tbluser a1
-        INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-        INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
-        LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
-        LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
-        WHERE c1.info3 = '".$para1."' AND a1.company = '".$para2."'
-           ";
-        
+            SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info4 bu, a2.fullname created_by, 
+            DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
+            a3.fullname changed_by, 
+            DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
+            FROM tbluser a1
+            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
+            INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
+            LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
+            LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
+            WHERE c1.info3 = '".$para1."' AND a1.company = '".$para2."'
+        ";
+
+        $sql = "
+           SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info3 bu, a2.fullname created_by, 
+           DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
+           a3.fullname changed_by, 
+           DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
+           FROM tbluser a1
+           INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
+           INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
+           LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
+           LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
+           WHERE c1.desc = '".$para1."' AND a1.company = '".$para2."'
+        ";
+       
         $grp = db::connection('mysql')->select($sql);
         return $grp;
         

@@ -8,7 +8,7 @@ class Dtadditional extends Model
 {
     //
     protected $table = "dt_additional";
-    protected $primaryKey = null;
+    // protected $primaryKey = null;
     public $timestamps = false;
     public $incrementing = false;
     protected $fillable = [
@@ -21,6 +21,8 @@ class Dtadditional extends Model
       'info4', 
       'parent', 
       'display', 
-      'info5'
+      'info5',
+      'info6',
+      'id'
     ];
 }

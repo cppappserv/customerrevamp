@@ -35,14 +35,13 @@ class HomeController extends Controller
     {
         
         $sql = "
-            SELECT 0 AS urut, c1.info3 des ,COUNT(*) ttl 
+            SELECT 0 AS urut, c1.desc des ,COUNT(*) ttl 
             FROM tbluser a1
             INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
             INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
-            GROUP BY c1.info3
+            GROUP BY c1.desc
         ";
         $grp = db::connection('mysql')->select($sql);
-
         $i=0;
         foreach ($grp as $key => $value) {
             $i++;

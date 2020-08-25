@@ -1,30 +1,51 @@
 0.  Tambah tabel users
 1.  table usr_additional add id int 11 auto increment
 2.  Penambahan dt_additional
+    add field info6 char(20), id int(11) key auto increment
+    Tergatung dari company yang ada
+
     type = COMPANY	
     seq = 1		
-    desc = AREA_WEST
-    info = 12345
-    info2 = CPB
-    info3 = FISH FEED
-    info4 = PT. Central Pertiwi Bahari
+    desc = FISH FEED
+    info = CPgP CKP 
+    info2 = CPgP CKP-2
+    info3 = CPgP CKP-3
+    info4 = CPgP CKP-4
     parent = ?
     display = ?
-    info5 = Pertiwi Cikampek
+    info5 = CPgP CKP-5
+    info6 = CKP
 
-    type = IDCOMPANY	
+    type = COMPANY	
     seq = 1		
-    desc = AREA_WEST
-    info = 12345
-    info2 = CKP
-    info3 = FISH FEED
-    info4 = ?
+    desc = FISH FEED
+    info = CPP SDA 
+    info2 = CPP SDA-2
+    info3 = CPP SDA-3
+    info4 = CPP SDA-4
     parent = ?
     display = ?
-    info5 = ?
+    info5 = CPP SDA-5
+    info6 = CKQ
+	
+    type = COMPANY	
+    seq = 1		
+    desc = SHRIMP FEED 
+    info = CPP JKT 
+    info2 = CPP JKT-2
+    info3 = CPP JKT-3
+    info4 = CPP JKT-4
+    parent = ?
+    display = ?
+    info5 = CPP JKT-5
+    info6 = CKR
 
-3.  update tbluser set company = '12345'  (tergantung user ada di area mana)
+3.  update tbluser set company = 'CPgP CKP'  (tergantung user ada di area mana)
     change structure company dari 5 menjadi 20
+    
+
+
+
 4.  tbl_userimage add field zimage type blob
     Penamambaan record user_id = -123 zimage = image kosong
 5.  add tabel baru (untuk latihan)
@@ -137,3 +158,10 @@
     `uid` int(11) DEFAULT NULL,
     PRIMARY KEY (`id`)
     )    
+8.  Penambahan di table tblobject
+    SELECT * FROM tblobject b1 WHERE b1.objtype='7' ;
+    objname = 'SHRIMP FEED'
+    desc = 'SHRIMP FEED'
+
+    objname = 'FISH FEED '
+    desc = 'FISH FEED '
