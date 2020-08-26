@@ -1467,7 +1467,7 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputkelktp" placeholder="Kelurahan"> -->
 													<div class="input-group">
-													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ..." {{$stsedit}}>{{$inputhobby}}</textarea>
+													<textarea class="form-control" rows="10" id="inputhobby" name="inputhobby" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputhobby}}</textarea>
 													</div>
 												</div>
 											</div>
