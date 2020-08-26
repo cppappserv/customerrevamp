@@ -36,29 +36,47 @@ class CstcompanyController extends Controller
     public function grpcompany($para)
     {
         $sql = "
-            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'')) des3 ,COUNT(*) ttl 
-            FROM tbluser a1
-            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-            INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
-            WHERE c1.info3 = '".$para."'
-            GROUP BY c1.info, c1.info2, c1.info4, c1.info5;
+            SELECT seq urut, 0 ttl, info, CONCAT(info2,'/') des, CONCAT(info4,'') des2, CONCAT(info5,'') des3
+            FROM dt_additional WHERE `type` = 'COMPANY'
+                and `desc` = '".$para."' 
+            ORDER BY urut
         ";
-        $sql = "
-            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'') des2, IF(c1.info5 IS NULL,'',CONCAT(c1.info5,'')) des3 ,COUNT(*) ttl 
-            FROM tbluser a1
-            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-            INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
-            WHERE c1.desc = '".$para."'
-            GROUP BY c1.info, c1.info2, c1.info4, c1.info5;
-        ";
+   
+        $grpall = db::connection('mysql')->select($sql);
 
+        
+        
+        $sql = "  
+            SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'') des2, CONCAT(c1.info5,'') des3 ,COUNT(*) ttl 
+            FROM tbluser a1 
+            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname 
+            INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' 
+        AND c1.info = a1.company 
+        AND c1.desc = '".$para."'
+        GROUP BY c1.desc, c1.info, c1.info2, c1.info4, c1.info5";
+        // dd($sql);
         $grp = db::connection('mysql')->select($sql);
+        // dd($grpall);
         $i=0;
-        foreach ($grp as $key => $value) {
+        foreach ($grpall as $key => $value) {
             $i++;
             $value->urut = $i;
+            foreach ($grp as $key2 => $value2) {
+                if ($value->info == $value2->info){
+                    $value->ttl = $value2->ttl;
+                break;
+                }
+            }
         }
-        return $grp;
+        // dd($grpall);
+        return $grpall;
+
+        // $i=0;
+        // foreach ($grp as $key => $value) {
+        //     $i++;
+        //     $value->urut = $i;
+        // }
+        // return $grp;
     }
 
     public function index($kode)
