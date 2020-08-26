@@ -93,7 +93,7 @@
 		font-family: Roboto;
 		font-style: normal;
 		font-weight: bold;
-		font-size: 40px;
+		font-size: 36px;
 		color: rgba(84,84,84,1);
 	}
 	#Google_sign_in_Low_Res {
