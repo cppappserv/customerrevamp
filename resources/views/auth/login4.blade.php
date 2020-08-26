@@ -23,8 +23,8 @@
 	}
 	#ID0101_Login_1 {
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: 1366px;
+		height: 768px;
 		background-color: rgba(239,239,239,1);
 		overflow: hidden;
 		--web-view-name: 0101 Login 1;
@@ -48,8 +48,8 @@
 	}
 	#ON_DUTY {
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: 1366px;
+		height: 768px;
 		left: 0px;
 		top: 0px;
 		overflow: visible;
@@ -2965,25 +2965,25 @@ var Application = function() {
 window.application = new Application();
 </script>
 </head>
-<body>
+<body style="margin-left:10%">
 <div id="ID0101_Login_1">
-<div class="w3-content w3-section" style="max-width:100%">
+<div class="w3-content w3-section" style="max-width:1340px">
   <img class="mySlides" src="{{asset('image/ON_DUTY.png')}}" style="width:100%">
   <img class="mySlides" src="{{asset('image/IMG_2268.png')}}" style="width:100%">
   
 </div>
 
 	<!-- <img onclick="application.goToTargetView(event)" id="ON_DUTY" src="{{asset('image/ON_DUTY.png')}}" srcset="{{asset('image/ON_DUTY.png')}} 1x, {{asset('image/ON_DUTY@2x.png')}} 2x"> -->
-	<svg class="Path_120" viewBox="0 0 465.698 767.545" style="left:72%">
+	<svg class="Path_120" viewBox="0 0 465.698 767.545">
 		<path id="Path_120" d="M 0 0 L 465.6977844238281 0 L 465.6977844238281 767.5454711914063 L 0 767.5454711914063 L 0 0 Z">
 		</path>
-	</svg> 
-	<div id="Group_399" style="left:75%">
+	</svg>
+	<div id="Group_399">
 		<div id="Welcome_to_Customer_Profile">
 			<span>Welcome to<br/>Customer Profile.</span>
 		</div>
 	</div>
-	<div id="Google_sign_in_Low_Res" class="Google_sign_in__Low_Res_" style="left:75%">
+	<div id="Google_sign_in_Low_Res" class="Google_sign_in__Low_Res_">
   <form action="{{ route('login') }}" method="post">
     @csrf
     <!-- <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -3007,7 +3007,7 @@ window.application = new Application();
 		</a>
     </form>
 	</div>
-	<svg class="Line_1" viewBox="0 0 320 3" style="left:75%">
+	<svg class="Line_1" viewBox="0 0 320 3">
 		<path id="Line_1" d="M 0 0 L 320 0">
 		</path>
 	</svg>

@@ -60,49 +60,5 @@ Route::get('/getrec/{id}', 'NewAddController@getrec');
 Route::get("/addmore","ArrayController@addMore");
 Route::post("/addmore","ArrayController@addMorePost"); 
 
-
-
-
-
-// Route::get('/setuser', 'Menus\SetuserController@index')->name('Setuser_view');
-// Route::get('/setuser/add', 'Menus\SetuserController@add');
-// Route::post('/setuser/save', 'Menus\SetuserController@save');
-// Route::get('/setuser/delete/{id}', 'Menus\SetuserController@delete');
-// Route::get('/setuser/edit/{id}', 'Menus\SetuserController@edit');
-// Route::put('/setuser/update/{id}', 'Menus\SetuserController@update');
-// Route::get('/setuser/reset/{id}', 'Menus\SetuserController@reset');
-// Route::put('/setuser/updatepass/{id}', 'Menus\SetuserController@updatepass');
-// Route::get('/setuser/filter', 'Menus\SetuserController@filter');
-
-
-// Route::get('/company', 'Menus\CompanyController@index')->name('company_view');
-// Route::get('/company/add', 'Menus\CompanyController@add');
-// Route::post('/company/save', 'Menus\CompanyController@save');
-// Route::get('/company/delete/{id}', 'Menus\CompanyController@delete');
-// Route::get('/company/edit/{id}', 'Menus\CompanyController@edit');
-// Route::put('/company/update/{id}', 'Menus\CompanyController@update');
-// Route::get('/company/storeimage/{id}', 'Menus\CompanyController@storeimage');
-
-// Route::get('/plant', 'Menus\PlantController@index')->name('plant_view');
-// Route::get('/plant/add', 'Menus\PlantController@add');
-// Route::post('/plant/save', 'Menus\PlantController@save');
-// Route::get('/plant/delete/{id}', 'Menus\PlantController@delete');
-// Route::get('/plant/edit/{id}', 'Menus\PlantController@edit');
-// Route::put('/plant/update/{id}', 'Menus\PlantController@update');
-// Route::get('/plant/export_excel', 'Menus\PlantController@export_excel');
-// Route::post('/plant/import_excel', 'Menus\PlantController@import_excel');
-// Route::get('/plant/filter', 'Menus\PlantController@filter');
-
-// Route::get('/otorisasiweb', 'Menus\OtorisasiwebController@index')->name('otorisasiweb_view');
-// Route::get('/otorisasiweb/add', 'Menus\OtorisasiwebController@add');
-// Route::post('/otorisasiweb/save', 'Menus\OtorisasiwebController@save');
-// Route::get('/otorisasiweb/delete/{id}', 'Menus\OtorisasiwebController@delete');
-// Route::get('/otorisasiweb/edit/{id}', 'Menus\OtorisasiwebController@edit');
-// Route::put('/otorisasiweb/update/{id}', 'Menus\OtorisasiwebController@update');
-// Route::get('/otorisasiweb/filter', 'Menus\OtorisasiwebController@filter');
-// Route::get('/otorisasiweb/reset/{id}', 'Menus\OtorisasiwebController@resetpass');
-// Route::put('/otorisasiweb/resetupdate/{id}', 'Menus\OtorisasiwebController@resetupdate');
-
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
 Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.callback');
-
