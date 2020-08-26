@@ -33,8 +33,14 @@ class HomeController extends Controller
 
     public function grpbu()
     {
-        
         $sql = "
+            SELECT `desc` des, MIN(seq) urut, 0 ttl  
+            FROM dt_additional WHERE `type` = 'COMPANY'
+            GROUP BY `desc` 
+            ORDER BY urut
+        ";
+        $grpall = db::connection('mysql')->select($sql);
+         $sql = "
             SELECT 0 AS urut, c1.desc des ,COUNT(*) ttl 
             FROM tbluser a1
             INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
@@ -43,11 +49,17 @@ class HomeController extends Controller
         ";
         $grp = db::connection('mysql')->select($sql);
         $i=0;
-        foreach ($grp as $key => $value) {
+        foreach ($grpall as $key => $value) {
             $i++;
             $value->urut = $i;
+            foreach ($grp as $key2 => $value2) {
+                if ($value->des == $value2->des){
+                    $value->ttl = $value2->ttl;
+                break;
+                }
+            }
         }
-        return $grp;
+        return $grpall;
     }
 
     public function index()
