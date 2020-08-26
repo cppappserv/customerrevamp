@@ -358,7 +358,7 @@ $total = 134;
                         " data-toggle="modal" data-target="#modal-primary"> -->
                         <!-- <i class="far fa-trash-alt"></i> -->
                         <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}"
-                        data-toggle="modal" data-target="#modal-primary">
+                        data-toggle="modal" data-target="#modal-primary" style="border: none;">
                         <img src="{{asset('image/delete.png')}}"> 
                         </button>
                            
