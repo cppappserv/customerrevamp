@@ -3,7 +3,7 @@
 				<span>{{$user->fullname}}</span>
 			</div>
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown" >
 				<a class="nav-link" data-toggle="dropdown" href="#">
 					<img src="/storeimage/{{ $user->user_id }}" width="50" height="50" class="imglogin"
 					style="
@@ -14,12 +14,14 @@
 						>
 
 				</a>
-				<div class="dropdown-menu dropdown-menu-right" >
-					<a href="/logout" class="dropdown-item" >
+				
+
+				<div class="dropdown-menu dropdown-menu-right" style="background-color:white;">
+					<a href="/logout" class="dropdown-item" style="background-color:white;">
 						<!-- Message Start -->
-						<div class="media">
-							<button type="button" class="btn btn-secondary" style="background: #818882;"><i class="fas fa-sign-out-alt fa-5x" style="background: #818882"></i></button>
-						</div>
+							<i class="fas fa-sign-out-alt" ></i>
+							<!-- <img srv="{{asset('image/logoout.png')}}"> -->
+							Logout
 						<!-- Message End -->
 					</a>
 				</div>
