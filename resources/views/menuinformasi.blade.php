@@ -11,6 +11,7 @@ $hitam = "rgba(84,84,84,1)";
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ Session::token() }}"> 
   <title>Customer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Robot&display=swap">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

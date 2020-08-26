@@ -45,6 +45,7 @@ if ($pos=0 or $pos=1){
 <html>
 <head>
 	<title>Customer</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Robot&display=swap">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
