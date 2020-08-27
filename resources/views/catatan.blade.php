@@ -42,10 +42,6 @@
 
 3.  update tbluser set company = 'CPgP CKP'  (tergantung user ada di area mana)
     change structure company dari 5 menjadi 20
-    
-
-
-
 4.  tbl_userimage add field zimage type blob
     Penamambaan record user_id = -123 zimage = image kosong
 5.  add tabel baru (untuk latihan)
@@ -165,3 +161,13 @@
 
     objname = 'FISH FEED '
     desc = 'FISH FEED '
+9.  create table log 
+    CREATE TABLE `log_login` (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `email` varchar(100) NOT NULL,
+        `Latitude` varchar(100) DEFAULT NULL,
+        `Longitude` varchar(100) DEFAULT NULL,
+        `created_dt` datetime DEFAULT NULL,
+        `updated_at` datetime DEFAULT NULL,
+        PRIMARY KEY (`id`)
+    )

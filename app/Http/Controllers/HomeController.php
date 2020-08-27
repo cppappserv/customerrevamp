@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use App\Models\Loglogin;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
 use DB;
@@ -80,15 +81,10 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {
-        // dd($request->session());
-        // $this->guard()->logout();
-        
+        Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();
         return view('auth.login');
- 
-        // return redirect('/')
-        //     ->withSuccess('Terimakasih, selamat datang kembali!');
     }
 
     public function storeimage($image_id) {
@@ -97,5 +93,16 @@ class HomeController extends Controller
 		$response = Response::make($image_file->encode('jpeg'));
 		$response->header('Content-Type', 'image/jpeg');
 		return $response;
+    }
+
+    public function geolocation($id1, $id2) {
+        $user = Auth::user();
+        $log = Loglogin::where('email', '=', $user->email)
+        ->whereNull('Longitude')->first();
+        if ($log){
+            $log->Latitude = $id1;
+            $log->Longitude = $id2;
+            $log->save();
+        }
     }
 }

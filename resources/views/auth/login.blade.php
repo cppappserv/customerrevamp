@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Customer</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Robot&display=swap">
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
 		--web-view-name: 0101 Login 1;
@@ -3003,10 +3003,13 @@ window.application = new Application();
 												<input type="hidden" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
     <input type="hidden" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required autocomplete="current-password">
 
+		
+
 		<a href="{{ route('login.provider', 'google') }}"><img id="Google_sign_in_Low_Res_bp" src="{{asset('image/Google_sign_in_Low_Res_bp.png')}}" srcset="{{asset('image/Google_sign_in_Low_Res_bp.png')}} 1x, {{asset('image/Google_sign_in_Low_Res_bp@2x.png')}} 2x">
     <!-- /dashboard1 -->
 		</a>
     </form>
+		<p id="demo"></p>
 	</div>
 	<svg class="Line_1" viewBox="0 0 320 3" style="left:75%">
 		<path id="Line_1" d="M 0 0 L 320 0">
@@ -3016,6 +3019,7 @@ window.application = new Application();
 
 <script>
 var myIndex = 0;
+getLocation();
 carousel();
 
 function carousel() {
@@ -3029,6 +3033,8 @@ function carousel() {
   x[myIndex-1].style.display = "block";  
   setTimeout(carousel, 8000); // Change image every 2 seconds
 }
+
+
 </script>
 </body>
 </html>

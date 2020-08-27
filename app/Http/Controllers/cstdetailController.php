@@ -17,6 +17,7 @@ use App\Models\Usrupload;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Loglogin;
 use Redirect;
 use Response;
 use Image;

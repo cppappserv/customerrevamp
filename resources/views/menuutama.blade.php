@@ -259,6 +259,8 @@
     
     <section class="content">
       <div class="container-fluid">
+        <input type="hidden" id="Latitude" name="Latitude">
+        <input type="hidden" id="Longitude" name="Longitude">
         <div class="row">
             <div id="Group_399_bk" style="
             padding-top: 20px;
@@ -387,5 +389,29 @@
 <!-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+
+<script type="text/javascript">
+// alert('test');
+//   function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } 
+  //   else { 
+  //     x.innerHTML = "Geolocation is not supported by this browser.";
+  //   }
+  // }
+
+  function showPosition(position) {
+    $.ajax({
+      url: '/geolocation/'+position.coords.latitude+'/'+position.coords.longitude,
+      type: "GET",
+      dataType: "json",
+      success:function(data) {
+        // $("#inpassetpribadi").append(data.msg);
+      }
+    });
+
+  }
+</script>
 </body>
 </html>

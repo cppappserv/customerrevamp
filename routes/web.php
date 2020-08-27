@@ -15,6 +15,8 @@ Auth::routes(['register' => true]);
 Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/geolocation/{id}/{id2}', 'HomeController@geolocation')->name('geolocation');
+
 Route::get('/company1/{id}', 'CstcompanyController@index')->name('company1');
 
 Route::get('/subcompany1/{id}/{id2}', 'CstsubcompanyController@index')->name('subcompany1');
