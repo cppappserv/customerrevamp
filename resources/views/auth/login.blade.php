@@ -3019,7 +3019,6 @@ window.application = new Application();
 
 <script>
 var myIndex = 0;
-getLocation();
 carousel();
 
 function carousel() {
