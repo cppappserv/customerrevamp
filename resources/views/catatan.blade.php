@@ -171,3 +171,149 @@
         `updated_at` datetime DEFAULT NULL,
         PRIMARY KEY (`id`)
     )
+
+    cara Konversi :
+    ---------------
+    ALTER TABLE `customer-test`.`tbluser`   
+	CHANGE `company` `company` VARCHAR(20) CHARSET latin1 COLLATE latin1_swedish_ci NULL;
+
+    UPDATE `customer-test`.tbluser a
+    SET a.branch = (SELECT branch FROM tampung.temp_1 WHERE user_id = a.user_id);
+
+    UPDATE `customer-test`.tbluser a
+    SET a.company = (SELECT company FROM tampung.temp_1 WHERE user_id = a.user_id);
+    
+    ALTER TABLE `customer-test`.`dt_additional`   
+	ADD COLUMN `info6` VARCHAR(30) NULL AFTER `info5`,
+	ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT AFTER `info6`, 
+    ADD PRIMARY KEY (`id`);
+
+    INSERT INTO `customer-test`.tbluser (`idobjparent`, `objname`, `objtype`, `desc`, `Code`)
+    SELECT `idobjparent`, `objname`, `objtype`, `desc`, `Code` FROM tampung.tblobject;
+
+    ALTER TABLE `customer-test`.`usr_additional`   
+	ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT AFTER `value7`, 
+    ADD PRIMARY KEY (`id`);
+    
+    ALTER TABLE `customer-test`.`tbl_userphoto`   
+	ADD COLUMN `zimage` BLOB NULL AFTER `link`;
+
+    CREATE TABLE `import_profile` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` varchar(30) NOT NULL,
+    `kodesap` varchar(20) DEFAULT NULL,
+    `noktp` varchar(40) DEFAULT NULL,
+    `almtktp` text,
+    `kelktp` varchar(50) DEFAULT NULL,
+    `kecktp` varchar(50) DEFAULT NULL,
+    `kotaktp` varchar(50) DEFAULT NULL,
+    `propktp` varchar(50) DEFAULT NULL,
+    `kdposktp` varchar(50) DEFAULT NULL,
+    `almtrmh` text,
+    `kelrmh` varchar(50) DEFAULT NULL,
+    `kecrmh` varchar(50) DEFAULT NULL,
+    `kotarmh` varchar(50) DEFAULT NULL,
+    `proprmh` varchar(50) DEFAULT NULL,
+    `kdposrmh` varchar(50) DEFAULT NULL,
+    `tlppri` varchar(50) DEFAULT NULL,
+    `faxpri` varchar(50) DEFAULT NULL,
+    `hppri` varchar(50) DEFAULT NULL,
+    `emailpri` varchar(50) DEFAULT NULL,
+    `hobby` text,
+    `namapsgn` varchar(50) DEFAULT NULL,
+    `tmptlhrpsgn` varchar(50) DEFAULT NULL,
+    `tgllhrpsgn` date DEFAULT NULL,
+    `btkush` varchar(50) DEFAULT NULL,
+    `tipeush` varchar(10) DEFAULT NULL,
+    `npwp` varchar(50) DEFAULT NULL,
+    `status` varchar(50) DEFAULT NULL,
+    `almtush` text,
+    `kelush` varchar(50) DEFAULT NULL,
+    `kecush` varchar(50) DEFAULT NULL,
+    `kotaush` varchar(50) DEFAULT NULL,
+    `propush` varchar(50) DEFAULT NULL,
+    `kdposush` varchar(50) DEFAULT NULL,
+    `tlpush` varchar(50) DEFAULT NULL,
+    `faxush` varchar(50) DEFAULT NULL,
+    `hpush` varchar(50) DEFAULT NULL,
+    `emailush` varchar(50) DEFAULT NULL,
+    `lmusaha` decimal(4,1) DEFAULT NULL,
+    `karakteristik` text,
+    `namausaha` varchar(30) DEFAULT NULL,
+    `namaalias` varchar(40) DEFAULT NULL,
+    `agama` varchar(20) DEFAULT NULL,
+    `goldarah` varchar(2) DEFAULT NULL,
+    `headgrp` varchar(20) DEFAULT NULL,
+    `uid` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+    );
+
+    CREATE TABLE `tbl_userphoto_add` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` varchar(50) NOT NULL,
+    `zimage` blob,
+    `seq` int(2) DEFAULT NULL,
+    `flag` char(1) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+    );
+
+    CREATE TABLE `export_profile` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` varchar(30) NOT NULL,
+    `kodesap` varchar(20) DEFAULT NULL,
+    `noktp` varchar(40) DEFAULT NULL,
+    `almtktp` text,
+    `kelktp` varchar(50) DEFAULT NULL,
+    `kecktp` varchar(50) DEFAULT NULL,
+    `kotaktp` varchar(50) DEFAULT NULL,
+    `propktp` varchar(50) DEFAULT NULL,
+    `kdposktp` varchar(50) DEFAULT NULL,
+    `almtrmh` text,
+    `kelrmh` varchar(50) DEFAULT NULL,
+    `kecrmh` varchar(50) DEFAULT NULL,
+    `kotarmh` varchar(50) DEFAULT NULL,
+    `proprmh` varchar(50) DEFAULT NULL,
+    `kdposrmh` varchar(50) DEFAULT NULL,
+    `tlppri` varchar(50) DEFAULT NULL,
+    `faxpri` varchar(50) DEFAULT NULL,
+    `hppri` varchar(50) DEFAULT NULL,
+    `emailpri` varchar(50) DEFAULT NULL,
+    `hobby` text,
+    `namapsgn` varchar(50) DEFAULT NULL,
+    `tmptlhrpsgn` varchar(50) DEFAULT NULL,
+    `tgllhrpsgn` date DEFAULT NULL,
+    `btkush` varchar(50) DEFAULT NULL,
+    `tipeush` varchar(10) DEFAULT NULL,
+    `npwp` varchar(50) DEFAULT NULL,
+    `status` varchar(50) DEFAULT NULL,
+    `almtush` text,
+    `kelush` varchar(50) DEFAULT NULL,
+    `kecush` varchar(50) DEFAULT NULL,
+    `kotaush` varchar(50) DEFAULT NULL,
+    `propush` varchar(50) DEFAULT NULL,
+    `kdposush` varchar(50) DEFAULT NULL,
+    `tlpush` varchar(50) DEFAULT NULL,
+    `faxush` varchar(50) DEFAULT NULL,
+    `hpush` varchar(50) DEFAULT NULL,
+    `emailush` varchar(50) DEFAULT NULL,
+    `lmusaha` decimal(4,1) DEFAULT NULL,
+    `karakteristik` text,
+    `namausaha` varchar(30) DEFAULT NULL,
+    `namaalias` varchar(40) DEFAULT NULL,
+    `agama` varchar(20) DEFAULT NULL,
+    `goldarah` varchar(2) DEFAULT NULL,
+    `headgrp` varchar(20) DEFAULT NULL,
+    `uid` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+    ) ;
+
+    CREATE TABLE `log_login` (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `email` varchar(100) NOT NULL,
+        `Latitude` varchar(100) DEFAULT NULL,
+        `Longitude` varchar(100) DEFAULT NULL,
+        `created_dt` datetime DEFAULT NULL,
+        `updated_at` datetime DEFAULT NULL,
+        PRIMARY KEY (`id`)
+    );
+
