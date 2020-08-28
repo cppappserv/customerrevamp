@@ -317,3 +317,8 @@
         PRIMARY KEY (`id`)
     );
 
+    INSERT INTO `tbl_userphoto`
+    SELECT * FROM tampung.tbl_userphoto;
+
+    INSERT INTO `tbl_userphoto_add`
+    SELECT * FROM tampung.tbl_userphoto_add;

@@ -35,7 +35,7 @@
     .col-lg-2 {
         -ms-flex: 0 0 16.666667%;
         flex: 0 0 18.666667%;
-        max-width: 20.666667%;
+        max-width: 18.666667%;
     }
   .dropdown-menu-lg {
     /* max-width: 300px; */
