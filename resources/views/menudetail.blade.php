@@ -863,6 +863,7 @@ if ($pos=0 or $pos=1){
 												<div class="form-group row">
 													<label for="inputfullname" class="col-sm-3 col-form-label">Customer ID</label>
 													<div class="col-sm-9">
+
 														<input type="text" class="form-control @error('inputuserid') is-invalid @enderror" required autocomplete="inputuserid" autofocus
 															id="inputuserid" name="inputuserid" placeholder="Customer ID" value="{{$idcusto}}" {{$stsedit}} khususinput="yes">
 														@error('inputuserid')
@@ -882,23 +883,32 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
 												<div class="col-sm-9">
+
+												@if ($inputuser_id == "0")
 													<input type="text" class="form-control @error('inputfullname') is-invalid @enderror" required autocomplete="inputfullname" autofocus id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
 													@error('inputfullname')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+												@else
+												<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
+												@endif	
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputnamaalias" class="col-sm-3 col-form-label">Alias</label>
 												<div class="col-sm-9">
+													@if ($inputuser_id == "0")
 													<input type="text" class="form-control @error('inputnamaalias') is-invalid @enderror" required autocomplete="inputnamaalias" autofocus id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}} khususinput="yes">
 													@error('inputnamaalias')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<input type="text" class="form-control" id="inputnamaalias" name="inputnamaalias" placeholder="Alias" value="{{$inputnamaalias}}" {{$stsedit}} khususinput="yes">
+													@endif
 												</div>
 											</div>
 											
@@ -911,40 +921,53 @@ if ($pos=0 or $pos=1){
 															<i class="far fa-calendar-alt"></i>
 														</span>
 													</div> -->
+													@if ($inputuser_id == "0")
 													<input type="date" class="form-control  pull-right  @error('inputbirthdate') is-invalid @enderror" required autocomplete="inputbirthdate" autofocus id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}} khususinput="yes">
 													@error('inputbirthdate')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<input type="date" class="form-control" id="inputbirthdate" name="inputbirthdate" placeholder="dd.mm.yyyy" value="{{$inputbirthdate}}" {{$stsedit}} khususinput="yes">
+													@endif
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputbirthplace" class="col-sm-3 col-form-label">Tempat Lahir</label>
 												<div class="col-sm-9">
+													@if ($inputuser_id == "0")
 													<input type="text" class="form-control  @error('inputbirthplace') is-invalid @enderror" required autocomplete="inputbirthplace" autofocus id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}} khususinput="yes">
 													@error('inputbirthplace')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<input type="text" class="form-control" id="inputbirthplace" name="inputbirthplace" placeholder="Tempat Lahir" value="{{$inputbirthplace}}" {{$stsedit}} khususinput="yes">
+													@endif
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
+												@if ($inputuser_id == "0")
 													<input type="text" class="form-control @error('inputnoktp') is-invalid @enderror" required autocomplete="inputnoktp" autofocus id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
 													@error('inputnoktp')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
+													@endif
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="inputagama" class="col-sm-3 col-form-label">Agama</label>
 												<div class="col-sm-4">
+												@if ($inputuser_id == "0")
 													<select class="form-control @error('inputagama') is-invalid @enderror" required autocomplete="inputagama" autofocus id="inputagama" name="inputagama" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Agama ---</option>
 													<?php 
@@ -960,14 +983,25 @@ if ($pos=0 or $pos=1){
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
-
+													@else
+													<select class="form-control" id="inputagama" name="inputagama" {{$stsedit}} khususinput="yes"> 
+													<option value="">--- Select Agama ---</option>
+													<?php 
+													foreach ($tblagama as $key => $value) {
+														?>
+														<option value="{{$value->id}}" <?php echo ($value->id == $inputagama?'selected':'');?>>{{$value->agama}}</option>
+														<?php
+													}
+													?>
+													</select>
+													@endif
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
-
+												@if ($inputuser_id == "0")
 													<select class="form-control @error('inputgoldarah') is-invalid @enderror" required autocomplete="inputgoldarah" autofocus id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
@@ -983,6 +1017,18 @@ if ($pos=0 or $pos=1){
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
+													<option value="">--- Select Golongan Darah ---</option>
+													<?php 
+													foreach ($tbldarah  as $key => $value) {
+														?>
+														<option value="{{$value->id}}" <?php echo ($value->id == $inputgoldarah?'selected':'');?>>{{$value->darah}}</option>
+														<?php
+													}
+													?>
+													</select>
+													@endif
 
 												</div>
 											</div>
@@ -1015,12 +1061,16 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
+												@if ($inputuser_id == "0")
 													<textarea class="form-control @error('inputalmtktp') is-invalid @enderror" required autocomplete="inputalmtktp" autofocus rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
 													@error('inputalmtktp')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
+													@endif
 
 												</div>
 											</div>
@@ -1032,6 +1082,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputkelktp" class="col-sm-3 col-form-label">Kelurahan</label>
 												
 												<div class="col-sm-9">
+												@if ($inputuser_id == "0")
 													<input type="text" class="form-control @error('inputkelktp') is-invalid @enderror" required autocomplete="inputkelktp" autofocus name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
 													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}} khususinput="yes">
 													@error('inputkelktp')
@@ -1039,6 +1090,10 @@ if ($pos=0 or $pos=1){
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
+													@else
+													<input type="text" class="form-control" name="inputkelktp" id="inputkelktp" placeholder="Kelurahan" 
+													onchange="mykelurahan(1,this)" value="{{$inputkelktp}}"  {{$stsedit}} khususinput="yes">
+													@endif
 												</div>
 											</div>
 											<div class="form-group row">
@@ -2733,7 +2788,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-lg-2 col-6" id="rowsphoto{{$urut}}">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<img id="blah{{ $urut }}" name="gambar[]" src="/storeimageadd/{{ $data->id }}" alt="your image" />
+													<img id="blah{{ $urut }}" name="gambar[]" src="/storeimageadd/{{ $data->id }}" alt="your image" style="width: 200px;height: auto;">
 													<input type="file" name="filenames{{$urut}}" id="filenames{{$urut}}" class="myfrm form-control" onchange="readURL2(this,{{$urut}})" style="display:none;">
 												</div>
 												<div class="col-sm-2">
@@ -3313,7 +3368,7 @@ if ($pos=0 or $pos=1){
 					'<div class="col-lg-2 col-6" id="rowsphoto'+i+'">'+
 						'<div class="form-group row">'+
 							'<div class="col-sm-10">'+
-								'<img id="blah'+i+'" name="gambar[]" src="#" alt="your image"/>'+
+								'<img id="blah'+i+'" name="gambar[]" src="#" alt="your image" style="width:200px;height: auto;">'+
 								'<input type="file" name="filenames'+i+'" id="filenames'+i+'" class="myfrm form-control" onchange="readURL2(this,'+i+')" style="display:none;">'+
 							'</div>'+
 						// '</div>'+
