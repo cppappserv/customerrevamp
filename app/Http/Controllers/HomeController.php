@@ -81,9 +81,9 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();
+        Auth::logout();
         return view('auth.login');
     }
 
