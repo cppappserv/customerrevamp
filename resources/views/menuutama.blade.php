@@ -31,6 +31,12 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <style id="applicationStylesheet" type="text/css">
+  
+    .col-lg-2 {
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 18.666667%;
+        max-width: 20.666667%;
+    }
   .dropdown-menu-lg {
     /* max-width: 300px; */
     /* min-width: 280px; */
@@ -278,7 +284,7 @@
  
         <!-- Small boxes (Stat box) -->
         
-        <div class="row" style="margin-left: 20px;margin-right: 20px;">
+        <div class="row" style="margin-left: 65px;margin-right: 20px;">
         
         <?php
         $max=count($perbu);
