@@ -1174,7 +1174,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputkelrmh" class="col-sm-3 col-form-label">Kelurahan</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}" {{$stsedit}}>
+													<input type="text" class="form-control" id="inputkelrmh" name="inputkelrmh" placeholder="Kelurahan" onchange="mykelurahan(2,this)" value="{{$inputkelrmh}}" {{$stsedit}}  khususinput="yes">
 												</div>
 											</div>
 											<div class="form-group row">
