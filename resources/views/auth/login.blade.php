@@ -2968,9 +2968,9 @@ window.application = new Application();
 </head>
 <body>
 <div id="ID0101_Login_1">
-<div class="w3-content w3-section" style="max-width:100%">
-  <img class="mySlides" src="{{asset('image/ON_DUTY.png')}}" style="width:100%">
-  <img class="mySlides" src="{{asset('image/IMG_2268.png')}}" style="width:100%">
+<div class="w3-content w3-section" style="max-height:100%">
+  <img class="mySlides" src="{{asset('image/ON_DUTY.png')}}" style="height:100%">
+  <img class="mySlides" src="{{asset('image/IMG_2268.png')}}" style="height:100%">
   
 </div>
 
