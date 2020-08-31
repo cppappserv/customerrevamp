@@ -1727,8 +1727,16 @@ if ($pos=0 or $pos=1){
 								<div class="card-header">
 									<div>
 										<h3 class="card-title font36">Alamat usaha</h3>
-										<button type="button" style="height:50px;width:50px;{{$tomboladd}}" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
-										Duplicat
+										<!-- <button type="button" style="height:50px;width:50px;{{$tomboladd}}" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
+										Duplicat -->
+
+										<button type="button" class="font28" style="height:50px;width:200px;background: none;{{$tomboladd}}border:none;
+										::after, ::before {
+												/* box-sizing: border-box; */
+										}
+										" onclick="myduplikatalamatusaha()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Duplicat</button>
+										
+
 									</div>
 									<div class="card-tools">
 									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
