@@ -2962,7 +2962,6 @@ var Application = function() {
 	window.addEventListener("load", self.onloadHandler);
 	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 }
-
 window.application = new Application();
 </script>
 </head>
