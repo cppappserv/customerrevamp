@@ -45,7 +45,8 @@ if ($pos=0 or $pos=1){
 <html>
 <head>
 	<title>Customer</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> -->
+	<link rel="stylesheet" href="{{asset('css/roboto.css')}}">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -56,7 +57,7 @@ if ($pos=0 or $pos=1){
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 	<!-- Google Font: Source Sans Pro -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
 	<!-- daterange picker -->
 	<!-- <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}"> -->
 	<!-- <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">  -->

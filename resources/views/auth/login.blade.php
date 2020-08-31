@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Customer</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> -->
+<link rel="stylesheet" href="{{asset('css/roboto.css')}}">
 <style id="applicationStylesheet" type="text/css">
 	.mediaViewInfo {
 		--web-view-name: 0101 Login 1;
