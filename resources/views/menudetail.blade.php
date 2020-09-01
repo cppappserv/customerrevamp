@@ -3556,6 +3556,22 @@ if ($pos=0 or $pos=1){
 					document.getElementById("inputkotaktp1").value = nkabupaten;
 					document.getElementById("inputpropktp1").value = nprovinsi;
 					document.getElementById("inputkdposktp1").value = nkodepos;
+					
+					$('#inputkecktp1').show();
+					$('#inputkecktp').hide();
+
+					$('#inputkecktp1').show();
+					$('#inputkecktp').hide();
+
+					$('#inputkotaktp1').show();
+					$('#inputkotaktp').hide();
+
+					$('#inputpropktp1').show();
+					$('#inputpropktp').hide();
+
+					$('#inputkdposktp1').show();
+					$('#inputkdposktp').hide();
+
 				} else if (kode == 2){
 					document.getElementById("inputkelrmh").value = nkelurahan;
 					document.getElementById("inputkecrmh").value = nkecamatan;
@@ -3567,6 +3583,22 @@ if ($pos=0 or $pos=1){
 					document.getElementById("inputkotarmh1").value = nkabupaten;
 					document.getElementById("inputproprmh1").value = nprovinsi;
 					document.getElementById("inputkdposrmh1").value = nkodepos;
+					
+					$('#inputkecrmh1').show();
+					$('#inputkecrmh').hide();
+
+					$('#inputkecrmh1').show();
+					$('#inputkecrmh').hide();
+
+					$('#inputkotarmh1').show();
+					$('#inputkotarmh').hide();
+
+					$('#inputproprmh1').show();
+					$('#inputproprmh').hide();
+
+					$('#inputkdposrmh1').show();
+					$('#inputkdposrmh').hide();
+
 				} else {
 					document.getElementById("inputkelush").value = nkelurahan;
 					document.getElementById("inputkecush").value = nkecamatan;
@@ -3578,6 +3610,22 @@ if ($pos=0 or $pos=1){
 					document.getElementById("inputkotaush1").value = nkabupaten;
 					document.getElementById("inputpropush1").value = nprovinsi;
 					document.getElementById("inputkdposush1").value = nkodepos;
+					
+					$('#inputkecush1').show();
+					$('#inputkecush').hide();
+
+					$('#inputkecush1').show();
+					$('#inputkecush').hide();
+
+					$('#inputkotaush1').show();
+					$('#inputkotaush').hide();
+
+					$('#inputpropush1').show();
+					$('#inputpropush').hide();
+
+					$('#inputkdposush1').show();
+					$('#inputkdposush').hide();
+
 				}
 			} else {
 				if (kode == 1){
