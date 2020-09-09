@@ -544,6 +544,31 @@ if ($pos=0 or $pos=1){
 #thing:hover {
    background-color: yellow
 }
+#Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
+		#Rectangle_375 {
+		fill: rgba(255,255,255,1);
+	}
+	.Rectangle_375 {
+		position: fixed;
+		overflow: visible;
+		width: 255px;
+		height: 6px;
+		left: 310px;
+		top: 80px;
+	}
   </style>
 
 	
@@ -560,14 +585,15 @@ if ($pos=0 or $pos=1){
 		<ul class="navbar-nav">
 		
 			<li class="nav-item d-none d-sm-inline-block" >
-				<a href="/home" class="nav-link" id="fon_24_wh">Dashboard/</a>
-			</li>
-			<li class="nav-item d-none d-sm-inline-block" >
-				<a href="#" class="nav-link" id="fon_24_wh">Customer Information/</a>
+				<a href="/home" class="nav-link" id="Dashboard_bt">Dashboard /</a>
 			</li>
 			
+			
 			<li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-				<a href="/subcompany1/{{$idx}}/{{$idy}}" class="nav-link atas back"  id="fon_24_wh">{{$pilcompany}}</a>
+				<a href="/subcompany1/{{$idx}}/{{$idy}}" class="nav-link atas back"  id="Dashboard_bt">{{$pilcompany}} /</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block" >
+				<a href="#" class="nav-link" id="Dashboard_bt">Customer Information</a>
 			</li>
 			<?php 
 			
@@ -575,6 +601,11 @@ if ($pos=0 or $pos=1){
 			
 		</ul>
 		@include('layouts.logo')
+		<svg class="Rectangle_375">
+			<rect id="Rectangle_375" rx="0" ry="0" x="0" y="0" width="255" height="6">
+			</rect>
+		</svg>
+
 		<div class="atas1">
 			<div class="card-body">
 				<div class="row" id="case1"> 

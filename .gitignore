@@ -18,3 +18,5 @@ npm-debug.log
 yarn-error.log
 /app/Http/Controllers/Menus/TestController.php
 /app/Http/Controllers/Api/Test2Controller.php
+/config/database.php
+

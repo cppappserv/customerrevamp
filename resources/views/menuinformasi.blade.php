@@ -100,7 +100,7 @@ $hitam = "rgba(84,84,84,1)";
       overflow: visible;
       width: 125px;
       height: 19px;
-      left: 20px;
+      left: 140px;
       top: 80px;
     }
     .garis_tebal{
@@ -379,6 +379,20 @@ $hitam = "rgba(84,84,84,1)";
       color: #fff;
       text-align: center;
    }
+   #Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
 
   </style>
 </head>
@@ -391,13 +405,17 @@ style="margin-left: 0px;">
    <!-- <div class="atas"> -->
    <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="/setting1" class="nav-link" id="fon_28_wh">Seting/</a>
+         <a href="/setting1" class="nav-link" id="Dashboard_bt">Setting /</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-         <a href="#" class="nav-link atas" id="fon_28_wh">User Profile</a>
+         <a href="#" class="nav-link atas" id="Dashboard_bt">User Profile</a>
       </li>
    </ul>
    @include('layouts.logo')
+   <svg class="Rectangle_241_bv">
+      <rect id="Rectangle_241_bv" rx="0" ry="0" x="0" y="0" width="135" height="6">
+      </rect>
+    </svg>
    
 </nav>
 

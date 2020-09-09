@@ -60,10 +60,10 @@
       position: fixed;
       overflow: visible;
       width: 125px;
-      height: 19px;
-      left: 20px;
+      height: 6px;
+      left: 182px;
       top: 80px;
-    }
+   }
     .garis_tebal{
       border-bottom: 5px solid white;
       border-bottom-width: 5px;
@@ -207,6 +207,45 @@
     font-size: 21px;
     color: rgba(84,84,84,1);
   }
+  #Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
+    #ID124_Customers_Found {
+		/* left: 60px;
+		top: 139.286px; */
+		position: relative;
+		overflow: visible;
+		width: 396px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(84,84,84,1);
+	}
+  #Rectangle_248 {
+		fill: rgba(51,122,183,1);
+	}
+	.Rectangle_248 {
+		/* position: absolute;
+		overflow: visible; */
+		width: 130px;
+		height: 13px;
+		left: 80px;
+		top: 203px;
+	}
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -230,13 +269,17 @@ $total = 134;
    <ul class="navbar-nav">
    
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis" >
-         <a href="/home" class="nav-link" id="fon_28_wh">Dashboard/</a>
+         <a href="/home" class="nav-link" id="Dashboard_bt">Dashboard /</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="#" class="nav-link atas" id="fon_28_wh">{{$pilcompany}}</a>
+         <a href="#" class="nav-link atas" id="Dashboard_bt">{{$pilcompany}}</a>
       </li>
     </ul>
     @include('layouts.logo')
+    <svg class="Rectangle_241_bv">
+      <rect id="Rectangle_241_bv" rx="0" ry="0" x="0" y="0" width="125" height="6">
+      </rect>
+    </svg>
 </nav>
 <!-- /.navbar -->
 
@@ -302,12 +345,16 @@ $total = 134;
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-            <?php
-                  $max=count($listdata);
-                  ?>
-            <h1>{{$max}} Customers Found</h1>
+            <div class="card-header" id="ID124_Customers_Found">
+              <?php
+                $max=count($listdata);
+              ?>
+              <span>{{$max}} Customers Found</span>
             </div>
+            <svg class="Rectangle_248" style="padding-left: 20px;">
+              <rect id="Rectangle_248" rx="0" ry="0" x="0" y="0" width="106" height="13">
+              </rect>
+            </svg>
             <!-- /.card-header -->
             
             <div class="card-body">

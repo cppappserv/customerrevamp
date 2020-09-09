@@ -128,10 +128,6 @@
       color: rgba(84,84,84,1);
       letter-spacing: -0.25px;
     } 
-
-
-
-    
     #Path_186 {
       fill: rgba(255,255,255,1);
     }
@@ -216,6 +212,34 @@
         /* min-width: 280px; */
         /* padding: 0; */
     }
+    #Welcome_Aditya_Yudha_bl {
+      /* left: 0px;
+      top: 0px; */
+      position: absolute;
+      overflow: visible;
+      width: 389px;
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      color: rgba(88,88,88,1);
+    }
+    #Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
   </style>
   
 </head>
@@ -237,14 +261,14 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav" >
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/home" class="nav-link"  style="color: white;font-size: 28px;">Dashboard</a>
+        <!-- <a href="/home" class="nav-link"  style="color: white;font-size: 28px;">Dashboard</a> -->
+        <a href="/home" class="nav-link"  id="Dashboard_bt">Dashboard</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/setting1" class="nav-link"  style="color: white;font-size: 28px;">Setting</a>
+        <!-- <a href="/setting1" class="nav-link"  style="color: white;font-size: 28px;">Setting</a> -->
+        <a href="/setting1" class="nav-link"  id="Dashboard_bt">Setting</a>
       </li>
     </ul>
-
-    
     @include('layouts.logo')
     <svg class="Rectangle_241_bv">
       <rect id="Rectangle_241_bv" rx="10" ry="10" x="0" y="0" width="125" height="19">
@@ -270,23 +294,24 @@
         <input type="hidden" id="Latitude" name="Latitude">
         <input type="hidden" id="Longitude" name="Longitude">
         <div class="row">
-            <div id="Group_399_bk" style="
+          <div id="Group_399_bk" style="
             padding-top: 20px;
             font-size: 36px;
             color: rgba(88,88,88,1);
-            height: 100px;">
-              <div id="Welcome_Aditya_Yudha_bl">
-                <span>Welcome,</span>
-                <span style="font-style:normal;font-weight:normal;color:rgba(56,154,198,1);">{{$user->fullname}}!</span>
-              </div>
+            height: 100px;
+            margin-left: 5%;">
+            <div id="Welcome_Aditya_Yudha_bl">
+              <span>Welcome,</span>
+              <span style="font-style:normal;font-weight:normal;color:rgba(56,154,198,1);">{{$user->fullname}}!</span>
             </div>
           </div>
         </div>
+      </div>
       
  
         <!-- Small boxes (Stat box) -->
         
-        <div class="row" style="margin-left: 65px;margin-right: 20px;">
+        <div class="row" style="margin-left: 5%;margin-right: 5%;">
         
         <?php
         $max=count($perbu);

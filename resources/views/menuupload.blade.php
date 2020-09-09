@@ -295,6 +295,31 @@ $hitam = "rgba(84,84,84,1)";
     border-radius: 10px;
     padding-left: 10px;
 	}
+   #Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
+    #Rectangle_241_bv {
+      fill: rgba(255,255,255,1);
+    }
+    .Rectangle_241_bv {
+      position: fixed;
+      overflow: visible;
+      width: 125px;
+      height: 6px;
+      left: 140px;
+      top: 80px;
+   }
 
   </style>
 </head>
@@ -307,13 +332,17 @@ $hitam = "rgba(84,84,84,1)";
       <!-- <div class="atas"> -->
    <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="/setting1" class="nav-link" id="fon_28_wh">Seting/</a>
+         <a href="/setting1" class="nav-link" id="Dashboard_bt">Setting /</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-         <a href="#" class="nav-link atas" id="fon_28_wh">Upload Data From Excel</a>
+         <a href="#" class="nav-link atas" id="Dashboard_bt">Upload Data From Excel</a>
       </li>
    </ul>
    @include('layouts.logo')
+   <svg class="Rectangle_241_bv">
+      <rect id="Rectangle_241_bv" rx="0" ry="0" x="0" y="0" width="270" height="6">
+      </rect>
+    </svg>
    
 </nav>
 

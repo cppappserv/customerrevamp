@@ -91,7 +91,64 @@ $hitam = "rgba(84,84,84,1)";
       width: 150px;
       background: white;
    }
-
+	 #Dashboard_bt {
+		/* left: 60px;
+		top: 35.286px; */
+      /* position: fixed;
+      overflow: visible;
+      width: 117px; */
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      color: rgba(255,255,255,1);
+    }
+		#Rectangle_241_cg {
+			fill: rgba(255,255,255,1);
+		}
+		.Rectangle_241_cg {
+			position: fixed;
+			overflow: visible;
+			width: 152px;
+			height: 19px;
+			left: 160px;
+			top: 80px;
+		}
+		#Welcome_Aditya_Yudha_bl {
+      /* left: 0px;
+      top: 0px; */
+      position: relative;
+      overflow: visible;
+      width: 389px;
+      white-space: nowrap;
+      text-align: left;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      color: rgba(88,88,88,1);
+    }
+		#Group_399_bk {
+			position: relative;
+			width: 388px;
+			height: 43px;
+			top: 100px;
+    	left: 0px;
+			overflow: visible;
+		}
+		#Rectangle_241_bv {
+      fill: rgba(255,255,255,1);
+    }
+    .Rectangle_241_bv {
+      position: fixed;
+      overflow: visible;
+      width: 125px;
+      height: 6px;
+      left: 182px;
+      top: 80px;
+   }
     /* --------------- */
     
    
@@ -107,15 +164,19 @@ $hitam = "rgba(84,84,84,1)";
       <ul class="navbar-nav">
       
          <li class="nav-item d-none d-sm-inline-block" >
-            <a href="/home" class="nav-link" id="fon_28_wh">Dashboard/</a>
+            <a href="/home" class="nav-link" id="Dashboard_bt">Dashboard</a>
          </li>
          <li class="nav-item d-none d-sm-inline-block" >
-            <a href="#" class="nav-link" id="fon_28_wh">Setting</a>
+            <a href="#" class="nav-link" id="Dashboard_bt">Setting</a>
          </li>
          
          
 			</ul>
 			@include('layouts.logo')
+			<svg class="Rectangle_241_cg">
+				<rect id="Rectangle_241_cg" rx="10" ry="10" x="0" y="0" width="110" height="19">
+				</rect>
+			</svg>
    
 </nav>
 
@@ -175,23 +236,29 @@ $hitam = "rgba(84,84,84,1)";
 		</div>
 
    <!-- Content Wrapper. Contains page content -->
-   <div class="content-wrapper" style="/* min-height: 320.012px; */background: white;">
+   <div class="content-wrapper" 
+	 style="background: white;
+	 	margin-left: 3%;
+		 margin-right: 97%;
+    margin-top: 0px;">
       <!-- Main content -->
       <section class="content">
 			<div class="row">
-            <div id="Group_399_bk" style="
-					padding-top: 20px;
-					font-size: 36px;
-					color: rgba(88,88,88,1);
-					height: 100px;">
-              <div id="Welcome_Aditya_Yudha_bl">
-                <span>Welcome,</span>
-                <span style="font-style:normal;font-weight:normal;color:rgba(56,154,198,1);">{{$user->fullname}}!</span>
-              </div>
+          <div id="Group_399_bk" style="
+            /* padding-top: 20px; */
+            font-size: 36px;
+            color: rgba(88,88,88,1);
+            height: 100px;
+						position: relative;
+						">
+            <div id="Welcome_Aditya_Yudha_bl">
+              <span>Welcome,</span>
+              <span style="font-style:normal;font-weight:normal;color:rgba(56,154,198,1);">{{$user->fullname}}!</span>
             </div>
           </div>
         </div>
-         <div class="row">
+
+         <div class="row" style="position: relative">
 				<a href="/upload1" id="Group_731_cg"
 					style="top:110px; left:0px">
 					<svg class="Rectangle_515_cg">

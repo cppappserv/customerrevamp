@@ -1,14 +1,14 @@
 <ul class="navbar-nav ml-auto">
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="color: white;top: 20px;height: 75px;font-size: 28px;">
-				<span>{{$user->fullname}}</span>
+				<span id="Dashboard_bt">{{$user->fullname}}</span>
 			</div>
 
 			<li class="nav-item dropdown" >
 				<a class="nav-link" data-toggle="dropdown" href="#">
 					<img src="/storeimage/{{ $user->user_id }}" width="50" height="50" class="imglogin"
 					style="
-								width: 80px;
-								height: 80px;
+								width: 70px;
+								height: 70px;
 								margin-top: 10px;
 								"
 						>
