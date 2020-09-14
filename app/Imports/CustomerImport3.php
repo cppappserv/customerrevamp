@@ -6,21 +6,15 @@ use Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
  
-class CustomerImport implements ToModel, WithHeadingRow
+class CustomerImport3 implements ToModel, WithHeadingRow
 {
     public $usercode;
-    public $code;
-    public $company;
 
     public function __construct(
-        $usercode,
-        $code,
-        $company
+        $usercode
     )
     {
         $this->usercode       = $usercode;
-        $this->code       = $code;
-        $this->company       = $company;
     }
     /**
     * @param array $row
@@ -32,16 +26,14 @@ class CustomerImport implements ToModel, WithHeadingRow
         // dd($row);
          if($row["sorg"]<>"") {
             $usercode = $this->usercode;
-            $company = $this->company;
-            
-            $code = $this->code;
-            if ($row["telephone_1"] && substr($row["telephone_1"],0,1) <> '0' ){
-                $row["telephone_1"] = '0'.$row["telephone_1"];
+            $telephone_1 = $row["telephone_1"];
+            if ($telephone_1 && substr($telephone_1,0,1) <> '0' ){
+                $telephone_1 = '0'.$telephone_1;
             } 
-            if ($row["oth_telp_hp_fax"] && substr($row["oth_telp_hp_fax"],0,1) <> '0' ){
-                $row["oth_telp_hp_fax"] = '0'.$row["oth_telp_hp_fax"];
+            $oth_telp_hp_fax = $row["oth_telp_hp_fax"];
+            if ($oth_telp_hp_fax && substr($oth_telp_hp_fax,0,1) <> '0' ){
+                $oth_telp_hp_fax = '0'.$oth_telp_hp_fax;
             } 
-            $row["user_id"] = ($row["user_id"]==""?$code.$row["customer"]:$row["user_id"]);
             return new Importprofile([
                 'user_id'             => $row["user_id"], 
                 'user_type'           => $row["user_type"], 
@@ -57,7 +49,7 @@ class CustomerImport implements ToModel, WithHeadingRow
                 'street'              => $row["street"], 
                 'kelurahan'           => $row["kelurahan"], 
                 'postalcode'          => $row["postalcode"], 
-                'telephone_1'         => $row["telephone_1"], 
+                'telephone_1'         => $telephone_1, 
                 'e_mail_address'      => $row["e_mail_address"], 
                 'cgrp'                => $row["cgrp"], 
                 'alias'               => $row["alias"], 
@@ -65,7 +57,7 @@ class CustomerImport implements ToModel, WithHeadingRow
                 'tmpt_lahir'          => $row["tmpt_lahir"], 
                 'agama'               => $row["agama"], 
                 'gol_darah'           => $row["gol_darah"], 
-                'oth_telp_hp_fax'     => $row["oth_telp_hp_fax"], 
+                'oth_telp_hp_fax'     => $oth_telp_hp_fax, 
                 'medsos'              => $row["medsos"], 
                 'hobby'               => $row["hobby"], 
                 'bentuk_usaha'        => $row["bentuk_usaha"], 
@@ -79,7 +71,6 @@ class CustomerImport implements ToModel, WithHeadingRow
                 'status_customer'     => $row["status_customer"], 
                 'usercode'            => $usercode, 
                 'uid'                 => Auth::user()->uid,
-                'company'             => $company
             ]);
         }
     }

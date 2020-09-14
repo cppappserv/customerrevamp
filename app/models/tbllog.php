@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tbllog extends Model
 {
     //
-   protected $table = "tbl_log";
+   protected $table = "tbl_log1";
    public $timestamps = false;
    public $incrementing = false;
    protected $fillable = [

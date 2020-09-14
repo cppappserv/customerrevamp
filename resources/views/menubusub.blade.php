@@ -1,257 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer</title>
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> -->
-  <link rel="stylesheet" href="{{asset('css/roboto.css')}}">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.utama')
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-  <link rel="stylesheet" href="{{asset('ionicons/2.0.1/css/ionicons.min.css')}}">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
-  <style id="applicationStylesheet" type="text/css">
-  .dropdown-menu-lg {
-    /* max-width: 300px; */
-    /* min-width: 280px; */
-    /* padding: 0; */
-}
-  .imglogin {
-		border-radius: 50%;
-	}
-   .atas{
-      position: fixed;
-      width: 100%;
-      height: 100px;
-      background: rgba(43,185,201,1);
-   }
-   .img-responsive{
-     max-width:100%;
-     display:block;
-     height:auto;
-   }
-
-   
-   #fon_24_wh{
-      color: white;
-      font-size:24px;
-   }
-   #fon_28_wh{
-      color: white;
-      font-size:28px;
-   }
-   .awal{
-      top:75px;
-   }
-   #Rectangle_241_bv {
-      fill: rgba(255,255,255,1);
-    }
-    .Rectangle_241_bv {
-      position: fixed;
+@section('csscontent')
+  
+	<style id="applicationStylesheet" type="text/css">
+    #ID124_Customers_Found {
+      /* left: 60px;
+      top: 139.286px; */
+      position: relative;
       overflow: visible;
-      width: 125px;
-      height: 6px;
-      left: 182px;
-      top: 80px;
-   }
-    .garis_tebal{
-      border-bottom: 5px solid white;
-      border-bottom-width: 5px;
-      margin-bottom: initial;
-    }
-    .garis_tipis{
-      border-bottom: 2px solid white;
-      border-bottom-width: 2px;
-      margin-bottom: initial;
-    }
-
-    #Ellipse_57_lo {
-		fill: rgba(230,74,25,1);
-   }
-   
-	.Ellipse_57_lo {
-		/* position: absolute;
-		overflow: visible; */
-		width: 45px;
-		height: 45px;
-		left: 0px;
-		top: 0px;
-   }
-   #delete_lp {
-      position: absolute;
-      overflow: visible;
-		width: 21.808px;
-		height: 26.841px;
-		left: 11.439px;
-		top: 8.65px;
-		
-   }
-   #Path_191_lq {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_191_lq {
-		overflow: visible;
-		position: absolute;
-		width: 21.809px;
-		height: 26.841px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-   }
-   #Path_192_lr {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_192_lr {
-		overflow: visible;
-		position: absolute;
-		width: 1.678px;
-		height: 12.582px;
-		left: 10.065px;
-		top: 10.904px;
-		transform: matrix(1,0,0,1,0,0);
-   }
-   #Path_193_ls {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_193_ls {
-		overflow: visible;
-		position: absolute;
-		width: 1.678px;
-		height: 12.582px;
-		left: 14.259px;
-		top: 10.904px;
-		transform: matrix(1,0,0,1,0,0);
-   }
-   #Path_194_lt {
-		fill: rgba(255,255,255,1);
-	}
-	.Path_194_lt {
-		overflow: visible;
-		position: absolute;
-		width: 1.678px;
-		height: 12.582px;
-		left: 5.871px;
-		top: 10.904px;
-		transform: matrix(1,0,0,1,0,0);
-   }
-   th {
-      background: rgba(60,141,188,1);
-      color:white;
-   }
-   
-
-   #Group_680 {
-		position: fixed;
-		width: 107px;
-		height: 107px;
-		left: 1197px;
-		top: 750px;
-		overflow: visible;
-		cursor: pointer;
-		--web-animation: fadein 0.3s ease-out;
-		--web-action-type: page;
-		--web-action-target: 0401_Add_customer_PopUp.html;
-   }
-   #Rectangle_292 {
-		fill: rgba(255,255,255,1);
-	}
-	.Rectangle_292 {
-		position: absolute;
-		overflow: visible;
-		width: 67px;
-		height: 74px;
-		left: 21px;
-		top: 17px;
-	}
-	#add {
-		fill: rgba(51,122,183,1);
-	}
-	.add {
-		overflow: visible;
-		position: absolute;
-		width: 107px;
-		height: 107px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-  tr{
-    height: 70px;
-    padding-top:100px;
-    padding-bottom:100px;
-
-  }
-  td{
-    background:#fff;
-    height: 70px;
-  }
-  #tdpos{
-    border-top:0px;
-    border-bottom:0px;
-    border:none;
-    vertical-align: middle;
-    font-size: 21px;
-    color: rgba(84,84,84,1);
-  }
-  #color21{
-    font-size: 21px;
-    color: rgba(84,84,84,1);
-  }
-  #Dashboard_bt {
-		/* left: 60px;
-		top: 35.286px; */
-      /* position: fixed;
-      overflow: visible;
-      width: 117px; */
+      width: 396px;
       white-space: nowrap;
       text-align: left;
       font-family: Roboto;
       font-style: normal;
       font-weight: normal;
-      font-size: 24px;
-      color: rgba(255,255,255,1);
+      font-size: 40px;
+      color: rgba(84,84,84,1);
     }
-    #ID124_Customers_Found {
-		/* left: 60px;
-		top: 139.286px; */
-		position: relative;
-		overflow: visible;
-		width: 396px;
-		white-space: nowrap;
-		text-align: left;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 40px;
-		color: rgba(84,84,84,1);
-	}
-  #Rectangle_248 {
-		fill: rgba(51,122,183,1);
-	}
-	.Rectangle_248 {
-		/* position: absolute;
-		overflow: visible; */
-		width: 130px;
-		height: 13px;
-		left: 80px;
-		top: 203px;
-	}
-  </style>
-</head>
-<body class="hold-transition sidebar-mini">
-<?php 
-$total = 134;
-?>
+    #Rectangle_248 {
+      fill: rgba(51,122,183,1);
+    }
+    .Rectangle_248 {
+      /* position: absolute;
+      overflow: visible; */
+      width: 130px;
+      height: 13px;
+      left: 80px;
+      top: 203px;
+    }
+    
+	</style>
+@endsection
+
+@section('content')
+  {{-- notifikasi form validasi --}}
+  @if ($errors->has('file'))
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $errors->first('file') }}</strong>
+		</span>
+  @endif
+ 
+		{{-- notifikasi sukses --}}
+  @if ($sukses = Session::get('sukses'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button> 
+			<strong>{{ $sukses }}</strong>
+		</div>
+  @endif
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
   style="
@@ -291,19 +86,7 @@ $total = 134;
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="
     margin-left: 0px;">
-    <!-- Content Header (Page header) -->
-    <!-- <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>{{$total}} Customers Found</h1>
-          </div>
-          <div class="col-sm-6">
-            
-          </div>
-        </div>
-      </div>
-    </section> -->
+    
 
     <!-- Main content -->
     <section class="content" style="position: relative;top: 25px;"> 
@@ -459,19 +242,10 @@ $total = 134;
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@endsection
 
-<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- DataTables -->
-<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
-<!-- page script -->
+@section('jscontent')
+
 <script>
   $(function () {
    $('#example2').DataTable({
@@ -492,5 +266,4 @@ $(document).on('click','.deleteUser',function(){
     // $('#applicantDeleteModal').modal('show'); 
 });
 </script>
-</body>
-</html>
+@endsection

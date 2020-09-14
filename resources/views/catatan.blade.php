@@ -322,3 +322,6 @@
 
     INSERT INTO `tbl_userphoto_add`
     SELECT * FROM tampung.tbl_userphoto_add;
+
+    CREATE TABLE tbl_log1 AS SELECT * FROM tbl_log;
+	TRUNCATE TABLE tbl_log1;

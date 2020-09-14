@@ -61,6 +61,7 @@ class CstsubcompanyController extends Controller
            LEFT OUTER JOIN tbluser a2 ON a1.createdby = a2.uid
            LEFT OUTER JOIN tbluser a3 ON a1.updatedby = a3.uid
            WHERE c1.desc = '".$para1."' AND a1.company = '".$para2."'
+           and a1.inactive is null
         ";
        
         $grp = db::connection('mysql')->select($sql);

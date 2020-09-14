@@ -46,6 +46,7 @@ class HomeController extends Controller
             FROM tbluser a1
             INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
             INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
+            where a1.inactive is null
             GROUP BY c1.desc
         ";
         $grp = db::connection('mysql')->select($sql);

@@ -380,13 +380,13 @@ $hitam = "rgba(84,84,84,1)";
                      if($max==0){
                      ?>
                         
-                     <label>PILIH FILE</label>
+                     <label>PILIH OUC</label>
                      <select class="form-control" id="inputtypeupload" name="inputtypeupload" onblur="cekinputan()"> 
-                        <option value="" selected>--- Select User Type ---</option>
+                        <option value="" selected>--- Select OUC ---</option>
                         <?php
                         foreach ($typefileupload as $key => $value) {
                         ?>
-                           <option value="{{$value->type}}">{{$value->format}}</option>
+                           <option value="{{$value->info}}">{{$value->info}}</option>
                         <?php
                         }
                         ?>
@@ -413,7 +413,7 @@ $hitam = "rgba(84,84,84,1)";
                            for($i=0; $i<$max; $i++){
                            ?>
                            <tr>
-                              <td>{{$i}}</td>
+                              <td>{{$i+1}}</td>
                               <td>{{$data_upload[$i]->namaalias}}</td>
                               <td>{{$data_upload[$i]->almtktp}}</td>
                               <td>{{$data_upload[$i]->hppri}}</td>

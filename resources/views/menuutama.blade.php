@@ -1,65 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer</title>
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> -->
-  <link rel="stylesheet" href="{{asset('css/roboto.css')}}">
-
-  
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-  <link rel="stylesheet" href="{{asset('ionicons/2.0.1/css/ionicons.min.css')}}">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
-
+@extends('layouts.utama')
+@section('csscontent')
   <style id="applicationStylesheet" type="text/css">
-  
     .col-lg-2 {
-        -ms-flex: 0 0 16.666667%;
-        flex: 0 0 18.666667%;
-        max-width: 18.666667%;
+      -ms-flex: 0 0 16.666667%;
+      flex: 0 0 18.666667%;
+      max-width: 18.666667%;
     }
-  .dropdown-menu-lg {
-    /* max-width: 300px; */
-    /* min-width: 280px; */
-    /* padding: 0; */
-}
-  .imglogin {
-		border-radius: 50%;
-	}
-	    a { text-decoration: none; }
-     #Group_716 {
+/* #Group_716 {
       position: absolute;
       width: 236.001px;
       height: 276.253px;
-      /* left: 60px;
-      top: 196px; */
       overflow: visible;
       --web-animation: fadein undefineds undefined;
       --web-action-type: page;
-      /* --web-action-target: company; */
       cursor: pointer;
-    }
+    } */
     #Path_130 {
       fill: rgba(255,255,255,1);
     }
@@ -85,167 +40,24 @@
       top: 0px;
       transform: matrix(1,0,0,1,0,0);
     }
-    #Fish_Feed_bp {
-      /* left: 51px; */
-      top: 50px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 32px;
-      color: rgba(255,255,255,1);
-    }
-    #Customer {
-      /* left: 67px; */
-      top: 229px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      color: rgba(84,84,84,1);
-    }
-    #ID1201 {
-      /* left: 37px; */
-      top: 150px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 64px;
-      color: rgba(84,84,84,1);
-      letter-spacing: -0.25px;
-    } 
-    #Path_186 {
-      fill: rgba(255,255,255,1);
-    }
-    .Path_186 {
-      filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-      overflow: visible;
-      position: absolute;
-      width: 254px;
-      height: 293.411px;
-      /* left: 60px; */
-      top: 294px;
-      transform: matrix(1,0,0,1,0,0);
-    }
-    #Intersection_28 {
-      fill: rgba(202,214,32,1);
-    }
-    .Intersection_28 {
-      overflow: visible;
-      position: absolute;
-      width: 236.001px;
-      height: 138.001px;
-      /* left: 60px; */
-      top: 294px;
-      transform: matrix(1,0,0,1,0,0);
-    }
-    #Pet_SuHS {
-      /* left: 111px; */
-      top: 350px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 32px;
-      color: rgba(255,255,255,1);
-    }
-    #Customer_bg {
-      /* left: 127px; */
-      top: 529px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      color: rgba(84,84,84,1);
-    }
-    #ID902 {
-      /* left: 124px; */
-      top: 450px;
-      position: absolute;
-      overflow: visible;
-      width: 250px;
-      white-space: nowrap;
-      text-align: center;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 64px;
-      color: rgba(84,84,84,1);
-      letter-spacing: -0.25px;
-    }
-    #Rectangle_241_bv {
-      fill: rgba(255,255,255,1);
-    }
-    .Rectangle_241_bv {
-      position: fixed;
-      overflow: visible;
-      width: 125px;
-      height: 19px;
-      left: 20px;
-      top: 80px;
-    }
-    .dropdown-menu-lg {
-        /* max-width: 300px; */
-        /* min-width: 280px; */
-        /* padding: 0; */
-    }
-    #Welcome_Aditya_Yudha_bl {
-      /* left: 0px;
-      top: 0px; */
-      position: absolute;
-      overflow: visible;
-      width: 389px;
-      white-space: nowrap;
-      text-align: left;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 36px;
-      color: rgba(88,88,88,1);
-    }
-    #Dashboard_bt {
-		/* left: 60px;
-		top: 35.286px; */
-      /* position: fixed;
-      overflow: visible;
-      width: 117px; */
-      white-space: nowrap;
-      text-align: left;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      color: rgba(255,255,255,1);
-    }
   </style>
-  
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
+@endsection
 
-
+@section('content')
+  {{-- notifikasi form validasi --}}
+  @if ($errors->has('file'))
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $errors->first('file') }}</strong>
+		</span>
+  @endif
+ 
+		{{-- notifikasi sukses --}}
+  @if ($sukses = Session::get('sukses'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button> 
+			<strong>{{ $sukses }}</strong>
+		</div>
+  @endif
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light"
   style="
@@ -288,6 +100,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    
     
     <section class="content">
       <div class="container-fluid">
@@ -387,64 +200,4 @@
  
 </div>
 <!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{asset('plugins/sparklines/sparkline.js')}}"></script>
-<!-- JQVMap -->
-<script src="{{asset('plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
-<!-- daterangepicker -->
-<script src="{{asset('plugins/moment/moment.min.js')}}"></script>
-<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-<!-- Summernote -->
-<script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
-<!-- overlayScrollbars -->
-<script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> -->
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
-
-<script type="text/javascript">
-// alert('test');
-//   function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } 
-  //   else { 
-  //     x.innerHTML = "Geolocation is not supported by this browser.";
-  //   }
-  // }
-
-  function showPosition(position) {
-    $.ajax({
-      url: '/geolocation/'+position.coords.latitude+'/'+position.coords.longitude,
-      type: "GET",
-      dataType: "json",
-      success:function(data) {
-        // $("#inpassetpribadi").append(data.msg);
-      }
-    });
-
-  }
-</script>
-</body>
-</html>
+@endsection        

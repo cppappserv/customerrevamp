@@ -8,10 +8,11 @@ class Usrprofile extends Model
 {
     //
    protected $table = "usr_profile";
-   protected $primaryKey = null;
+  //  protected $primaryKey = null;
    public $timestamps = false;
    public $incrementing = false;
    protected $fillable = [
+      'id',
       'user_id', 
       'kodesap', 
       'noktp', 

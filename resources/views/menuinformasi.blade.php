@@ -1,101 +1,10 @@
-<?php 
-$putih = "white";
-$hitam = "rgba(84,84,84,1)";
-
-
-?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="csrf-token" content="{{ Session::token() }}"> 
-  <title>Customer</title>
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> -->
-  <link rel="stylesheet" href="{{asset('css/roboto.css')}}">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-  <link rel="stylesheet" href="{{asset('ionicons/2.0.1/css/ionicons.min.css')}}">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
-  @include('include.incdetail1')
-  
+@extends('layouts.utama')
+@section('csscontent')
   <style id="applicationStylesheet" type="text/css">
-  .dropdown-menu-lg {
-    /* max-width: 300px; */
-    /* min-width: 280px; */
-    /* padding: 0; */
-}
-  .imglogin {
-		border-radius: 50%;
-	}
-	/* #custom-content-below-home-tab {
-		display: none;
-	}
-	#custom-content-below-profile-tab {
-		display: none;
-	}
-	#custom-content-below-messages-tabt {
-		display: none;
-	}
-
-	#custom-content-below-settings-tab {
-		display: none;
-	}
-	#custom-content-below-karakteristik-tab {
-		display: block;
-	} */
-   .atas{
-      position: fixed;
-      width: 100%;
-      height: 100px;
-      background: rgba(43,185,201,1);
-   }
-   .atas1{
-      position: fixed;
-      top: 69px;
-      left:0px;
-      width: 100%;
-      height: 70px;
-      background:white;
-   }
-   #fon_24_wh{
-      color: white;
-      font-size:24px;
-   }
-   #fon_28_wh{
-      color: white;
-      font-size:28px;
-   }
-   .awal{
-      top:100px;
-      position: relative;
-   }
-
-   .button_proses{
-      width: 200px;
-      margin-left:20px;
-      margin-right:20px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px
-   }
-
-
-   #Rectangle_241_bv {
+   #Rectangle_241_bx {
       fill: rgba(255,255,255,1);
     }
-    .Rectangle_241_bv {
+    .Rectangle_241_bx {
       position: fixed;
       overflow: visible;
       width: 125px;
@@ -103,317 +12,57 @@ $hitam = "rgba(84,84,84,1)";
       left: 140px;
       top: 80px;
     }
-    .garis_tebal{
-      border-bottom: 5px solid white;
-      border-bottom-width: 5px;
-      margin-bottom: initial;
-    }
-    .garis_tipis{
-      border-bottom: 2px solid white;
-      border-bottom-width: 2px;
-      margin-bottom: initial;
-    }
-
-    .edit_profile {
-      width: 350px;
-      background: white;
-   }
-   .edit_profile_1 {
-      width: 150px;
-      background: white;
-   }
-
-   #Group_694_b {
-		position: absolute;
-		width: 34.695px;
-		height: 37.586px;
-		left: 0px;
-		top: 2.891px;
-		overflow: visible;
-	}
-	#Group_693_c {
-		position: absolute;
-		width: 34.695px;
-		height: 37.586px;
-		left: 0px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Path_176_d {
-		fill: rgba(51,122,183,1);
-	}
-	.Path_176_d {
-		overflow: visible;
-		position: absolute;
-		width: 34.695px;
-		height: 37.586px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-	#Group_696_f {
-		position: absolute;
-		width: 31.803px;
-		height: 31.803px;
-		left: 8.674px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Group_695_f {
-		position: absolute;
-		width: 31.803px;
-		height: 31.803px;
-		left: 0px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Group_696_f {
-		position: absolute;
-		width: 31.803px;
-		height: 31.803px;
-		left: 8.674px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Group_695_f {
-		position: absolute;
-		width: 31.803px;
-		height: 31.803px;
-		left: 0px;
-		top: 0px;
-		overflow: visible;
-	}
-	#Path_177_h {
-		fill: rgba(51,122,183,1);
-	}
-	.Path_177_h {
-		overflow: visible;
-		position: absolute;
-		width: 31.803px;
-		height: 31.803px;
-		left: 0px;
-		top: 0px;
-		transform: matrix(1,0,0,1,0,0);
-	}
-
-    /* --------------- */
-    #Rectangle_332 {
-      fill: {{$putih}};;
-      /* fill: rgba(207,161,62,1); */
-	}
-	.Rectangle_332 {
-		position: absolute;
-		overflow: visible;
-		width: 202px;
-		height: 50px;
-		left: 97px;
-		top: 10px;
-   }
-   #Data_Pribadi {
-		left: 97px;
-		top: 15px;
-		position: absolute;
-		overflow: visible;
-		width: 202px;
-		white-space: nowrap;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-      /* color: rgba(255,255,255,1); */
-      color: {{$hitam}};
-	}
-   #Rectangle_332_wj {
-		fill: {{$putih}};
-	}
-	.Rectangle_332_wj {
-		position: fixed;
-      overflow: visible;
-      width: 202px;
-		height: 50px;
-		left: 319px;
-      top: 80px;
-
-   }
-   #Data_Usaha {
-		left: 319px;
-		top: 85px;
-		position: fixed;
-		overflow: visible;
-      width: 202px;
-      text-align: center;
-		white-space: nowrap;
-		/* --web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: datausaha; */
-		cursor: pointer;
-		text-align: center;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: {{$hitam}};
-	}
-	
-   #Rectangle_332_yl {
-		fill: {{$putih}};
-	}
-	.Rectangle_332_yl {
-      position: fixed;
-      overflow: visible;
-      width: 202px;
-		height: 50px;
-		left: 551px;
-      top: 80px;
-
-		
-   }
-   #Data_Kepemilikan {
-		left: 551px;
-		top: 85px;
-		position: fixed;
-		overflow: visible;
-      width: 202px;
-      text-align: center;
-		white-space: nowrap;
-		/* --web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: datakepemilikan; */
-		cursor: pointer;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: {{$hitam}};
-	}
-	
-   #Rectangle_332_zw {
-		fill: {{$putih}};
-	}
-	.Rectangle_332_zw {
-		position: fixed;
-      overflow: visible;
-      width: 202px;
-		height: 50px;
-		left: 783px;
-      top: 80px;
-   }
-   #Data_Jaminan {
-		left: 783px;
-		top: 85px;
-		position: fixed;
-		overflow: visible;
-      width: 202px;
-      text-align: center;
-		white-space: nowrap;
-		/* --web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: datajaminan; */
-		cursor: pointer;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: {{$hitam}};
-	}
-   #Rectangle_332_ {
-		fill: {{$putih}};
-	}
-	.Rectangle_332_ {
-		position: fixed;
-      overflow: visible;
-      width: 222px;
-		height: 50px;
-		left: 1015px;
-      top: 80px;
-   }
-   
-   
-	
-	#Karakteristik {
-		left: 1015px;
-		top: 85px;
-		position: fixed;
-		overflow: visible;
-      width: 202px;
-      text-align: center;
-		white-space: nowrap;
-		/* --web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: karakteristik; */
-		cursor: pointer;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 24px;
-		color: {{$hitam}};
-   }
-   .font36{
+    .font36{
 		font-family: Roboto;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 36px;
 		color: rgba(51,122,183,1);
 	}
-	.kotalexcel{
-		border: 20px;
-    background: rgb(51 122 183);
-    text-align: center;
-    color: white;
-    font-size: 24px;
-    border-radius: 10px;
-    padding-left: 10px;
-	}
-	.kotalexcel_kosong{
-		border: 20px;
-    background: white;
-    text-align: center;
-    border-color: black;
-    font-size: 24px;
-    border-radius: 10px;
-    padding-left: 10px;
-	}
-   .judultable {
-      background:rgba(60,141,188,1);
-      color: #fff;
-      text-align: center;
-   }
-   #Dashboard_bt {
-		/* left: 60px;
-		top: 35.286px; */
-      /* position: fixed;
-      overflow: visible;
-      width: 117px; */
-      white-space: nowrap;
-      text-align: left;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      color: rgba(255,255,255,1);
-    }
-
   </style>
-</head>
-<body class="hold-transition sidebar-mini">
+@endsection
+@section('content')
 
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
-style="margin-left: 0px;">
-   <!-- Left navbar links -->
-   <!-- <div class="atas"> -->
-   <ul class="navbar-nav">
-      <li class="nav-item d-none d-sm-inline-block" >
-         <a href="/setting1" class="nav-link" id="Dashboard_bt">Setting /</a>
+{{-- notifikasi form validasi --}}
+  @if ($errors->has('file'))
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $errors->first('file') }}</strong>
+		</span>
+  @endif
+ 
+		{{-- notifikasi sukses --}}
+  @if ($sukses = Session::get('sukses'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button> 
+			<strong>{{ $sukses }}</strong>
+		</div>
+  @endif
+
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light"
+		style="
+				margin-left: 0px;
+				position: fixed;
+				background-color: rgba(43,185,201,1);
+				top: 0;
+				width: 100%;
+				font-size: 24px;
+				height: 100px
+				/* z-index:0; */
+			">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav" >
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/home" class="nav-link"  id="Dashboard_bt">Setting /</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block" id="garis_tipis">
-         <a href="#" class="nav-link atas" id="Dashboard_bt">User Profile</a>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link"  id="Dashboard_bt">User Profile</a>
       </li>
-   </ul>
-   @include('layouts.logo')
-   <svg class="Rectangle_241_bv">
-      <rect id="Rectangle_241_bv" rx="0" ry="0" x="0" y="0" width="135" height="6">
+    </ul>
+    @include('layouts.logo')
+   <svg class="Rectangle_241_bx">
+      <rect id="Rectangle_241_bx" rx="0" ry="0" x="0" y="0" width="135" height="6">
       </rect>
     </svg>
    
@@ -423,7 +72,10 @@ style="margin-left: 0px;">
 
   <!-- Main Sidebar Container -->
 	<div class="wrapper awal" 
-      style="position: relative;">
+      style="position: relative;
+    top: 100px;
+    left: 1%;
+    width: 98%;">
 
 		<div class="container-fluid">
 
@@ -489,11 +141,12 @@ style="margin-left: 0px;">
                               </div>
                            </div>
                            <div class="form-group row">
-                              <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
+                              <label for="inputuserarea" class="col-sm-3 col-form-label">Bisnis Unit</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control @error('inputuserarea') is-invalid @enderror"  required autocomplete="inputuserarea" autofocus id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
-                                    <option value="" selected>--- Select Area ---</option>
+                                    <!-- <select class="form-control @error('inputuserarea') is-invalid @enderror"  required autocomplete="inputuserarea" autofocus id="inputuserarea" name="inputuserarea" onblur="cekinputan()">  -->
+                                    <select class="form-control" id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
+                                    <option value="" selected>--- Select BU ---</option>
                                     <?php
                                     foreach ($tblobject as $key => $value) {
                                     ?>
@@ -502,11 +155,11 @@ style="margin-left: 0px;">
                                     }
                                     ?>
                                     </select>
-                                    @error('inputuserarea')
+                                    <!-- @error('inputuserarea')
                                        <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
                                        </span>
-                                    @enderror
+                                    @enderror -->
                                  </div>
                               </div>
                            </div>
@@ -555,11 +208,11 @@ style="margin-left: 0px;">
                            </div>
 
                            <div class="form-group row">
-                              <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
+                              <label for="inputusercompany" class="col-sm-3 col-form-label">Ouc</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
                                     <select class="form-control @error('inputusercompany') is-invalid @enderror"  required autocomplete="inputusercompany" autofocus id="inputusercompany" name="inputusercompany" onblur="cekinputan()"> 
-                                       <option>--- Select Company ---</option>
+                                       <option>--- Select OUC ---</option>
                                     </select>
                                     
                                     @error('inputusercompany')
@@ -743,24 +396,9 @@ style="margin-left: 0px;">
 
 </div>
 <!-- ./wrapper -->
+@endsection
 
-<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- jquery-validation -->
-<script src="{{asset('plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-<script src="{{asset('plugins/jquery-validation/additional-methods.min.js')}}"></script>
-<!-- DataTables -->
-<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
-<!-- AdminLTE App -->
-
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
-<!-- page script -->
-
+@section('jscontent')
 <script>
    function myFunctioncancel() {
       var x = document.getElementById("save");
@@ -819,8 +457,9 @@ style="margin-left: 0px;">
    }
 </script>
 
+
 <script type="text/javascript">
-   $(function() {
+   $(document).ready(function(){
       $('select[name=inputuserarea]').change(function() {
          var stateID = $(this).val();
          if(stateID) {
@@ -831,7 +470,7 @@ style="margin-left: 0px;">
                success:function(data) {
                   if(data){
                      $("#inputusercompany").empty();
-                     $("#inputusercompany").append('<option>--- Select Company ---</option>');
+                     $("#inputusercompany").append('<option>--- Select OUC ---</option>');
                      $.each(data,function(key,value){
                            $("#inputusercompany").append('<option value="'+key+'">'+value+'</option>');
                      });
@@ -869,5 +508,10 @@ style="margin-left: 0px;">
       }
    }
 </script>
-</body>
-</html>
+@endsection
+
+
+
+
+
+

@@ -53,6 +53,7 @@ class CstcompanyController extends Controller
             INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' 
         AND c1.info = a1.company 
         AND c1.desc = '".$para."'
+        where a1.inactive is null
         GROUP BY c1.desc, c1.info, c1.info2, c1.info4, c1.info5";
         // dd($sql);
         $grp = db::connection('mysql')->select($sql);
