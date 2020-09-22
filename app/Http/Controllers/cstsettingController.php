@@ -154,7 +154,7 @@ class CstsettingController extends Controller
             $exportprofile->nik                 = null;
             $exportprofile->vat_registration_no = $value->npwp;
             $exportprofile->street              = $value->almtktp;
-            $exportprofile->kelurahan           = '"'.$value->kelktp.", ".$value->kecktp.", ".$value->kotaktp.", ".$value->propktp.'"';
+            $exportprofile->kelurahan           = $value->kelktp.", ".$value->kecktp.", ".$value->kotaktp.", ".$value->propktp;
             $exportprofile->postalcode          = $value->kdposktp;
             $exportprofile->telephone_1         = $value->tlppri;
             $exportprofile->e_mail_address      = $value->emailush;
