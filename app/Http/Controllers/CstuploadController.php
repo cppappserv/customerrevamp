@@ -72,155 +72,28 @@ class CstuploadController extends Controller
     }
     
 
-    public function zprosesexcel(){
-        $tblgroupuser = Tblgroupuser::get();
-        foreach ($tblgroupuser as $key => $value) {
-            $value->namegroup = strtoupper($value->namegroup);
-        }
-        $tbluserarray = array();
-        $usrprofilearray = array();
-
-        $baca = '';
-        $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
-        foreach ($data_upload as $key => $value) {
-           
-            $usergroup = '11';
-
-            if ($value['user_type']){
-                foreach ($tblgroupuser as $key2 => $value2) {
-                    $position = strpos($value2['namegroup'], strtoupper($value['user_type']));
-                    if ($position !== false){
-                        $usergroup = $value2['idusergroup'];
-                    break;  
-                    }
-                }
-            }
-            
-            
-            $value['kelurahan'] = $value['kelurahan'] .',,,';
-            $kelurahans = explode( ',', $value['kelurahan']);
-            $tbluser = Tbluser::where('user_id', '=', $value['user_id'])->first();
-            if (!$tbluser){
-                // $tbluser = new Tbluser;
-                array_push($tbluserarray, array(
-                    'user_id' => $value['user_id'],
-                    'password' => "123",
-                    'usergroup' => $usergroup,
-                    'fullname' => $value['nama_pribadi'],
-                    'birthdate' => ($value['tgl_lahir']==''?null:$value['tgl_lahir']),
-                    'birthplace' => $value['tmpt_lahir'],
-                    'company' => $value['desc'],
-                    'branch' => $value['usercode'],
-                    'inactive' => ($value['status_customer'] <> 'AKTIF'? 'Y' : null)
-                ));
-            } else {
-                $user_id = $value['user_id'];
-                $usergroup = $usergroup;
-                $fullname = $value['nama_pribadi'];
-                $birthdate = ($value['tgl_lahir']=='' ? null : $value['tgl_lahir'] );
-                $birthplace = $value['tmpt_lahir'];
-                $company = $value['desc'];
-                $branch = $value['usercode'];
-                $inactive = ($value['status_customer'] <> 'AKTIF'? 'Y' : null);
-
-                DB::update('update tbluser 
-                    set usergroup=?,fullname=?,birthdate=?,birthplace=?,company=?,branch=?,inactive=?
-                    where user_id = ?'
-                    ,[$usergroup,$fullname,$birthdate,$birthplace,$company,$branch,$inactive,$user_id]
-                );
-
-            }
-            
-            
-            $usrprofile = Usrprofile::where('user_id', '=', $value['user_id'])->first();
-            if (!$usrprofile){
-                array_push($usrprofilearray, array(
-                    'user_id'       => $value['user_id'],
-                    'kodesap'       => $value['customer'],
-                    'noktp'         => $value['nik'],
-                    'almtktp'       => $value['street'],
-                    'kelktp'        => $kelurahans[0],
-                    'kecktp'        => $kelurahans[1],
-                    'kotaktp'       => $kelurahans[2],
-                    'propktp'       => $kelurahans[3],
-                    'kdposktp'      => $value['postalcode'],
-                    'almtrmh'       => $value['street'],
-                    'kelrmh'        => $kelurahans[0],
-                    'kecrmh'        => $kelurahans[1],
-                    'kotarmh'       => $kelurahans[2],
-                    'proprmh'       => $kelurahans[3],
-                    'kdposrmh'      => $value['postalcode'],
-                    'tlppri'        => $value['telephone_1'],
-                    'faxpri'        => $value['oth_telp_hp_fax'],
-                    'emailpri'      => $value['medsos'],
-                    'hobby'         => $value['hobby'],
-                    'btkush'        => $value['bentuk_usaha'],
-                    'npwp'          => $value['vat_registration_no'],
-                    'status'        => $value['status_usaha'],
-                    'emailush'      => $value['e_mail_address'],
-                    'namaalias'     => $value['alias'],
-                    'agama'         => $value['agama'],
-                    'goldarah'      => $value['gol_darah']
-                ));
-            } else {
-                $user_id       = $value['user_id']; 
-                $kodesap       = $value['customer']; 
-                $noktp         = $value['nik']; 
-                $almtktp       = $value['street']; 
-                $kelktp        = $kelurahans[0];
-                $kecktp        = $kelurahans[1]; 
-                $kotaktp       = $kelurahans[2]; 
-                $propktp       = $kelurahans[3]; 
-                $kdposktp      = $value['postalcode']; 
-                $almtrmh       = $value['street']; 
-                $kelrmh        = $kelurahans[0];
-                $kecrmh        = $kelurahans[1];
-                $kotarmh       = $kelurahans[2];
-                $proprmh       = $kelurahans[3]; 
-                $kdposrmh      = $value['postalcode']; 
-                $tlppri        = $value['telephone_1']; 
-                $faxpri        = $value['oth_telp_hp_fax']; 
-                $emailpri      = $value['medsos']; 
-                $hobby         = $value['hobby']; 
-                $btkush        = $value['bentuk_usaha']; 
-                $npwp          = $value['vat_registration_no']; 
-                $status        = $value['status_usaha']; 
-                $emailush      = $value['e_mail_address']; 
-                $namaalias     = $value['alias']; 
-                $agama         = $value['agama']; 
-                $goldarah      = $value['gol_darah']; 
-
-                DB::table('schools')
-                    ->where('user_id', $postal->postal_code)
-                    ->update(['lat' => $address['lat'], 'lng' => $address['lng']]);
-
-
-                DB::update('
-                update usr_profile set 
-                    kodesap=?,noktp=?,almtktp=?,kelktp=?,kecktp=?,kotaktp=?,propktp=?,
-                    kdposktp=?,almtrmh=?,kelrmh=?,kecrmh=?,kotarmh=?,proprmh=?,kdposrmh=?,tlppri=?,
-                    faxpri=?,emailpri=?,hobby=?,btkush=?,npwp=?,status=?,emailush=?,namaalias=?,agama=?,goldarah=? 
-                where id = ?'
-                ,[$kodesap,$noktp,$almtktp,$kelktp,$kecktp,$kotaktp,$propktp,
-                $kdposktp,$almtrmh,$kelrmh,$kecrmh,$kotarmh,$proprmh,$kdposrmh,$tlppri,
-                $faxpri,$emailpri,$hobby,$btkush,$npwp,$status,$emailush,$namaalias,$agama,$goldarah
-                ,$user_id]);
-            }  
-            if ($value['user_id'] == 'CKP3016857'){
-                dd($value); 
-            }
-        }
-
-        
-        return redirect()->route('upload');
-        // redirect("/upload1");
-    }
-
+   
 
     public function prosesexcel(){
+
+        
+
         $tblgroupuser = Tblgroupuser::get();
         foreach ($tblgroupuser as $key => $value) {
             $value->namegroup = strtoupper($value->namegroup);
+        }
+        $tblgroupuser_blank = Tblgroupuser::where('namegroup', '=', 'Other - End User')->first();
+        $vsta_usaha = "";
+        $ssta_usaha = "";
+        $sta_usaha = Dtadditional::where('type', '=', 'STATUS_USAHA')->get();
+        foreach ($sta_usaha as $key => $value) {
+            $value->desc = strtoupper($value->desc);
+        }
+        $vbentuk_usaha = "";
+        $sbentuk_usaha = "";
+        $bentuk_usaha = Dtadditional::where('type', '=', 'BENTUK_USAHA')->get();
+        foreach ($bentuk_usaha as $key => $value) {
+            $value->desc = strtoupper($value->desc);
         }
         $tbluserarray = array();
         $usrprofilearray = array();
@@ -228,20 +101,43 @@ class CstuploadController extends Controller
         $baca = '';
         $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
         foreach ($data_upload as $key => $value) {
-           
-            $usergroup = '11';
-
+            $usergroup = $tblgroupuser_blank->idusergroup;
             if ($value['user_type']){
                 foreach ($tblgroupuser as $key2 => $value2) {
-                    $position = strpos($value2['namegroup'], strtoupper($value['user_type']));
+                    $position = strpos($value2['namegroup'], strtoupper(  substr($value['user_type'],1,4)));
                     if ($position !== false){
                         $usergroup = $value2['idusergroup'];
                     break;  
                     }
                 }
+            } 
+            $vbentuk_usaha = "";
+            if($value['bentuk_usaha']){
+                if ($sbentuk_usaha <> $value['bentuk_usaha']){
+                    $sbentuk_usaha = $value['bentuk_usaha'];
+                    foreach ($bentuk_usaha as $key2 => $value2) {
+                        if ($value2->desc == strtoupper($value['bentuk_usaha'])){
+                            $vbentuk_usaha = $value2->seq;
+                        break;  
+                        }
+                    }
+                }
             }
-            
-            
+            $vsta_usaha = "";
+            if($value['status_usaha']){
+                if ($ssta_usaha <> $value['status_usaha']){
+                    $ssta_usaha = $value['status_usaha'];
+                    foreach ($sta_usaha as $key2 => $value2) {
+                        if ($value2->desc == strtoupper($value['status_usaha'])){
+                            $vsta_usaha = $value2->seq;
+                        break;  
+                        }
+                    }
+                }
+                
+            }
+
+        
             $value['kelurahan'] = $value['kelurahan'] .',,,';
             $kelurahans = explode( ',', $value['kelurahan']);
             $tbluser = Tbluser::where('user_id', '=', $value['user_id'])->first();
@@ -254,8 +150,8 @@ class CstuploadController extends Controller
                     'fullname' => $value['nama_pribadi'],
                     'birthdate' => ($value['tgl_lahir']==''?null:$value['tgl_lahir']),
                     'birthplace' => $value['tmpt_lahir'],
-                    'company' => $value['desc'],
-                    'branch' => $value['usercode'],
+                    'company' => $value['usercode'],
+                    'branch' => $value['company'],
                     'inactive' => ($value['status_customer'] <> 'AKTIF'? 'Y' : null)
                 ));
             } else {
@@ -264,8 +160,8 @@ class CstuploadController extends Controller
                 $tbluser->fullname = $value['nama_pribadi'];
                 $tbluser->birthdate = ($value['tgl_lahir']=='' ? null : $value['tgl_lahir'] );
                 $tbluser->birthplace = $value['tmpt_lahir'];
-                $tbluser->company = $value['desc'];
-                $tbluser->branch = $value['usercode'];
+                $tbluser->company = $value['usercode'];
+                $tbluser->branch = $value['company'];
                 $tbluser->inactive = ($value['status_customer'] <> 'AKTIF'? 'Y' : null);
                 $tbluser->save();
             }
@@ -293,9 +189,9 @@ class CstuploadController extends Controller
                     'faxpri'        => $value['oth_telp_hp_fax'],
                     'emailpri'      => $value['medsos'],
                     'hobby'         => $value['hobby'],
-                    'btkush'        => $value['bentuk_usaha'],
+                    'btkush'        => $vbentuk_usaha,
                     'npwp'          => $value['vat_registration_no'],
-                    'status'        => $value['status_usaha'],
+                    'status'        => $vsta_usaha,
                     'emailush'      => $value['e_mail_address'],
                     'namaalias'     => $value['alias'],
                     'agama'         => $value['agama'],
@@ -325,10 +221,10 @@ class CstuploadController extends Controller
                 // $usrprofile->namapsgn      = null; 
                 // $usrprofile->tmptlhrpsgn   = null;
                 // $usrprofile->tgllhrpsgn    = null; 
-                $usrprofile->btkush        = $value['bentuk_usaha']; 
+                $usrprofile->btkush        = $vbentuk_usaha; 
                 // $usrprofile->tipeush       = null; 
                 $usrprofile->npwp          = $value['vat_registration_no']; 
-                $usrprofile->status        = $value['status_usaha']; 
+                $usrprofile->status        = $vsta_usaha; 
                 // $usrprofile->almtush       = null; 
                 // $usrprofile->kelush        = null; 
                 // $usrprofile->kecush        = null; 
@@ -347,7 +243,21 @@ class CstuploadController extends Controller
                 $usrprofile->goldarah      = $value['gol_darah']; 
                 // $usrprofile->headgrp       = null;
                 $usrprofile->save();    
-            }  
+            }
+            Usradditional::where('user_id','=',$value['user_id'])
+                ->where('type', '=', 'AGEN_HUB')
+                ->update(['value7' => 'X']);
+            $seq = 0;
+            $seq = $this->saveagenhub($value['user_id'], $value['code_cust_1'], $seq);
+            $seq = $this->saveagenhub($value['user_id'], $value['code_cust_2'], $seq);
+            $seq = $this->saveagenhub($value['user_id'], $value['code_cust_3'], $seq);
+            $seq = $this->saveagenhub($value['user_id'], $value['code_cust_4'], $seq);
+            $seq = $this->saveagenhub($value['user_id'], $value['code_cust_5'], $seq);
+            DB::table('usr_additional')
+                ->where('user_id', '=', $value['user_id'])
+                ->where('type', '=', 'AGEN_HUB')
+                ->where('value7', '=', 'X')
+                ->delete();
         }
 
         if(!$tbluserarray){
@@ -356,159 +266,35 @@ class CstuploadController extends Controller
         if(!$usrprofilearray){
             Usrprofile::insert($usrprofilearray);
         }
+        
+        DB::table('import_profile')
+                ->where('uid', '=', Auth::user()->uid)
+                ->delete();
 
         return redirect()->route('upload');
         // redirect("/upload1");
     }
 
-    public function xprosesexcel(){
-        $tblgroupuser = Tblgroupuser::get();
-        foreach ($tblgroupuser as $key => $value) {
-            $value->namegroup = strtoupper($value->namegroup);
-        }
-        $baca = '';
-        $data_upload = Importprofile::where('uid', '=', Auth::user()->uid)->get();
-        foreach ($data_upload as $key => $value) {
-            $usergroup = '11';
-
-            if ($value->user_type){
-                foreach ($tblgroupuser as $key2 => $value2) {
-                    $position = strpos($value2->namegroup, strtoupper($value->user_type));
-                    if ($position !== false){
-                        $usergroup = $value2->idusergroup;
-                    break;  
-                    }
-                }
-            }
+    public function saveagenhub($para0, $para1, $para2){
+        if ($para1){
             
-            if ($baca <> $value->usercode){
-                $dtadditional = Dtadditional::where('type', '=', 'COMPANY')
-                ->where('info', '=', $value->usercode)
+            $type = 'AGEN_HUB';
+            $para2 = $para2 + 1;
+            $cekdata = Usradditional::where('user_id','=',$para0)
+                ->where('type', '=', $type)
+                ->where('seq', '=', $para2)
                 ->first();
-                $baca = $value->usercode;
-            } 
-            $value->kelurahan = $value->kelurahan .',,,';
-            $kelurahans = explode( ',', $value->kelurahan);
-            $user_id = $dtadditional->info6.$value->customer;
-            $tbluser = Tbluser::where('user_id', '=', $user_id)->first();
-            if (!$tbluser){
-                $tbluser::create([
-
-                    'user_id' => $user_id,
-                    'password' => "123",
-
-                    'usergroup' => $usergroup,
-                    'fullname' => $value->nama_pribadi,
-                    'birthdate' => ($value->tgl_lahir=='0000-00-00'?null:$value->tgl_lahir),
-                    'birthplace' => $value->tmpt_lahir,
-                    'company' => $dtadditional->desc,
-                    'branch' => $dtadditional->info,
-                    'inactive' => ($value->status_customer <> 'AKTIF'? 'Y' : null)
-
-                ]);
-                
-                
-                
-
-
-            } else {
-                $tbluser->usergroup = $usergroup;
-                $tbluser->fullname = $value->nama_pribadi;
-                if ($value->tgl_lahir){
-                    $tbluser->birthdate = $value->tgl_lahir;
-                }
-                $tbluser->birthplace = $value->tmpt_lahir;
-                $tbluser->company = $dtadditional->desc;
-                $tbluser->branch = $dtadditional->info;
-                if ($value->status_customer <> 'AKTIF'){
-                    $tbluser->inactive = 'Y';
-                } else {
-                    $tbluser->inactive = null;
-                }
-                
-                $tbluser->save();
+            if (!$cekdata){
+                $cekdata = new Usradditional;
             }
-
-            $usrprofile = Usrprofile::where('user_id', '=', $user_id)->first();
-            if (!$usrprofile){
-                Usrprofile::create([
-                    'user_id'       => $user_id,
-                    'kodesap'       => $value->customer,
-                    'noktp'         => $value->nik,
-                    'almtktp'       => $value->street,
-                    'kelktp'        => $kelurahans[0],
-                    'kecktp'        => $kelurahans[1],
-                    'kotaktp'       => $kelurahans[2],
-                    'propktp'       => $kelurahans[3],
-                    'kdposktp'      => $value->postalcode,
-                    'almtrmh'       => $value->street,
-                    'kelrmh'        => $kelurahans[0],
-                    'kecrmh'        => $kelurahans[1],
-                    'kotarmh'       => $kelurahans[2],
-                    'proprmh'       => $kelurahans[3],
-                    'kdposrmh'      => $value->postalcode,
-                    'tlppri'        => $value->telephone_1,
-                    'faxpri'        => $value->oth_telp_hp_fax,
-                    'emailpri'      => $value->medsos,
-                    'hobby'         => $value->hobby,
-                    'btkush'        => $value->bentuk_usaha,
-                    'npwp'          => $value->vat_registration_no,
-                    'status'        => $value->status_usaha,
-                    'emailush'      => $value->e_mail_address,
-                    'namaalias'     => $value->alias,
-                    'agama'         => $value->agama,
-                    'goldarah'      => $value->gol_darah
-                ]);
-            } else {
-                $usrprofile->user_id       = $user_id; 
-                $usrprofile->kodesap       = $value->customer; 
-                $usrprofile->noktp         = $value->nik; 
-                $usrprofile->almtktp       = $value->street; 
-                $usrprofile->kelktp        = $kelurahans[0];
-                $usrprofile->kecktp        = $kelurahans[1]; 
-                $usrprofile->kotaktp       = $kelurahans[2]; 
-                $usrprofile->propktp       = $kelurahans[3]; 
-                $usrprofile->kdposktp      = $value->postalcode; 
-                $usrprofile->almtrmh       = $value->street; 
-                $usrprofile->kelrmh        = $kelurahans[0];
-                $usrprofile->kecrmh        = $kelurahans[1];
-                $usrprofile->kotarmh       = $kelurahans[2];
-                $usrprofile->proprmh       = $kelurahans[3]; 
-                $usrprofile->kdposrmh      = $value->postalcode; 
-                $usrprofile->tlppri        = $value->telephone_1; 
-                $usrprofile->faxpri        = $value->oth_telp_hp_fax; 
-                // $usrprofile->hppri         = null; 
-                $usrprofile->emailpri      = $value->medsos; 
-                $usrprofile->hobby         = $value->hobby; 
-                // $usrprofile->namapsgn      = null; 
-                // $usrprofile->tmptlhrpsgn   = null;
-                // $usrprofile->tgllhrpsgn    = null; 
-                $usrprofile->btkush        = $value->bentuk_usaha; 
-                // $usrprofile->tipeush       = null; 
-                $usrprofile->npwp          = $value->vat_registration_no; 
-                $usrprofile->status        = $value->status_usaha; 
-                // $usrprofile->almtush       = null; 
-                // $usrprofile->kelush        = null; 
-                // $usrprofile->kecush        = null; 
-                // $usrprofile->kotaush       = null;
-                // $usrprofile->propush       = null;
-                // $usrprofile->kdposush      = null;
-                // $usrprofile->tlpush        = null;
-                // $usrprofile->faxush        = null;
-                // $usrprofile->hpush         = null;
-                $usrprofile->emailush      = $value->e_mail_address; 
-                // $usrprofile->lmusaha       = null; 
-                // $usrprofile->karakteristik = null;
-                // $usrprofile->namausaha     = null;
-                $usrprofile->namaalias     = $value->alias; 
-                $usrprofile->agama         = $value->agama; 
-                $usrprofile->goldarah      = $value->gol_darah; 
-                // $usrprofile->headgrp       = null;
-                $usrprofile->save();
-            }
+            $cekdata->user_id = $para0;
+            $cekdata->type = $type;
+            $cekdata->value2 = $para1;
+            $cekdata->seq = $para2;
+            $cekdata->value7 = null;
+            $cekdata->save();
         }
-        return redirect()->route('upload');
-        // redirect("/upload1");
+        return $para2;
     }
 
     public function callh($var){
