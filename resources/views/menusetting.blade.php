@@ -420,7 +420,8 @@
 		overflow: visible;
 	}
 	#Path_209_ch {
-		fill: rgba(255,255,255,1);
+		fill: rgb(255 255 255);
+		/* rgba(255,255,255,1); */
 	}
 	.Path_209_ch {
 		overflow: visible;
@@ -468,7 +469,8 @@
 		overflow: visible;
 	}
 	#Rectangle_519_cie {
-		fill: rgba(255,255,255,1);
+		fill: rgb(231 230 230);;
+		/* rgba(255,255,255,1); */
 	}
 	.Rectangle_519_cie {
 		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
@@ -480,7 +482,8 @@
 		top: 0px;
 	}
 	#Rectangle_520_cif {
-		fill: rgba(245,180,67,1);
+		fill: rgb(231 229 225); 
+		/* rgba(245,180,67,1); */
 	}
 	.Rectangle_520_cif {
 		position: absolute;

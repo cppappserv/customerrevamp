@@ -64,7 +64,18 @@ class CstsettingController extends Controller
 
     public function export_excel(Request $request)
 	{
+        DB::beginTransaction();
+        try {
+            $uid = Auth::user()->uid;
+            $exportprofile = Exportprofile::where('uid', '=', $uid)->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['code'=>500, 'message' => $e->getMessage()]);
+        }
+
         $kdsap = Dtadditional::where('type', '=', 'ORG_COMPANY')
+        ->where('info', '=', $request->inputcompany) 
         ->select('info2 as sorg','info3 as cocd')
         ->first();
 
@@ -81,9 +92,7 @@ class CstsettingController extends Controller
         $sbentuk_usaha = "";
         $bentuk_usaha = Dtadditional::where('type', '=', 'BENTUK_USAHA')->get();
         
-        $uid = Auth::user()->uid;
-        $exportprofile = Exportprofile::where('uid', '=', $uid)->delete();
-
+        
         $usrprofile = DB::table('usr_profile as a')
         ->join('tbluser as b', function($join){
             $join->on('b.user_id', '=', 'a.user_id' );
