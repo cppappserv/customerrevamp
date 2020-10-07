@@ -32,16 +32,25 @@ class Row
     protected $attributes = [];
 
     /**
+     * @var string
+     */
+    protected $keyName;
+
+    /**
      * Constructor.
      *
      * @param $number
      * @param $data
      */
-    public function __construct($number, $data)
+    public function __construct($number, $data, $keyName)
     {
-        $this->number = $number;
-
         $this->data = $data;
+        $this->number = $number;
+        $this->keyName = $keyName;
+
+        $this->attributes = [
+            'data-key' => $this->getKey(),
+        ];
     }
 
     /**
@@ -51,7 +60,7 @@ class Row
      */
     public function getKey()
     {
-        return $this->model->getKey();
+        return Arr::get($this->data, $this->keyName);
     }
 
     /**
@@ -73,7 +82,7 @@ class Row
      */
     public function getColumnAttributes($column)
     {
-        if ($attributes = Column::getAttributes($column)) {
+        if ($attributes = Column::getAttributes($column, $this->getKey())) {
             return $this->formatHtmlAttribute($attributes);
         }
 
@@ -104,7 +113,7 @@ class Row
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes = $attributes;
+        $this->attributes = array_merge($this->attributes, $attributes);
     }
 
     /**
@@ -115,7 +124,7 @@ class Row
     public function style($style)
     {
         if (is_array($style)) {
-            $style = implode('', array_map(function ($key, $val) {
+            $style = implode(';', array_map(function ($key, $val) {
                 return "$key:$val";
             }, array_keys($style), array_values($style)));
         }

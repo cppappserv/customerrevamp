@@ -25,6 +25,10 @@ class Permission
      */
     public function handle(Request $request, \Closure $next, ...$args)
     {
+        if (config('admin.check_route_permission') === false) {
+            return $next($request);
+        }
+
         if (!Admin::user() || !empty($args) || $this->shouldPassThrough($request)) {
             return $next($request);
         }
@@ -80,9 +84,13 @@ class Permission
      */
     protected function shouldPassThrough($request)
     {
-        $excepts = config('admin.auth.excepts', [
+        $excepts = array_merge(config('admin.auth.excepts', []), [
             'auth/login',
             'auth/logout',
+            '_handle_action_',
+            '_handle_form_',
+            '_handle_selectable_',
+            '_handle_renderable_',
         ]);
 
         return collect($excepts)

@@ -78,7 +78,7 @@ $(function () {
         $parent.siblings('.treeview.active').find('> a').trigger('click');
         $parent.siblings().removeClass('active').find('li').removeClass('active');
     });
-    var menu = $('.sidebar-menu li > a[href="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
+    var menu = $('.sidebar-menu li > a[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
     menu.parents('ul.treeview-menu').addClass('menu-open');
     menu.parents('li.treeview').addClass('active');
 
@@ -162,14 +162,37 @@ $('#totop').on('click', function (e) {
 
     $.admin.reload = function () {
         $.pjax.reload('#pjax-container');
+        $.admin.grid = new Grid();
     };
 
     $.admin.redirect = function (url) {
         $.pjax({container:'#pjax-container', url: url });
+        $.admin.grid = new Grid();
     };
 
     $.admin.getToken = function () {
         return $('meta[name="csrf-token"]').attr('content');
     };
+
+    $.admin.loadedScripts = [];
+
+    $.admin.loadScripts = function(arr) {
+        var _arr = $.map(arr, function(src) {
+
+            if ($.inArray(src, $.admin.loadedScripts)) {
+                return;
+            }
+
+            $.admin.loadedScripts.push(src);
+
+            return $.getScript(src);
+        });
+
+        _arr.push($.Deferred(function(deferred){
+            $(deferred.resolve);
+        }));
+
+        return $.when.apply($, _arr);
+    }
 
 })(jQuery);

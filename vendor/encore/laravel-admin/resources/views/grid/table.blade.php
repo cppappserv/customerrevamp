@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box grid-box">
     @if(isset($title))
     <div class="box-header with-border">
         <h3 class="box-title"> {{ $title }}</h3>
@@ -25,21 +25,30 @@
     {!! $grid->renderHeader() !!}
 
     <!-- /.box-header -->
-    <div class="box-body no-padding">
-        <table class="table table-hover" id="{{ $grid->tableID }}">
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-hover grid-table" id="{{ $grid->tableID }}">
             <thead>
                 <tr>
                     @foreach($grid->visibleColumns() as $column)
-                    <th class="column-{!! $column->getName() !!}">{{$column->getLabel()}}{!! $column->renderHeader() !!}</th>
+                    <th {!! $column->formatHtmlAttributes() !!}>{!! $column->getLabel() !!}{!! $column->renderHeader() !!}</th>
                     @endforeach
                 </tr>
             </thead>
 
+            @if ($grid->hasQuickCreate())
+                {!! $grid->renderQuickCreate() !!}
+            @endif
+
             <tbody>
+
+                @if($grid->rows()->isEmpty() && $grid->showDefineEmptyPage())
+                    @include('admin::grid.empty-grid')
+                @endif
+
                 @foreach($grid->rows() as $row)
                 <tr {!! $row->getRowAttributes() !!}>
                     @foreach($grid->visibleColumnNames() as $name)
-                    <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">
+                    <td {!! $row->getColumnAttributes($name) !!}>
                         {!! $row->column($name) !!}
                     </td>
                     @endforeach

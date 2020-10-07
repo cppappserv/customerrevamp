@@ -161,6 +161,9 @@ class Editable extends AbstractDisplayer
         ]);
     }
 
+    /**
+     * @param array $arguments
+     */
     protected function buildEditableOptions(array $arguments = [])
     {
         $this->type = Arr::get($arguments, 0, 'text');
@@ -168,15 +171,30 @@ class Editable extends AbstractDisplayer
         call_user_func_array([$this, $this->type], array_slice($arguments, 1));
     }
 
+    /**
+     * @return string
+     */
     public function display()
     {
-        $this->options['name'] = $column = $this->column->getName();
+        $this->options['name'] = $column = $this->getName();
 
         $class = 'grid-editable-'.str_replace(['.', '#', '[', ']'], '-', $column);
 
         $this->buildEditableOptions(func_get_args());
 
         $options = json_encode($this->options);
+
+        $options = substr($options, 0, -1).<<<'STR'
+    ,
+    "success":function(response, newValue){
+        if (response.status){
+            $.admin.toastr.success(response.message, '', {positionClass:"toast-top-center"});
+        } else {
+            $.admin.toastr.error(response.message, '', {positionClass:"toast-top-center"});
+        }
+    }
+}
+STR;
 
         Admin::script("$('.$class').editable($options);");
 
@@ -187,7 +205,7 @@ class Editable extends AbstractDisplayer
             'class'      => "$class",
             'data-type'  => $this->type,
             'data-pk'    => "{$this->getKey()}",
-            'data-url'   => "{$this->grid->resource()}/{$this->getKey()}",
+            'data-url'   => "{$this->getResource()}/{$this->getKey()}",
             'data-value' => "{$this->value}",
         ];
 

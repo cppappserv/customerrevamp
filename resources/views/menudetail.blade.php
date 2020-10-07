@@ -4,20 +4,24 @@ $hitam = "rgba(84,84,84,1)";
 if ($idedit == "0"){
 	$stsedit = "";
 	$stssave = 'style="display:block"';
-	$tomboladd = "";
+	$tomboladd = "background: none;border: none;";
+	$tomboladd2 = "display:block;";
+	$pos_ke = 1;
 } else {
-	$tomboladd = "display:none;";
+	$pos_ke = 231;
+	$tomboladd = "background: none;border: none; display:none;";
+	
 	if($edit_noedit == 0){
 		$stsedit = "disabled";
 		$stssave = 'style="display:none"';
+		$tomboladd2 = "display:none;";
 	} else {
 		$stsedit = "";
 		$stssave = 'style="display:block"';
+		$tomboladd2 = "display:none;";
 	}
 }
 $ttl_photo = count($data_photo);
-
-
 
 // $max_kel=count($keluarga);
 // $bcg_klg = 288 + ($max_kel * 106);
@@ -39,6 +43,7 @@ if ($pos=0 or $pos=1){
 } else {	
 	$disp5="display:block;";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -206,6 +211,19 @@ if ($pos=0 or $pos=1){
 	 height:80px;
 	 margin: 0 auto;
 	 top:50%;
+	}
+
+	.font_14 {
+    font-size: 14px;
+	 position: relative;
+	 margin: auto;left:0;right:0;top:0; bottom:0;
+	 height:80px;
+	 margin: 0 auto;
+	 top:50%;
+	 font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		color: rgba(51,122,183,1);
 	}
 
 	#Sama_dengan_KTP_sg {
@@ -527,7 +545,7 @@ if ($pos=0 or $pos=1){
 		color: rgba(84,84,84,1);
 		margin-left: 10px;
 		height:50px;
-		width: 90%;
+		width: 80%;
 	}
 	.cmd2 {
 		border-radius: 24px;
@@ -536,7 +554,7 @@ if ($pos=0 or $pos=1){
 		color: white;
 		margin-left: 10px;
 		height:50px;
-		width: 90%;
+		width: 80%;
 	}
 
 	
@@ -616,24 +634,26 @@ if ($pos=0 or $pos=1){
 						<div class="form-group row">
 								<!-- <button class="form-control cmd" id="pil1" onclick="myFunction(1)">Data Pribadi</button> -->
 								<button class="form-control cmd2 " id="pil1" onclick="myFunction(1)">Data Pribadi</button>
+								<img src="{{asset('image/panah.png')}}">
+								
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
 								<button class="form-control cmd" id="pil2" onclick="myFunction(2)">Data Usaha</button>
-								<!-- <button class="form-control cmd2 collapse" id="pil2" onclick="myFunction(2)">Data Usaha</button> -->
+								<img src="{{asset('image/panah.png')}}">
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
 								<button class="form-control cmd" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button>
-								<!-- <button class="form-control cmd2 collapse" id="pil3" id="cmd pil3" onclick="myFunction(3)">Data Kepemilikan</button> -->
+								<img src="{{asset('image/panah.png')}}">
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group row">
 							<button class="form-control cmd" id="pil4" onclick="myFunction(4)">Data Jaminan</button>
-								<!-- <button class="form-control cmd2 collapse" id="pil4" onclick="myFunction(4)">Data Jaminan</button> -->
+							<img src="{{asset('image/panah.png')}}">
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -831,7 +851,10 @@ if ($pos=0 or $pos=1){
 
 				}
 			// }
+			
 			?>
+
+		
 
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
@@ -866,7 +889,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Informasi Personal: {{$id}}</h3>
+									<h3 class="card-title font36">Nama Customer : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
 
 									<div class="card-tools">
 									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
@@ -991,12 +1014,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputnoktp" class="col-sm-3 col-form-label">No KTP</label>
 												<div class="col-sm-9">
 												@if ($inputuser_id == "0")
-													<input type="text" class="form-control @error('inputnoktp') is-invalid @enderror" required autocomplete="inputnoktp" autofocus id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
-													@error('inputnoktp')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
+													<input type="text" class="form-control"  autocomplete="inputnoktp" autofocus id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
 													@else
 													<input type="text" class="form-control" id="inputnoktp" name="inputnoktp" placeholder="No KTP" value="{{$inputnoktp}}" {{$stsedit}} khususinput="yes">
 													@endif
@@ -1040,7 +1058,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputgoldarah" class="col-sm-3 col-form-label">Golongan Darah</label>
 												<div class="col-sm-4">
 												@if ($inputuser_id == "0")
-													<select class="form-control @error('inputgoldarah') is-invalid @enderror" required autocomplete="inputgoldarah" autofocus id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
+													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Golongan Darah ---</option>
 													<?php 
 													foreach ($tbldarah  as $key => $value) {
@@ -1050,11 +1068,7 @@ if ($pos=0 or $pos=1){
 													}
 													?>
 													</select>
-													@error('inputgoldarah')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
+													
 													@else
 													<select class="form-control" id="inputgoldarah" name="inputgoldarah" {{$stsedit}} khususinput="yes"> 
 													<option value="">--- Select Golongan Darah ---</option>
@@ -1100,18 +1114,20 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtktp" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 												@if ($inputuser_id == "0")
-													<textarea class="form-control @error('inputalmtktp') is-invalid @enderror" required autocomplete="inputalmtktp" autofocus rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
+													<textarea class="form-control @error('inputalmtktp') is-invalid @enderror" required autocomplete="inputalmtktp" autofocus rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Contoh : Jl. Cendrawasih 11 no.43 Surakarta" {{$stsedit}} khususinput="yes" maxlength="50" style="background: #f8f9fa;">{{$inputalmtktp}}</textarea>
 													@error('inputalmtktp')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
 													@else
-													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtktp}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtktp" name="inputalmtktp" placeholder="Contoh : Jl. Cendrawasih 11 no.43 Surakarta"  {{$stsedit}} khususinput="yes" maxlength="50" style="background: #f8f9fa;">{{$inputalmtktp}}</textarea>
 													@endif
 
 												</div>
 											</div>
+
+											
 										</div>
 										<!-- /.col -->
 										<div class="col-md-6">
@@ -1180,12 +1196,12 @@ if ($pos=0 or $pos=1){
 								
 								<div class="card-header">
 									
-										<h3 class="card-title font36">Alamat Rumah </h3>
-										<button type="button" class="font28" style="height:50px;width:200px;background: none;{{$tomboladd}}border:none;
+										<h3 class="card-title font36" stype="width:250px;">Alamat Rumah </h3>
+										<button type="button" class="font_14" style="height:50px;width:200px;background: none;border:none;margin-left:{{$pos_ke}}px;{{$tomboladd}}
 										::after, ::before {
 												/* box-sizing: border-box; */
 										}
-										" onclick="myduplikatalamat()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Duplicat</button>
+										" onclick="myduplikatalamat()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Copy from Alamat KTP</button>
 										
 										
 									<div class="card-tools">
@@ -1203,7 +1219,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Enter ..." value="{{$inputalmtrmh}}" {{$stsedit}} khususinput="yes">{{$inputalmtrmh}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtrmh" name="inputalmtrmh" placeholder="Contoh : Jl. Cendrawasih 11 no.43 Surakarta"  value="{{$inputalmtrmh}}" {{$stsedit}} khususinput="yes" maxlength="50" style="background: #f8f9fa;">{{$inputalmtrmh}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1255,14 +1271,26 @@ if ($pos=0 or $pos=1){
 									the plugin. -->
 								</div>
 							</div>
+							
 
 							<div class="card card-default">
+							
+								
+
+
 								<div class="card-header">
 									<h3 class="card-title font36">Kontak</h3>
 
 									<div class="card-tools">
+										
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmedsospri" id="addmedsospri">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
+										
 									</div>
 								</div>
+
+
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -1307,12 +1335,12 @@ if ($pos=0 or $pos=1){
 							<div class="card card-default">
 								<div class="card-body" id="inpmedsospri">
 										<?php 
-										$i=-1;
+										$medsos_i=-1;
 										foreach ($data_additional as $key => $data) {
 										if ($data->type == 'MEDSOS'){
-										$i++;
+										$medsos_i++;
 										?>
-										<div class="row" id="rowsmedsospri{{$i}}">
+										<div class="row" id="rowsmedsospri{{$medsos_i}}">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
@@ -1341,7 +1369,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="removemedsospri" id="{{$i}}" class="btn btn-danger btn_remove2x" khususinput='yes' style="display:none;">X</button>
+														<button type="button" name="removemedsospri" id="{{$medsos_i}}" class="btn btn-danger btn_remove2x" khususinput='yes' style="display:none;">X</button>
 													</div>
 												</div>
 											</div>
@@ -1350,19 +1378,51 @@ if ($pos=0 or $pos=1){
 										<?php 
 										}
 										}
+										$medsos_i++;
 										?>
+										@if ($idedit == "0")
+
+										<div class="row" id="rowsmedsospri{{$medsos_i}}">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
+													<div class="col-sm-9">
+														
+														<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsospri[]" name="inputmedsospri[]"> 
+														<option value="">--- Pilih Account Media Sosial ---</option>
+														<?php 
+														foreach ($tblmedsos as $key => $value) {
+														?>
+															<option value="{{$value->seq}}">{{$value->desc}}</option>
+														<?php
+														}
+														?>
+														</select>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<input type="text" class="form-control" id="inputmedsosakunpri[]" name="inputmedsosakunpri[]" placeholder="Nama Akun Media Sosial">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-1">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<button type="button" name="removemedsospri" id="{{$medsos_i}}" class="btn btn-danger btn_remove2x" khususinput='yes'>X</button>
+													</div>
+												</div>
+											</div>
+											<!-- /.col -->
+										</div>
+										@endif
+
 
 										<!-- /.row -->
 									</div>
-									<div class="col-md-1">
-										<div class="form-group row ">
-											<div class="col-sm-12">
-												<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmedsospri" id="addmedsospri" class="btn btn-success">Add</button>
-											</div>
-										</div>
-									</div>
-								
-
 								<div class="card-footer">
 									
 								</div>
@@ -1377,6 +1437,10 @@ if ($pos=0 or $pos=1){
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addkelga" id="addkelga">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
+										
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1442,16 +1506,15 @@ if ($pos=0 or $pos=1){
 								<div class="card-body"  id="inpkelga">
 								
 									<?php 
-									$i=-1;
+									$data_keluarga_i=-1;
 									foreach ($data_additional as $key => $data) {
 									if ($data->type == 'DATA_KELUARGA'){
-									$i++;
+									$data_keluarga_i++;
 									?>
-									<!-- <div class="row" id="rowkelga{{$i}}"> -->
-									<div class="row" id="rowkelga">
+									<div class="row" id="rowkelga{{$data_keluarga_i}}">
 										<!-- <div class="col-md-1">
 											<div class="form-group row kotakexcel_kosong">
-												<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$i}}</label>
+												<label for="inputkeluargano" class="col-sm-12 col-form-label">{{$data_keluarga_i}}</label>
 											</div>
 										</div> -->
 										<div class="col-md-2">
@@ -1516,7 +1579,7 @@ if ($pos=0 or $pos=1){
 													</select>
 												</div>
 												<div class="col-sm-2">
-													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove3">X</button> -->
+													<button type="button" name="remove" id="{{$data_keluarga_i}}" class="btn btn-danger btn_remove3">X</button>
 												</div>
 											</div>
 										</div>
@@ -1524,16 +1587,98 @@ if ($pos=0 or $pos=1){
 									<?php
 										}
 									}
+									$data_keluarga_i++;
 									?>
-									<!-- /.row -->
+									@if ($idedit == "0")
+									<div class="row" id="rowkelga{{$data_keluarga_i}}">
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" placeholder="Nama" 
+													id="inputkeluarganama[]" name="inputkeluarganama[]">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="date" class="form-control" placeholder="Tempat Lahir"
+													id="inputkeluargatempat[]" name="inputkeluargatempat[]">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" placeholder="Tanggal lahir"
+													id="inputkeluargatanggallahir[]" name="inputkeluargatanggallahir[]">
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" 
+													id="inputkeluargasex[]"  name="inputkeluargasex[]"> 
+													<option value="">--- Pilih Sex ---</option>
+												<?php 
+												foreach ($tblsex as $key => $value) {
+												?>
+													<option value="{{$value->info}}">{{$value->desc}}</option>
+												<?php
+												}
+												?>
+												</select>
+
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" 
+													id="inputkeluargastatus[]">  
+													<option value="">--- Pilih Hubungan Keluarga---</option>
+												<?php 
+												foreach ($tblhubkelga as $key => $value) {
+												?>
+													<option value="{{$value->seq}}">{{$value->desc}}</option>
+												<?php
+												}
+												?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-9">
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" 
+														id="inputkeluargapendidikan[]" name="inputkeluargapendidikan[]"> 
+														<option value="">--- Pilih Pendidikan ---</option>
+													<?php 
+													foreach ($tblsekolah as $key => $value) {
+													?>
+														<option value="{{$value->info}}">{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$data_keluarga_i}}" class="btn btn-danger btn_remove3">X</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									@endif
+
+
 								</div>
+								
+								<!-- 
 								<div class="col-md-1">
 									<div class="form-group row ">
 										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addkelga" id="addkelga" class="btn btn-success">Add</button>
+											<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addkelga" id="addkelga">
+												<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+											</button>
 										</div>
 									</div>
-								</div>
+								</div> 
+								-->
 								
 								<!-- /.card-body -->
 								<div class="card-footer">
@@ -1541,6 +1686,7 @@ if ($pos=0 or $pos=1){
 									the plugin. -->
 								</div>
 							</div>
+							
 
 							<div class="card card-default">
 								<div class="card-header">
@@ -1686,11 +1832,9 @@ if ($pos=0 or $pos=1){
 							<div class="card card-default">
 								<div class="card-header">
 									<h3 class="card-title font36">Status Usaha</h3>
-
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addstatususaha" id="addstatususaha" class="btn btn-success"><i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1704,17 +1848,15 @@ if ($pos=0 or $pos=1){
 								?>
 									<input type="hidden" id="optstatususaha" value="{{$txt}}">
 								<?php 
-									$i=-1;
+									$statususaha_i=-1;
 									foreach ($data_additional as $key => $data) {
 									if ($data->type == 'STATUSUSAHA'){
-									$i++;
+									$statususaha_i++;
 									?>
-									<!-- <div class="row" id="rowsstatususaha{{$i}}"> -->
-									<div class="row" id="rowsstatususaha">
+									<div class="row" id="rowsstatususaha{{$statususaha_i}}">
 										<div class="col-md-5">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<!-- <input type="hidden" class="form-control" id="inputstatusush[]" name="inputstatusush[]" placeholder="Tempat" value="{{$data->desc}}"> -->
 													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush[]" name="inputstatusush[]" style="color:white;height: 60px;background: rgba(51,122,183,1);"  {{$stsedit}} khususinput="yes"> 
 													<?php 
 													foreach ($tabelstatus_usaha as $key => $value) {
@@ -1730,7 +1872,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-1">
 											<div class="form-group row">
 												<!-- <div class="col-sm-12">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_removeb">X</button>
+													<button type="button" name="remove" id="{{$statususaha_i}}" class="btn btn-danger btn_removeb">X</button>
 												</div> -->
 											</div>
 										</div>
@@ -1738,15 +1880,37 @@ if ($pos=0 or $pos=1){
 									<?php 
 									}
 									}
+									$statususaha_i++;
 									?>
-								</div>
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addstatususaha" id="addstatususaha" class="btn btn-success">Add</button>
+@if ($idedit == "0")
+									<div class="row" id="rowsstatususaha{{$statususaha_i}}">
+										<div class="col-md-5">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<select class="form-control btn btn-default btn-default btn-lg " id="inputstatusush[]" name="inputstatusush[]" style="color:white;height: 60px;background: rgba(51,122,183,1);"> 
+													<option value="">--- Pilih Status Usaha ---</option>
+													<?php 
+													foreach ($tabelstatus_usaha as $key => $value) {
+													?>
+														<option value="{{$value->seq}}">{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<button type="button" name="remove" id="{{$statususaha_i}}" class="btn btn-danger btn_removeb">X</button>
+												</div>
+											</div>
 										</div>
 									</div>
+													@endif
 								</div>
+								
 								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="Alamat Rumahhttps://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -1764,15 +1928,15 @@ if ($pos=0 or $pos=1){
 							<div class="card card-default">
 								<div class="card-header">
 									<div>
-										<h3 class="card-title font36">Alamat usaha</h3>
+										<h3 class="card-title font36" style="width:250px">Alamat usaha</h3>
 										<!-- <button type="button" style="height:50px;width:50px;{{$tomboladd}}" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
 										Duplicat -->
 
-										<button type="button" class="font28" style="height:50px;width:200px;background: none;{{$tomboladd}}border:none;
+										<button type="button" class="font_14" style="height:50px;width:200px;background: none;margin-left:{{$pos_ke}}px;{{$tomboladd}}border:none;
 										::after, ::before {
 												/* box-sizing: border-box; */
 										}
-										" onclick="myduplikatalamatusaha()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Duplicat</button>
+										" onclick="myduplikatalamatusaha()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Copy from Alamat KTP</button>
 										
 
 									</div>
@@ -1790,7 +1954,7 @@ if ($pos=0 or $pos=1){
 												<label for="inputalmtrmh" class="col-sm-3 col-form-label">Alamat</label>
 												<div class="col-sm-9">
 													<!-- <input type="text" class="form-control" id="inputfullname" placeholder="Nama Lengkap"> -->
-													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputalmtush}}</textarea>
+													<textarea class="form-control" rows="10" id="inputalmtush" name="inputalmtush" placeholder="Contoh : Jl. Cendrawasih 11 no.43 Surakarta"  {{$stsedit}} khususinput="yes" maxlength="50" style="background: #f8f9fa;">{{$inputalmtush}}</textarea>
 												</div>
 											</div>
 										</div>
@@ -1853,35 +2017,10 @@ if ($pos=0 or $pos=1){
 							<div class="card card-default">
 								<div class="card-header">
 									<h3 class="card-title font36">Kontak</h3>
-
-									
-									
-									<!-- <div id="Group_699_sf">
-										<div id="Sama_dengan_KTP_sg">
-											<span>Sama dengan KTP</span>
-										</div>
-										<svg class="Rectangle_322_sh" style="top:15px;left:150px;">
-											<rect id="Rectangle_322_sh" rx="10" ry="10" x="0" y="0" width="41" height="39">
-											</rect>
-										</svg>
-										<div id="Group_692_si">
-											<div id="Group_666_sj">
-												<svg class="Line_117_sk" viewBox="0 0 15 15">
-													<path id="Line_117_sk" d="M 0 0 L 15 15">
-													</path>
-												</svg>
-												<svg class="Path_123_sl" viewBox="5.478 0 9.522 9.522">
-													<path id="Path_123_sl" d="M 5.477598667144775 9.522401809692383 L 8.453349113464355 6.546651363372803 L 15 0">
-													</path>
-												</svg>
-											</div>
-										</div>
-									</div> -->
-
-
 									<div class="card-tools">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmedsosush" id="addmedsosush" class="btn btn-success">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1948,12 +2087,12 @@ if ($pos=0 or $pos=1){
 
 								<div class="card-body" id="inpmedsosush">
 									<?php 
-									$i=-1;
+									$medsosush_i=-1;
 									foreach ($data_additional as $key => $data) {
 									if ($data->type == 'MEDSOSUSH'){
-									$i++;
+									$medsosush_i++;
 									?>
-									<div class="row" id="rowmedsos{{$i}}">
+									<div class="row" id="rowmedsos{{$medsosush_i}}">
 										<div class="col-md-6">
 											<div class="form-group row">
 												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
@@ -1982,7 +2121,7 @@ if ($pos=0 or $pos=1){
 										<div class="col-md-1">
 											<div class="form-group row">
 												<div class="col-sm-12">
-													<button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove20" khususinput='yes' style="display:none;">X</button>
+													<button type="button" name="remove" id="{{$medsosush_i}}" class="btn btn-danger btn_remove20" khususinput='yes' style="display:none;">X</button>
 												</div>
 											</div>
 										</div>
@@ -1991,18 +2130,50 @@ if ($pos=0 or $pos=1){
 									<?php 
 									}
 									}
+									$medsosush_i++;
 									?>
+@if ($idedit == "0")
+									<div class="row" id="rowmedsos{{$medsosush_i}}">
+										<div class="col-md-6">
+											<div class="form-group row">
+												<label for="inputusahamediasosial" class="col-sm-3 col-form-label">Media Sosial</label>
+												<div class="col-sm-9">
+													
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputmedsosush[]" name="inputmedsosush[]"> 
+													<option value="">--- Pilih Account Media Sosial ---</option>
+													<?php 
+													foreach ($tblmedsos as $key => $value) {
+													?>
+														<option value="{{$value->seq}}" >{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>
 
+												</div>
+											</div>
+										</div>
+										<div class="col-md-5">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<input type="text" class="form-control" id="inputmedsosakunush[]" name="inputmedsosakunush[]" placeholder="Nama Akun Media Sosial">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<button type="button" name="remove" id="{{$medsosush_i}}" class="btn btn-danger btn_remove20" khususinput='yes'>X</button>
+												</div>
+											</div>
+										</div>
+										<!-- /.col -->
+									</div>
+@endif
 									<!-- /.row -->
 								</div>
 
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmedsosush" id="addmedsosush" class="btn btn-success">Add</button>
-										</div>
-									</div>
-								</div>
+								
 								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -2017,9 +2188,10 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Sanak Saudara yang jadi Agen / Distributor</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addagenhub" id="addagenhub" class="btn btn-success">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -2061,28 +2233,28 @@ if ($pos=0 or $pos=1){
 								<input type="hidden" id="optagenhub" value="{{$txt}}">
 
 								<div class="card-body" id="inpagenhub">
+								
 									<?php 
-									$i=-1;
+									$agen_hub_i=-1;
 									foreach ($data_additional as $key => $data) {
 										if ($data->type == 'AGEN_HUB'){
-											$i++;
+											$agen_hub_i++;
 											?>
-											<div class="row" id="rowsagenhub{{$i}}">
-												<!-- <div class="col-md-1">
-													<div class="form-group row kotakexcel_kosong">
-														<label for="inputbtkush" class="col-sm-12 co<input type="text" class="form-control">{{$i+1}}</label>
-													</div>
-												</div> -->
+											
+											<div class="row" id="rowsagenhub{{$agen_hub_i}}">
+
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
 														<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
+												
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
 														<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">
 													</div>
 												</div>
+												
 												<div class="col-md-4">
 													<div class="form-group row kotakexcel_kosong">
 														<div class="col-sm-10">
@@ -2098,26 +2270,57 @@ if ($pos=0 or $pos=1){
 
 														</div>
 														<div class="col-sm-2">
-															<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove4">X</button> -->
+															<!-- <button type="button" name="remove" id="{{$agen_hub_i}}" class="btn btn-danger btn_remove4">X</button> -->
 														</div>
 													</div>
 												</div>
+												
 											</div>
 											<?php 
 										}
 									}
+									$agen_hub_i++;
 									?>
+
+@if ($idedit == "0")
+									<div class="row" id="rowsagenhub{{$agen_hub_i}}">
+										<div class="col-md-4">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputagenhubnama[]" name="inputagenhubnama[]" placeholder="Nama" >
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputagenaubkode[]" name="inputagenaubkode[]" placeholder="No Sap">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-10">
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputAgenHubStatus[]" name="inputAgenHubStatus[]"> 
+													<?php 
+													foreach ($tblagenhubunganstatus as $key => $value) {
+													?>
+														<option value="{{$value->desc}}">{{$value->desc}}</option>
+													<?php
+													}
+													?>
+													</select>	
+
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$agen_hub_i}}" class="btn btn-danger btn_remove4">X</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									@endif
+
 									<!-- /.row -->
 								</div>
 
 								<!-- /.card-body -->
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addagenhub" id="addagenhub" class="btn btn-success">Add</button>
-										</div>
-									</div>
-								</div>
+
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
 									the plugin. -->
@@ -2131,9 +2334,10 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Area Penjualan</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addareasubagen" id="addareasubagen" class="btn btn-success">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -2188,15 +2392,15 @@ if ($pos=0 or $pos=1){
 
 								<div class="card-body" id="inpareasubagen">
 									<?php
-									$i=-1;
+									$area_i=-1;
 									foreach ($data_additional as $key => $data) {
 										if   (($data->type == 'AREA_SUBAGEN')
 											or ($data->type == 'AREA_PETAMBAK')
 											or ($data->type == 'AREA_LAIN')
 										){
-											$i++;
+											$area_i++;
 											?>
-									<div class="row" id="rowsareasubagen{{$i}}">
+									<div class="row" id="rowsareasubagen{{$area_i}}">
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
 												<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]" {{$stsedit}} khususinput="yes"> 
@@ -2237,7 +2441,7 @@ if ($pos=0 or $pos=1){
 													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="info" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">
 												</div>
 												<div class="col-sm-2">
-													<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove5">X</button> -->
+													<!-- <button type="button" name="remove" id="{{$area_i}}" class="btn btn-danger btn_remove5">X</button> -->
 												</div>
 											</div>
 										</div>
@@ -2247,16 +2451,58 @@ if ($pos=0 or $pos=1){
 									<?php
 											}
 										}
+										$area_i++;
 									?>
-									
-								</div>
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addareasubagen" id="addareasubagen" class="btn btn-success">Add</button>
+									@if ($idedit == "0")
+									<div class="row" id="rowsareasubagen{{$area_i}}">
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<select class="form-control" id="inputNamaarea[]" name="inputNamaarea[]"> 
+												<?php
+												foreach ($tabelarea_usaha as $key => $value) {
+													?>
+
+													<option value="{{$value->type}}">{{$value->type}}</option>
+
+													<?php
+												}
+												?>
+
+													
+												</select>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group row kotakexcel_kosong">
+												
+												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="qty">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group row kotakexcel_kosong">
+												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="lokasi">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group row kotakexcel_kosong">
+
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="info">
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="remove" id="{{$area_i}}" class="btn btn-danger btn_remove5">X</button>
+												</div>
+											</div>
 										</div>
 									</div>
+									@endif
 								</div>
+								
 								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -2269,9 +2515,10 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Jenis Produk Yang Dijual (Kompetitor)</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addkompetitor" id="addkompetitor" class="btn btn-success">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
+										</button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -2305,13 +2552,13 @@ if ($pos=0 or $pos=1){
 								</div>
 								<div class="card-body" id="inpkompetitor">
 									<?php
-									$i=-1;
+									$pakan_jual_i=-1;
 									foreach ($data_additional as $key => $data) {
 										if   ($data->type == 'PAKAN_JUAL')
 										{
-											$i++;
+											$pakan_jual_i++;
 											?>
-									<div class="row" id="rowskompetitor{{$i}}">
+									<div class="row" id="rowskompetitor{{$pakan_jual_i}}">
 										<div class="col-md-4">
 											<div class="col-sm-12">	
 												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
@@ -2330,7 +2577,7 @@ if ($pos=0 or $pos=1){
 													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
 												</div>
 												<div class="col-sm-2">
-													<button type="button" name="removekompetitor" id="{{$i}}" class="btn btn-danger btn_remove6" khususinput='yes' style="display:none;">X</button>
+													<button type="button" name="removekompetitor" id="{{$pakan_jual_i}}" class="btn btn-danger btn_remove6" khususinput='yes' style="display:none;">X</button>
 												</div>
 											</div>
 										</div>
@@ -2338,16 +2585,35 @@ if ($pos=0 or $pos=1){
 									<?php
 											}
 										}
+										$pakan_jual_i++;
 									?>
-								</div>
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addkompetitor" id="addkompetitor" class="btn btn-success">Add</button>
+									@if ($idedit == "0")
+									<div class="row" id="rowskompetitor{{$pakan_jual_i}}">
+										<div class="col-md-4">
+											<div class="col-sm-12">	
+												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">	
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-12">	
+													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">	
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]">	
+												</div>
+												<div class="col-sm-2">
+													<button type="button" name="removekompetitor" id="{{$pakan_jual_i}}" class="btn btn-danger btn_remove6" khususinput='yes'>X</button>
+												</div>
+											</div>
 										</div>
 									</div>
+									@endif
 								</div>
-									
 								<!-- /.card-body -->
 								<div class="card-footer">
 									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -2366,9 +2632,9 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Bisnis Lain</h3>
 
 										<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
-											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
+											<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addbisnislain" id="addbisnislain" class="btn btn-success">
+												<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 										</div>
 									</div>
 									<!-- /.card-header -->
@@ -2376,13 +2642,13 @@ if ($pos=0 or $pos=1){
 									<div class="card-body" id="inpbisnislain">
 
 										<?php
-											$i=-1;
+											$bisnis_lain_i=-1;
 											foreach ($data_additional as $key => $data) {
 												if   ($data->type == 'BISNIS_LAIN')
 												{
 													$i++;
 													?>
-										<div class="row" id="rowsbisnislain{{$i}}">
+										<div class="row" id="rowsbisnislain{{$bisnis_lain_i}}">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
@@ -2405,7 +2671,7 @@ if ($pos=0 or $pos=1){
 											<div class="col-md-1">
 												<div class="form-group row">
 													<div class="col-sm-12">
-														<button type="button" name="removebisnislain" id="{{$i}}" class="btn btn-danger btn_remove7" khususinput='yes' style="display:none;">X</button>
+														<button type="button" name="removebisnislain" id="{{$bisnis_lain_i}}" class="btn btn-danger btn_remove7" khususinput='yes' style="display:none;">X</button>
 													</div>
 												</div>
 											</div>
@@ -2413,18 +2679,40 @@ if ($pos=0 or $pos=1){
 										<?php
 												}
 											}
+											$bisnis_lain_i++;
 										?>
-										
-									</div>
-									<!-- /.row -->
-									<div class="col-md-1">
-											<div class="form-group row ">
-												<div class="col-sm-12">
-													<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addbisnislain" id="addbisnislain" class="btn btn-success">Add</button>
+										@if ($idedit == "0")
+										<div class="row" id="rowsbisnislain{{$bisnis_lain_i}}">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="inputbisnislain" class="col-sm-3 col-form-label">Bisnis Lain</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" id="inputbisnislain[]" name="inputbisnislain[]" placeholder="Nama Bisnis">	
+													</div>
+												</div>
+											</div>
+
+											<!-- /.col -->
+											<div class="col-md-5">
+												<div class="form-group row">
+													<label for="inputbisnislainrp" class="col-sm-3 col-form-label">Omset (Rp)</label>
+													<div class="col-sm-8">
+														<input type="text" class="form-control" id="inputbisnislainrp[]" name="inputbisnislainrp[]" placeholder="Nilai Omset">	
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-1">
+												<div class="form-group row">
+													<div class="col-sm-12">
+														<button type="button" name="removebisnislain" id="{{$bisnis_lain_i}}" class="btn btn-danger btn_remove7" khususinput='yes'>X</button>
+													</div>
 												</div>
 											</div>
 										</div>
-
+										@endif
+									</div>
+									<!-- /.row -->
 									<!-- /.card-body -->
 									<div class="card-footer">
 										<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -2514,7 +2802,7 @@ if ($pos=0 or $pos=1){
 									<div class="col-md-1">
 											<div class="form-group row ">
 												<div class="col-sm-12">
-													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" khususinput2="yes" style="{{$tomboladd}}"> 
+													<select class="btn btn-success" id="addassetpribadi" name="addassetpribadi" khususinput2="yes" style="{{$tomboladd2}}"> 
 													<option value="">Add</option>
 													<?php 
 													foreach ($tblassetpribadi as $key => $value) {
@@ -2544,9 +2832,9 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Modal</h3>
 
 										<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
-											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
+											<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmodalbank" id="addmodalbank" class="btn btn-success">
+												<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 										</div>
 									</div>
 									<!-- /.card-header -->
@@ -2573,7 +2861,7 @@ if ($pos=0 or $pos=1){
 														</div>
 													</div>
 
-												<?PHP
+												<?php
 												
 											}
 											?>
@@ -2600,12 +2888,13 @@ if ($pos=0 or $pos=1){
 
 									<div class="card-body" id="inpmodalbank">
 										<?php
-											$i=-1;
+											$modal_bank_i=-1;
 											foreach ($data_add_modalbank as $key => $data) {
 												if   ($data->type == 'MODAL_BANK')
 												{
+													$modal_bank_i++;
 										?>	
-										<div class="row" id="rowsmodalbank">
+										<div class="row" id="rowsmodalbank{{$modal_bank_i}}">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label for="bankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
@@ -2621,18 +2910,18 @@ if ($pos=0 or $pos=1){
 													<div class="col-sm-10">
 														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
 														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]" disabled>
-														<?PHP 
+														<?php 
 														foreach ($tblbank as $key => $value) {
 														?>
 															<option value="{{$value->desc}}" <?php echo ($value->desc == $data->value2?'selected':'');?>>{{$value->desc}}</option>
-														<?PHP	
+														<?php	
 														}
 														?>
 														</select>
 
 													</div>
 													<div class="col-sm-2">
-														<!-- <button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove9">X</button> -->
+														<!-- <button type="button" name="remove" id="{{$modal_bank_i}}" class="btn btn-danger btn_remove9">X</button> -->
 													</div>
 												</div>
 											</div>
@@ -2643,22 +2932,43 @@ if ($pos=0 or $pos=1){
 										<?php
 												}
 											}
+											$modal_bank_i++;
 											?>	
-										<!-- /.row -->
-										<!-- <div class="form-group row" >
-											<button type="button" style="height:50px;width:50px"><ion-icon name="add-circle" ></ion-icon>Add</button>
-											</div> -->
-									</div>
-									<div class="col-md-1">
-											<div class="form-group row ">
-												<div class="col-sm-12">
-													<button type="button" khususinput2='yes' style="height:50px;width:50px;{{$tomboladd}}" name="addmodalbank" id="addmodalbank" class="btn btn-success">Add</button>
+											@if ($idedit == "0")
+											<div class="row" id="rowsmodalbank{{$modal_bank_i}}">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label for="bankpersent" class="col-sm-4 col-form-label">{{$judul}}</label>
+													<div class="col-sm-6">
+														<input type="text" class="form-control" id="inputmodalbankpersent[]" name="inputmodalbankpersent[]" placeholder="%">	
+													</div>
+													<label for="inputmodalbankpersent" class="col-sm-2 col-form-label">{{$persent}}</label>
+												</div>
+											</div>
+											<!-- /.col -->
+											<div class="col-md-5">
+												<div class="form-group row">
+													<div class="col-sm-10">
+														<input type="hidden" class="form-control" id="inputmodalbanknamaid[]" name="inputmodalbanknamaid[]" placeholder="%">	
+														<select class="form-control" id="inputmodalbanknama[]" name="inputmodalbanknama[]">
+														<?php 
+														foreach ($tblbank as $key => $value) {
+														?>
+															<option value="{{$value->desc}}">{{$value->desc}}</option>
+														<?php	
+														}
+														?>
+														</select>
+
+													</div>
+													<div class="col-sm-2">
+														<button type="button" name="remove" id="{{$modal_bank_i}}" class="btn btn-danger btn_remove9">X</button>
+													</div>
 												</div>
 											</div>
 										</div>
-									
-
-
+										@endif
+									</div>
 									<!-- /.card-body -->
 									<div class="card-footer">
 										<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -2749,7 +3059,7 @@ if ($pos=0 or $pos=1){
 									<div class="form-group row ">
 										<div class="col-sm-12">
 
-											<select class="btn btn-success" id="addjaminan" name="addjaminan" style="{{$tomboladd}}" khususinput2="yes"> 
+											<select class="btn btn-success" id="addjaminan" name="addjaminan" style="{{$tomboladd2}}" khususinput2="yes"> 
 											<option value="">Add</option>
 											<?php 
 											foreach ($tbljaminanpribadi as $key => $value) {
@@ -2814,10 +3124,12 @@ if ($pos=0 or $pos=1){
 								<div class="card-header">
 									<h3 class="card-title font36">Photo</h3>
 
+									File type : jpg, gif, bmp dan png max size 900kb
+
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
-										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
+										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addphoto" id="addphoto">
+											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -2834,7 +3146,10 @@ if ($pos=0 or $pos=1){
 										<div class="col-lg-2 col-6" id="rowsphoto{{$urut}}">
 											<div class="form-group row">
 												<div class="col-sm-10">
-													<img id="blah{{ $urut }}" name="gambar[]" src="/storeimageadd/{{ $data->id }}" alt="your image" style="width: 200px;height: auto;">
+
+													<a target="_blank" href="/storeimageadd/{{ $data->id }}">
+														<img id="blah{{ $urut }}" name="gambar[]" src="/storeimageadd/{{ $data->id }}" alt="your image" style="width: 200px;height: auto;">
+													</a>
 													<input type="file" name="filenames{{$urut}}" id="filenames{{$urut}}" class="myfrm form-control" onchange="readURL2(this,{{$urut}})" style="display:none;">
 												</div>
 												<div class="col-sm-2">
@@ -2850,13 +3165,6 @@ if ($pos=0 or $pos=1){
 									</div>
 
 									
-								</div>
-								<div class="col-md-1">
-									<div class="form-group row ">
-										<div class="col-sm-12">
-											<button type="button"  style="height:50px;width:50px;{{$tomboladd}}" name="addphoto" id="addphoto" class="btn btn-success" khususinput2="yes">Add</button>
-										</div>
-									</div>
 								</div>
 								<!-- /.card-body -->
 								<div class="card-footer">
@@ -3057,6 +3365,8 @@ if ($pos=0 or $pos=1){
 
 		});  
 	</script>
+
+
 
 
 	<script type="text/javascript">
@@ -3505,6 +3815,16 @@ if ($pos=0 or $pos=1){
 
 <script type="text/javascript">
 		function readURL2(input, pos) {
+			var nmfile=document.getElementById("filenames"+pos).value;
+			var n = nmfile.search(".jpg") + nmfile.search(".JPG") + 
+				nmfile.search(".gif") + nmfile.search(".GIF") + 
+				nmfile.search(".png") + nmfile.search(".PNG") +
+				nmfile.search(".bmp") + nmfile.search(".BMP");
+			if (n == -8){
+				alert('Please upload file type jpg, gif, bmp dan png max size 900kb.');
+				$('#rowsphoto'+pos).remove();  
+    		return false;
+			} else {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
@@ -3512,6 +3832,7 @@ if ($pos=0 or $pos=1){
 					$('#blah'+pos).attr('src', e.target.result);
 				}
 				reader.readAsDataURL(input.files[0]);
+			}
 			}
 		}
 		
@@ -3743,6 +4064,11 @@ if ($pos=0 or $pos=1){
 		$("this :input").prop("disabled", false);
 		$("#tombolsave").append($xsave);
 
+		var  arr =$("div").find(`[khususinput3='yes']`);
+		for(i=0;i<arr.length;i++){
+				arr[i].style.display="block"
+		}
+		
 		var  arr =$("div").find(`[khususinput='yes']`);
 		for(i=0;i<arr.length;i++){
 			if(arr[i].type == 'button'){
@@ -3757,6 +4083,20 @@ if ($pos=0 or $pos=1){
 		for(i=0;i<arr.length;i++){
 				arr[i].style.display="block"
 		}
+
+		$("#addkelga").click();
+		$("#addmedsospri").click();
+		$("#addstatususaha").click();
+		$("#addmedsosush").click();
+		$("#addagenhub").click();
+		$("#addareasubagen").click();
+		$("#addkompetitor").click();
+		$("#addbisnislain").click();
+		$("#addmodalbank").click();
+		
+		
+
+		
 	}
 	</script>
 	<script type="text/javascript">
@@ -3785,6 +4125,14 @@ if ($pos=0 or $pos=1){
 			$("#tombolsave").append($xsave);
 		@endif
 	</script>
+
+	<script type="text/javascript">
+		// @if ($idedit == "0")
+		// 	$("#addkelga").click();
+		// @endif
+	</script>
+
+
 	<script type="text/javascript">
 		function ambilphoto(){
 			$('#files').click();
@@ -3837,7 +4185,6 @@ if ($pos=0 or $pos=1){
 			}
 		}
 	</script>
-
 	@else
 		<?php
 			// header('Location: http://01659440.dyn.cbn.net.id:8815/login');

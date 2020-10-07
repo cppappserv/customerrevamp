@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Form\Field;
 
+use Illuminate\Support\Str;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image as InterventionImage;
 use Intervention\Image\ImageManagerStatic;
@@ -107,7 +108,7 @@ trait ImageField
     {
         if (func_num_args() == 1 && is_array($name)) {
             foreach ($name as $key => $size) {
-                if (count($size) == 2) {
+                if (count($size) >= 2) {
                     $this->thumbnails[$key] = $size;
                 }
             }
@@ -134,7 +135,7 @@ trait ImageField
             $ext = pathinfo($this->original, PATHINFO_EXTENSION);
 
             // We remove extension from file name so we can append thumbnail type
-            $path = str_replace_last('.'.$ext, '', $this->original);
+            $path = Str::replaceLast('.'.$ext, '', $this->original);
 
             // We merge original name + thumbnail name + extension
             $path = $path.'-'.$name.'.'.$ext;
@@ -159,7 +160,7 @@ trait ImageField
             $ext = pathinfo($this->name, PATHINFO_EXTENSION);
 
             // We remove extension from file name so we can append thumbnail type
-            $path = str_replace_last('.'.$ext, '', $this->name);
+            $path = Str::replaceLast('.'.$ext, '', $this->name);
 
             // We merge original name + thumbnail name + extension
             $path = $path.'-'.$name.'.'.$ext;
@@ -167,8 +168,9 @@ trait ImageField
             /** @var \Intervention\Image\Image $image */
             $image = InterventionImage::make($file);
 
+            $action = $size[2] ?? 'resize';
             // Resize image with aspect ratio
-            $image->resize($size[0], $size[1], function (Constraint $constraint) {
+            $image->$action($size[0], $size[1], function (Constraint $constraint) {
                 $constraint->aspectRatio();
             })->resizeCanvas($size[0], $size[1], 'center', false, '#ffffff');
 
