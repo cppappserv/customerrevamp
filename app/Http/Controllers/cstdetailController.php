@@ -527,8 +527,6 @@ order by a.seq
         }
         
         $iduser = $tbluser->user_id; 
-        
-       
         $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
         $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
 
@@ -657,22 +655,21 @@ order by a.seq
     // }
 
 public function detailsave($id, Request $request){
-    if ($request->para3 <> "0"){
+
+    if ($request->para3 == "0"){
         $this->validate($request,[
             'inputuserid' => ['required', 'string', 'max:10'],
             'inputfullname' => ['required', 'string', 'max:35'],
             'inputnamaalias' => ['required', 'string', 'max:35'],
             'inputbirthdate' => ['required', 'string', 'max:10'],
             'inputbirthplace' => ['required', 'string', 'max:35'],
-            'inputnoktp' => ['required', 'string', 'max:16'],
+            // 'inputnoktp' => ['required', 'string', 'max:16'],
             'inputagama' => ['required'],
-            'inputgoldarah' => ['required'],
+            // 'inputgoldarah' => ['required'],
             'inputalmtktp' => ['required', 'string', 'max:100'],
             'inputkdposktp' => ['required', 'string', 'max:35']
         ]);
     }
-    
-    
 
     $dtadditional = Dtadditional::where('type','=','COMPANY')
     ->where('info','=',$request->para2)->first();
