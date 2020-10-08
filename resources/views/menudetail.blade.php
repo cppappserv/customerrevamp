@@ -545,7 +545,7 @@ if ($pos=0 or $pos=1){
 		color: rgba(84,84,84,1);
 		margin-left: 10px;
 		height:50px;
-		width: 80%;
+		width: 75%;
 	}
 	.cmd2 {
 		border-radius: 24px;
@@ -554,7 +554,7 @@ if ($pos=0 or $pos=1){
 		color: white;
 		margin-left: 10px;
 		height:50px;
-		width: 80%;
+		width: 75%;
 	}
 
 	
