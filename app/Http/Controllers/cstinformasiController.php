@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
+use App\User;
 use App\Models\kodepost;
 use App\Models\Usrprofile;
 use App\Models\Usradditional;
@@ -108,6 +109,7 @@ class CstinformasiController extends Controller
 
     public function infosave(Request $request){
       // dd($request->all());
+      $baru = 1;
       if ($request->inputbaris == ""){
           $this->validate($request, [
               'inputuserid'      => ['required'],
@@ -121,11 +123,14 @@ class CstinformasiController extends Controller
           $tbluser = new Tbluser;
           $nama = explode( '@', $request->inputuserid );
           $tbluser->fullname = $nama[0];
-          
+          if ($nama[1] <> 'cpp.co.id'){
+            $baru = 0;
+          }
       } else {
           $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
       }
       $tbluser->user_id   = $request->inputuserid;
+      $tbluser->email   = $request->inputuserid;
       $tbluser->usergroup = $request->inputusertype ;
       $tbluser->branch    = $request->inputuserarea;
       if($request->inputuserpass <> $tbluser->password){
@@ -133,7 +138,17 @@ class CstinformasiController extends Controller
       }
       $tbluser->company   = $request->inputusercompany ;
       $tbluser->save();
+      if ($baru == 1){
+        $tbluser = Tbluser::where('email','=',$request->inputuserid)->first();
 
+
+        $user = new User;
+        $user->name = '-';
+        $user->email = $request->inputuserid;
+        $user->uid = $tbluser->uid;
+        $user->password  = md5($request->inputuserpass);
+        $user->save();
+      }
       // ada program triger save ke table tbluser langsung save ke tabel users
       return redirect('/info1');
   }
