@@ -58,12 +58,9 @@ class CstinformasiController extends Controller
       return $grp;
     }
     public function listcompany(){
-      $sql = "
-          select '1' urut, 'cpp' tblcompany union
-          select '2' urut, 'cpb' tblcompany
-      ";
-      $grp = db::connection('mysql')->select($sql);
-      return $grp;
+      $data = Dtadditional::where('type','=','COMPANY')
+      ->select('info2 AS infox','info')->get();
+      return $data;
     }
     public function listuserstatus(){
       $sql = "
@@ -86,8 +83,7 @@ class CstinformasiController extends Controller
       $user = $this->getuser();
       $listuser = $this->listuserpassword();
       $listuseredit = $this->listuserpasswordedit();
-
-      $listgroup = Tblgroupuser::get();
+      $listgroup = Tblgroupuser::wherein('idusergroup',['1','9'])->get();
       $tblobject = Tblobject::where('objtype','=','7')->get();
 
       // dd($listuser);
@@ -109,7 +105,7 @@ class CstinformasiController extends Controller
 
     public function infosave(Request $request){
       // dd($request->all());
-      $baru = 1;
+      
       if ($request->inputbaris == ""){
           $this->validate($request, [
               'inputuserid'      => ['required'],
@@ -119,6 +115,9 @@ class CstinformasiController extends Controller
               'inputuserrepass'  => ['required'],
               'inputusercompany' => ['required'],
           ]);
+          $baru = 1;
+          
+
 
           $tbluser = new Tbluser;
           $nama = explode( '@', $request->inputuserid );
@@ -127,6 +126,7 @@ class CstinformasiController extends Controller
             $baru = 0;
           }
       } else {
+          $baru = 0;
           $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
       }
       $tbluser->user_id   = $request->inputuserid;
@@ -140,8 +140,6 @@ class CstinformasiController extends Controller
       $tbluser->save();
       if ($baru == 1){
         $tbluser = Tbluser::where('email','=',$request->inputuserid)->first();
-
-
         $user = new User;
         $user->name = '-';
         $user->email = $request->inputuserid;

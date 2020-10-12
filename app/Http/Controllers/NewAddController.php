@@ -139,18 +139,21 @@ class NewAddController extends Controller
        return response()->json(array('msg'=> $txt), 200);
    }
 
-   public function inputinfomasi($id, $id2){
-      
+   public function inputinfomasi($id, $id2, $id3){
+      if ($id3==1){
+         $c1 = '';
+         $c2 = '';
+      } else {
+         $c1 = 'readonly';
+         $c2 = 'disabled';
+      }
       $tbluser = Tbluser::where('uid','=',$id)->first();
       $tblobject = Tblobject::where('objtype','=','7')->get();
       $zbranch = Zbranch::get();
       $listcompany = Dtadditional::where('type','=','COMPANY')
       ->where('desc','=',$tbluser->branch)
       ->get();
-      $listgroup = Tblgroupuser::get();
-
-      
-
+      $listgroup = Tblgroupuser::wherein('idusergroup',['1','9'])->get();
       $txt = 	'
       <div class="row">
       <div class="col-md-6">
@@ -170,7 +173,7 @@ class NewAddController extends Controller
             <label for="inputusertype" class="col-sm-3 col-form-label">User Type</label>
             <div class="col-sm-9">
                <div class="input-group">
-                  <select class="form-control" id="inputusertype" name="inputusertype" > ';
+                  <select class="form-control" id="inputusertype" name="inputusertype" '.$c2.'> ';
                   foreach ($listgroup as $key => $value) {
             $txt .='<option value="'.$value->idusergroup.'" '.($value->idusergroup == $tbluser->usergroup?'selected':'').'>'.$value->namegroup.'</option>';
                   }
@@ -182,7 +185,7 @@ class NewAddController extends Controller
             <label for="inputuserarea" class="col-sm-3 col-form-label">Area</label>
             <div class="col-sm-9">
                <div class="input-group">
-                  <select class="form-control" id="inputuserarea" name="inputuserarea" >';
+                  <select class="form-control" id="inputuserarea" name="inputuserarea" '.$c2.'>';
                   foreach ($tblobject as $key => $value) {
             $txt .='<option value="'.$value->objname.'" '.($value->objname == $tbluser->branch?'selected':'').'>'.$value->desc.'</option>';
                   }
@@ -198,7 +201,7 @@ class NewAddController extends Controller
             <div class="col-sm-8">
                <div class="input-group">
                   <input type="password" class="form-control" id="inputuserpass" name="inputuserpass" placeholder="password" 
-                  value="'.$tbluser->password.'">
+                  value="'.$tbluser->password.'" '.$c1.'>
                </div>
             </div>
             <button type="button" 
@@ -212,7 +215,7 @@ class NewAddController extends Controller
             <div class="col-sm-8">
                <div class="input-group">
                <input type="password" class="form-control" id="inputuserrepass" name="inputuserrepass" placeholder="password" 
-               value="'.$tbluser->password.'">
+               value="'.$tbluser->password.'" '.$c1.'>
                </div>
             </div>
             <button type="button" 
@@ -225,7 +228,7 @@ class NewAddController extends Controller
             <label for="inputusercompany" class="col-sm-3 col-form-label">Company</label>
             <div class="col-sm-9">
                <div class="input-group">
-                  <select class="form-control" id="inputusercompany" name="inputusercompany" >';
+                  <select class="form-control" id="inputusercompany" name="inputusercompany" '.$c2.'>';
                   foreach ($listcompany as $key => $value) {
                      $txt .='<option value="'.$value->info.'" '.($value->info == $tbluser->company?'selected':'').'>'.$value->info2.'</option>';
                            }

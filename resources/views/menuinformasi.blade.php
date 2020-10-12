@@ -1,3 +1,11 @@
+<?php 
+   $c1 = '';
+   $c2 = '';
+   if ($user->usergroup != '1'){
+      $c1 = 'readonly';
+      $c2 = 'disabled';
+   };
+?>
 @extends('layouts.utama')
 @section('csscontent')
   <style id="applicationStylesheet" type="text/css">
@@ -105,8 +113,12 @@
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="text" class="form-control @error('inputuserid') is-invalid @enderror"  required autocomplete="inputuserid" autofocus id="inputuserid" name="inputuserid" onchange="cekinputan()">
-                                    <input type="hidden" id="inputbaris" name="inputbaris">
+                                    <input type="text" class="form-control @error('inputuserid') is-invalid @enderror"  required autocomplete="inputuserid" autofocus id="inputuserid" name="inputuserid" onchange="cekinputan()"  {{$c1}}>
+                                    <input type="hidden" id="inputbaris" name="inputbaris" value="0">
+                                    <input type="hidden" id="inputuid" name="inputuid" value="0">
+                                    <input type="hidden" id="inputbaru" name="inputbaru" value="0">
+                                    <input type="hidden" id="oldcompany" name="oldcompany">
+                                    
                                     @error('inputuserid')
                                        <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -120,7 +132,7 @@
                               <div class="col-sm-9">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <select class="form-control @error('inputusertype') is-invalid @enderror"  required autocomplete="inputusertype" autofocus id="inputusertype" name="inputusertype" onblur="cekinputan()"> 
+                                    <select class="form-control @error('inputusertype') is-invalid @enderror"  required autocomplete="inputusertype" autofocus id="inputusertype" name="inputusertype" onblur="cekinputan()" {{$c2}}> 
                                        <option value="" selected>--- Select User Type ---</option>
                                     <?php
                                     foreach ($listgroup as $key => $value) {
@@ -145,7 +157,7 @@
                               <div class="col-sm-9">
                                  <div class="input-group">
                                     <!-- <select class="form-control @error('inputuserarea') is-invalid @enderror"  required autocomplete="inputuserarea" autofocus id="inputuserarea" name="inputuserarea" onblur="cekinputan()">  -->
-                                    <select class="form-control" id="inputuserarea" name="inputuserarea" onblur="cekinputan()"> 
+                                    <select class="form-control" id="inputuserarea" name="inputuserarea" onblur="cekinputan()" {{$c2}}> 
                                     <option value="" selected>--- Select BU ---</option>
                                     <?php
                                     foreach ($tblobject as $key => $value) {
@@ -171,7 +183,7 @@
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="password" class="form-control @error('inputuserpass') is-invalid @enderror"  required autocomplete="inputuserpass" autofocus id="inputuserpass" name="inputuserpass" placeholder="password" onblur="cekinputan()">
+                                    <input type="password" class="form-control @error('inputuserpass') is-invalid @enderror"  required autocomplete="inputuserpass" autofocus id="inputuserpass" name="inputuserpass" placeholder="password" onblur="cekinputan()" {{$c1}}>
                                     @error('inputuserpass')
                                        <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -190,7 +202,7 @@
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
-                                    <input type="password" class="form-control @error('inputuserrepass') is-invalid @enderror"  required autocomplete="inputuserrepass" autofocus id="inputuserrepass" name="inputuserrepass" placeholder="password" onblur="cekinputan()">
+                                    <input type="password" class="form-control @error('inputuserrepass') is-invalid @enderror"  required autocomplete="inputuserrepass" autofocus id="inputuserrepass" name="inputuserrepass" placeholder="password" onblur="cekinputan()" {{$c1}}> 
 
                                     @error('inputuserrepass')
                                        <span class="invalid-feedback" role="alert">
@@ -206,13 +218,13 @@
                                  <span class="fa fa-eye"></span> <!--  this is the icon  -->
                               </button> 
                            </div>
-
                            <div class="form-group row">
                               <label for="inputusercompany" class="col-sm-3 col-form-label">Ouc</label>
                               <div class="col-sm-9">
                                  <div class="input-group">
-                                    <select class="form-control @error('inputusercompany') is-invalid @enderror"  required autocomplete="inputusercompany" autofocus id="inputusercompany" name="inputusercompany" onblur="cekinputan()"> 
-                                       <option>--- Select OUC ---</option>
+                                    <select class="form-control @error('inputusercompany') is-invalid @enderror"  required autocomplete="inputusercompany" autofocus id="inputusercompany" name="inputusercompany" onblur="cekinputan()" {{$c2}}> 
+                                       <option value="">--- Select OUC ---</option>
+                                      
                                     </select>
                                     
                                     @error('inputusercompany')
@@ -333,6 +345,8 @@
                         ?>
                            <input type="text" id="inputusertype_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
                            value="{{$value->namegroup}}"> 
+                           <input type="hidden" id="inputusergroup_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                           value="{{$value3->usergroup}}"> 
                         </div>
                      </div>
 
@@ -346,10 +360,10 @@
                      </div>
 
                      <div class="col-sm-3 row">
-                        <div class="input-group col-sm-11">                    
+                        <div class="input-group col-sm-8">                    
                            <input type="password" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control"  readonly=""
                               value="({{md5($value3->password)}}"> 
-                           <input type="hidden" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" 
+                           <input type="hidden" id="inputcompany_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" 
                               value="{{$value3->company}}"> 
                         </div>
                            <!-- <div class="input-group col-sm-1">
@@ -359,13 +373,19 @@
                                  <span class="fa fa-eye"></span>
                               </button> 
                            </div> -->
-                           <div class="input-group col-sm-1">
+                           <div class="input-group col-sm-4">
                               
                               <button type="button" 
                                  title="Edit"
-                                 onclick="myedit({{$i}})">          <!--  this is the title -->
+                                 onclick="myedit({{$i}}, {{$user->usergroup}});myedit2({{$i}}, {{$user->usergroup}})">          <!--  this is the title -->
                                  <i class="far fa-edit"></i> <!--  this is the icon  -->
                               </button> 
+                              @if($user->usergroup=='1')
+                                 <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$i}}"
+                                    data-toggle="modal" data-target="#modal-primary" style="border: none;">
+                                    <img src="{{asset('image/delete.png')}}"> 
+                                 </button>
+                              @endif
                            </div>
                         <!-- </div> -->
                      </div>
@@ -438,16 +458,62 @@
       }
    }
 
-   function myedit(isi) 
+   function myedit(isi, flag) 
 	{
       var tx1 = 'inputuid_'+isi;
-      var x = document.getElementById("save");
-      if (x.style.display == "none") {
-         x.style.display = "block";
+      var tx2 = 'inputuserid_'+isi;
+      var tx3 = 'inputusergroup_'+isi;
+      var tx4 = 'inputuserarea_'+isi;
+      var tx5 = 'inputuserpass_'+isi;
+      var tx6 = 'inputcompany_'+isi;
+      document.getElementById('inputbaru').value = '1';
+      document.getElementById('inputbaris').value = isi;
+      document.getElementById('inputuid').value = document.getElementById(tx1).value;
+      document.getElementById('inputuserid').value = document.getElementById(tx2).value;
+      document.getElementById('inputusertype').value = document.getElementById(tx3).value;
+      document.getElementById('inputuserarea').value = document.getElementById(tx4).value;
+      document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
+      document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
+      $('select[name=inputuserarea]').change();
+      document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
+
+      
+      
+      if (flag == '1'){
+         var x = document.getElementById("save");
+         if (x.style.display == "none") {
+            x.style.display = "block";
+         }
+      } else {
+         // document.getElementById('inputuid').disabled = document.getElementById(tx1).value;
+         // document.getElementById('inputuserid').value = document.getElementById(tx2).value;
+         // document.getElementById('inputusertype').value = document.getElementById(tx3).value;
+         // document.getElementById('inputuserarea').value = document.getElementById(tx4).value;
+         // document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
+         // document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
+         // document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
+      }
+      
+   }
+
+   function myedit2(isi, flag) 
+	{
+      // var tx6 = 'inputcompany_'+isi;
+      // document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
+   }
+
+   function xmyedit(isi, flag) 
+	{
+      var tx1 = 'inputuid_'+isi;
+      if (flag == '1'){
+         var x = document.getElementById("save");
+         if (x.style.display == "none") {
+            x.style.display = "block";
+         }
       }
       var uid = document.getElementById(tx1).value;
       $.ajax({
-         url: '/getmsg3/'+uid+'/'+isi,
+         url: '/getmsg3/'+uid+'/'+isi+'/'+flag,
          type: "GET",
          dataType: "json",
          success:function(data) {
@@ -458,9 +524,15 @@
 </script>
 
 
+
+
 <script type="text/javascript">
    $(document).ready(function(){
       $('select[name=inputuserarea]').change(function() {
+         var baru = document.getElementById('inputbaru').value;
+         // var old = document.getElementById('oldcompany').value;
+         // alert(old);
+
          var stateID = $(this).val();
          if(stateID) {
             $.ajax({
@@ -500,6 +572,8 @@
       var inputuserpass    = document.getElementById("inputuserpass");
       var inputuserrepass  = document.getElementById("inputuserrepass");
       var inputusercompany = document.getElementById("inputusercompany");
+
+      <input type="hidden" id="inputbaris" name="inputbaris" value="'.$id2.'">
 
       if(inputuserid.value == "" || inputusertype.value == "" || inputuserarea.value == "" || inputuserpass.value == "" || inputuserrepass.value == "" || inputusercompany.value == ""){
          x.style.display = "none";
