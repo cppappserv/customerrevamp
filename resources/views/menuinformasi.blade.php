@@ -474,24 +474,28 @@
       document.getElementById('inputuserarea').value = document.getElementById(tx4).value;
       document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
       document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
+      document.getElementById('oldcompany').value = document.getElementById(tx6).value;
       $('select[name=inputuserarea]').change();
-      document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
-
-      
-      
       if (flag == '1'){
          var x = document.getElementById("save");
          if (x.style.display == "none") {
             x.style.display = "block";
          }
+         // document.getElementById('inputuid').disabled = false;
+         // document.getElementById('inputuserid').disabled = false;
+         // document.getElementById('inputusertype').disabled = false;
+         // document.getElementById('inputuserarea').disabled = false;
+         // document.getElementById('inputuserpass').disabled = false;
+         // document.getElementById('inputuserrepass').disabled = false;
+         // document.getElementById('inputusercompany').disabled = false;
       } else {
-         // document.getElementById('inputuid').disabled = document.getElementById(tx1).value;
-         // document.getElementById('inputuserid').value = document.getElementById(tx2).value;
-         // document.getElementById('inputusertype').value = document.getElementById(tx3).value;
-         // document.getElementById('inputuserarea').value = document.getElementById(tx4).value;
-         // document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
-         // document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
-         // document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
+         // document.getElementById('inputuid').disabled = true;
+         // document.getElementById('inputuserid').disabled = true;
+         // document.getElementById('inputusertype').disabled = true;
+         // document.getElementById('inputuserarea').disabled = true;
+         // document.getElementById('inputuserpass').disabled = true;
+         // document.getElementById('inputuserrepass').disabled = true;
+         // document.getElementById('inputusercompany').disabled = true;
       }
       
    }
@@ -530,9 +534,7 @@
    $(document).ready(function(){
       $('select[name=inputuserarea]').change(function() {
          var baru = document.getElementById('inputbaru').value;
-         // var old = document.getElementById('oldcompany').value;
-         // alert(old);
-
+         var old = document.getElementById('oldcompany').value;
          var stateID = $(this).val();
          if(stateID) {
             $.ajax({
@@ -543,9 +545,15 @@
                   if(data){
                      $("#inputusercompany").empty();
                      $("#inputusercompany").append('<option>--- Select OUC ---</option>');
-                     $.each(data,function(key,value){
+                     $.each(data,function(key, value){
                            $("#inputusercompany").append('<option value="'+key+'">'+value+'</option>');
                      });
+                     if (old != ''){
+                        document.getElementById('inputusercompany').value = old;
+                     }
+
+                     
+
                   }
                   
                }
