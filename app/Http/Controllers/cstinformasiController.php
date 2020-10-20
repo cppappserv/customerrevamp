@@ -101,58 +101,74 @@ class CstinformasiController extends Controller
           'tblobject' => $tblobject
 
       ]);
-    }    
+    } 
+    
+    public function destroy(Request $request)
+    { 
+         $applicant_id=$request->input('applicant_id');
+        DB::beginTransaction();
+        try {
+            Tbluser::where('uid','=',$applicant_id)->delete();
+            User::where('uid','=',$applicant_id)->delete();
+            
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['code'=>500, 'message' => $e->getMessage()]);
+        }
+        DB::commit();
+        return redirect('/info1')->with('success', 'Applicant Removed');
+    }
 
     public function infosave(Request $request){
- 
-      if ($request->inputbaris == "" or $request->inputbaris == "0"){
-          $this->validate($request, [
-              'inputuserid'      => ['required'],
-              'inputusertype'    => ['required'],
-              'inputuserarea'    => ['required'],
-              'inputuserpass'    => ['required'],
-              'inputuserrepass'  => ['required'],
-              'inputusercompany' => ['required'],
-          ]);
-          $baru = 1;
-          
-
-
-          $tbluser = new Tbluser;
-          $nama = explode( '@', $request->inputuserid );
-          $tbluser->fullname = $nama[0];
-          if ($nama[1] <> 'cpp.co.id'){
-            $baru = 0;
+       $this->validate($request, [
+          'inputuserid'      => ['required'],
+          'inputusertype'    => ['required'],
+          'inputuserarea'    => ['required'],
+          'inputuserpass'    => ['required'],
+          'inputuserrepass'  => ['required'],
+          'inputusercompany' => ['required'],
+      ]);
+        
+        if ($request->inputuid == '0'){
+          $tbluser = Tbluser::where('user_id','=', $request->inputuserid)
+          ->orwhere('email', '=', $request->inputuserid )
+          ->first();
+          if (!$tbluser){
+            $tbluser = new Tbluser;
           }
-      } else {
-          $baru = 1;
-          $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
-      }
-      
-      $tbluser->user_id   = $request->inputuserid;
-      $tbluser->email   = $request->inputuserid;
-      $tbluser->usergroup = $request->inputusertype ;
-      $tbluser->branch    = $request->inputuserarea;
-      if($request->inputuserpass <> $tbluser->password){
-          $tbluser->password  = md5($request->inputuserpass);
-      }
-      $tbluser->company   = $request->inputusercompany ;
-      $tbluser->save();
+        } else {
+          $tbluser = Tbluser::where('uid','=', $request->inputuid)->first();
+        }
+        DB::beginTransaction();
+        try {
+          $nama = explode( '@', $request->inputuserid );
+          $tbluser->fullname  = $nama[0];
+          $tbluser->user_id   = $request->inputuserid;
+          $tbluser->email     = $request->inputuserid;
+          $tbluser->usergroup = $request->inputusertype ;
+          $tbluser->branch    = $request->inputuserarea;
+          if($request->inputuserpass <> $tbluser->password){
+              $tbluser->password  = md5($request->inputuserpass);
+          }
+          $tbluser->company   = $request->inputusercompany ;
+          $tbluser->save();
+        } catch (\Exception $e) {
+          DB::rollback();
+          return response()->json(['code'=>500, 'message' => $e->getMessage()]);
+        }
+        DB::commit();
+        $tbluser = Tbluser::where('email','=', $request->inputuserid)->first();
 
-      $tbluser = Tbluser::where('user_id','=',$request->inputuserid)->first();
-      $user = User::where('uid', '=', $tbluser->uid)->first();
-      if (!$user){
-         $user = new User;
-      }
-      $user->name = '-';
-      $user->email = $request->inputuserid;
-      $user->uid = $tbluser->uid;
-      $user->password  = md5($request->inputuserpass);
-      $user->save();
-      
+        $user = User::where('email', '=', $request->inputuserid)->first();
+        if (!$user){
+          $user = new User;
+        }
+        $user->name     = $tbluser->fullname;
+        $user->email    = $tbluser->email;
+        $user->uid      = $tbluser->uid;
+        $user->password = md5($request->inputuserpass);
+        $user->save();
 
-      
-      // ada program triger save ke table tbluser langsung save ke tabel users
       return redirect('/info1');
   }
 }

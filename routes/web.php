@@ -33,7 +33,7 @@ Route::get('/storeimageadd/{id}', 'CstdetailController@storeimageother')->name('
 
 Route::get('/detail1/update/{id}', 'CstdetailController@update')->name('update');
 
-Route::delete('applicant_delete_modal', 'CstdetailController@destroy')->name('applicant_delete');
+
 Route::get('/setting1', 'CstsettingController@index')->name('setting1');
 Route::post('/export_excel', 'CstsettingController@export_excel')->name('export_excel');
 
@@ -48,6 +48,7 @@ Route::get('/download', 'CstuploadController@index')->name('download');
 
 Route::get('/info1', 'CstinformasiController@index')->name('info1');
 Route::post('/info1edit/save', 'CstinformasiController@infosave')->name('infosave');
+Route::delete('/info1_delete_modal', 'CstinformasiController@destroy')->name('info_delete');
 Route::get('autocomplete', 'CstdetailController@search');
 Route::get('autohubkelga', 'CstdetailController@searchhubkelga');
 Route::get("/getmsg/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@jaminan");

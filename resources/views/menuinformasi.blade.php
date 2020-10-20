@@ -85,7 +85,39 @@
     left: 1%;
     width: 98%;">
 
+<div class="modal fade" id="modal-primary">
+        <div class="modal-dialog" sytel="border-radius: 50px;">
+          <div class="modal-content bg-outline-light" style="    border-radius: 75px;">
+            <form action="{{route('info_delete')}}" method="POST" class="remove-record-model">
+              {{ method_field('delete') }}
+              {{ csrf_field() }}
+              <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <input type="hidden", name="applicant_id" id="app_id">
+                
+              </div>
+              <div class="modal-body">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="width:49%; width: 49%;
+                  height: 60px;
+                  border-radius: 30px;background: rgba(15,199,89,1);">Cancel</button>
+                            <button type="submit" class="btn btn-danger delete_ya" style="width:49%; width: 49%;
+                  height: 60px;
+                  border-radius: 30px; ">Delete</button>
+              </div>
+              <div class="modal-footer justify-content-between">
+              <h4 class="modal-title"></h4>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
 		<div class="container-fluid">
+
+
 
          <div class="card card-default">
             <div class="card-header">
@@ -347,6 +379,7 @@
                            value="{{$value->namegroup}}"> 
                            <input type="hidden" id="inputusergroup_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
                            value="{{$value3->usergroup}}"> 
+                          
                         </div>
                      </div>
 
@@ -586,6 +619,15 @@
          x.style.display = "block";
       }
    }
+</script>
+
+<script>
+$(document).on('click','.deleteUser',function(){
+    var userID=$(this).attr('data-userid');
+    var tx1 = $('#inputuid_'+userID).val();
+    $('#app_id').val(tx1); 
+    // $('#applicantDeleteModal').modal('show'); 
+});
 </script>
 @endsection
 
