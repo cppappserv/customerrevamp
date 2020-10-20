@@ -106,7 +106,7 @@ class CstinformasiController extends Controller
     public function infosave(Request $request){
       // dd($request->all());
       
-      if ($request->inputbaris == ""){
+      if ($request->inputbaris == "" or $request->inputbaris == "0"){
           $this->validate($request, [
               'inputuserid'      => ['required'],
               'inputusertype'    => ['required'],
@@ -129,6 +129,7 @@ class CstinformasiController extends Controller
           $baru = 0;
           $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
       }
+      
       $tbluser->user_id   = $request->inputuserid;
       $tbluser->email   = $request->inputuserid;
       $tbluser->usergroup = $request->inputusertype ;
@@ -138,7 +139,7 @@ class CstinformasiController extends Controller
       }
       $tbluser->company   = $request->inputusercompany ;
       $tbluser->save();
-      if ($baru == 1){
+      if ($tbluser){
         $tbluser = Tbluser::where('email','=',$request->inputuserid)->first();
         $user = new User;
         $user->name = '-';
