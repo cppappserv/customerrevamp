@@ -104,7 +104,7 @@ class CstinformasiController extends Controller
     }    
 
     public function infosave(Request $request){
-    
+ 
       if ($request->inputbaris == "" or $request->inputbaris == "0"){
           $this->validate($request, [
               'inputuserid'      => ['required'],
@@ -138,15 +138,20 @@ class CstinformasiController extends Controller
       }
       $tbluser->company   = $request->inputusercompany ;
       $tbluser->save();
-      if ($baru==0){
-        $tbluser = Tbluser::where('email','=',$request->inputuserid)->first();
-        $user = new User;
-        $user->name = '-';
-        $user->email = $request->inputuserid;
-        $user->uid = $tbluser->uid;
-        $user->password  = md5($request->inputuserpass);
-        $user->save();
+
+      $tbluser = Tbluser::where('user_id','=',$request->inputuserid)->first();
+      $user = User::where('uid', '=', $tbluser->uid)->first();
+      if (!$user){
+         $user = new User;
       }
+      $user->name = '-';
+      $user->email = $request->inputuserid;
+      $user->uid = $tbluser->uid;
+      $user->password  = md5($request->inputuserpass);
+      $user->save();
+      
+
+      
       // ada program triger save ke table tbluser langsung save ke tabel users
       return redirect('/info1');
   }
