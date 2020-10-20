@@ -580,9 +580,6 @@
       var inputuserpass    = document.getElementById("inputuserpass");
       var inputuserrepass  = document.getElementById("inputuserrepass");
       var inputusercompany = document.getElementById("inputusercompany");
-
-      <input type="hidden" id="inputbaris" name="inputbaris" value="'.$id2.'">
-
       if(inputuserid.value == "" || inputusertype.value == "" || inputuserarea.value == "" || inputuserpass.value == "" || inputuserrepass.value == "" || inputusercompany.value == ""){
          x.style.display = "none";
       } else {
