@@ -386,7 +386,7 @@ $hitam = "rgba(84,84,84,1)";
                         <?php
                         foreach ($typefileupload as $key => $value) {
                         ?>
-                           <option value="{{$value->info}}">{{$value->info}}</option>
+                           <option value="{{$value->seq}}">{{$value->info}}</option>
                         <?php
                         }
                         ?>

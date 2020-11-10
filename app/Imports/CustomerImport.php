@@ -8,19 +8,13 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
  
 class CustomerImport implements ToModel, WithHeadingRow
 {
-    public $usercode;
-    public $code;
-    public $company;
+    public $dtadditional;
 
     public function __construct(
-        $usercode,
-        $code,
-        $company
+        $dtadditional
     )
     {
-        $this->usercode       = $usercode;
-        $this->code       = $code;
-        $this->company       = $company;
+        $this->dtadditional = $dtadditional;
     }
     /**
     * @param array $row
@@ -30,20 +24,21 @@ class CustomerImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         // dd($row);
+        $dtadditional = $this->dtadditional;
          if($row["sorg"]<>"") {
-            $usercode = $this->usercode;
-            $company = $this->company;
+            $usercode = $dtadditional->info;
+            $company = $dtadditional->company;
             
-            $code = $this->code;
+            // $code = $dtadditional->info6;
             if ($row["telephone_1"] && substr($row["telephone_1"],0,1) <> '0' ){
                 $row["telephone_1"] = '0'.$row["telephone_1"];
             } 
             if ($row["oth_telp_hp_fax"] && substr($row["oth_telp_hp_fax"],0,1) <> '0' ){
                 $row["oth_telp_hp_fax"] = '0'.$row["oth_telp_hp_fax"];
             } 
-            $row["user_id"] = ($row["user_id"]==""?$code.$row["customer"]:$row["user_id"]);
+            // $row["user_id"] = ($row["user_id"]==""?$code.$row["customer"]:$row["user_id"]);
             return new Importprofile([
-                'user_id'             => $row["user_id"], 
+                'user_id'             => $dtadditional->info6.$row["customer"], 
                 'user_type'           => $row["user_type"], 
                 'area_type'           => $row["area_type"], 
                 'area'                => $row["area"], 

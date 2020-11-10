@@ -25,7 +25,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
-class CstuploadController extends Controller
+class CstexportController extends Controller
 {
     /**
      * Create a new controller instance.
