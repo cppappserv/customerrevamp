@@ -27,7 +27,7 @@ class CustomerImport implements ToModel, WithHeadingRow
         $dtadditional = $this->dtadditional;
          if($row["sorg"]<>"") {
             $usercode = $dtadditional->info;
-            $company = $dtadditional->company;
+            $company = $dtadditional->desc;
             
             // $code = $dtadditional->info6;
             if ($row["telephone_1"] && substr($row["telephone_1"],0,1) <> '0' ){
