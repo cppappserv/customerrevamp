@@ -926,7 +926,7 @@ if ($pos=0 or $pos=1){
 													<div class="col-sm-9">
 
 														<input type="text" class="form-control @error('inputuserid') is-invalid @enderror" required autocomplete="inputuserid" autofocus
-															id="inputuserid" name="inputuserid" placeholder="Customer ID" value="{{$idcusto}}" {{$stsedit}} khususinput="yes">
+															id="inputuserid" name="inputuserid" koded="{{$idcusto}}" placeholder="Customer ID" value="{{$idcusto}}"  {{$stsedit}} khususinput="yes" onfocusout="myFunction_onfocusout()">
 														@error('inputuserid')
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $message }}</strong>
@@ -3220,7 +3220,54 @@ if ($pos=0 or $pos=1){
 		//  )
 		//  }).trigger("change")
 
+		
 	</script>
+
+<script>
+	// $(document).ready(function(){
+			// $("#inputuserid").change(function(){
+				function myFunction_onfocusout(){
+					var inp = $('#inputuserid');
+					var inputUserId = inp.val();
+					var inpdefault = inp.attr("koded");
+					var kode1 = inputUserId.substring(0,inpdefault.length);
+					var n = kode1.localeCompare(inpdefault);
+					if (n != 0){
+						alert('Iniatial Userid bukan di area ini');
+						document.getElementById("inputuserid").value = inpdefault;
+						// document.getElementById("inputuserid").focus({preventScroll:false});
+						document.getElementById("inputuserid").focus();
+						return false;
+								
+					// // // 				document.getElementById("inputuserid").value = inpdefault;
+					// // // 				document.getElementById("inputuserid").focus({preventScroll:false});
+					
+					} else {
+					if(inputUserId) {
+						$.ajax({
+							url: '/getmsg6/'+inputUserId,
+							type: "GET",
+							dataType: "json",
+							success:function(data) {
+								// $("#inputcek").append(data.msg);
+								if(data == 1){
+									alert('Nomer Sudah ada');
+									document.getElementById("inputuserid").value = inpdefault;
+									// document.getElementById("inputuserid").focus({preventScroll:false});
+									document.getElementById("inputuserid").focus();
+									return false;
+								}
+								
+							}
+						});
+					}
+			}
+				}
+				
+			// });
+	// });
+</script>
+
 
 	<script type="text/javascript">
 			var route = "{{ url('autocomplete') }}";
