@@ -56,6 +56,7 @@ Route::get("/getmsg2/{id}/{id2}/{id3}/{id4}/{id5}/{id6}","NewAddController@asset
 Route::get("/getmsg3/{id}/{id2}/{id3}","NewAddController@inputinfomasi");
 Route::get("/getmsg4","NewAddController@inputinfomasinew");
 Route::get('/getmsg5/{id}', 'NewAddController@getcompany');
+Route::get('/getmsg6/{id}', 'NewAddController@cekuserid');
 Route::get('/getrec/{id}', 'NewAddController@getrec');
 
 

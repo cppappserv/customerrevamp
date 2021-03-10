@@ -345,4 +345,11 @@ class NewAddController extends Controller
       // ->select('info2','info');
     return response()->json($data); 
    }   
+
+   public function cekuserid($id){
+      $data = Tbluser::where('user_id','=',$id)
+      ->count();
+    return response()->json($data); 
+
+   }
 }
