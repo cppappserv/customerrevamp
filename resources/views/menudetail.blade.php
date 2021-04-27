@@ -795,9 +795,15 @@ if ($pos=0 or $pos=1){
 					$inputtlpush               = $data_profile->tlpush; 
 					$inputfaxush               = $data_profile->faxush; 
 					$inputhpush                = $data_profile->hpush; 
+
+					$inputkontakush            = $data_profile->kontakush; 
+					$inputhubunganush          = $data_profile->hubunganush; 
+
+
 					$inputemailush             = $data_profile->emailush; 
 					$inputlmusaha              = $data_profile->lmusaha; 
 					$inputkarakteristik        = $data_profile->karakteristik; 
+					$inputtrackrecord        = $data_profile->trackrecord; 
 					$inputnamausaha            = $data_profile->namausaha; 
 					$inputnamaalias            = $data_profile->namaalias; 
 					$inputagama                = $data_profile->agama; 
@@ -842,7 +848,11 @@ if ($pos=0 or $pos=1){
 					$inputhpush                = "";
 					$inputemailush             = "";
 					$inputlmusaha              = "";
+					$inputkontakush            = "";
+					$inputhubunganush          = "";
+
 					$inputkarakteristik        = "";
+					$inputtrackrecord        = "";
 					$inputnamausaha            = "";
 					$inputnamaalias            = "";
 					$inputagama                = "";
@@ -889,7 +899,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Nama Customer : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
+									<h3 class="card-title font36">Nama Sesuai KUL : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
 
 									<div class="card-tools">
 									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
@@ -1279,7 +1289,7 @@ if ($pos=0 or $pos=1){
 
 
 								<div class="card-header">
-									<h3 class="card-title font36">Kontak</h3>
+									<h3 class="card-title font36">Kontak Usaha</h3>
 
 									<div class="card-tools">
 										
@@ -1932,12 +1942,12 @@ if ($pos=0 or $pos=1){
 										<!-- <button type="button" style="height:50px;width:50px;{{$tomboladd}}" onclick="myduplikatalamatusaha()"><ion-icon name="add-circle"></ion-icon>Dup</button>
 										Duplicat -->
 
-										<button type="button" class="font_14" style="height:50px;width:200px;background: none;margin-left:{{$pos_ke}}px;{{$tomboladd}}border:none;
+										<!-- <button type="button" class="font_14" style="height:50px;width:200px;background: none;margin-left:{{$pos_ke}}px;{{$tomboladd}}border:none;
 										::after, ::before {
 												/* box-sizing: border-box; */
 										}
 										" onclick="myduplikatalamatusaha()" khususinput2="yes"><ion-icon name="add-circle" ></ion-icon>Copy from Alamat KTP</button>
-										
+										 -->
 
 									</div>
 									<div class="card-tools">
@@ -2045,6 +2055,15 @@ if ($pos=0 or $pos=1){
 													</div>
 												</div>
 											</div>
+
+											<div class="form-group row">
+												<label for="inputfaxush" class="col-sm-3 col-form-label">Nama Kontak</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputkontakush" name="inputkontakush" value="{{$inputkontakush}}" {{$stsedit}} khususinput="yes">
+													</div>
+												</div>
+											</div>
 										</div>
 										<!-- /.col -->
 
@@ -2066,6 +2085,15 @@ if ($pos=0 or $pos=1){
 												<div class="col-sm-9">
 												<!-- tutup -->
 													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" {{$stsedit}} khususinput="yes">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label for="inputfaxush" class="col-sm-3 col-form-label">Hubungannya</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputhubunganush" name="inputhubunganush" value="{{$inputhubunganush}}" {{$stsedit}} khususinput="yes">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -2185,7 +2213,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Sanak Saudara yang jadi Agen / Distributor</h3>
+									<h3 class="card-title font36">Saudara atau kerabat yang masih memiliki KUL Aktif di CPP Grup yang jadi Agen / Distributor</h3>
 
 									<div class="card-tools">
 										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
@@ -2331,7 +2359,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Area Penjualan</h3>
+									<h3 class="card-title font36">Tipe / Jenis Penjualan</h3>
 
 									<div class="card-tools">
 										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
@@ -2351,13 +2379,13 @@ if ($pos=0 or $pos=1){
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel">
-												<label for="inputbtkush" class="col-sm-12 col-form-label">Jenis</label>
+												<label for="inputbtkush" class="col-sm-12 col-form-label">Nama Pembeli</label>
 												
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel">
-												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Volume (Ton)</label>
+												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Volume (Rp)/Bulan</label>
 												
 											</div>
 										</div>
@@ -2530,21 +2558,27 @@ if ($pos=0 or $pos=1){
 												
 											</div>
 										</div> -->
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel">
-												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">Brand Kompetitor</label>
+												<label for="inputtipebadanhukum" class="col-sm-12 col-form-label">PT Kompetitor</label>
 												
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel">
 												<label for="inputnamausaha" class="col-sm-12 col-form-label">Jenis / Kode Product</label>
 												
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel">
-												<label for="inputlamausaha" class="col-sm-12 col-form-label">Kuantitas (Kg)</label>
+												<label for="inputlamausaha" class="col-sm-12 col-form-label">Nilai (Rp) / Bulan</label>
+												
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group row kotakexcel">
+												<label for="inputlamausaha" class="col-sm-12 col-form-label">Brand / Product</label>
 												
 											</div>
 										</div>
@@ -2559,22 +2593,30 @@ if ($pos=0 or $pos=1){
 											$pakan_jual_i++;
 											?>
 									<div class="row" id="rowskompetitor{{$pakan_jual_i}}">
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="col-sm-12">	
 												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">	
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-12">	
 													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">	
 												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-12">	
+													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">	
+													<input type="text" class="form-control" id="inputPakanbranch[]" name="inputPakanbranch[]" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">	
 												</div>
 												<div class="col-sm-2">
 													<button type="button" name="removekompetitor" id="{{$pakan_jual_i}}" class="btn btn-danger btn_remove6" khususinput='yes' style="display:none;">X</button>
@@ -2589,22 +2631,29 @@ if ($pos=0 or $pos=1){
 									?>
 									@if ($idedit == "0")
 									<div class="row" id="rowskompetitor{{$pakan_jual_i}}">
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="col-sm-12">	
 												<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">	
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-12">	
 													<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">	
 												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-3">
+											<div class="form-group row kotakexcel_kosong">
+												<div class="col-sm-12">	
+													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]">	
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]">	
+													<input type="text" class="form-control" id="inputPakanbranch[]" name="inputPakanbranch[]">	
 												</div>
 												<div class="col-sm-2">
 													<button type="button" name="removekompetitor" id="{{$pakan_jual_i}}" class="btn btn-danger btn_remove6" khususinput='yes'>X</button>
@@ -3109,7 +3158,49 @@ if ($pos=0 or $pos=1){
 										
 									</div>
 									<!-- /.row -->
+									
 								</div>
+
+								
+								
+
+
+								<!-- /.card-body -->
+								<div class="card-footer">
+									<!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+									the plugin. -->
+								</div>
+							</div>
+
+							<div class="card card-default">
+								<div class="card-header">
+									<h3 class="card-title font36">Track Record Customer</h3>
+
+									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
+									</div>
+								</div>
+								<!-- /.card-header -->
+								
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<textarea class="form-control" rows="10" id="inputtrackrecord" name="inputtrackrecord" placeholder="Enter ..." {{$stsedit}} khususinput="yes">{{$inputtrackrecord}}</textarea>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									<!-- /.row -->
+									
+								</div>
+
+								
+								
 
 
 								<!-- /.card-body -->
@@ -3194,7 +3285,7 @@ if ($pos=0 or $pos=1){
 	<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 	<!-- DataTables -->
 
-	<script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+	<!-- <script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script> -->
 	<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
 	<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 	<!-- AdminLTE App -->
@@ -3585,22 +3676,29 @@ if ($pos=0 or $pos=1){
 
 			$('#addkompetitor').click(function(){ 
 				var txt = '<div class="row" id="rowskompetitor'+i+'">'+
-											'<div class="col-md-4">'+
+											'<div class="col-md-3">'+
 												'<div class="col-sm-12">'+
 													'<input type="text" class="form-control" id="inputPakanJualC[]" name="inputPakanJualC[]">'+
 												'</div>'+
 											'</div>'+
-											'<div class="col-md-4">'+
+											'<div class="col-md-3">'+
 												'<div class="form-group row kotakexcel_kosong">'+
 													'<div class="col-sm-12">'+
 														'<input type="text" class="form-control" id="inputPakanJual[]" name="inputPakanJual[]">'+	
 													'</div>'+
 												'</div>'+
 											'</div>'+
-											'<div class="col-md-4">'+
+											'<div class="col-md-3">'+
+												'<div class="form-group row kotakexcel_kosong">'+
+													'<div class="col-sm-12">'+
+														'<input type="text" class="form-control" id="inputPakanJualV[]" name="inputPakanJualV[]">'+	
+													'</div>'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-3">'+
 												'<div class="form-group row kotakexcel_kosong">'+
 													'<div class="col-sm-10">'+
-														'<input type="text" class="form-control" id="inputPakanJualV[]" ="inputPakanJualV[]">'+
+														'<input type="text" class="form-control" id="inputPakanbranch[]" ="inputPakanbranch[]">'+
 													'</div>'+
 													'<div class="col-sm-2">'+
 														'<button type="button" name="removekompetitor" id="'+i+'" class="btn btn-danger btn_remove6">X</button>'+
@@ -4093,7 +4191,7 @@ if ($pos=0 or $pos=1){
 				'<div class="col-md-2">'+
 					'<div class="form-group row">'+
 						'<div class="col-sm-12">'+
-							'<input type="submit" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">'+
+							'<input type="submit" onclick="cekallinputan();" class="btn btn-block btn-primary btn-lg" style="background: rgba(15,199,89,1);" id="save" value="Save">'+
 						'</div>'+
 					'</div>'+
 				'</div>'+
@@ -4190,7 +4288,7 @@ if ($pos=0 or $pos=1){
 			$('#files'+i).click();
 		}
 		
-		$('#rowsstatususaha'+button_id)
+		
 		function myFunction(id) {
 			document.getElementById("pos_page").value = id;
 			for (let i = 1; i < 6; i++) {
@@ -4230,6 +4328,11 @@ if ($pos=0 or $pos=1){
 			if (event.target == modal) {
 				modal.style.display = "none";
 			}
+		}
+
+		function cekallinputan(){
+			// alert('supram');
+			// return false;
 		}
 	</script>
 	@else

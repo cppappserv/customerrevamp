@@ -56,6 +56,9 @@ class Usrprofile extends Model
       'namaalias', 
       'agama', 
       'goldarah', 
-      'headgrp'
+      'headgrp',
+      'kontakush',
+      'hubunganush',
+      'trackrecord'
     ];
 }

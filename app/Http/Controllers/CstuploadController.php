@@ -421,6 +421,7 @@ class CstuploadController extends Controller
         $dtadditional = Dtadditional::where('type', '=', 'COMPANY')
         ->where('seq', '=', $request->inputtypeupload)
         ->first();
+        // dd($dtadditional);
 		// import data
         $ttl = Excel::import(new CustomerImport(
             $dtadditional

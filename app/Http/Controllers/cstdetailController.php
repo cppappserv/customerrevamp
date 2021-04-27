@@ -667,7 +667,9 @@ public function detailsave($id, Request $request){
             'inputagama' => ['required'],
             // 'inputgoldarah' => ['required'],
             'inputalmtktp' => ['required', 'string', 'max:100'],
-            'inputkdposktp' => ['required', 'string', 'max:35']
+            'inputkdposktp' => ['required', 'string', 'max:35'],
+            'inputuserid' => ['required', 'string', 'max:35'],
+            'inputuserid' => ['unique:tbluser,user_id']
         ]);
     }
 
@@ -680,14 +682,13 @@ public function detailsave($id, Request $request){
 
     
     // print_r($request->filenames2);
-
-
-
-    
     DB::beginTransaction();
     try {
         if($id==0){
-            $tbluser = new Tbluser;
+            $tbluser = Tbluser::where('user_id', '=', $request->inputuserid)->first();
+            if(!$tbluser){
+                $tbluser = new Tbluser;
+            }    
             $tbluser->user_id = $request->inputuserid;
             $tbluser->company = $dtadditional->info;
             $tbluser->branch  = $dtadditional->desc;
@@ -863,9 +864,16 @@ public function detailsave($id, Request $request){
         $usrprofile->tlpush        = $request->inputtlpush; 
         $usrprofile->faxush        = $request->inputfaxush; 
         $usrprofile->hpush         = $request->inputhpush; 
+
+        $usrprofile->kontakush     = $request->inputkontakush; 
+        $usrprofile->hubunganush   = $request->inputhubunganush; 
+
         $usrprofile->emailush      = $request->inputemailush; 
         $usrprofile->lmusaha       = $request->inputlmusaha; 
         $usrprofile->karakteristik = $request->inputkarakteristik; 
+
+        $usrprofile->trackrecord = $request->inputtrackrecord; 
+
         $usrprofile->namausaha     = $request->inputnamausaha; 
         $usrprofile->namaalias     = $request->inputnamaalias; 
         $usrprofile->agama         = $request->inputagama; 
@@ -955,7 +963,6 @@ public function detailsave($id, Request $request){
         if ($request->inputstatusush){
             foreach($request->inputstatusush as $key => $values) {
                 $k++;
-                echo $values."<br>";
                 if ($values != ""){
                     $j++;
                     $data_statusush = Usradditional::where('user_id', '=', $tbluser->user_id)
@@ -1021,12 +1028,16 @@ public function detailsave($id, Request $request){
         $j=0;
         $k=-1;
         // $type="AGEN_HUB";
+
+        // print_r($request->inputNamaarea);
         if ($request->inputNamaarea){
             foreach($request->inputNamaarea as $key => $values) {
                 $k++;
                 if ($values != ""){
                     $j++;
-                    $seq_Namaarea = Dtadditional::where('type', '=', $values)->first();
+                    $seq_Namaarea = Dtadditional::
+                    whereIn('type', ['AREA_PETAMBAK','AREA_SUBAGEN','AREA_LAIN'])
+                    ->where('desc', '=', $values)->first();
                     $data_Namaarea = Usradditional::where('user_id', '=', $tbluser->user_id)
                     ->where('type', '=', $values)
                     ->where('seq', '=', $seq_Namaarea->seq)
@@ -1075,7 +1086,7 @@ public function detailsave($id, Request $request){
                     $data_pakan->desc    = $request->inputPakanJual[$k];
                     $data_pakan->value1  = $request->inputPakanJualV[$k];
                     $data_pakan->value2  = $values;
-                    $data_pakan->value3  = null;
+                    $data_pakan->value3  = $request->inputPakanbranch[$k];
                     $data_pakan->value4  = null;
                     $data_pakan->value5  = null;
                     $data_pakan->value6  = null;
