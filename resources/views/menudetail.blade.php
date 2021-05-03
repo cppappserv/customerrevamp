@@ -1289,7 +1289,7 @@ if ($pos=0 or $pos=1){
 
 
 								<div class="card-header">
-									<h3 class="card-title font36">Kontak Usaha</h3>
+									<h3 class="card-title font36">Kontak</h3>
 
 									<div class="card-tools">
 										
@@ -2026,7 +2026,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Kontak</h3>
+									<h3 class="card-title font36">Kontak Usaha</h3>
 									<div class="card-tools">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmedsosush" id="addmedsosush" class="btn btn-success">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
