@@ -899,7 +899,7 @@ if ($pos=0 or $pos=1){
 
 							<div class="card card-default">
 								<div class="card-header">
-									<h3 class="card-title font36">Nama Sesuai KUL : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
+									<h3 class="card-title font36">Nama Pemilik / Penanggung Jawab KUL : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
 
 									<div class="card-tools">
 									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
@@ -1806,6 +1806,12 @@ if ($pos=0 or $pos=1){
 										<!-- /.col -->
 										<div class="col-md-6">
 											<div class="form-group row">
+												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}} khususinput="yes">
+												</div>
+											</div>
+											<div class="form-group row">
 												<label for="inputnpwp" class="col-sm-3 col-form-label">NPWP</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" id="inputnpwp" name="inputnpwp" placeholder="NPWP" value="{{$inputnpwp}}" {{$stsedit}} khususinput="yes">
@@ -1817,12 +1823,7 @@ if ($pos=0 or $pos=1){
 													<input type="text" class="form-control" id="inputheadgrp" name="inputheadgrp" placeholder="Head Group" value="{{$inputheadgrp}}" {{$stsedit}} khususinput="yes">
 												</div>
 											</div>
-											<div class="form-group row">
-												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}} khususinput="yes">
-												</div>
-											</div>
+											
 											
 											
 										</div>
