@@ -265,20 +265,25 @@ class CstdetailController extends Controller
 
     public function tabelbentukusaha()
     {
-        $sql = "
-            SELECT * FROM dt_additional a WHERE TYPE = 'BENTUK_USAHA';
-        ";
-        $grp = db::connection('mysql')->select($sql);
-        return $grp;
+        // $sql = "
+        //     SELECT * FROM dt_additional a WHERE TYPE = 'BENTUK_USAHA';
+        // ";
+
+        // $grp = db::connection('mysql')->select($sql);
+        // return $grp;
+
+        return db::table('dt_additional')->where('TYPE', '=', 'BENTUK_USAHA')->orderby('seq', 'asc')->get();
     }
 
     public function tabelbadanhukum()
     {
-        $sql = "
-            SELECT * FROM dt_additional a WHERE TYPE = 'BADAN_HUKUM';
-        ";
-        $grp = db::connection('mysql')->select($sql);
-        return $grp;
+        // $sql = "
+        //     SELECT * FROM dt_additional a WHERE TYPE = 'BADAN_HUKUM';
+        // ";
+        // $grp = db::connection('mysql')->select($sql);
+        // return $grp;
+
+        return db::table('dt_additional')->where('TYPE', '=', 'BADAN_HUKUM')->where('parent', '=', '1')->orderby('seq', 'asc')->get();
     }
 
     public function tabelstatus_usaha()
@@ -2037,6 +2042,19 @@ public function detailsave($id, Request $request){
             </div>
         ';
         return response()->json(array('msg'=> $txt), 200);
+    }
+
+    function load_tipebadanhukum(Request $request){
+        $inputbtkush = ($request->inputbtkush==''?3:$request->inputbtkush);
+        // $inputbtkush = $request->inputbtkush;
+
+        $back = db::table('dt_additional as a')
+        ->where('a.TYPE', '=', 'BADAN_HUKUM')
+        ->where('a.parent', '=', $inputbtkush)
+        ->orderby('a.seq', 'asc')
+            ->select('a.seq', 'a.desc')
+            ->pluck('a.seq', 'a.desc');  
+        return response()->json($back); 
     }
     
 }

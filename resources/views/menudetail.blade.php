@@ -594,7 +594,7 @@ if ($pos=0 or $pos=1){
 </head>
 <body class="hold-transition sidebar-mini">
 	@if (Auth::check())
-
+	
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light atas"
 	style="margin-left: 0px;">
@@ -1761,7 +1761,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbtkush" class="col-sm-3 col-form-label">Bentuk Usaha</label>
 												<div class="col-sm-9">
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}} khususinput="yes"> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}} khususinput="yes" onchange="load_tipebadanhukum()"> 
 													<?php 
 													foreach ($tabelbentukusaha as $key => $value) {
 													?>
@@ -3315,7 +3315,9 @@ if ($pos=0 or $pos=1){
 	</script>
 
 <script>
-	// $(document).ready(function(){
+	$(document).ready(function(){
+		load_tipebadanhukum()
+	});
 			// $("#inputuserid").change(function(){
 				function myFunction_onfocusout(){
 					var inp = $('#inputuserid');
@@ -4316,6 +4318,27 @@ if ($pos=0 or $pos=1){
 			// 	$("#custom-content-below-settings-tab-5").click();
 			// } 
 	
+		}
+
+
+		function load_tipebadanhukum(){
+			var inputbtkush = document.getElementById('inputbtkush').value;
+			$.ajax({
+				url:"/load_tipebadanhukum",
+				type: "post",  
+				data: {
+						'_token': $('input[name=_token]').val(),
+						'inputbtkush' : inputbtkush,
+				},success:function(data){
+					$("#inputtipeush").empty();
+					$.each(data,function(key, value){
+							$("#inputtipeush").append('<option value="'+value+'">'+key+'</option>');
+					});
+					// document.getElementById('mntrarea'+kode).value = '0';
+				},error:function(data){
+					alert('error');
+				}
+			});
 		}
 	</script>
 

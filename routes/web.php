@@ -26,6 +26,8 @@ Route::get('/detail1/{id}/{id2}/{id3}/{id4}', 'CstdetailController@index')->name
 Route::get('/detail2/{id}/{id2}/{id3}/{id4}', 'CstdetailController@edit')->name('edit');
 
 Route::post('/detailsave/{id}', 'CstdetailController@detailsave')->name('detailsave');
+Route::post('/load_tipebadanhukum', 'CstdetailController@load_tipebadanhukum');
+Route::get('/load_tipebadanhukum', 'CstdetailController@load_tipebadanhukum');
 
 
 Route::get('/storeimage/{id}', 'CstdetailController@storeimage')->name('storeimage');
