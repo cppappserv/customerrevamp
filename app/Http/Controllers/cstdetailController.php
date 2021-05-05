@@ -533,7 +533,9 @@ order by a.seq
         
         $iduser = $tbluser->user_id; 
         $usr_profile = Usrprofile::where('user_id', '=', $tbluser->user_id)->first();
-        $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)->get();
+        $data_add = Usradditional::where('user_id', '=', $tbluser->user_id)
+        // ->whereIn('type', ['TELPON','BISNIS_LAIN'] )
+        ->get();
 
         $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
         $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
@@ -543,6 +545,8 @@ order by a.seq
         $photo = Tbluserphotoadd::where('user_id', '=', $tbluser->user_id)->orderBy('seq', 'asc')
         ->select('id','seq')
         ->get();
+
+        
 
 
         return view('menudetail',[

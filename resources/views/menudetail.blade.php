@@ -2696,7 +2696,7 @@ if ($pos=0 or $pos=1){
 											foreach ($data_additional as $key => $data) {
 												if   ($data->type == 'BISNIS_LAIN')
 												{
-													$i++;
+													$bisnis_lain_i++;
 													?>
 										<div class="row" id="rowsbisnislain{{$bisnis_lain_i}}">
 											<div class="col-md-6">
@@ -2802,7 +2802,9 @@ if ($pos=0 or $pos=1){
 											$i=-1;
 											foreach ($data_add_asset as $key => $data) {
 												if   ($data->type == 'ASSET_PRIBADI'){
+													$i++;
 													?>
+													
 										<div class="row" id="rowsassetpribadi{{$i}}">
 											<div class="col-md-2">
 												<div class="form-group row">
