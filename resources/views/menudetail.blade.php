@@ -1761,7 +1761,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputbtkush" class="col-sm-3 col-form-label">Bentuk Usaha</label>
 												<div class="col-sm-9">
-													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}} khususinput="yes" onchange="load_tipebadanhukum()"> 
+													<select class="form-control btn btn-default btn-default btn-sm styledatakeluarga" id="inputbtkush" name="inputbtkush" style="font-size: 1rem;;" {{$stsedit}} khususinput="yes" onchange="load_tipebadanhukum(this)"> 
 													<?php 
 													foreach ($tabelbentukusaha as $key => $value) {
 													?>
@@ -1773,7 +1773,7 @@ if ($pos=0 or $pos=1){
 
 												</div>
 											</div>
-
+											<input type="hidden" id="datatipeush" name="datatipeush" value="{{$inputtipeush}}">
 											<div class="form-group row">
 												<label for="inputtipeush" class="col-sm-3 col-form-label">Tipe Badan Hukum</label>
 												<div class="col-sm-9">
@@ -3316,7 +3316,9 @@ if ($pos=0 or $pos=1){
 
 <script>
 	$(document).ready(function(){
-		load_tipebadanhukum()
+		var x1 = document.getElementById('inputbtkush').value;
+		var x2 = document.getElementById('datatipeush').value;
+		load_tipebadanhukum2(x1, x2);
 	});
 			// $("#inputuserid").change(function(){
 				function myFunction_onfocusout(){
@@ -4320,25 +4322,33 @@ if ($pos=0 or $pos=1){
 	
 		}
 
+		function load_tipebadanhukum(obj){
+			var inputbtkush = obj.value;
+			load_tipebadanhukum2(inputbtkush, '');
+		}	
 
-		function load_tipebadanhukum(){
-			var inputbtkush = document.getElementById('inputbtkush').value;
+		function load_tipebadanhukum2(x1, x2){
 			$.ajax({
 				url:"/load_tipebadanhukum",
 				type: "post",  
 				data: {
 						'_token': $('input[name=_token]').val(),
-						'inputbtkush' : inputbtkush,
+						'inputbtkush' : x1,
 				},success:function(data){
 					$("#inputtipeush").empty();
 					$.each(data,function(key, value){
 							$("#inputtipeush").append('<option value="'+value+'">'+key+'</option>');
 					});
-					// document.getElementById('mntrarea'+kode).value = '0';
+					if (x2  != ''){
+						document.getElementById('inputtipeush').value = x2;
+					}
+					
 				},error:function(data){
 					alert('error');
 				}
 			});
+
+			
 		}
 	</script>
 
