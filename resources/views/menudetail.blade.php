@@ -2449,25 +2449,25 @@ if ($pos=0 or $pos=1){
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" placeholder="Nama" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
+												<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" value="{{$data->value1}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group row kotakexcel_kosong">
 												
-												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" placeholder="qty" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
+												<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]" value="{{$data->desc}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
-												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" placeholder="lokasi" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">
+												<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]" value="{{$data->value2}}" {{$stsedit}} khususinput="yes">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group row kotakexcel_kosong">
 
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" placeholder="info" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]" value="{{$data->value3}}" {{$stsedit}} khususinput="yes">
 												</div>
 												<div class="col-sm-2">
 													<!-- <button type="button" name="remove" id="{{$area_i}}" class="btn btn-danger btn_remove5">X</button> -->
@@ -3639,23 +3639,23 @@ if ($pos=0 or $pos=1){
 											'</div>'+
 											'<div class="col-md-2">'+
 												'<div class="form-group row kotakexcel_kosong">'+
-													'<input type="text" class="form-control" id="inputNamaSubAgen[]" placeholder="Nama" name="inputNamaSubAgen[]" >'+
+													'<input type="text" class="form-control" id="inputNamaSubAgen[]" name="inputNamaSubAgen[]" >'+
 												'</div>'+
 											'</div>'+
 											'<div class="col-md-2">'+
 												'<div class="form-group row kotakexcel_kosong">'+
-													'<input type="text" class="form-control" id="inputQtySubAgen[]" placeholder="qty" name="inputQtySubAgen[]">'+
+													'<input type="text" class="form-control" id="inputQtySubAgen[]" name="inputQtySubAgen[]">'+
 												'</div>'+
 											'</div>'+
 											'<div class="col-md-3">'+
 												'<div class="form-group row kotakexcel_kosong">'+
-													'<input type="text" class="form-control" id="inputLokasiSubAgen[]" placeholder="sub agent" name="inputLokasiSubAgen[]">'+
+													'<input type="text" class="form-control" id="inputLokasiSubAgen[]" name="inputLokasiSubAgen[]">'+
 												'</div>'+
 											'</div>'+
 											'<div class="col-md-3">'+
 												'<div class="form-group row kotakexcel_kosong">'+
 													'<div class="col-sm-10">'+
-														'<input type="text" class="form-control" id="inputInfoSubAgen[]" placeholder="info" name="inputInfoSubAgen[]">'+
+														'<input type="text" class="form-control" id="inputInfoSubAgen[]" name="inputInfoSubAgen[]">'+
 													'</div>'+
 													'<div class="col-sm-2">'+
 														'<button type="button" name="removeareasubagen" id="'+i+'" class="btn btn-danger btn_remove5">X</button>'+
