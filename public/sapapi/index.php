@@ -1,4 +1,5 @@
 <?php
+
 $msgerridx = '
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +62,6 @@ $msgerridx = '
     </body>
 </html>
 ';
-
 
 /** handling from web crawler/ testing code from outsider **/
 defined('_DEFVAR') or exit($msgerridx)  
