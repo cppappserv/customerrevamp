@@ -21,6 +21,7 @@ class AES
 		}
 		self::key($key);
 	}
+	
 	// Generate key schedule
 	public function key ($key)
 	{
@@ -245,7 +246,6 @@ echo "decrypt:" . $dec . "<br>";
 */
 //$dec = getDecrypt('Wt1aDL64MAAXQ2Gw6riPQ+wEECIHnAUtfIiFOjndG7RvIA==');
 //echo $dec; 
-
 
 function getNumericDec($txt){
   $res = "";
