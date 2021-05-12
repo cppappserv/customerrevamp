@@ -28,6 +28,8 @@ Route::get('/detail2/{id}/{id2}/{id3}/{id4}', 'CstdetailController@edit')->name(
 Route::post('/detailsave/{id}', 'CstdetailController@detailsave')->name('detailsave');
 Route::post('/load_tipebadanhukum', 'CstdetailController@load_tipebadanhukum');
 Route::get('/load_tipebadanhukum', 'CstdetailController@load_tipebadanhukum');
+Route::post('/load_zsap', 'CstdetailController@load_zsap');
+Route::get('/load_zsap', 'CstdetailController@load_zsap');
 
 
 Route::get('/storeimage/{id}', 'CstdetailController@storeimage')->name('storeimage');

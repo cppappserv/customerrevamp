@@ -13,6 +13,7 @@ use App\Models\Tblobject;
 use App\Models\Tbluserphoto;
 use App\Models\Tbluserphotoadd;
 use App\Models\Zbranch;
+use App\Models\Zsdcusadd;
 use App\Models\Usrupload;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -451,6 +452,21 @@ class CstdetailController extends Controller
         return $grp;
     }
 
+    public function addasset_desc($para, $para2)
+    {
+        $data = db::table('usr_additional')->where('user_id', '=', $para)
+        ->where('type', '=', $para2)
+        ->where('desc', '<>', '')
+        ->first();
+        if(!$data){
+            return '';
+        }
+        return $data->desc; 
+
+    }
+
+
+
 
     public function addasset3($para, $para2)
     {
@@ -539,15 +555,13 @@ order by a.seq
 
         $data_add_asset = $this->addasset($tbluser->user_id,'ASSET_PRIBADI');
         $data_add_modalsendiri = $this->addasset2($tbluser->user_id,'MODAL');
+        $data_add_kode_sap = $this->addasset_desc($tbluser->user_id,'KODE_SAP');
         $pilcompany = $kode;
         $tabelarea_subagen = $this->tabelarea_subagen();
         // $datamedsos = $this->dataamedsos('MEDSOS', $data_add);
         $photo = Tbluserphotoadd::where('user_id', '=', $tbluser->user_id)->orderBy('seq', 'asc')
         ->select('id','seq')
         ->get();
-
-        
-
 
         return view('menudetail',[
             'idcusto' => $idcustokd,
@@ -583,6 +597,7 @@ order by a.seq
             'data_add_modalsendiri' => $data_add_modalsendiri,
             'data_add_modalbank' => $this->addasset3($tbluser->user_id,'MODAL_BANK'),
             'data_add_jaminanpribadi' => $this->addasset4($tbluser->user_id,'JAMINAN_PRIBADI'),
+            'data_add_kode_sap' => $data_add_kode_sap,
             'edit_noedit' => 0,
             'pos_page' => $kode4,
             'data_photo' => $photo
@@ -591,6 +606,13 @@ order by a.seq
         ]);
 
 
+    }
+
+    function load_zsap(Request $request){
+        $kode_sap = $request->kode_sap;
+        // $kode_sap = '1234560';
+        $zsap = Zsdcusadd::where('kodesap', '=', $kode_sap)->first();
+        return response()->json($zsap);
     }
 
     
@@ -838,7 +860,7 @@ public function detailsave($id, Request $request){
             $usrprofile = new Usrprofile;
         }
         $usrprofile->user_id       = $request->inputuserid; 
-        $usrprofile->kodesap       = $request->inputkodesap; 
+        // $usrprofile->kodesap       = $request->inputkodesap; 
         $usrprofile->noktp         = $request->inputnoktp; 
         $usrprofile->almtktp       = $request->inputalmtktp; 
         $usrprofile->kelktp        = $request->inputkelktp; 
@@ -890,9 +912,35 @@ public function detailsave($id, Request $request){
         $usrprofile->headgrp       = $request->inputheadgrp;
         $usrprofile->save();
 
-        
+        // $usrprofile->kodesap       = $request->inputkodesap; 
+        $type="KODE_SAP";
+        $data_kodesap = Usradditional::where('user_id', '=', $tbluser->user_id)
+            ->where('type', '=', $type)
+            ->where('desc', '=', $request->inputkodesap)
+            ->first();
+        if (!$data_kodesap){
+            $data_kodesap = new Usradditional;
+            // $seq_max = Usradditional::where('user_id', '=', $tbluser->user_id)
+            //     ->where('type', '=', $type)
+            //     ->get()
+            //     ->max('seq');
+            // $data_kodesap->seq = $seq_max + 1;
+            $data_kodesap->seq = 1;
+            $data_kodesap->user_id = $tbluser->user_id;
+            $data_kodesap->type = $type;
+            $data_kodesap->desc = $request->inputkodesap;
+        }
+        $data_kodesap->sseq    = null;
+        $data_kodesap->value1  = null;
+        $data_kodesap->value2  = null;
+        $data_kodesap->value3  = null;
+        $data_kodesap->value4  = null;
+        $data_kodesap->value5  = null;
+        $data_kodesap->value6  = null;
+        $data_kodesap->value7  = null;
+        $data_kodesap->save();
 
-        
+
         $j=0;
         $k=-1;
         $type="MEDSOS";

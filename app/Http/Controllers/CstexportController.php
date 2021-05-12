@@ -69,7 +69,7 @@ class CstexportController extends Controller
                 $usrprofile = new Usrprofile;
             }
             $usrprofile->user_id        = $value->user_id; 
-            $usrprofile->kodesap        = $value->kodesap; 
+            // $usrprofile->kodesap        = $value->kodesap; 
             $usrprofile->noktp          = $value->noktp; 
             $usrprofile->almtktp        = $value->almtktp; 
             $usrprofile->kelktp         = $value->kelktp; 
@@ -113,6 +113,30 @@ class CstexportController extends Controller
             $usrprofile->goldarah       = $value->goldarah; 
             $usrprofile->headgrp        = $value->headgrp;
             $usrprofile->save();
+
+            $type="KODE_SAP";
+            $data_kodesap = Usradditional::where('user_id', '=', $value->user_id)
+                ->where('type', '=', $type)
+                ->where('desc', '=', $value->kodesap)
+                ->first();
+            if (!$data_kodesap){
+                $data_kodesap = new Usradditional;
+                $data_kodesap->seq = 1;
+                $data_kodesap->user_id = $value->user_id;
+                $data_kodesap->type = $type;
+                $data_kodesap->desc = $value->kodesap;
+            }
+            $data_kodesap->sseq    = null;
+            $data_kodesap->value1  = null;
+            $data_kodesap->value2  = null;
+            $data_kodesap->value3  = null;
+            $data_kodesap->value4  = null;
+            $data_kodesap->value5  = null;
+            $data_kodesap->value6  = null;
+            $data_kodesap->value7  = null;
+            $data_kodesap->save();
+
+            
         }
         redirect("/upload1");
     }

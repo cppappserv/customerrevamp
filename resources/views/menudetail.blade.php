@@ -758,7 +758,7 @@ if ($pos=0 or $pos=1){
 				// foreach ($usr_profile as $key => $profile) {
 				// $inputuser_id              = $data_profile->user_id; 
 				if ($data_profile){
-					$inputkodesap              = $data_profile->kodesap; 
+					
 
 					$inputnoktp                = $data_profile->noktp; 
 					$inputalmtktp              = $data_profile->almtktp; 
@@ -811,7 +811,6 @@ if ($pos=0 or $pos=1){
 					$inputheadgrp              = $data_profile->headgrp;
 
 				} else {
-					$inputkodesap              = "";
 					$inputnoktp                = "";
 					$inputalmtktp              = "";
 					$inputkelktp               = "";
@@ -860,6 +859,8 @@ if ($pos=0 or $pos=1){
 					$inputheadgrp              = "";
 
 				}
+
+				$inputkodesap = $data_add_kode_sap;
 			// }
 			
 			?>
@@ -1808,7 +1809,7 @@ if ($pos=0 or $pos=1){
 											<div class="form-group row">
 												<label for="inputkodesap" class="col-sm-3 col-form-label">Kode SAP</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control" id="inputkodesap" name="inputkodesap" placeholder="kode Sap" value="{{$inputkodesap}}" {{$stsedit}} khususinput="yes"  onfocusout="cek_zsap()" >
 												</div>
 											</div>
 											<div class="form-group row">
@@ -3323,6 +3324,29 @@ if ($pos=0 or $pos=1){
 		var x2 = document.getElementById('datatipeush').value;
 		load_tipebadanhukum2(x1, x2);
 	});
+
+	function cek_zsap(){
+		// alert('masuk');
+			$.ajax({
+			url:"/load_zsap",
+			type: "post",  
+			data: {
+					'_token': $('input[name=_token]').val(),
+					'kode_sap' : document.getElementById("inputkodesap").value,
+			},success:function(data){
+					document.getElementById('inputnpwp').value = data.npwp;
+					document.getElementById('inputtlpush').value = data.tlpush;
+					// $("#inputfaxush").val() = data.faxush;
+					// $("#inputkontakush").val() = data.kontakush;
+					// $("#inputhubunganush").val() = data.hubunganush;
+					document.getElementById('inputheadgrp').value = data.headgrp;
+
+			},error:function(data){
+				alert('error');
+			}
+		});
+
+	}
 			// $("#inputuserid").change(function(){
 				function myFunction_onfocusout(){
 					var inp = $('#inputuserid');
@@ -4352,7 +4376,11 @@ if ($pos=0 or $pos=1){
 			});
 
 			
+			
+
+			
 		}
+		
 	</script>
 
 	<script>

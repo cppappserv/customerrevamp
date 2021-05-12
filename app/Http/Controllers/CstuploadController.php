@@ -95,6 +95,11 @@ class CstuploadController extends Controller
         foreach ($bentuk_usaha as $key => $value) {
             $value->desc = strtoupper($value->desc);
         }
+
+        
+
+
+
         $tbluserarray = array();
         $usrprofilearray = array();
 
@@ -137,6 +142,8 @@ class CstuploadController extends Controller
                 
             }
 
+            
+
         
             $value['kelurahan'] = $value['kelurahan'] .',,,';
             $kelurahans = explode( ',', $value['kelurahan']);
@@ -177,43 +184,36 @@ class CstuploadController extends Controller
                 $tbluser->inactive = ($value['status_customer'] <> 'AKTIF'? 'Y' : null);
                 $tbluser->save();
             }
+
+            $type="KODE_SAP";
+            $data_kodesap = Usradditional::where('user_id', '=', $value['user_id'])
+                ->where('type', '=', $type)
+                ->where('desc', '=', $value['customer'])
+                ->first();
+            if (!$data_kodesap){
+                $data_kodesap = new Usradditional;
+                $data_kodesap->seq = 1;
+                $data_kodesap->user_id = $value['user_id'];
+                $data_kodesap->type = $type;
+                $data_kodesap->desc = $value['customer'];
+            }
+            $data_kodesap->sseq    = null;
+            $data_kodesap->value1  = null;
+            $data_kodesap->value2  = null;
+            $data_kodesap->value3  = null;
+            $data_kodesap->value4  = null;
+            $data_kodesap->value5  = null;
+            $data_kodesap->value6  = null;
+            $data_kodesap->value7  = null;
+            $data_kodesap->save();
+
             
             
             $usrprofile = Usrprofile::where('user_id', '=', $value['user_id'])->first();
             if (!$usrprofile){
-                // array_push($usrprofilearray, array(
-                //     'user_id'       => $value['user_id'],
-                //     'kodesap'       => $value['customer'],
-                //     'noktp'         => $value['nik'],
-                //     'almtktp'       => $value['street'],
-                //     'kelktp'        => $kelurahans[0],
-                //     'kecktp'        => $kelurahans[1],
-                //     'kotaktp'       => $kelurahans[2],
-                //     'propktp'       => $kelurahans[3],
-                //     'kdposktp'      => $value['postalcode'],
-                //     'almtrmh'       => $value['street'],
-                //     'kelrmh'        => $kelurahans[0],
-                //     'kecrmh'        => $kelurahans[1],
-                //     'kotarmh'       => $kelurahans[2],
-                //     'proprmh'       => $kelurahans[3],
-                //     'kdposrmh'      => $value['postalcode'],
-                //     'tlppri'        => $value['telephone_1'],
-                //     'faxpri'        => $value['oth_telp_hp_fax'],
-                //     'emailpri'      => $value['medsos'],
-                //     'hobby'         => $value['hobby'],
-                //     'btkush'        => $vbentuk_usaha,
-                //     'npwp'          => $value['vat_registration_no'],
-                //     'status'        => $vsta_usaha,
-                //     'emailush'      => $value['e_mail_address'],
-                //     'namaalias'     => $value['alias'],
-                //     'agama'         => $value['agama'],
-                //     'goldarah'      => $value['gol_darah']
-                // ));
-
-
                 $usrprofile = new Usrprofile;
                 $usrprofile->user_id     = $value['user_id'];
-                $usrprofile->kodesap     = $value['customer'];
+                // $usrprofile->kodesap     = $value['customer'];
                 $usrprofile->noktp       = $value['nik'];
                 $usrprofile->almtktp     = $value['street'];
                 $usrprofile->kelktp      = $kelurahans[0];
