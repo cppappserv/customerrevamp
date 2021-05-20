@@ -59,6 +59,7 @@ class Usrprofile extends Model
       'headgrp',
       'kontakush',
       'hubunganush',
-      'trackrecord'
+      'trackrecord',
+      'name_ekul'
     ];
 }

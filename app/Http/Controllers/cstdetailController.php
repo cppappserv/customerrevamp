@@ -910,6 +910,7 @@ public function detailsave($id, Request $request){
         $usrprofile->agama         = $request->inputagama; 
         $usrprofile->goldarah      = $request->inputgoldarah; 
         $usrprofile->headgrp       = $request->inputheadgrp;
+        $usrprofile->name_ekul     = $request->inputnameekul;
         $usrprofile->save();
 
         // $usrprofile->kodesap       = $request->inputkodesap; 

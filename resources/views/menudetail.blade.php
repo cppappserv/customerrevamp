@@ -764,6 +764,7 @@ if ($pos=0 or $pos=1){
 					$inputalmtktp              = $data_profile->almtktp; 
 					$inputkelktp               = $data_profile->kelktp; 
 					$inputkecktp               = $data_profile->kecktp; 
+					$inputnameekul             = $data_profile->name_ekul;
 					// echo $inputkecktp;
 					$inputkotaktp              = $data_profile->kotaktp; 
 					$inputpropktp              = $data_profile->propktp; 
@@ -811,6 +812,7 @@ if ($pos=0 or $pos=1){
 					$inputheadgrp              = $data_profile->headgrp;
 
 				} else {
+					$inputnameekul             = "";
 					$inputnoktp                = "";
 					$inputalmtktp              = "";
 					$inputkelktp               = "";
@@ -953,18 +955,36 @@ if ($pos=0 or $pos=1){
 											}
 											?>
 											<div class="form-group row">
-												<label for="inputfullname" class="col-sm-3 col-form-label">Nama Lengkap</label>
+												<label for="inputfullname" class="col-sm-3 col-form-label">Nama SAP</label>
 												<div class="col-sm-9">
 
 												@if ($inputuser_id == "0")
-													<input type="text" class="form-control @error('inputfullname') is-invalid @enderror" required autocomplete="inputfullname" autofocus id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
+													<input type="text" class="form-control @error('inputfullname') is-invalid @enderror" required autocomplete="inputfullname" autofocus id="inputfullname" name="inputfullname" placeholder="Nama SAP" value="{{$inputfullname}}" isnoedit >
 													@error('inputfullname')
 														<span class="invalid-feedback" role="alert">
 															<strong>{{ $message }}</strong>
 														</span>
 													@enderror
 												@else
-												<input type="text" class="form-control" id="inputfullname" name="inputfullname" placeholder="Nama Lengkap" value="{{$inputfullname}}" {{$stsedit}} khususinput="yes">
+												<input type="text" class="form-control" placeholder="Nama SAP" value="{{$inputfullname}}" {{$stsedit}}>
+												<input type="hidden" class="form-control" id="inputfullname" name="inputfullname" value="{{$inputfullname}}">
+												@endif	
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label for="name_ekul" class="col-sm-3 col-form-label">Nama Lengkap</label>
+												<div class="col-sm-9">
+
+												@if ($inputuser_id == "0")
+													<input type="text" class="form-control @error('name_ekul') is-invalid @enderror" required autocomplete="inputnameekul" autofocus id="inputnameekul" name="inputnameekul" placeholder="Nama Lengkap" value="{{$inputnameekul}}" {{$stsedit}} khususinput="yes">
+													@error('inputnameekul')
+														<span class="invalid-feedback" role="alert">
+															<strong>{{ $message }}</strong>
+														</span>
+													@enderror
+												@else
+												<input type="text" class="form-control" id="inputnameekul" name="inputnameekul" placeholder="Nama Lengkap" value="{{$inputnameekul}}" {{$stsedit}} khususinput="yes">
 												@endif	
 												</div>
 											</div>
@@ -3335,7 +3355,7 @@ if ($pos=0 or $pos=1){
 					'kode_sap' : document.getElementById("inputkodesap").value,
 			},success:function(data){
 					document.getElementById('inputnpwp').value = data.npwp;
-					document.getElementById('inputtlpush').value = data.tlpush;
+					document.getElementById('inputtlppri').value = data.tlpush;
 					// $("#inputfaxush").val() = data.faxush;
 					// $("#inputkontakush").val() = data.kontakush;
 					// $("#inputhubunganush").val() = data.hubunganush;
@@ -4215,7 +4235,6 @@ if ($pos=0 or $pos=1){
 
 <script type="text/javascript">
 	function klikedit(id) {
-		
 		var isioptions=document.getElementById("xtombolsave").value;
 		$xsave = '<div class="col-md-4">'+
 				'</div>'+

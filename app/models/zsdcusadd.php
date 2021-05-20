@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Zsdcusadd extends Model
+class zsdcusadd extends Model
 {
-    //
-    protected $table = "zsd_cus_add";
-    // protected $primaryKey = null;
-    public $timestamps = false;
-    public $incrementing = false;
+    protected $table = "zsdcusadd";
     protected $fillable = [
       'kodesap', 
+      'headgrp', 
       'npwp', 
       'tlpush', 
       'faxush', 
       'kontakush', 
       'hpush', 
-      'hubunganush'
+      'hubunganush', 
+      'nama_sap'
     ];
 }
+
