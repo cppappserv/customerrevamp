@@ -896,6 +896,9 @@ public function detailsave($id, Request $request){
         $usrprofile->faxush        = $request->inputfaxush; 
         $usrprofile->hpush         = $request->inputhpush; 
 
+        $usrprofile->hp2ush         = $request->inputhp2ush; 
+        $usrprofile->hp3ush         = $request->inputhp3ush; 
+
         $usrprofile->kontakush     = $request->inputkontakush; 
         $usrprofile->hubunganush   = $request->inputhubunganush; 
 

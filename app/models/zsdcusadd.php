@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class zsdcusadd extends Model
 {
-    protected $table = "zsdcusadd";
+    protected $table = "zsd_cus_add";
     protected $fillable = [
       'kodesap', 
       'headgrp', 

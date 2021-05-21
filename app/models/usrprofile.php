@@ -49,6 +49,8 @@ class Usrprofile extends Model
       'tlpush', 
       'faxush', 
       'hpush', 
+      'hp2ush', 
+      'hp3ush', 
       'emailush', 
       'lmusaha', 
       'karakteristik', 

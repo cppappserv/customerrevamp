@@ -796,6 +796,8 @@ if ($pos=0 or $pos=1){
 					$inputtlpush               = $data_profile->tlpush; 
 					$inputfaxush               = $data_profile->faxush; 
 					$inputhpush                = $data_profile->hpush; 
+					$inputhp2ush                = $data_profile->hp2ush; 
+					$inputhp3ush                = $data_profile->hp3ush; 
 
 					$inputkontakush            = $data_profile->kontakush; 
 					$inputhubunganush          = $data_profile->hubunganush; 
@@ -847,6 +849,8 @@ if ($pos=0 or $pos=1){
 					$inputtlpush               = "";
 					$inputfaxush               = "";
 					$inputhpush                = "";
+					$inputhp2ush                = ""; 
+					$inputhp3ush                = ""; 
 					$inputemailush             = "";
 					$inputlmusaha              = "";
 					$inputkontakush            = "";
@@ -2039,13 +2043,6 @@ if ($pos=0 or $pos=1){
 								</div>
 							</div>
 
-
-
-
-
-
-
-
 							<div class="card card-default">
 								<div class="card-header">
 									<h3 class="card-title font36">Kontak Usaha</h3>
@@ -2053,6 +2050,11 @@ if ($pos=0 or $pos=1){
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmedsosush" id="addmedsosush" class="btn btn-success">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
 										</button>
+									</div>
+									<div class="card-tools">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -2086,6 +2088,15 @@ if ($pos=0 or $pos=1){
 													</div>
 												</div>
 											</div>
+
+											<div class="form-group row">
+												<label for="inputemailush" class="col-sm-3 col-form-label">Email</label>
+												<div class="col-sm-9">
+												<!-- tutup -->
+													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="" value="{{$inputemailush}}" {{$stsedit}} khususinput="yes">
+												</div>
+											</div>
+
 										</div>
 										<!-- /.col -->
 
@@ -2100,15 +2111,29 @@ if ($pos=0 or $pos=1){
 													</div>
 												</div>
 											</div>
-											
 
+									
 											<div class="form-group row">
-												<label for="inputemailush" class="col-sm-3 col-form-label">Email</label>
+												<label for="inputhpush" class="col-sm-3 col-form-label">No HP - 2</label>
 												<div class="col-sm-9">
-												<!-- tutup -->
-													<input type="text" class="form-control" id="inputemailush" name="inputemailush" placeholder="Email" value="{{$inputemailush}}" {{$stsedit}} khususinput="yes">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputhp2ush" name="inputhp2ush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhp2ush}}" {{$stsedit}} khususinput="yes">
+													</div>
 												</div>
 											</div>
+
+					
+											<div class="form-group row">
+												<label for="inputhpush" class="col-sm-3 col-form-label">No HP - 3</label>
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" id="inputhp3ush" name="inputhp3ush" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" im-insert="true" value="{{$inputhp3ush}}" {{$stsedit}} khususinput="yes">
+													</div>
+												</div>
+											</div>
+											
+
+											
 
 											<div class="form-group row">
 												<label for="inputfaxush" class="col-sm-3 col-form-label">Hubungannya</label>
