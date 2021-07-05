@@ -33,7 +33,9 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
-
+  <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    
   <style id="applicationStylesheet" type="text/css">
   
     
@@ -121,12 +123,23 @@
   <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
   <!-- overlayScrollbars -->
   <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+  <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('dist/js/adminlte.js')}}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> -->
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
+  <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+    
+  })
+</script> 
   <script type="text/javascript">
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);

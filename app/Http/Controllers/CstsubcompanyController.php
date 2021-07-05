@@ -71,7 +71,30 @@ class CstsubcompanyController extends Controller
 
     public function index($kode, $kode2)
     {
-      $user = $this->getuser();
+        
+        $user = $this->getuser();
+
+        $akses_branch  = explode(", ", $user->branch);
+        $akses_company = explode(", ", $user->company);
+        
+        $akses_delete = 'T';
+        if ($user->usergroup <= 9){
+            foreach ($akses_branch as $key => $value) {
+                if ($value == $kode){
+                    
+                    foreach ($akses_company as $key2 => $value2) {
+                        if ($value2 == $kode2){
+                            $akses_delete = 'Y';
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+      
+
+
       $datacmp = $this->datacompany($kode, $kode2);
       $pilcompany = $kode;
       $pilcompany2 = $kode2;
@@ -79,7 +102,9 @@ class CstsubcompanyController extends Controller
           'user' => $user,
           'listdata' => $datacmp,
           'pilcompany' => $pilcompany,
-          'pilcompany2' => $pilcompany2
+          'pilcompany2' => $pilcompany2,
+          'akses_delete' => $akses_delete,
+          'pil_company' => $kode
       ]);
 
         

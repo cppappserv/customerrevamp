@@ -28,6 +28,8 @@ class CstinformasiController extends Controller
     {
 
         $this->middleware('auth');
+        
+        
     }
 
     /**
@@ -39,15 +41,18 @@ class CstinformasiController extends Controller
     {
       $user1 = Auth::user(); // tbluser::where('user_id','=','supram.maharwantijo@cpp.co.id')->first();
       $user = tbluser::where('uid','=',$user1->uid)->first();
+
+
+
         return $user;
     }
-    public function listuserpassword(){
-      $grp = Tbluser::where('email','LIKE', '%@cpp.co.id')->get();
-      // $sql = "
-      //     select '1' urut, 'supram.maharwantijo@cpp.co.id' userid, 'administrator' usertype, 'jakarta' userarea, '1234' userpassword  union
-      //     select '2' urut, 'supram2.maharwantijo@cpp.co.id' userid, 'user' usertype, 'jakarta' userarea, '1234' userpassword
-      // ";
-      // $grp = db::connection('mysql')->select($sql);
+
+    public function listuserpassword($userx){
+      $grp = Tbluser::where('email','LIKE', '%@cpp.co.id')
+      ->when($userx->usergroup == '9', function ($query) use($userx){
+          return $query->where('branch', '=', $userx->branch);
+      })
+      ->get();
       return $grp;
     }
     public function listuserpasswordedit(){
@@ -80,11 +85,23 @@ class CstinformasiController extends Controller
     }
     public function index()
     {
+      
       $user = $this->getuser();
-      $listuser = $this->listuserpassword();
+      if($user->usergroup == '13'){
+        return redirect()->back()->withErrors(['msg', 'The Message']);
+      }
+      $listuser = $this->listuserpassword($user);
       $listuseredit = $this->listuserpasswordedit();
-      $listgroup = Tblgroupuser::wherein('idusergroup',['1','9'])->get();
-      $tblobject = Tblobject::where('objtype','=','7')->get();
+      // $listgroup = Tblgroupuser::wherein('idusergroup',['1','9'])->get();
+      $listgroup = Tblgroupuser::where('active','=', 'Y')
+        ->where('idusergroup','>=', $user->usergroup)
+        ->get();
+      $tblobject = Tblobject::where('objtype','=','7')
+        ->when($user->usergroup == '9', function ($query) use($user){
+          return $query->where('objname', '=', $user->branch);
+        })
+        ->get();
+      
 
       // dd($listuser);
       $listcompany = $this->listcompany();
@@ -102,6 +119,53 @@ class CstinformasiController extends Controller
 
       ]);
     } 
+
+    function loadid(Request $req){
+      $user = $this->getuser();
+      $user_branch  = explode(", ", $user->branch);
+      $user_company = explode(", ", $user->company);
+      $help_bu = Tblobject::where('objtype','=','7')
+        ->when($user->usergroup == '9', function ($query) use($user_branch){
+          return $query->whereIn('objname', $user_branch);
+        })
+        ->select('objname as bu')
+        ->get();
+
+      $help_company = Dtadditional::where('type','COMPANY')
+        ->when($user->usergroup == '9', function ($query) use($user_branch, $user_company){
+          return $query->whereIn('desc', $user_branch)->whereIn('info', $user_company);
+        })
+        ->select('desc as bu', 'info as company')
+        ->get();
+
+      $data = Tbluser::where('uid',$req->id)
+      ->first();
+      $akses_branch = explode(", ", $data->branch);
+      $akses_company = explode(", ", $data->company);
+      
+      foreach ($help_bu as $key => $value) {
+        $value->flag = '';
+        foreach ($akses_branch as $key2 => $value2) {
+          if ($value->bu == $value2){
+            $value->flag = 'selected';
+            break;
+          }
+        }
+      }
+      $data->help_bu = $help_bu;
+
+      foreach ($help_company as $key => $value) {
+        $value->flag = '';
+        foreach ($akses_company as $key2 => $value2) {
+          if ($value->company == $value2){
+            $value->flag = 'selected';
+            break;
+          }
+        }
+      }
+      $data->help_company = $help_company;
+      return $data;
+    }
     
     public function destroy(Request $request)
     { 

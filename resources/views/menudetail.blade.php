@@ -8,6 +8,7 @@ if ($idedit == "0"){
 	$tomboladd2 = "display:block;";
 	$pos_ke = 1;
 } else {
+	// akses_change
 	$pos_ke = 231;
 	$tomboladd = "background: none;border: none; display:none;";
 	
@@ -876,6 +877,7 @@ if ($pos=0 or $pos=1){
 			<form method="post" action="/detailsave/{{$id}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" id="bck" name="bck" value="subcompany1/{{$idx}}/{{$idy}}">
+				<input type="hidden" id="akses_change" name="akses_change" value="{{$akses_change}}">
 				<input type="hidden" id="para1" name="para1" value="{{$idx}}">
 				<input type="hidden" id="para2" name="para2" value="{{$idy}}">
 				<input type="hidden" id="para3" name="para3" value="{{$id}}">
@@ -909,7 +911,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Nama Pemilik / Penanggung Jawab KUL : <?php echo ($inputfullname==''?'-':$inputfullname) ?></h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit collapse">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1138,7 +1140,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Alamat KTP</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit collapse">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1242,7 +1244,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit collapse">
 									</div>
 									
 								</div>
@@ -1471,7 +1473,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addkelga" id="addkelga">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
 										</button>
@@ -1730,7 +1732,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(1)" class="klikedit collapse">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1776,7 +1778,7 @@ if ($pos=0 or $pos=1){
 									<div class="card-tools">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 									</div>
 								</div>
 								<!-- /.card-header -->
@@ -1869,7 +1871,7 @@ if ($pos=0 or $pos=1){
 								<div class="card-header">
 									<h3 class="card-title font36">Status Usaha</h3>
 									<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addstatususaha" id="addstatususaha" class="btn btn-success"><i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 									</div>
 								</div>
@@ -1977,7 +1979,7 @@ if ($pos=0 or $pos=1){
 
 									</div>
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2052,7 +2054,7 @@ if ($pos=0 or $pos=1){
 										</button>
 									</div>
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -2263,7 +2265,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Saudara atau kerabat yang masih memiliki KUL Aktif di CPP Grup yang jadi Agen / Distributor</h3>
 
 									<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addagenhub" id="addagenhub" class="btn btn-success">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
 										</button>
@@ -2409,7 +2411,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Tipe / Jenis Penjualan</h3>
 
 									<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addareasubagen" id="addareasubagen" class="btn btn-success">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
 										</button>
@@ -2590,7 +2592,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Jenis Produk Yang Dijual (Kompetitor)</h3>
 
 									<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(2)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addkompetitor" id="addkompetitor" class="btn btn-success">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i>
 										</button>
@@ -2728,7 +2730,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Bisnis Lain</h3>
 
 										<div class="card-tools">
-											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
+											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit collapse">
 											<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addbisnislain" id="addbisnislain" class="btn btn-success">
 												<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 										</div>
@@ -2823,7 +2825,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Asset Pribadi</h3>
 
 										<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit collapse">
 											<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 											<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 										</div>
@@ -2930,7 +2932,7 @@ if ($pos=0 or $pos=1){
 										<h3 class="card-title font36">Modal</h3>
 
 										<div class="card-tools">
-											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit">
+											<img src="{{asset('image/edit.png')}}" onclick="klikedit(3)" class="klikedit collapse">
 											<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addmodalbank" id="addmodalbank" class="btn btn-success">
 												<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 										</div>
@@ -3085,7 +3087,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Jaminan</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(4)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(4)" class="klikedit collapse">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -3188,7 +3190,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Karakteristik</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit collapse">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -3226,7 +3228,7 @@ if ($pos=0 or $pos=1){
 									<h3 class="card-title font36">Track Record Customer</h3>
 
 									<div class="card-tools">
-									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
+									<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit collapse">
 										<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
 										<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button> -->
 									</div>
@@ -3267,7 +3269,7 @@ if ($pos=0 or $pos=1){
 									File type : jpg, gif, bmp dan png max size 900kb
 
 									<div class="card-tools">
-										<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit">
+										<img src="{{asset('image/edit.png')}}" onclick="klikedit(5)" class="klikedit collapse">
 										<button type="button" khususinput2='yes' style="{{$tomboladd}}" name="addphoto" id="addphoto">
 											<i class="fas fa-plus-circle fa-3x" style="color:rgb(51 122 183);"></i></button>
 									</div>
@@ -3365,6 +3367,11 @@ if ($pos=0 or $pos=1){
 
 <script>
 	$(document).ready(function(){
+		var akses_change = document.getElementById('akses_change').value;
+		if (akses_change == 'Y'){
+			$('.klikedit').removeClass('collapse');
+		}
+
 		var x1 = document.getElementById('inputbtkush').value;
 		var x2 = document.getElementById('datatipeush').value;
 		load_tipebadanhukum2(x1, x2);

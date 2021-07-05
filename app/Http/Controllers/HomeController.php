@@ -5,6 +5,8 @@ use Auth;
 use App\Models\Loglogin;
 use Illuminate\Http\Request;
 use App\Models\Tbluser;
+use App\Models\Tblobject;
+use App\Models\Dtadditional;
 use DB;
 
 class HomeController extends Controller
@@ -32,32 +34,51 @@ class HomeController extends Controller
         return $user;
     }
 
-    public function grpbu()
+    public function grpbu($users)
     {
-        $sql = "
-            SELECT `desc` des, MIN(seq) urut, 0 ttl  
-            FROM dt_additional WHERE `type` = 'COMPANY'
-            GROUP BY `desc` 
-            ORDER BY urut
-        ";
-        $grpall = db::connection('mysql')->select($sql);
-         $sql = "
-            SELECT 0 AS urut, c1.desc des ,COUNT(*) ttl 
-            FROM tbluser a1
-            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
-            INNER JOIN dt_additional c1 ON c1.type = 'COMPANY' AND c1.info = a1.company
-            where a1.inactive is null
-            GROUP BY c1.desc
-        ";
-        $grp = db::connection('mysql')->select($sql);
+        $akses_branch = explode(", ", $users->branch);
+        $grpall =  db::table('dt_additional as a')->where('a.type', '=', 'COMPANY')
+        ->select('a.desc as des', db::raw("MIN(a.seq) as urut"))
+        ->groupby('a.desc')
+        ->orderby(db::raw("MIN(a.seq)"), 'asc')
+        ->get();
+
+        $tblobject = Tblobject::where('objtype', '=', '7');
+        $dtadditional = Dtadditional::where('type', '=', 'COMPANY');
+
+        $grp = db::table('tbluser as a')
+            ->joinsub($tblobject, 'b', function($join){
+                $join->on('a.branch', '=', 'b.objname');
+            })
+            ->joinsub($dtadditional, 'c', function($join){
+                $join->on('c.info', '=', 'a.company');
+            })
+            ->whereNull('a.inactive')
+            ->groupby('c.desc')
+            ->select('c.desc as des', db::raw("COUNT(*) as ttl") )
+            ->get();
+
         $i=0;
         foreach ($grpall as $key => $value) {
             $i++;
             $value->urut = $i;
+            $value->ttl = 0;
+            $value->akses = 'T';
             foreach ($grp as $key2 => $value2) {
                 if ($value->des == $value2->des){
                     $value->ttl = $value2->ttl;
                 break;
+                }
+            }
+            $value->akses = 'T';
+            if ($users->usergroup <=  '9'){
+                $value->akses = 'Y';
+            } else {
+                foreach ($akses_branch as $key2 => $value2) {
+                    if ($value->des == $value2){
+                        $value->akses = 'Y';
+                        break;        
+                    }
                 }
             }
         }
@@ -67,11 +88,12 @@ class HomeController extends Controller
     public function index()
     {
         $user = $this->getuser();
-
         if (!$user){
             return redirect()->route('logout');
         } else {
-            $grpcmp = $this->grpbu();
+            $grpcmp = $this->grpbu($user);
+            // print $grpcmp;
+            // return;
             return view('menuutama', [
                 'user' => $user,
                 'perbu' => $grpcmp
@@ -107,3 +129,4 @@ class HomeController extends Controller
         }
     }
 }
+

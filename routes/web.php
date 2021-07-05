@@ -51,6 +51,7 @@ Route::get('/download', 'CstuploadController@index')->name('download');
 
 
 Route::get('/info1', 'CstinformasiController@index')->name('info1');
+Route::get('/info1/loadid', 'CstinformasiController@loadid')->name('loadid');
 Route::post('/info1edit/save', 'CstinformasiController@infosave')->name('infosave');
 Route::delete('/info1_delete_modal', 'CstinformasiController@destroy')->name('info_delete');
 Route::get('autocomplete', 'CstdetailController@search');

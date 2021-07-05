@@ -956,7 +956,7 @@
 					</div>
 				</div>
 
-				<a href="/info1" id="Group_733_cim" style="
+				<a href="{{$user->usergroup=='13'?'#':'/info1'}}" id="Group_733_cim" style="
 					top: 110px;
 					">
 					<svg class="Rectangle_521_cin">

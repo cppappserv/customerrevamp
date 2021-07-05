@@ -67,8 +67,9 @@
          <a href="/home" class="nav-link" id="Dashboard_bt">Dashboard /</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block" >
-         <a href="#" class="nav-link atas" id="Dashboard_bt">{{$pilcompany}}</a>
+         <a href="/company1/{{$pil_company}}" class="nav-link atas" id="Dashboard_bt">{{$pilcompany}}</a>
       </li>
+      
     </ul>
     @include('layouts.logo')
     <svg class="Rectangle_241_bv">
@@ -180,22 +181,12 @@
                      <td id="tdpos">
 
                         <div>
-                        <!-- <a href="/detaildelete/{{$customer_id}}"> -->
-                        <!-- <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}" style="
-                            border-radius: 50%;
-                            height: 75px;
-                            width: 75px;
-                            font-size: -webkit-xxx-large;
-                            background: red;
-                            color: white;
-                        " data-toggle="modal" data-target="#modal-primary"> -->
-                        <!-- <i class="far fa-trash-alt"></i> -->
-                        <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}"
-                        data-toggle="modal" data-target="#modal-primary" style="border: none;">
-                        <img src="{{asset('image/delete.png')}}"> 
-                        </button>
-                           
-                        <!-- </a> -->
+                          @if($akses_delete == 'Y')
+                            <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$uid}}"
+                            data-toggle="modal" data-target="#modal-primary" style="border: none;">
+                            <img src="{{asset('image/delete.png')}}"> 
+                            </button>
+                          @endif
                         </div>
                      </td>
                   </tr>

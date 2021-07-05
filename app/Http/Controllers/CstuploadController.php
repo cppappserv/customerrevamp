@@ -62,8 +62,17 @@ class CstuploadController extends Controller
         return $grp;
     }
 
-    public function typefileupload(){
-        $grp = Dtadditional::where('type', '=', 'COMPANY')->get();
+    public function typefileupload($userx){
+        
+        $grp = Dtadditional::where('type', '=', 'COMPANY')
+        ->when($userx->usergroup == '13', function ($query) use($userx){
+            return $query->where('dt_additional.desc', '=', $userx->branch)
+            ->where('info3', '=', $userx->company);
+        })
+        ->when($userx->usergroup == '9', function ($query) use($userx){
+            return $query->where('desc', '=', $userx->branch);
+        })
+        ->get();
         // $sql = "
         //     SELECT * FROM tbl_file WHERE COALESCE(`format`,'') <> ''
         // ";
@@ -370,6 +379,7 @@ class CstuploadController extends Controller
 
     public function index()
     {
+
         $user = $this->getuser();
         $fileupload = $this->fileupload();
         $data_upload = Importprofile::where('uid', '=', $user->user_id)
@@ -378,7 +388,7 @@ class CstuploadController extends Controller
         $tbllog = $this->calln($user->uid);
         $tbllogh = $this->callh($user->uid);
         
-        $typefileupload = $this->typefileupload();
+        $typefileupload = $this->typefileupload($user);
         
         $i=0;
         foreach ($tbllog as $key => $value) {

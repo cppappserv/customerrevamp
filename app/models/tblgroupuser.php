@@ -13,6 +13,7 @@ class Tblgroupuser extends Model
     public $incrementing = false;
     protected $fillable = [
         'idusergroup', 
-	    'namegroup'
+	    'namegroup',
+        'active'
     ];
 }

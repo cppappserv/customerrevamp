@@ -13,6 +13,7 @@ use App\Models\Tblobject;
 use App\Models\Tbluserphoto;
 use App\Models\Zbranch;
 use App\Models\Usrupload;
+use Auth;
 use DB;
 
 class NewAddController extends Controller
@@ -33,6 +34,13 @@ class NewAddController extends Controller
      *
      * @return \illuminate\contracts\support\renderable
      */
+
+   public function getuser()
+   {
+      $user1 = Auth::user();
+      $user = tbluser::where('uid','=',$user1->uid)->first();
+      return $user;
+   }
 
    public function jaminan($id,$id2,$id3,$id4,$id5,$id6)
    {
@@ -330,8 +338,13 @@ class NewAddController extends Controller
    }
 
    public function getcompany($id){
+      $user = $this->getuser(); 
+
       $data = Dtadditional::where('type','=','COMPANY')
       ->where('desc','=',$id)
+      ->when($user->usergroup == '13', function ($query) use($user){
+         return $query->where('info3', '=', $user->company);
+     })
       // ->select(DB::raw("CONCAT(info2,' - ',info4,' - ',info5) AS infox"),'info')
       ->select('info2 AS infox','info')
       ->pluck('infox','info');

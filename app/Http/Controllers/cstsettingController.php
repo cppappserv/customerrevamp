@@ -51,10 +51,25 @@ class CstsettingController extends Controller
         $user = $this->getuser();
         // SELECT * FROM dt_additional a WHERE a.type='COMPANY';
         $databu = Dtadditional::where('type', '=', 'COMPANY')
+        ->when($user->usergroup == '13', function ($query) use($user){
+            return $query->where('desc', '=', $user->branch)
+            ->where('info3', '=', $user->company);
+        })
+        ->when($user->usergroup == '9', function ($query) use($user){
+            return $query->where('desc', '=', $user->branch);
+        })
         ->select('info3')
         ->distinct()
         ->get();
-        $tblobject = Tblobject::where('objtype','=','7')->get();
+
+        $tblobject = Tblobject::where('objtype','=','7')
+        ->when($user->usergroup == '13', function ($query) use($user){
+            return $query->where('desc', '=', $user->branch);
+        })
+        ->when($user->usergroup == '9', function ($query) use($user){
+            return $query->where('desc', '=', $user->branch);
+        })
+        ->get();
 
         return view('menusetting', [
             'user' => $user,

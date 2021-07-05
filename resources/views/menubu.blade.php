@@ -220,23 +220,12 @@
           }
           
             ?>
-							<!-- <div class="col-lg-6 col-6"> -->
               <div class="col-md-6 col-sm-6 col-12">
+							@if($percompany[$i]->akses == 'Y')
 					<a href="/subcompany1/{{$pilcompany}}/{{$info}}">
-						<!-- <div class="info-box" id="form02kotak">
-							<span class="info-box-icon bg-info text" id="form02kotak2"
-							style="background-color: {{$warna}}!important;">
-							{{ $ttl }}<br>
-							Customer
-							</span>
-							
-							<div class="info-box-content" id="showtext">
-								<span id="font24" style="color:black;">
-								{{ $des }}<br/>{{ $des2}}<br/>{{ $des3}}
-								</span>
-
-							</div>
-						</div> -->
+	@else
+	<a href="#">
+	@endif
 
 						<svg class="svg_kotak" viewBox="0 0 614 148.697">
 							<path id="svg_kotak" d="M 20.53511810302734 0 L 593.4649658203125 0 C 604.80615234375 0 715 2.023526906967163 715 4.519673347473145 L 715 144.1775970458984 C 715 146.6737365722656 604.80615234375 148.697265625 593.4649658203125 148.697265625 L 20.53511810302734 148.697265625 C 9.19388484954834 148.697265625 0 146.6737365722656 0 144.1775970458984 L 0 4.519673347473145 C 0 2.023526906967163 9.19388484954834 0 20.53511810302734 0 Z">
@@ -256,7 +245,7 @@
 							<span>{{ $des }}<br/>{{ $des2}}<br/>{{ $des3}}</span>
 						</div>
 					</a>
-					<!-- /.info-box -->
+
 				</div>
             <?php
           } 

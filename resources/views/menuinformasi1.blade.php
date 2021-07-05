@@ -192,7 +192,9 @@
                                        class="select2 form-select-lg isiuserid textotorisasi" multiple="multiple" aria-label="Example select with button addon" style="color: black"
                                        data-toggle="tooltip" title="Input Otorisasi Plant License"  onblur="cekinputan()" {{$c2}}>
                                        <option value="" selected>--- Select BU ---</option>
-                                      
+                                       @foreach($tblobject as $p1)
+                                       <option value="{{$p1->objname}}" {{$p1->flag}}>{{$p1->desc}}</option>
+                                       @endforeach
                                     </select>
 
                                  </div>
@@ -401,7 +403,7 @@
                               
                               <button type="button" 
                                  title="Edit"
-                                 onclick="myedit({{$value3->uid}})">          <!--  this is the title -->
+                                 onclick="myedit({{$i}}, {{$user->usergroup}});myedit2({{$i}}, {{$user->usergroup}})">          <!--  this is the title -->
                                  <i class="far fa-edit"></i> <!--  this is the icon  -->
                               </button> 
                               @if($user->usergroup!='13')
@@ -482,48 +484,7 @@
       }
    }
 
-   function myedit(id) 
-	{
-      $.ajax({
-          url:"/info1/loadid",
-          type: "GET",  
-          data: {
-            'id': id
-          },
-          success:function(data)
-          {
-            document.getElementById('inputbaru').value = '1';
-            // document.getElementById('inputbaris').value = isi;
-            document.getElementById('inputuid').value = data.uid;
-            document.getElementById('inputuserid').value = data.user_id;
-            document.getElementById('inputusertype').value = data.usergroup;
-            // document.getElementById('inputuserarea').value = data.;
-            document.getElementById('inputuserpass').value = data.password;
-            document.getElementById('inputuserrepass').value = data.password;
-            // document.getElementById('oldcompany').value = data.;
-
-
-            $("#inputuserarea").empty();
-            $("#inputuserarea").append('<option value="">'+'Input Area'+'</option>');
-            var help_bu = data.tbl_bu;
-            console.log(help_bu);
-
-
-// alert(help_bu.length);
-            for (let i = 0; i < help_bu.length; i++) {
-               $("#inputuserarea").append('<option value="'+help_bu.bu[i]+'" '+help_bu.flag[i]+'>'+help_bu.bu[i]+'</option>');
-            }
-           },
-
-          error:function(data)
-          {
-            console.log('error');
-          }
-
-        });
-   }
-
-   function myedit1(isi, flag) 
+   function myedit(isi, flag) 
 	{
       var tx1 = 'inputuid_'+isi;
       var tx2 = 'inputuserid_'+isi;

@@ -527,6 +527,28 @@ order by a.seq
         // echo $kode." - ".$kode3." - ".$kode2." - ".$kode4." - ";
         // exit;
         $user = $this->getuser();  // login pertama
+
+        $akses_branch  = explode(", ", $user->branch);
+        $akses_company = explode(", ", $user->company);
+        
+        $akses_change = 'T';
+
+        foreach ($akses_branch as $key => $value) {
+            if ($value == $kode){
+                
+                foreach ($akses_company as $key2 => $value2) {
+                    if ($value2 == $kode3){
+                        $akses_change = 'Y';
+                        break;
+                    }
+                }
+                break;
+            }
+
+        }
+        // dd($akses_change);
+
+
         $idcusto = Dtadditional::where('type', '=', 'COMPANY')
         ->where('info', '=', $kode3)
         ->where('desc', '=', $kode)
@@ -600,7 +622,8 @@ order by a.seq
             'data_add_kode_sap' => $data_add_kode_sap,
             'edit_noedit' => 0,
             'pos_page' => $kode4,
-            'data_photo' => $photo
+            'data_photo' => $photo,
+            'akses_change' => $akses_change
             
 
         ]);

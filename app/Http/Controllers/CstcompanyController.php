@@ -33,19 +33,18 @@ class CstcompanyController extends Controller
         return $user;
     }
 
-    public function grpcompany($para)
+    public function grpcompany($para, $users)
     {
+        $akses_branch = explode(", ", $users->branch);
+        $akses_company = explode(", ", $users->company);
         $sql = "
-            SELECT seq urut, 0 ttl, info, CONCAT(info2,'/') des, CONCAT(info4,'') des2, CONCAT(info5,'') des3
+            SELECT seq urut, info, CONCAT(info2,'/') des, CONCAT(info4,'') des2, CONCAT(info5,'') des3
             FROM dt_additional WHERE `type` = 'COMPANY'
                 and `desc` = '".$para."' 
             ORDER BY urut
         ";
    
         $grpall = db::connection('mysql')->select($sql);
-
-        
-        
         $sql = "  
             SELECT 0 urut, c1.info, CONCAT(c1.info2,'/') des, CONCAT(c1.info4,'') des2, CONCAT(c1.info5,'') des3 ,COUNT(*) ttl 
             FROM tbluser a1 
@@ -58,14 +57,30 @@ class CstcompanyController extends Controller
         // dd($sql);
         $grp = db::connection('mysql')->select($sql);
         // dd($grpall);
+
+        
         $i=0;
         foreach ($grpall as $key => $value) {
             $i++;
             $value->urut = $i;
+            $value->ttl = 0;
+            $value->akses = 'T';
             foreach ($grp as $key2 => $value2) {
                 if ($value->info == $value2->info){
                     $value->ttl = $value2->ttl;
                 break;
+                }
+            }
+
+            $value->akses = 'T';
+            if ($users->usergroup <=  '9'){
+                $value->akses = 'Y';
+            } else {
+                foreach ($akses_company as $key2 => $value2) {
+                    if ($value->info == $value2){
+                        $value->akses = 'Y';
+                        break;        
+                    }
                 }
             }
         }
@@ -82,8 +97,9 @@ class CstcompanyController extends Controller
 
     public function index($kode)
     {
+        
       $user = $this->getuser();
-      $grpcmp = $this->grpcompany($kode);
+      $grpcmp = $this->grpcompany($kode, $user);
       $pilcompany = $kode;
       return view('menubu', [
           'user' => $user,
