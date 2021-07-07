@@ -28,6 +28,7 @@
 		color: rgba(51,122,183,1);
 	}
   </style>
+   
 @endsection
 @section('content')
 
@@ -64,9 +65,11 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/home" class="nav-link"  id="Dashboard_bt">Setting /</a>
       </li>
+      
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"  id="Dashboard_bt">User Profile</a>
       </li>
+
     </ul>
     @include('layouts.logo')
    <svg class="Rectangle_241_bx">
@@ -120,6 +123,7 @@
 
 
          <div class="card card-default">
+         <div class="updateinformasi collapse">
             <div class="card-header">
                <h3 class="card-title font36">User Profile</h3>
 
@@ -185,17 +189,16 @@
                               </div>
                            </div>
                            <div class="form-group row">
-                              <label for="inputuserarea" class="col-sm-3 col-form-label">Bisnis Unit</label>
-                              <div class="col-sm-9">
-                                 <div class="input-group">
-                                    <select Isinput id="inputuserarea" name="inputuserarea[]" 
-                                       class="select2 form-select-lg isiuserid textotorisasi" multiple="multiple" aria-label="Example select with button addon" style="color: black"
-                                       data-toggle="tooltip" title="Input Otorisasi Plant License"  onblur="cekinputan()" {{$c2}}>
-                                       <option value="" selected>--- Select BU ---</option>
-                                      
-                                    </select>
+                              <label for="inputotorisasi" class="col-sm-3 col-form-label">Bisnis Unit</label>
+                              <div class="col-sm-9 input-group">
+                                 
+                                 <select Isinput id="inputotorisasi" name="inputotorisasi[]" class="select2bs4" 
+                                    multiple="multiple"  style="color: black;width: 100%;" 
+                                    data-placeholder="Input Area Bisnis Unit"
+                                    data-toggle="tooltip" title="Input BU / OUC" onblur="cekinputan()" {{$c2}} >
+                                    <option value="" selected>--- Select BU / OUC ---</option>
+                                 </select>
 
-                                 </div>
                               </div>
                            </div>
                         </div>
@@ -221,7 +224,7 @@
                               </button> 
                            </div>
                            <div class="form-group row">
-                              <label for="inputuserrepass" class="col-sm-3 col-form-label">Re-Type Password</label>
+                              <label for="inputuserrepass" class="col-sm-3 col-form-label">Re-Password</label>
                               <div class="col-sm-8">
                                  <!-- <input type="text" class="form-control" id="inputkelurahanusaha" placeholder="Kelurahan"> -->
                                  <div class="input-group">
@@ -241,23 +244,19 @@
                                  <span class="fa fa-eye"></span> <!--  this is the icon  -->
                               </button> 
                            </div>
-                           <div class="form-group row">
+                           <!-- <div class="form-group row">
                               <label for="inputusercompany" class="col-sm-3 col-form-label">Ouc</label>
-                              <div class="col-sm-9">
-                                 <div class="input-group">
-                                    <select class="form-control @error('inputusercompany') is-invalid @enderror"  required autocomplete="inputusercompany" autofocus id="inputusercompany" name="inputusercompany" onblur="cekinputan()" {{$c2}}> 
-                                       <option value="">--- Select OUC ---</option>
-                                      
-                                    </select>
+
+                              <div class="col-sm-9 input-group">
+                                 <select Isinput id="inputusercompany" name="inputusercompany[]" 
+                                    class="select2bs4" multiple="multiple"  style="color: black;width: 100%;" data-placeholder="Input OUC"
+                                    data-toggle="tooltip" title="Input OUC"  onblur="cekinputan()" {{$c2}}>
+                                    <option value="">--- Select OUC ---</option>
                                     
-                                    @error('inputusercompany')
-                                       <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                       </span>
-                                    @enderror
-                                 </div>
+                                 </select>
                               </div>
-                           </div>
+
+                           </div> -->
                         </div>
                         <!-- /.col -->
                      </div>
@@ -293,145 +292,148 @@
                   
                </div>
             </div>
-
-         <div class="card card-default">
-            <div class="card-header">
-               <h3 class="card-title font36">List of User</h3>
-             
-               
             </div>
-            <!-- /.card-header -->
 
-           
-            <div class="card-body">
-               <div class="form-group row">                    
-                  <div class="col-sm-1">
-                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">No</label>
-                  </div>                    
-                  
-                  <div class="col-sm-4">
-                  <label for="inputusertype" class="col-sm-12 col-form-label judultable">User ID</label>
-                  </div>
-
-                  <div class="col-sm-2" style="width:150px">
-                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">user Type</label>
-                  </div>
-                  
-                  <div class="col-sm-2">
-                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">Area</label>
-                  </div>
-
-                  <div class="col-sm-3">
-                        
-                     <label for="inputusertype" class="col-sm-11 col-form-label judultable">Password</label>
-                     
-                     <div class="input-group col-sm-1">      
-                        <!-- <label for="inputusertype" class="col-sm-12 col-form-label judultable">Password</label> -->
-                     </div>
-                  </div>
+            <div class="card card-default">
+               <div class="card-header">
+                  <h3 class="card-title font36">List of User</h3>
+               
                   
                </div>
-            
-               <div id="inplist">
+               <!-- /.card-header -->
 
-                  <?php 
-                  $i=0;
-                  foreach ($listuser as $key => $value3) {
-                  $i++;
-                  ?>
-                              
+            
+               <div class="card-body">
                   <div class="form-group row">                    
                      <div class="col-sm-1">
-                        <div class="input-group">
-                           <input type="text" id="inputno_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Nama" readonly=""
-                           value="{{$i}}"> 
-                           <input type="hidden" id="inputuid_{{$i}}" value="{{$value3->uid}}"> 
-                        </div>
+                        <label for="inputusertype" class="col-sm-12 col-form-label judultable">No</label>
                      </div>                    
                      
                      <div class="col-sm-4">
-                        <div class="input-group">                    
-                           <input type="text" id="inputuserid_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
-                           value="{{$value3->user_id}}"> 
-                        </div>
+                     <label for="inputusertype" class="col-sm-12 col-form-label judultable">User ID</label>
                      </div>
 
                      <div class="col-sm-2" style="width:150px">
-                        <div class="input-group">
-                        <?php 
-                        foreach ($listgroup as $key => $value) {
-                           if ($value->idusergroup == $value3->usergroup){
-
-                           break;
-                           }
-                        }
-                        ?>
-                           <input type="text" id="inputusertype_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
-                           value="{{$value->namegroup}}"> 
-                           <input type="hidden" id="inputusergroup_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
-                           value="{{$value3->usergroup}}"> 
-                          
-                        </div>
-                     </div>
-
-                     <div class="col-sm-2">
-                        <div class="input-group" id="select">                    
-                           <div class="input->group">
-                              <input type="text" id="inputuserarea_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
-                                 value="{{$value3->branch}}"> 
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="col-sm-3 row">
-                        <div class="input-group col-sm-8">                    
-                           <input type="password" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control"  readonly=""
-                              value="({{md5($value3->password)}}"> 
-                           <input type="hidden" id="inputcompany_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" 
-                              value="{{$value3->company}}"> 
-                        </div>
-                           <!-- <div class="input-group col-sm-1">
-                              <button type="button" 
-                                 title="Show Password"
-                                 onclick="myFunction({{$i}})"> 
-                                 <span class="fa fa-eye"></span>
-                              </button> 
-                           </div> -->
-                           <div class="input-group col-sm-4">
-                              
-                              <button type="button" 
-                                 title="Edit"
-                                 onclick="myedit({{$value3->uid}})">          <!--  this is the title -->
-                                 <i class="far fa-edit"></i> <!--  this is the icon  -->
-                              </button> 
-                              @if($user->usergroup!='13')
-                                 <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$i}}"
-                                    data-toggle="modal" data-target="#modal-primary" style="border: none;">
-                                    <img src="{{asset('image/delete.png')}}"> 
-                                 </button>
-                              @endif
-                           </div>
-                        <!-- </div> -->
+                        <label for="inputusertype" class="col-sm-12 col-form-label judultable">user Type</label>
                      </div>
                      
-                  </div>  
+                     <div class="col-sm-2">
+                        <label for="inputusertype" class="col-sm-12 col-form-label judultable">Area</label>
+                     </div>
+
+                     <div class="col-sm-3">
+                           
+                        <label for="inputusertype" class="col-sm-11 col-form-label judultable">Password</label>
+                        
+                        <div class="input-group col-sm-1">      
+                           <!-- <label for="inputusertype" class="col-sm-12 col-form-label judultable">Password</label> -->
+                        </div>
+                     </div>
+                     
+                  </div>
                
-                     <?php
-                  }
-                  ?>
-               </div> 
+                  <div id="inplist">
 
+                     <?php 
+                     $i=0;
+                     foreach ($listuser as $key => $value3) {
+                     $i++;
+                     ?>
+                                 
+                     <div class="form-group row">                    
+                        <div class="col-sm-1">
+                           <div class="input-group">
+                              <input type="text" id="inputno_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" placeholder="Nama" readonly=""
+                              value="{{$i}}"> 
+                              <input type="hidden" id="inputuid_{{$i}}" value="{{$value3->uid}}"> 
+                           </div>
+                        </div>                    
+                        
+                        <div class="col-sm-4">
+                           <div class="input-group">                    
+                              <input type="text" id="inputuserid_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                              value="{{$value3->user_id}}"> 
+                           </div>
+                        </div>
 
-               
+                        <div class="col-sm-2" style="width:150px">
+                           <div class="input-group">
+                           <?php 
+                           foreach ($listgroup as $key => $value) {
+                              if ($value->idusergroup == $value3->usergroup){
 
+                              break;
+                              }
+                           }
+                           ?>
+                              <input type="text" id="inputusertype_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                              value="{{$value->namegroup}}"> 
+                              <input type="hidden" id="inputusergroup_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                              value="{{$value3->usergroup}}"> 
+                           
+                           </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                           <div class="input-group" id="select">                    
+                              <div class="input->group">
+                                 <input type="text" id="inputotorisasi_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" readonly=""
+                                    value="{{$value3->branch}}"> 
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-3 row">
+                           <div class="input-group col-sm-8">                    
+                              <input type="password" id="inputuserpass_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control"  readonly=""
+                                 value="({{md5($value3->password)}}"> 
+                              <input type="hidden" id="inputcompany_{{$i}}" isform="true" format="required:n;type:text"  onblur="formValidation(this)" class="form-control" 
+                                 value="{{$value3->company}}"> 
+                           </div>
+                              <!-- <div class="input-group col-sm-1">
+                                 <button type="button" 
+                                    title="Show Password"
+                                    onclick="myFunction({{$i}})"> 
+                                    <span class="fa fa-eye"></span>
+                                 </button> 
+                              </div> -->
+                              <div class="input-group col-sm-4">
+                                 
+                                 <button type="button" 
+                                    title="Edit"
+                                    onclick="myedit({{$value3->uid}})">          <!--  this is the title -->
+                                    <i class="far fa-edit"></i> <!--  this is the icon  -->
+                                 </button> 
+                                 @if($user->usergroup!='13')
+                                    <button type="button" class="btn btn-default btn-sm deleteUser" data-userid="{{$i}}"
+                                       data-toggle="modal" data-target="#modal-primary" style="border: none;">
+                                       <img src="{{asset('image/delete.png')}}"> 
+                                    </button>
+                                 @endif
+                              </div>
+                           <!-- </div> -->
+                        </div>
+                        
+                     </div>  
+                  
+                        <?php
+                     }
+                     ?>
+                  </div> 
+
+                  <div id="addcustomer" class="addcustomer">
+                     <img src="{{asset('image/add customer.png')}}" style="top: 85%;
+                        left: 80%;
+                        position: fixed">
+                  </div>
                </div>
 
-            <!-- /.card-body -->
-            <div class="card-footer">
-               <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-               the plugin. -->
+               <!-- /.card-body -->
+               <div class="card-footer">
+                  <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                  the plugin. -->
+               </div>
             </div>
-         </div>
 
 			
 		</div>
@@ -444,6 +446,7 @@
 
 @section('jscontent')
 <script>
+   
    function myFunctioncancel() {
       var x = document.getElementById("save");
       x.style.display = "none";
@@ -456,6 +459,7 @@
          }
       });
    }
+   
 
    function myFunction(para_1) {
       
@@ -484,6 +488,13 @@
 
    function myedit(id) 
 	{
+      myedit2(id);
+      loadbisnisunit2(id);
+      $('.updateinformasi').removeClass('collapse');
+   }
+
+   function myedit2(id) 
+	{
       $.ajax({
           url:"/info1/loadid",
           type: "GET",  
@@ -493,26 +504,11 @@
           success:function(data)
           {
             document.getElementById('inputbaru').value = '1';
-            // document.getElementById('inputbaris').value = isi;
             document.getElementById('inputuid').value = data.uid;
             document.getElementById('inputuserid').value = data.user_id;
             document.getElementById('inputusertype').value = data.usergroup;
-            // document.getElementById('inputuserarea').value = data.;
             document.getElementById('inputuserpass').value = data.password;
             document.getElementById('inputuserrepass').value = data.password;
-            // document.getElementById('oldcompany').value = data.;
-
-
-            $("#inputuserarea").empty();
-            $("#inputuserarea").append('<option value="">'+'Input Area'+'</option>');
-            var help_bu = data.tbl_bu;
-            console.log(help_bu);
-
-
-// alert(help_bu.length);
-            for (let i = 0; i < help_bu.length; i++) {
-               $("#inputuserarea").append('<option value="'+help_bu.bu[i]+'" '+help_bu.flag[i]+'>'+help_bu.bu[i]+'</option>');
-            }
            },
 
           error:function(data)
@@ -523,53 +519,53 @@
         });
    }
 
-   function myedit1(isi, flag) 
-	{
-      var tx1 = 'inputuid_'+isi;
-      var tx2 = 'inputuserid_'+isi;
-      var tx3 = 'inputusergroup_'+isi;
-      var tx4 = 'inputuserarea_'+isi;
-      var tx5 = 'inputuserpass_'+isi;
-      var tx6 = 'inputcompany_'+isi;
-      document.getElementById('inputbaru').value = '1';
-      document.getElementById('inputbaris').value = isi;
-      document.getElementById('inputuid').value = document.getElementById(tx1).value;
-      document.getElementById('inputuserid').value = document.getElementById(tx2).value;
-      document.getElementById('inputusertype').value = document.getElementById(tx3).value;
-      document.getElementById('inputuserarea').value = document.getElementById(tx4).value;
-      document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
-      document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
-      document.getElementById('oldcompany').value = document.getElementById(tx6).value;
-      $('select[name=inputuserarea]').change();
-      if (flag == '1'){
-         var x = document.getElementById("save");
-         if (x.style.display == "none") {
-            x.style.display = "block";
-         }
-         // document.getElementById('inputuid').disabled = false;
-         // document.getElementById('inputuserid').disabled = false;
-         // document.getElementById('inputusertype').disabled = false;
-         // document.getElementById('inputuserarea').disabled = false;
-         // document.getElementById('inputuserpass').disabled = false;
-         // document.getElementById('inputuserrepass').disabled = false;
-         // document.getElementById('inputusercompany').disabled = false;
-      } else {
-         // document.getElementById('inputuid').disabled = true;
-         // document.getElementById('inputuserid').disabled = true;
-         // document.getElementById('inputusertype').disabled = true;
-         // document.getElementById('inputuserarea').disabled = true;
-         // document.getElementById('inputuserpass').disabled = true;
-         // document.getElementById('inputuserrepass').disabled = true;
-         // document.getElementById('inputusercompany').disabled = true;
-      }
+   // function myedit1(isi, flag) 
+	// {
+   //    var tx1 = 'inputuid_'+isi;
+   //    var tx2 = 'inputuserid_'+isi;
+   //    var tx3 = 'inputusergroup_'+isi;
+   //    var tx4 = 'inputotorisasi_'+isi;
+   //    var tx5 = 'inputuserpass_'+isi;
+   //    var tx6 = 'inputcompany_'+isi;
+   //    document.getElementById('inputbaru').value = '1';
+   //    document.getElementById('inputbaris').value = isi;
+   //    document.getElementById('inputuid').value = document.getElementById(tx1).value;
+   //    document.getElementById('inputuserid').value = document.getElementById(tx2).value;
+   //    document.getElementById('inputusertype').value = document.getElementById(tx3).value;
+   //    document.getElementById('inputotorisasi').value = document.getElementById(tx4).value;
+   //    document.getElementById('inputuserpass').value = document.getElementById(tx5).value;
+   //    document.getElementById('inputuserrepass').value = document.getElementById(tx5).value;
+   //    document.getElementById('oldcompany').value = document.getElementById(tx6).value;
+   //    $('select[name=inputotorisasi]').change();
+   //    if (flag == '1'){
+   //       var x = document.getElementById("save");
+   //       if (x.style.display == "none") {
+   //          x.style.display = "block";
+   //       }
+   //       // document.getElementById('inputuid').disabled = false;
+   //       // document.getElementById('inputuserid').disabled = false;
+   //       // document.getElementById('inputusertype').disabled = false;
+   //       // document.getElementById('inputotorisasi').disabled = false;
+   //       // document.getElementById('inputuserpass').disabled = false;
+   //       // document.getElementById('inputuserrepass').disabled = false;
+   //       // document.getElementById('inputusercompany').disabled = false;
+   //    } else {
+   //       // document.getElementById('inputuid').disabled = true;
+   //       // document.getElementById('inputuserid').disabled = true;
+   //       // document.getElementById('inputusertype').disabled = true;
+   //       // document.getElementById('inputotorisasi').disabled = true;
+   //       // document.getElementById('inputuserpass').disabled = true;
+   //       // document.getElementById('inputuserrepass').disabled = true;
+   //       // document.getElementById('inputusercompany').disabled = true;
+   //    }
       
-   }
+   // }
 
-   function myedit2(isi, flag) 
-	{
-      // var tx6 = 'inputcompany_'+isi;
-      // document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
-   }
+   // function myedit2(isi, flag) 
+	// {
+   //    // var tx6 = 'inputcompany_'+isi;
+   //    // document.getElementById('inputusercompany').value = document.getElementById(tx6).value;
+   // }
 
    function xmyedit(isi, flag) 
 	{
@@ -593,47 +589,6 @@
 </script>
 
 
-
-
-<script type="text/javascript">
-   $(document).ready(function(){
-      $('select[name=inputuserarea]').change(function() {
-         var baru = document.getElementById('inputbaru').value;
-         var old = document.getElementById('oldcompany').value;
-         var stateID = $(this).val();
-         if(stateID) {
-            $.ajax({
-               url: '/getmsg5/'+stateID,
-               type: "GET",
-               dataType: "json",
-               success:function(data) {
-                  if(data){
-                     $("#inputusercompany").empty();
-                     $("#inputusercompany").append('<option>--- Select OUC ---</option>');
-                     $.each(data,function(key, value){
-                           $("#inputusercompany").append('<option value="'+key+'">'+value+'</option>');
-                     });
-                     if (old != ''){
-                        document.getElementById('inputusercompany').value = old;
-                     }
-
-                     
-
-                  }
-                  
-               }
-            });
-         }
-      });
-    });
-</script>
-
-
-
-
-
-
-
 <script type="text/javascript">   
    function cekinputan(){
      
@@ -641,11 +596,11 @@
       
       var inputuserid      = document.getElementById("inputuserid");
       var inputusertype    = document.getElementById("inputusertype");
-      var inputuserarea    = document.getElementById("inputuserarea");
+      var inputotorisasi    = document.getElementById("inputotorisasi");
       var inputuserpass    = document.getElementById("inputuserpass");
       var inputuserrepass  = document.getElementById("inputuserrepass");
-      var inputusercompany = document.getElementById("inputusercompany");
-      if(inputuserid.value == "" || inputusertype.value == "" || inputuserarea.value == "" || inputuserpass.value == "" || inputuserrepass.value == "" || inputusercompany.value == ""){
+      // var inputusercompany = document.getElementById("inputusercompany");
+      if(inputuserid.value == "" || inputusertype.value == "" || inputotorisasi.value == "" || inputuserpass.value == "" || inputuserrepass.value == ""){  // || inputusercompany.value == ""){
          x.style.display = "none";
       } else {
          x.style.display = "block";
@@ -661,10 +616,47 @@ $(document).on('click','.deleteUser',function(){
     // $('#applicantDeleteModal').modal('show'); 
 });
 </script>
+
+
+<script>
+   $( "#addcustomer" ).click(function() {
+      $('.addcustomer').addClass('collapse');
+      loadbisnisunit();
+      $('.updateinformasi').removeClass('collapse');
+   });
+
+   $( "#inputotorisasi" ).change(function() {
+      // loadouc();
+   });
+
+   function loadbisnisunit(){
+      loadbisnisunit2('');
+   }
+
+   function loadbisnisunit2(id){
+      $.ajax({
+         // url:"/info1/loadbu",
+         url:"/info1/loadouc",
+         type: "GET",  
+         data: {
+            'id': id
+         },
+         success:function(data)
+         {
+            $("#inputotorisasi").empty();
+            $("#inputotorisasi").append('<option value="">'+'Input BU / OUC'+'</option>');
+            for (let index = 0; index < data.length; index++) {
+               $("#inputotorisasi").append('<option value="'+data[index].bu+':'+data[index].company+'" '+data[index].flag+'>'+data[index].bu+' / '+data[index].company+'</option>');
+            }
+         },
+         error:function(data)
+         {
+         console.log('error');
+         }
+
+      });
+   }
+
+
+   </script>
 @endsection
-
-
-
-
-
-
