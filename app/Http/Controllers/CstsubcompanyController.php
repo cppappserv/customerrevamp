@@ -51,9 +51,9 @@ class CstsubcompanyController extends Controller
         ";
 
         $sql = "
-           SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info3 bu, a2.fullname created_by, 
+           SELECT a1.uid, a1.user_id customer_id, a1.fullname customer_name, c1.info3 bu, COALESCE(a2.fullname,'system')  created_by, 
            DATE_FORMAT(a1.createddate,'%Y-%m-%d') created_dt, DATE_FORMAT(a1.createddate,'%H:%i:%s') created_time, 
-           a3.fullname changed_by, 
+           COALESCE(a3.fullname,'system')  changed_by, 
            DATE_FORMAT(a1.updateddate,'%Y-%m-%d') changed_dt, DATE_FORMAT(a1.updateddate,'%H:%i:%s') changed_time
            FROM tbluser a1
            INNER JOIN tblobject b1 ON b1.objtype='7' AND a1.branch = b1.objname
