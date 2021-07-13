@@ -735,20 +735,27 @@ public function detailsave($id, Request $request){
     
 
     
+
+    
     // print_r($request->filenames2);
     DB::beginTransaction();
     try {
+        $luser = $this->getuser();
         if($id==0){
             $tbluser = Tbluser::where('user_id', '=', $request->inputuserid)->first();
             if(!$tbluser){
                 $tbluser = new Tbluser;
-            }    
+                $tbluser->createdby = $luser->uid;
+            } else {
+                $tbluser->updatedby = $luser->uid;
+            }   
             $tbluser->user_id = $request->inputuserid;
             $tbluser->company = $dtadditional->info;
             $tbluser->branch  = $dtadditional->desc;
             $tbluser->password  = "123";
         } else {
             $tbluser = Tbluser::where('uid','=',$request->inputuid)->first();
+            $tbluser->updatedby = $luser->uid;
         }
         $tbluser->fullname = $request->inputfullname;
         $tbluser->birthdate = $request->inputbirthdate;
